@@ -30,9 +30,10 @@ While the most basic game features such as commands, locations and objects were 
 | F4  | ... | ... |
 
 ### Quality requirements
-Author(s): `name of the team member(s) responsible for this section`
+Author: Richard Eric van Leeuwen, Leyla Çelik
 
-As a preamble to the table, you can discuss the main line of reasoning you followed for coming up with the quality requirements listed below.
+Our main goal for our text adventure game is to create a framework that allows itself to be easily modified, extended and has the proper checks and protection against improper use. Our main plan to achieve this goal is to view the game in its different game states. Each game state needs to be correctly represented at all times to the user so that the user knows the commands/options he has. To achieve this goal, we have checks to make sure that actions/commands properly affect the game state and that in a maximum 5 second time window the game state gets updated and displays the new current version of the game state in the terminal.
+
 
 | ID  | Short name  | Quality attribute | Description  |
 |---|---|---|---|
@@ -46,7 +47,7 @@ Each quality requirement must be tagged with the corresponding quality attribute
 Maximum number of words for this section: 1000
 
 ### Java libraries
-Author(s): `name of the team member(s) responsible for this section`
+Author: Richard Eric van Leeuwen
 
 | Name (with link) | Description  |
 |---|---|
