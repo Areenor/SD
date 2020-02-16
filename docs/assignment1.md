@@ -27,7 +27,7 @@ As a preamble to the table, you can discuss the main line of reasoning you appli
 At the very beginning of the game, the player can choose to be proficient in one of these statistics (+2), or to be decent in two of them (+1).  |
 | F2  | Commands  | The player can control the main character by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:
 
-- Examine ([object/character]) : 
+<br/>- Examine ([object/character]) : 
     Retrieve the description of the current location or  a specified object or   
     character. 
 - North/East/South/West:
