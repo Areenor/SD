@@ -17,7 +17,10 @@ The game should run as smoothly as possible, with commands doing exactly what th
 
 ### Functional features
 
-As a preamble to the table, you can discuss the main line of reasoning you applied for defining the functional features provided in the table.
+Authors: Peter Wassenaar, Zakhar  Zhornovyi
+
+
+While the most basic game features such as commands, locations and objects were included in regard to the computer game zork, which was taken as the base for our project, we also wanted to enrich our game with more advanced features. It is worth mentioning that some of these features, such as multiple difficulties and creator mode, did not make a cut for our final paper due to the word count limitation. We ended up adding two substantial features on top of the basic ones: statistics of a characters and combat. In the first place, we decided to add combat to increase the variety of gameplay. While we were creating the concept of the combat system, we came to the realization that adding character statistics which would influence the combat opportunities is an elegant way of making the combat feel more realistic and natural.
 
 | ID  | Short name  | Description  |
 |---|---|---|
