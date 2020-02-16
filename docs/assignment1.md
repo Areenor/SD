@@ -1,5 +1,6 @@
 # Assignment 1
 Group: 6, text adventure
+
 Group members: Richard Eric van Leeuwen, Peter Wassenaar, Leyla Çelik
 
 ## Introduction									
