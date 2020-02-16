@@ -25,39 +25,10 @@ As a preamble to the table, you can discuss the main line of reasoning you appli
 |---|---|---|
 | F1  | Character Statistics | There are character statistics: Strength, Dexterity and Constitution. At the very beginning of the game, the player can choose to be proficient in one of these statistics (+2), or to be decent in two of them (+1). |
 | F2  | Commands  | The player can control the main character by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:<br/>- Examine ([object/character]): <br/>    &emsp;Retrieve the description of the current location or  a specified object or character. <br/>- North/East/South/West:<br/> &emspMove to the location north, east, south, or west of the current location.<br/>- Climb up/down [object] : <br/> &emsp;Target a climbable object to move to the location above or below the current location.<br/>- Take [object] : <br/> &emsp;Put a retrievable object into the main character’s inventory.<br/>- Use [object] (on [object/character]) : <br/> &emsp;Use an object (on something), this may consume it.<br/>- Talk to [character] :<br/>&emsp;Interact with a specific character.<br/>- Equip [weapon/armor]:<br/> &emsp;Equips a weapon or armor piece.<br/>- Attack [character]:<br/>&emsp;Enter combat against a character.<br/>- Hint :<br/> &emsp;Request a hint. |
-| F3  | Locations  | A location consists of a name, description, set of objects and characters, and a list of connecting locations, if discovered. Additionally, certain commands may have different results depending on the location, such as climb up. 
-
-Locations instances: 
-  locations are story specific and are initiated with custom values for their 
-  variables and  a location type. The location type is either the standard 
-  Location type or a custom type created for the story. The configurations of a 
-  custom  location are saved in a JSON file.  |
-| F4  | Objects | Objects can be interacted with or used to interact with characters or other objects, which may cause an event or create a new object. 
-
-Custom objects:
-  Custom objects work the same way for objects as they do for locations. 
-
-Weapons:
-  raises a character’s attack stat when equipped. 
- 
-Armor:
- raises a character’s Constitution stat when equipped. |
-| F5 | Characters | Characters can be interacted with, resulting in a conversation, an event, or combad. Characters have an HP, attack and stamina statistic. Additionally they have an isHostile variable, stating if the character will attack the player, and a isFightable variable, stating if the player can attack the character.
-
-Custom characters:
-  Custom characters work the same way for character as they do for locations. 
-
-Main character:
- The main character does not have a stamina statistic, but instead a 
-  constitution and dexterity statistic, used to calculate blockable damage and 
-  dodge chance. |
- | F6 | Combat | Combad is turn based. Each turn a character can make a certain number of actions, they can choose to attack, block, or dodge.
-
-Dodge:
-  Chance to avoid an opponent's attack next turn.
-
-Block:
-  Decrease the amount of damage done by an opponent's attack next turn. |
+| F3  | Locations  | A location consists of a name, description, set of objects and characters, and a list of connecting locations, if discovered. Additionally, certain commands may have different results depending on the location, such as climb up. <br/><br/>Locations instances: <br/> &emsp; locations are story specific and are initiated with custom values for their variables and  a location type. The location type is either the standard Location type or a custom type created for the story. The configurations of a custom  location are saved in a JSON file.  |
+| F4  | Objects | Objects can be interacted with or used to interact with characters or other objects, which may cause an event or create a new object. <br/> <br/>Custom objects: <br/> &emsp; Custom objects work the same way for objects as they do for locations. <br/><br/> Weapons: &emsp; <br/> raises a character’s attack stat when equipped. <br/> <br/> Armor: <br/> &emsp; raises a character’s Constitution stat when equipped. |
+| F5 | Characters | Characters can be interacted with, resulting in a conversation, an event, or combad. Characters have an HP, attack and stamina statistic. Additionally they have an isHostile variable, stating if the character will attack the player, and a isFightable variable, stating if the player can attack the character. <br/> <br/> Custom characters: &emsp; <br/> Custom characters work the same way for character as they do for locations. <br/> <br/> Main character: &emsp; <br/> The main character does not have a stamina statistic, but instead a constitution and dexterity statistic, used to calculate blockable damage and dodge chance. |
+ | F6 | Combat | Combad is turn based. Each turn a character can make a certain number of actions, they can choose to attack, block, or dodge. <br/> <br/> Dodge: &emsp; <br/> Chance to avoid an opponent's attack next turn. <br/> <br/> Block: &emsp; <br/> Decrease the amount of damage done by an opponent's attack next turn. |
   
 
 ### Quality requirements
