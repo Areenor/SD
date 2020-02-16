@@ -1,5 +1,5 @@
 # Assignment 1
-Maximum number of words for this document: 2500
+Maximum number of words for this document: 250
 
 
 ## Introduction									
