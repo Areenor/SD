@@ -1,7 +1,7 @@
 # Assignment 1
 Group: 6, text adventure
 
-Group members: Richard Eric van Leeuwen, Peter Wassenaar, Leyla Çelik and Zac Zhornovyi
+Group members: Richard Eric van Leeuwen, Peter Wassenaar, Leyla Çelik and Zakhar Zhornovyi
 
 ## Introduction									
 Authors: Richard Eric van Leeuwen, Peter Wassenaar, Leyla Çelik
