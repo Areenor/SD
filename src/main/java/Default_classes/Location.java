@@ -1,7 +1,7 @@
 package Default_classes;
 
 import Configuration_models.LocationConfig;
-import GameData.GameState;
+import Game_data.GameState;
 import jdk.tools.jaotc.Main;
 
 import java.util.Map;

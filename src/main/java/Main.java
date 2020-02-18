@@ -1,4 +1,4 @@
-import GameData.GameState;
+import Game_data.GameState;
 import Services.InitiationService;
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ public class Main {
     public static void main (String[] args) throws IOException {
         System.out.println("Welcome to Software Design");
         Scanner scanner = new Scanner(System.in);
-        InitiationService.InitiateLocation("room");
+        InitiationService.InitiateLocations();
 
         while (!GameState.IsFinished) {
             String userInput = scanner.nextLine();
@@ -22,22 +22,16 @@ public class Main {
     }
 
     private static void ExecuteCommand(String command, String[] args) {
-        switch (command) {
-            case ("examine") :
-                System.out.println("command is examine");
-                break;
-            case ("take") :
-                System.out.println("command is take");
-                break;
-            case ("use") :
-                System.out.println("command is use");
-                break;
-            case ("quite") :
-            case ("exit"):
-                GameState.IsFinished = true;
-                break;
-            default:
-                System.out.println("unknown command");
+        if ("examine".equals(command)) {
+            System.out.println("command is examine");
+        } else if ("take".equals(command)) {
+            System.out.println("command is take");
+        } else if ("use".equals(command)) {
+            System.out.println("command is use");
+        } else if ("quite".equals(command) || "exit".equals(command)) {
+            GameState.IsFinished = true;
+        } else {
+            System.out.println("unknown command");
         }
     }
 }

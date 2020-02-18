@@ -1,4 +1,4 @@
-package GameData;
+package Game_data;
 
 import Default_classes.Location;
 
