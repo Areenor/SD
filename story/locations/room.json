@@ -1,0 +1,6 @@
+{
+  "Name" : "room",
+  "Description" : "just a room",
+  "Characters" : ["testNPC1", "testNPC2"],
+  "Objects" : ["testObject1", "testObject2"]
+}

@@ -1,14 +1,24 @@
 package Services;
 
+import Configuration_models.CharacterConfig;
+import Configuration_models.LocationConfig;
+import Configuration_models.ObjectConfig;
+import Default_classes.Character;
 import Default_classes.Location;
-//import com.alibaba.fastjson.JSON;
+import Default_classes.Object;
+import Game_data.GameState;
+import com.alibaba.fastjson.JSON;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class InitiationService {
     private static Path storyDirPath = Paths.get(System.getProperty("user.dir"), "story");
@@ -25,25 +35,44 @@ public class InitiationService {
             }
         });
 
+        assert locationConfigFiles != null;
         for (File locationConfigFile : locationConfigFiles) {
-            locations.add(InitiateLocation(locationConfigFile));
+            String locationName = locationConfigFile.getName().replace(".json", "");
+            GameState.Locations.put(locationName, InitiateLocation(locationConfigFile.getPath()));
         }
     }
 
-    public static Location InitiateLocation(File locationConfigFile) {
-        //return JSON.parseObject(locationConfigFile.toString(), Location.class);
-        return null;
+    public static Location InitiateLocation(String locationConfigFilePath) {
+        String locationConfigFileContent = readLineByLine(locationConfigFilePath);
+        LocationConfig locationConfig = JSON.parseObject(locationConfigFileContent, LocationConfig.class);
+        return new Location(locationConfig);
     }
 
     public static Character InitiateCharacter(String characterName) {
-        Path locationPath = Paths.get(characterJsonDirPath.toString(), characterName);
-        //return JSON.parseObject(locationPath.toString(), Location.class);
-        return null;
+        Path characterConfigFilePath = Paths.get(characterJsonDirPath.toString(), characterName + ".json");
+        String characterConfigFileContent = readLineByLine(characterConfigFilePath.toString());
+        CharacterConfig characterConfig = JSON.parseObject(characterConfigFileContent, CharacterConfig.class);
+        return new Character(characterConfig);
     }
 
     public static Object InitiateObject(String objectName) {
-        Path locationPath = Paths.get(objectJsonDirPath.toString(), objectName);
-        //return JSON.parseObject(locationPath.toString(), Location.class);
-        return null;
+        Path objectConfigFilePath = Paths.get(objectJsonDirPath.toString(), objectName + ".json");
+        String objectConfigFileContent = readLineByLine(objectConfigFilePath.toString());
+        ObjectConfig objectConfig = JSON.parseObject(objectConfigFileContent, ObjectConfig.class);
+        return new Object(objectConfig);
+    }
+
+    private static String readLineByLine(String filePath)
+    {
+        StringBuilder contentBuilder = new StringBuilder();
+        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
+        {
+            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return contentBuilder.toString();
     }
 }
