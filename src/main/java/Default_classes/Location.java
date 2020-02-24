@@ -2,15 +2,16 @@ package Default_classes;
 
 import Configuration_models.LocationConfig;
 import Game_data.GameState;
-import jdk.tools.jaotc.Main;
+import Services.InitiationService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Location {
     public final String _name;
     public String _description;
-    public String[] _objects;
-    public String[] _characters;
+    public Map<String, Object> _objects = new HashMap<String, Object>();
+    public Map<String, Character> _characters = new HashMap<String, Character>();
     public Map<String, String> _adjacentLocations;
 
 
@@ -21,9 +22,10 @@ public class Location {
 
         _name = config.Name;
         _description = config.Description;
-        _objects = config.Objects;
-        _characters = config.Characters;
         _adjacentLocations = config.AdjacentLocations;
+
+        for (String character: config.Characters) {_characters.put(character, InitiationService.InitiateCharacter(character)); }
+        for (String object: config.Objects) {_objects.put(object, InitiationService.InitiateObject(object)); }
     }
 
     public void North() {
