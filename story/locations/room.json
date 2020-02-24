@@ -1,0 +1,7 @@
+{
+  "Name" : "room",
+  "Description" : "You are in a room, there are objects and items",
+  "Characters" : ["testNPC1", "testNPC2"],
+  "Objects" : ["testObject1", "testObject2"],
+  "AdjacentLocations" : {"north":"mountain"}
+}
