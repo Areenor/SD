@@ -1,14 +1,16 @@
+import Default_classes.Location;
 import Game_data.GameState;
 import Services.InitiationService;
 
-import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) throws IOException {
+    public static void main (String[] args) {
         System.out.println("Welcome to Software Design");
         Scanner scanner = new Scanner(System.in);
         InitiationService.InitiateLocations();
+        Map<String, Location> a = GameState.Locations;
 
         while (!GameState.IsFinished) {
             String userInput = scanner.nextLine();
