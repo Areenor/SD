@@ -12,52 +12,56 @@ public class Location {
     public String _description;
     public Map<String, Object> _objects = new HashMap<String, Object>();
     public Map<String, Character> _characters = new HashMap<String, Character>();
-    public Map<String, String> _adjacentLocations;
+    public Map<String, String> _adjacentLocations = new HashMap<String, String>();
 
 
     public Location(LocationConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
-        if (config.Name.isEmpty()) throw  new IllegalArgumentException("The location name is empty");
-        if (config.Description.isEmpty()) throw  new IllegalArgumentException("The location description is empty");
+        if (config.Name.isEmpty()) throw new IllegalArgumentException("The location name is empty");
+        if (config.Description.isEmpty()) throw new IllegalArgumentException("The location description is empty");
 
         _name = config.Name;
         _description = config.Description;
         _adjacentLocations = config.AdjacentLocations;
 
-        for (String character: config.Characters) {_characters.put(character, InitiationService.InitiateCharacter(character)); }
-        for (String object: config.Objects) {_objects.put(object, InitiationService.InitiateObject(object)); }
+        for (String character : config.Characters) {
+            _characters.put(character, InitiationService.InitiateCharacter(character));
+        }
+        for (String object : config.Objects) {
+            _objects.put(object, InitiationService.InitiateObject(object));
+        }
+    }
+
+    public void move(String direction) {
+        String nextLocationName = _adjacentLocations.get(direction);
+        if (nextLocationName != null && !nextLocationName.isEmpty()) {
+            GameState.CurrentLocation = GameState.GetLocation(nextLocationName);
+            System.out.println("You entered " + nextLocationName);
+            System.out.println(GameState.CurrentLocation._description);
+            return;
+        }
+        System.out.println("nothing happened, try a different direction");
     }
 
     public void North() {
-        System.out.println(GameState.CurrentLocation);
-        if (_adjacentLocations.containsValue("north")) {
-            //not implemented
-            return;
-        }
-        //print "nothing happened"
+        move("north");
     }
 
     public void East() {
-        if (_adjacentLocations.containsValue("east")) {
-            //not implemented
-            return;
-        }
-        //print "nothing happened"
+        move("east");
     }
 
     public void South() {
-        if (_adjacentLocations.containsValue("south")) {
-            //not implemented
-            return;
-        }
-        //print "nothing happened"
+        move("south");
     }
 
     public void West() {
-        if (_adjacentLocations.containsValue("west")) {
-            //not implemented
-            return;
-        }
-        //print "nothing happened"
+        move("west");
+    }
+    public void Up() {
+        move("up");
+    }
+    public void Down() {
+        move("down");
     }
 }

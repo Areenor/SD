@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GameState {
     public static boolean IsFinished = false;
-    public static String CurrentLocation;
+    public static Location CurrentLocation;
     public static Map<String, Location> Locations = new HashMap<>();
 
     public static Location GetLocation(String locationName) {
