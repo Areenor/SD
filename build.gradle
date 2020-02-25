@@ -14,4 +14,5 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation  group : 'com.alibaba', name : 'fastjson', version : '1.2.16'
+    implementation 'org.beryx:text-io:3.4.0'
 }

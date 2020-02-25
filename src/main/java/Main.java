@@ -1,12 +1,17 @@
 import Default_classes.Location;
 import Game_data.GameState;
 import Services.InitiationService;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
 
 import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args) {
+
+        TextIO textIO = TextIoFactory.getTextIO();
+
         System.out.println("Welcome to Software Design");
         Scanner scanner = new Scanner(System.in);
         InitiationService.InitiateLocations();
