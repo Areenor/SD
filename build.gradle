@@ -15,4 +15,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation  group : 'com.alibaba', name : 'fastjson', version : '1.2.16'
     implementation 'org.beryx:text-io:3.4.0'
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.slf4j:slf4j-log4j12:1.7.5'
 }

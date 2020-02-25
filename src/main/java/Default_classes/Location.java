@@ -3,6 +3,9 @@ package Default_classes;
 import Configuration_models.LocationConfig;
 import Game_data.GameState;
 import Services.InitiationService;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.TextTerminal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +16,8 @@ public class Location {
     public Map<String, Object> _objects = new HashMap<String, Object>();
     public Map<String, Character> _characters = new HashMap<String, Character>();
     public Map<String, String> _adjacentLocations = new HashMap<String, String>();
-
+    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
+    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     public Location(LocationConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
@@ -36,11 +40,13 @@ public class Location {
         String nextLocationName = _adjacentLocations.get(direction);
         if (nextLocationName != null && !nextLocationName.isEmpty()) {
             GameState.CurrentLocation = GameState.GetLocation(nextLocationName);
-            System.out.println("You entered " + nextLocationName);
-            System.out.println(GameState.CurrentLocation._description);
+
+            terminal.printf("You entered %s.\n", GameState.CurrentLocation._name);
+            terminal.print(GameState.CurrentLocation._description);
+            terminal.print("\n");
             return;
         }
-        System.out.println("nothing happened, try a different direction");
+        terminal.print("You found nothing traveling in this direction and returned to your original location.\n");
     }
 
     public void North() {
@@ -55,12 +61,8 @@ public class Location {
         move("south");
     }
 
-    public void West() {
-        move("west");
-    }
-    public void Up() {
-        move("up");
-    }
+    public void West() { move("west"); }
+    public void Up() {  move("up"); }
     public void Down() {
         move("down");
     }
