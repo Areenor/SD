@@ -42,7 +42,6 @@ Authors: Richard Eric van Leeuwen, Leyla Çelik
 
 Our main goal for our text adventure game is to create a framework that allows itself to be easily modified, extended and has the proper checks and protection against improper use. Our main plan to achieve this goal is to view the game in its different game states. Each game state needs to be correctly represented at all times to the user so that the user knows the commands/options he has. To achieve this goal, we have checks to make sure that actions/commands properly affect the game state and that in a maximum 5 second time window the game state gets updated and displays the new current version of the game state in the terminal.
 
-
 | ID  | Short name  | Quality attribute | Description  |
 |---|---|---|---|
 | QR1  | Mutable game world | Maintainability  | The game world (The locations, characters, enemies and items) can be extended and changed with ease. |
