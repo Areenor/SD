@@ -80,7 +80,7 @@ The not in combat state is its default state. The not in combat state does not h
 
 The other main state is the in combat state. Just like the main character, it has the same combat moves attack, block or dodge and the combdat works in a similar turn-based fashion. The key difference is that combat moves randomly get selected during the NPC's turn and not by input. Combat ends when one of the participants health attribute reaches 0. If the NPC wins combat and its health attribute does not reach 0, it transitions back into the not in combat state just like in the character state machine diagram. However, if the NPC loses and its health attribute does reach 0, the defeated NPC's instance gets deleted from the game.
 
-Words: Around 1500
+Words: Around 1500 including diagrams
 ## Sequence diagrams									
 Author(s): `name of the team member(s) responsible for this section`
 
