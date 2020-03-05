@@ -1,24 +1,10 @@
 
-1squid:S1220""Move this file to a named package.
-Isquid:S1854"5Remove this useless assignment to local variable "a".(íÁ›?
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(Şö¦Ê
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ç«×Ø
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(×¡Ùûøÿÿÿÿ
-dsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ–·é
-@squid:S1172"+Remove this unused method parameter "args".(ÿ–·é
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(ñİ†³ÿÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÕĞàà
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(òåº
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÚÊì˜
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ô‘óì
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ìÒ›
-:squid:S1481"&Remove this unused "a" local variable.(íÁ›?
+j	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ–·é8¡Õ…ÿ‰.
+Q
+java:S1854"5Remove this useless assignment to local variable "a".(íÁ›?8¡Õ…ÿ‰.
+B
+java:S1481"&Remove this unused "a" local variable.(íÁ›?8¡Õ…ÿ‰.
+C	java:S1317""Add a default case to this switch.(™€¦ùÿÿÿÿ8Æ‰å€Š.
+P
+java:S1128
+".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8¡Õ…ÿ‰.

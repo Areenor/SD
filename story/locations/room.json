@@ -1,7 +1,7 @@
 {
   "Name" : "a room",
-  "Description" : "You are in a room, there are objects and items. There are mountains north and a beach west.",
-  "Characters" : ["testNPC1", "testNPC2"],
+  "Description" : "You are in a room, there are objects and items. You see a man standing there There are mountains north and a beach west.",
+  "Characters" : ["Areenor"],
   "Objects" : ["testObject1", "testObject2"],
   "AdjacentLocations" : {"north":"mountain", "west": "beach"}
 }

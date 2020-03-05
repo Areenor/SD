@@ -1,9 +1,9 @@
 package Services;
 
-import Configuration_models.CharacterConfig;
+import Configuration_models.NPCConfig;
 import Configuration_models.LocationConfig;
 import Configuration_models.ObjectConfig;
-import Default_classes.Character;
+import Default_classes.NPC;
 import Default_classes.Location;
 import Default_classes.Object;
 import Game_data.GameState;
@@ -48,11 +48,11 @@ public class InitiationService {
         return new Location(locationConfig);
     }
 
-    public static Character InitiateCharacter(String characterName) {
+    public static NPC InitiateCharacter(String characterName) {
         Path characterConfigFilePath = Paths.get(characterJsonDirPath.toString(), characterName + ".json");
         String characterConfigFileContent = readLineByLine(characterConfigFilePath.toString());
-        CharacterConfig characterConfig = JSON.parseObject(characterConfigFileContent, CharacterConfig.class);
-        return new Character(characterConfig);
+        NPCConfig characterConfig = JSON.parseObject(characterConfigFileContent, NPCConfig.class);
+        return new NPC(characterConfig);
     }
 
     public static Object InitiateObject(String objectName) {
