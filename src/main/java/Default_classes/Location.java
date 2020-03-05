@@ -14,7 +14,7 @@ public class Location {
     public final String _name;
     public String _description;
     public Map<String, Object> _objects = new HashMap<String, Object>();
-    public Map<String, Character> _characters = new HashMap<String, Character>();
+    public Map<String, NPC> _characters = new HashMap<String, NPC>();
     public Map<String, String> _adjacentLocations = new HashMap<String, String>();
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output

@@ -3,17 +3,17 @@
 //
 package Configuration_models;
 
-public class CharacterConfig {
+public class NPCConfig {
     public String Name;
     public String Description;
-    public String TypeName;
-    public String[] InventoryItems;
+    public String Type;
+    public String Dialogue;
+    public String[] Inventory;
 
     public boolean IsHostile;
     public boolean IsFightable;
-    public int HitPoints;
-    public int Attack;
-    public int Stamina;
+    public int Strength;
+    public int Dexterity;
+    public int Constitution;
 
-    public String CharacterClassName;
 }
