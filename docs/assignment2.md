@@ -37,14 +37,15 @@ In this document you have to adhere to the following formatting conventions:
 Maximum number of words for this section: 2500
 
 ## Object diagrams								
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Leyla Celik
 
 This chapter contains the description of a "snapshot" of the status of your system during its execution. 
 This chapter is composed of a UML object diagram of your system, together with a textual description of its key elements.
 
 `Figure representing the UML class diagram`
-  
-`Textual description`
+
+This diagram shows a snapshot of a player who had their main character enter a location that contains items and is adjacent to another location with items and a character. The main character is an instance of the class Character with all inherited variables. The main character is named player1 and their stats are 25 HP, 1 Strength, 1 Dexterity and 1 Constitution. The main character’s inventory can consists of items of the class Item and at this point in the snapshot is empty. In addition to being able to pick up items of class Item, the main character could also use an item with the command ‘use’; get a description of an item with the command ‘examine’; add an item to their inventory using the command ‘take’. The main character is at a location named “a beach”. When using the command ‘examine’, the player gets a description of this location: “You are on a beach, there are objects and items. There is a room east.”. This location contains two objects of class Item: one weapon that the main character can pick up (bool IsRetrievable = true;) named ‘Sword’ that gives a strength bonus of 1 (int StrengthBonus = 1;) and one piece of armor named ‘Chestplate’ that the main character can pick up (bool IsRetrievable = true;) that gives a constitution bonus of 1 (int ConstitutionBonus = 1;); The location ‘a beach’ has an adjacent location to the east (AdjacentLocations = {"east":"room"}) called ‘room’. 
+The adjacent location ‘room’ contains one item of class Item and an NPC of class NPC. The item is a piece of armor named ‘Headgear’ that the main character can pick up (bool IsRetrievable = true;) that gives a constitution bonus of 1; (int ConstitutionBonus = 1;). The NPC is named ‘Guard’, is of type guard, has the description "This is a Guard that attacks on sight.", is hostile (bool IsHostile = true;) and is fightable (bool IsFightable = true;). Possible types of interactions with the NPC are: ‘talk to’, which gives the player dialogue between the main character and NPC; ‘examine’, which gives a description of the NPC; and ‘attack’, which will put the main character into combat with the NPC. An NPC that IsHostile, however, will attack the main character on sight, meaning they will not have time to interact with the NPC. 
 
 Maximum number of words for this section: 500
 
@@ -82,7 +83,7 @@ The other main state is the in combat state. Just like the main character, it ha
 
 Words: Around 1500 including diagrams
 ## Sequence diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Richard van Leeuwen, Leyla Celik
 
 This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
 
@@ -95,13 +96,20 @@ The goal of your sequence diagrams is both descriptive and prescriptive, so put 
 
 Maximum number of words for this section: 2500
 
-In the combat sequence diagram we show a typical scenario where the player engages in combat with a NPC using the Main Character. The interaction partners in this particular diagram are the following: Player, Main Character and NPC.  We will discuss each of the interactions partners involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interactions partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
+In the combat sequence diagram we show a typical scenario where the player engages in combat with a NPC using the Main Character. The interaction partners in this particular diagram are the following: Player, Main Character and NPC.  We will discuss each of the interaction partners' involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interaction partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
 
 First, we will discuss the Player. The Player refers to the stakeholder of this diagram and thus depicts an external influence. The player is the one who inputs commands and controls the main character. In this scenario, as depicted in the diagram, the player wishes to engage in combat with a particular NPC.  To do so, he inputs the command “attack NPC” which starts the sequence of events. The player receives information as output about the result of his attack and from there is able to direct the Main Character to either attack the NPC or block or dodge the next attack from the NPC.  The player is able to input these combat moves till either the main character or the engaged NPC is defeated by lowering their health to 0. In this scenario the player put in two attack input commands which ends the battle with the NPC’s health reaching 0 and being defeated.
 
 The main character is the one who processes the commands he receives from the player and is the one who is engaged in combat with the NPC. As he receives from the player the attack NPC command, he will invoke the attack(NPC) method to attack the NPC and start combat. As a reply from the NPC he will receive the new health statistic the NPC has after enduring the attack. Now the main character will wait for the NPC to do his move. Once the main character has received the move from the NPC, he will also return in reply his new current health statistic. The main character will output the results of the battle to the player which includes the damage dealt and the current health from both the main character and the NPC. The main character attacks twice, the first time the NPC’s health reaches 5 and the second time the NPC is defeated as NPC’s health reaches 0.
 
-Finally, we will discuss the NPC. The NPC converses in a similar way as the main character. Upon being attacked by the main character through the attack(NPC) function, he will send back to the main character his current health. Now, it is his turn to perform a combat method from which he has the same options as the main character: attack(), block() and dodge(). In this diagram, after the first attack and returning their currentHealth of 5, they perform an attack back. As a response they receive that the main character’s health is 20. Sadly for the NPC, they get attacked again, the currentHealth reaches 0, which they send as a reply to the main character to indicate combat is over, and they get removed from the game.
+Finally, we will discuss the NPC. The NPC converses in a similar way as the main character. Upon being attacked by the main character through the attack(NPC) function, he will send back to the main character his current health. Now, it is his turn to perform a combat method from which he has the same options as the main character: attack(), block() and dodge(). In this diagram, after the first attack and returning their currentHealth of 5, they perform an attack back. As a response they receive that the main character’s health is 20. Sadly for the NPC, they get attacked again, the currentHealth reaches 0, which they send as a reply to the main character to indicate combat is over, and they get removed from the game. 
+
+
+This teleportation sequence diagram shows the way the program handles a teleportation command when the direction the player wants to go to does not exist and when it does exist. The interaction partners in this diagram are the Player, Main Character and Location. We will discuss each of the interactions partners’ involvement and what their tasks are during this scenario. Player depicts an external influence and is the stakeholder of this diagram. The player is the person playing the game who inputs commands and controls the main character. The situation in this sequence diagram is as follows: the player wants to move the main character to a new location. The player inputs a command to move the main character north of its current location: “move north”. 
+The main character processes the commands they receive from the player and will teleport if the direction the player wants to go in has a location. The main character receives the “move north” command and will invoke the move(“north”) method to Location. 
+Location is mostly a container for data, but also sends back the ‘ok’ for teleportation if the direction chosen by the player has a location with a description of the location, or a message saying there was nothing in that direction if there is no location in that direction. The player chose north as their direction to move in, but there are no adjacent locations north of the main character’s current location, so Location sends the player the response “You found nothing traveling in this direction and returned to your original location.” as output. The player tries to change locations again, this time wanting to move the main character east of its current location with the command: “move east”. The main character receives the “move east” command and will invoke the move(“east”) method to Location. There is an adjacent location east of the main character’s current location and the player gets the response: "You are in a room, there are objects and items. There is a beach west." as output. 
+
+
 
 ## Implementation									
 Author(s): `name of the team member(s) responsible for this section`
