@@ -1,6 +1,6 @@
 # Assignment 2
 
-#Text adventure group 6
+**Text adventure group 6**
 
 ### Implemented feature
 
