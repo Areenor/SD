@@ -31,7 +31,7 @@
 <tr>
 <td>F4</td>
 <td>Items</td>
-<td>Items are stored in inventory of characters or are located at locations and can be used by main character on himself, NPCs or other items, which may cause an event or create a new item. Items have name, description and can either be retrievable or not.<br /><br />Equipment:<br />&emsp; Equipment is a subclass of items. Such items can be equipped and thus have an influence on character statistics. If the type of equipment is weapon, it raises a damage the player can deal when equipped. If the type of equipment is armor, it raises a character&rsquo;s maximum number of Hit Points when equipped.<br /><br />Story-defined items:<br />&emsp; Story-defined items work the same way for items as they do for locations&nbsp;</td>
+<td>Items are stored in inventory of characters or are located at locations and can be used by main character on himself, NPCs or other items, which may cause an event or create a new item. Items have name, description and can either be retrievable or not.<br /><br />Story-defined items:<br />&emsp; Story-defined items work the same way for items as they do for locations&nbsp;</td>
 </tr>
 <tr>
 <td>F5</td>
