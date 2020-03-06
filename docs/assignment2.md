@@ -47,25 +47,15 @@ This chapter is composed of a UML object diagram of your system, together with a
 This diagram shows a snapshot of a player who had their main character enter a location that contains items and is adjacent to another location with items and a character. The main character is an instance of the class Character with all inherited variables. The main character is named player1 and their stats are 25 HP, 1 Strength, 1 Dexterity and 1 Constitution. The main character’s inventory can consist of items and is, at this point in the snapshot, empty. In addition to being able to pick up items of class Item, the main character could also use an item with the command ‘use’; get a description of an item with the command ‘examine’; add an item to their inventory using the command ‘take’. The main character is at a location named “a beach”. When using the command ‘examine’, the player gets a description of this location: “You are on a beach, there are objects and items. There is a room east.”. This location contains two objects of subclass Equipment: one of type 'weapon' that the main character can pick up (bool IsRetrievable = true;) named ‘Sword’ that gives an attack bonus of 1 (int AttackBonus = 1;) and one of type 'armor' named ‘Chestplate’ that the main character can pick up (bool IsRetrievable = true;) that gives a block bonus of 1 (int BlockBonus = 1;); The location ‘a beach’ has an adjacent location to the east (AdjacentLocations = {"east":"room"}) called ‘room’. 
 The adjacent location ‘room’ contains one item of subclass Equipment and an NPC of class NPC. The item is of type 'armor' named ‘Headgear’ that the main character can pick up (bool IsRetrievable = true;) that gives a block bonus of 1; (int BlockBonus = 1;). The NPC is named ‘Guard’, is of type guard, has the description "This is a Guard that attacks on sight.", is hostile (bool IsHostile = true;) and is fightable (bool IsFightable = true;). Possible types of interactions with the NPC are: ‘talk to’, which gives the player dialogue between the main character and NPC; ‘examine’, which gives a description of the NPC; and ‘attack’, which will put the main character into combat with the NPC. An NPC that IsHostile, however, will attack the main character on sight, meaning they will not have time to interact with the NPC. 
 
-Maximum number of words for this section: 500
-
 ## State machine diagrams									
 Author(s): Richard Eric van Leeuwen
 
-This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
-For each state machine you have to provide:
-- the name of the class for which you are representing the internal behavior;
-- a figure representing the part of state machine;
-- a textual description of all its states, transitions, activities, etc. in a narrative manner (you do not need to structure your description into tables in this case). We expect 3-4 lines of text for describing trivial or very simple state machines (e.g., those with one to three states), whereas you will provide longer descriptions (e.g., ~500 words) when describing more complex state machines.
-
-The goal of your state machine diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 2500
-
-We ended up creating two state machine diagrams for our text adventure game: The character state machine diagram and the NPC state machine diagram. We will discuss in detail below each diagram.
+We ended up creating two state machine diagrams for our text adventure game: The character state machine diagram and the NPC state machine diagram. These diagrams, as the name suggests, focus on the Character class and the NPC class. We will discuss in detail below each diagram.
 
 First, the character diagram. This diagram will be the one discussed in most detail seen this diagram is responsible for most interactions in our system.
+
+![Character State Machine](https://github.com/Areenor/SD/blob/Assignment-2/docs/character_state_machine.png)
 
 The character diagram is responsible for creating an instance which we call our main character which will be stored in our GameState file. This main character is responsible for the most interactions in our system and its position will be tracked separately under a variable called currentLocation which is also kept in our GameState file. As the player of the game inputs commands, the main character will be responsible for processing them using its methods and making sure these methods get processed correctly. The commands that can be used at any given moment are dependent on the main character's position, which is kept in the currentLocation variable in GameState, and its current state. Regarding the commands it can use depending its position, the main character can only interact with items and NPCS that are in the same position as he is currently in. It is not allowed to interact with them outside of the location they are residing in. To make sure this is properly presented in our diagrams, we have included location checks as guards. Regarding states the main character has which influence the commands it can perform, at this point in time we envision the main character to have three main states: Not in combat, in combat and defeated. We will briefly describe each of these states. 
 
@@ -81,7 +71,6 @@ The not in combat state is its default state. The not in combat state does not h
 
 The other main state is the in combat state. Just like the main character, it has the same combat moves attack, block or dodge and the combdat works in a similar turn-based fashion. The key difference is that combat moves randomly get selected during the NPC's turn and not by input. Combat ends when one of the participants health statistic reaches 0. If the NPC wins combat and its health statistic does not reach 0, it transitions back into the not in combat state just like in the character state machine diagram. However, if the NPC loses and its health statistic does reach 0, the defeated NPC's instance gets deleted from the game.
 
-Words: Around 1500 including diagrams
 ## Sequence diagrams									
 Author(s): Richard van Leeuwen, Leyla Celik
 
