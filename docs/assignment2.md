@@ -26,6 +26,8 @@ The **Location** class represents a room or area which contains objects and char
 | *AdjacentLocations* : Hashmap containing the names of the *locations* adjacent to the *location*, paired to the corresponding direction. |  |   |
 
 
+### Character
+
 ## Object diagrams								
 Author(s): Leyla Celik
 
