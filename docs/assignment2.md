@@ -1,10 +1,6 @@
 # Assignment 2
 
-Maximum number of words for this document: 9000
-
-**IMPORTANT**: In this assignment you will model the whole system. Within each of your models, you will have a *prescriptive intent* when representing the elements related to the feature you are implementing in this assignment, whereas the rest of the elements are used with a *descriptive intent*. In all your diagrams it is strongly suggested to used different colors for the prescriptive and descriptive parts of your models (this helps you in better reasoning on the level of detail needed in each part of the models and the instructors in knowing how to assess your models).   
-
-**Format**: establish formatting conventions when describing your models in this document. For example, you style the name of each class in bold, whereas the attributes, operations, and associations as underlined text, objects are in italic, etc.
+**Text adventure group 6**
 
 ### Implemented feature
 
@@ -13,95 +9,137 @@ Maximum number of words for this document: 9000
 | F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
 
 ### Used modeling tool
-Add here the name of the modeling tool you are using for your project.
+For our project we used the modeling tool available on lucidchart.com
 
 ## Class diagram									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Peter Wassenaar, Zakhar Zhornovyi, Richard Eric van Leeuwen
 
-This chapter contains the specification of the UML class diagram of your system, together with a textual description of all its elements.
+![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-2/docs/classDiagram.png)
 
-`Figure representing the UML class diagram`
+### Location
 
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
+The **Location** class represents a room or area which contains objects and characters. *Locations* are linked together and can be accessed through different directions using the *AdjacentLocations* hashmap.
 
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Name*: String containing the name of the location.  | *Examine()*: Prints the description of the *CurrentLocation* to the terminal. |   |
+| *Description*: String describing the location.  | *Move()*: Sets the *CurrentLocation* to the *location's* adjacent *location* corresponding to a given direction. |   |
+| *Items*: Hashmap containing the names of the items in the location paired to instances of those items. |  |   |
+| *AdjacentLocations*: Hashmap containing the names of the *locations* adjacent to the *location*, paired to the corresponding direction. |  |   |
 
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
+### Character
 
-Maximum number of words for this section: 2500
+The **Character** class represents a person or other being which acts as living entity in the game. Such living entities or beings would be, for example, a merchant, a bandit or a wolf. Note, the role a being plays in a story determines if it should be an instance of the **Character** or **Item** class; in one story a salamander may be regarded as a *character* where it can be battled with or spoken to, while another story sees it as (functionally speaking) an *item* that, for example, can be put in an *Inventory*.
+
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. | **Character** is present in a location. Cannot exist outside a location or in multiple ones at the same time.  |
+| *HitPoints*: number of hit points a character has, used for combat. | | *Examine* : Calls on the *examine* operation for an instance of **Location**, **Item** or **NPC**.  |
+| *Inventory*: Hashmap containing the names of the items in the possession of the *Character* paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
+| *Strength*: Statistic used for damage calculation during combat. |  | *Talk to* : Calls on the *talk to ()* operation of an instance of **NPC**.  |
+| *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  | *Attack*: Calls on the *attack()* operation on an instance of **NPC**, fails if the npc's attribute *IsFightabel* is false.  |
+| *Constitution* : Statistic used to calculate the damage mitigation during combat when using block(). |  | *Equip* : Calls on the *equip()* operation of an instance of **Equipment**. |
+| |  | *Use* : Calls on the *use()* operation of an instance of **Item**.|
+| |  | *Take* : Calls on the *take()* operation of an instance of **Item**.|
+| |  | *Use on*: Calls on the *use(on )* operation of an instance of **Item**, passing the name of an instance of **Item** or **Character** as a parameter to use the item on. If no target is selected, the *MainCharacter* is the target. |
+| | | *Give to*: Calls on the *Give to()* operation of an instance of **Item**, passing the name of an instance of **Character** as a parameter to give the item to. |
+
+### NPC
+
+A subclass which inherits from the **Character** class. A character which is not controlled by the player.
+
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Type* : a string containing the type name to which an NPC belongs. The type attribute may be used in a story to simplify describing the effect of items on a multitude of characters.  | *Examine()*: Prints the description of the NPC to the terminal. | **NPC** can be selected as the target of the *Use on ()* operation of an item, resulting in an item being used on the NPC.  |
+| *Description* : String describing the *NPC*  | *Talk to()* : Starts a conversation with the *NPC*. The dialogue lines of the *NPC* to will be printed inthe terminal during the conversation. |   |
+| *Dialogue* : String of conversation lines of the *NPC* used during a conversation with the player. | *Attack()* : Initiates combat with the NPC if the property *IsFightable* is true.  |   |
+| *IsHostile* : Boolean describing if the *NPC* would attack the player on sight (when the player enters the location the *NPC* is in). Is true when the NPC would attack the player on sight. |  |   |
+ | *IsFightable* : Boolean describing if combat can be initiated with the NPC. Is true when combat can be initiated. | | |
+ 
+ ### Item
+ 
+An object which is present in a *location* or the *Inventory* of a *character*. Some *items* can be picked up and removed from a location and placed into the *Inventory* of a *character*. *Items* inside of the inventory of the *MainCharacter* can be used by the player, either on a *character* or another *item*.
+ 
+| Attributes  | Operations  | Association  |
+|---|---|---|
+|  *Name*: String containing the name of the *item*. | *Examine()*: Prints the description of the *Item* to the terminal. | *Items* are present in a location or a character’s inventory. Cannot exist outside a location or inventory or in multiple ones at the same time.  |
+|  *Description* : String describing the *item*. | *Use()*: Perform an action with an *item* specified by the story. If no argument for the target is given, the item is used on its own, else it is used on the target, resulting in a different outcome/event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |  *Items* can be selected as the target of the Use on operation of an item, resulting in an item being used on the target item. |
+| *IsRetrievable* : Boolean describing if the *item* can be picked up from a *location* and placed in a *character's Inventory*.| *Give to()*: Give an *item* to a target *character*, resulting in a story specified event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |   |
+|  | *Take()* : Removes the *item* from the *CurrentLocation* and places into the *MainCharacter's Inventory*. The command can only be used on *items* present in a *location*. |   |
+
+ ### Equipment
+ 
+Equipment is a subclass which inherits the **Item** class. A special type of item which can be equipped by a character, adding a bonus to either their *Strength* or *Constitution* statistics. The bonus is lost when another piece of equipment is equipped. There are two types of *equipment*, armor and weapons. Only one piece of *equipment* per type can be equipped at the same time. Equipping *equipment* of a type which is already being worn by the character replaces the original piece of equipment. Armor tends to give a greater bonus to the *Constitution* statistic, while weapons tend to give a higher bonus to the *Strength* statistic.
+
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Type* : Specifies what kind of *equipment* the instance is, a weapon or an armor piece. | *Equip()* : Equips the equipment to the *MainCharacter*, adding the *BlockBonus* and *AttackBonus* to the *MainCharacter's Constitution* and *Strength* statistics respectively. Replaces the currently equipped piece of *equipment* of the same *type*. |   |
+| *BlockBonus* : The bonus added to the *Constitution* statistics when the *equipment* is equipped. |  |   |
+| *AttackBonus* : The bonus added to the *Strength* statistics when the *equipment* is equipped. |  |   |
 
 ## Object diagrams								
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Leyla Celik
 
-This chapter contains the description of a "snapshot" of the status of your system during its execution. 
-This chapter is composed of a UML object diagram of your system, together with a textual description of its key elements.
+![Object Diagram](https://github.com/Areenor/SD/blob/Assignment-2/docs/Object_Diagram_.png)
 
-`Figure representing the UML class diagram`
-  
-`Textual description`
-
-Maximum number of words for this section: 500
+This diagram shows a snapshot of a player who had their **MainCharacter** enter a **Location** that contains **Equipment** and is adjacent to another **Location** with **Equipment** and a **Character**. The **MainCharacter** is an instance of the class Character with all inherited variables. The **MainCharacter** is named player1 and their stats are 25 *HP*, 1 *Strength*, 1 *Dexterity* and 1 *Constitution*. The **MainCharacter**’s inventory can consist of, among other things, **Equipment** and is, at this point in the snapshot, empty. In addition to being able to pick up **Equipment**, the **MainCharacter** could also use **Equipment** with the command *‘use’*; get a description of the **Equipment** with the command *‘examine’*; add **Equipment** to their inventory using the command *‘take’*. The **MainCharacter** is at a **Location** named *“a beach”*. When using the command *‘examine’*, the player gets a description of this **Location**: “You are on a beach, there are objects and items. There is a room east.”. This **Location** contains two objects of subclass Equipment: one of type *'weapon'* that the **MainCharacter** can pick up (bool *IsRetrievable* = true;) named ‘Sword’ that gives an attack bonus of 1 (int *AttackBonus* = 1;) and one of type *'armor'* named ‘Chestplate’ that the **MainCharacter** can pick up (bool *IsRetrievable* = true;) that gives a block bonus of 1 (int BlockBonus = 1;); The **Location** *‘a beach’* has an adjacent location to the east (*AdjacentLocations* = {"east":"room"}) called *‘room’*. 
+The adjacent location *‘room’* contains one item of subclass Equipment and an **NPC** of class **NPC**. The **Equipment** is of type *'armor'* named ‘Headgear’ that the **MainCharacter** can pick up (bool *IsRetrievable* = true;) that gives a block bonus of 1; (int *BlockBonus* = 1;). The **NPC** is named ‘Guard’, is of type *‘guard’*, has the description "This is a Guard that attacks on sight.", is hostile (bool *IsHostile* = true;) and is fightable (bool *IsFightable* = true;). Possible types of interactions with the **NPC** are: *‘talk to’*, which gives the player dialogue between the **MainCharacter** and **NPC**; *‘examine’*, which gives a description of the **NPC**; and *‘attack’*, which will put the **MainCharacter** into combat with the **NPC**. An **NPC** that *IsHostile*, however, will attack the **MainCharacter** on sight, meaning they will not have time to interact with the **NPC**.
 
 ## State machine diagrams									
 Author(s): Richard Eric van Leeuwen
 
-This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
-
-For each state machine you have to provide:
-- the name of the class for which you are representing the internal behavior;
-- a figure representing the part of state machine;
-- a textual description of all its states, transitions, activities, etc. in a narrative manner (you do not need to structure your description into tables in this case). We expect 3-4 lines of text for describing trivial or very simple state machines (e.g., those with one to three states), whereas you will provide longer descriptions (e.g., ~500 words) when describing more complex state machines.
-
-The goal of your state machine diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 2500
-
-We ended up creating two state machine diagrams for our text adventure game: The character state machine diagram and the NPC state machine diagram. We will discuss in detail below each diagram.
+We ended up creating two state machine diagrams for our text adventure game: The character state machine diagram and the NPC state machine diagram. These diagrams, as the name suggests, focus on the **Character** class and the **NPC** class. We will discuss in detail below each diagram.
 
 First, the character diagram. This diagram will be the one discussed in most detail seen this diagram is responsible for most interactions in our system.
 
-The character diagram is responsible for creating an instance which we call our main character which will be stored in our GameState file. This main character is responsible for the most interactions in our system and its position will be tracked separately under a variable called currentLocation which is also kept in our GameState file. As the player of the game inputs commands, the main character will be responsible for processing them using its methods and making sure these methods get processed correctly. The commands that can be used at any given moment are dependent on the main character's position, which is kept in the currentLocation variable in GameState, and its current state. Regarding the commands it can use depending its position, the main character can only interact with items and NPCS that are in the same position as he is currently in. It is not allowed to interact with them outside of the location they are residing in. To make sure this is properly presented in our diagrams, we have included location checks as guards. Regarding states the main character has which influence the commands it can perform, at this point in time we envision the main character to have three main states: Not in combat, in combat and defeated. We will briefly describe each of these states. 
+![Character State Machine](https://github.com/Areenor/SD/blob/Assignment-2/docs/characterstatemachine.png)
 
-First of all, the not in combat state. This will be the state the main character has access to most of the commands. During this time, the main character can: talk to NPCS; examine his surroundings, Items or NPCS; move and thus change his current location; request for a hint that is stored in GameState; attack a isFightable NPC; take Items and put them in his Inventory as long as they are IsRetrievable; give Items to NPC; equip Equipment by moving them from his Inventory to his Equipment and use Items in his inventory on NPCS or as default on himself. We expect the player to spend most of his time in this state as he interacts and explores the game world. To beat the game the goal of the player is to go from the not in combat state to the endstate of the main character, which is only possible once it has managed to set the GameFinished variable in GameState to true.
+The character diagram is responsible for creating an instance which we call our *MainCharacter* which will be stored in our **GameState** class file. This *MainCharacter* is responsible for the most interactions in our system and its position will be tracked separately under a variable called *CurrentLocation* which is also kept in our **GameState** class file. As the player of the game inputs commands, the main character will be responsible for processing them using its methods and making sure these methods get processed correctly. The commands that can be used at any given moment are dependent on the *maincharacter's* location, which is kept in the *CurrentLocation* variable in **GameState** class file, and its current state. In this diagram we will focus particularly on the *MainCharacter's* states. Regarding the states the *MainCharacter* has which influence the commands it can perform, at this point in time we envision the *MainCharacter* to have three main states: Not in combat, in combat and defeated. We will briefly describe each of these states. 
 
-The second state is the in combat state. The main character reaches this state by either attacking a isFightable NPC itself or by getting attacked by a isHostile NPC upon entering the isHostile NPC's location. In the combat state, the main character will fight with a NPC in turn-based combat where each participant is allowed to select one combat move during its turn. Combat will continue till one participant's health statistic reaches 0. If it is not the main character's turn, all command inputs will be blocked from executing. During the combat state, the main character only has access to three combat moves: attack, dodge or block. Each move invokes their respective method, each with a different goal. The attack method will attempt to lower the foe's health during the next turn. The block method will lower the health reduction received if the opponent used an attack move during the previous turn. The dodge method will attempt to avoid all health reduction received if the opponent used an attacked move during the previous turn, but has a chance of failing. If the main character wins and its health statistic does not reach 0, it will return its non-combat state. If the main character loses and its health statistic does reach 0, it will go into the defeated state.
+First of all, the not in combat state. This will be the state the *MainCharacter* has access to most of the commands. During this time, the *MainCharacter* can: talk to NPCS; examine his *Location, Items or NPCS*; move and thus change his *CurrentLocation*; request for a hint that is stored in **GameState** class file; attack a *IsFightable NPC*; take *Items* and put them in its *Inventory* as long as they are *IsRetrievable*; give *Items* to *NPC*; equip *Equipment pieces* and use *Items* in his *Inventory* on *NPCS* or as default on itself. We expect the player to spend most of his time in this state as he interacts and explores the game world. To beat the game the goal of the player is to go from the not in combat state to the endstate of the *MainCharacter*, which is only possible once it has managed to set the *IsFinished* variable in **GameState** class file to true.
 
-The final state is the defeated state. The main character can only reach this state through losing during the in combat state. The state is at this point in time intended as temporary state where the main character gets its health statistic restored to the maximum allowed amount so that it can respawn and return to its not in combat state. With respawn is meant that the main character's currentLocation gets changed to the starting location constant. The game does not restart and progress is not lost so that the player gets another chance to beating the game.
+The second state is the in combat state. The *MainCharacter* reaches this state by either attacking a *isFightable NPC* itself or by getting attacked by a *isHostile NPC* upon entering the *isHostile NPC's location*. In the combat state, the main character will fight with a NPC in turn-based combat where each participant is allowed to select one combat move during its turn. Combat will continue till one participant's *HitPoints* statistic reaches 0. During the combat state, the main character only has access to three combat moves: attack, dodge or block. Each move invokes their respective method, each with a different goal. The *attack() method* will attempt to lower the foe's *HitPoints*. The *block() method* will lower the *HitPoints* reduction received if the opponent used a attack move during the next turn. The *dodge() method* will attempt to avoid all *HitPoints* reduction received if the opponent used an attacked move during the next turn, but has a chance of failing. If the *MainCharacter* and its *HitPoints* statistic does not reach 0, it will return its non-combat state. If the *MainCharacter* loses and its *HitPoints* statistic does reach 0, it will go into the defeated state.
 
-Now, we will focus on the NPC state machine diagram. The NPC class is a subclass of the character class. The NPC does not only get interacted with by the main character instance, but also has roles of its own it needs to fullfill. Seen it is a subclass of the character class, the state machine looks fairly similar so we will mainly focus on the differences it has compared to the character state machine diagram. Just like the character state machine diagram, the NPC's actions are dependent on its location and its current state. A NPC can only interact with the main character if the currentLocation variable in GameState is the same as the location the NPC is presiding in. These are, just like in the character state machine diagram, portrayed as guards. Regarding the states it has, it has not in combat and in-combat. 
+The final state is the defeated state. The *MainCharacter* can only reach this state through losing during the in combat state. The state is at this point in time intended as temporary state where the *MainCharacter* gets its *HitPoints* statistic restored to original amount so that it can respawn and return to its not in combat state. With respawn is meant that the *CurrentLocation* gets changed to the one given through the constant String SpawnRoom. The game does not restart and progress is not lost so that the player gets another chance to beating the game.
 
-The not in combat state is its default state. The not in combat state does not have actions of its own, but it does have two ways to transition into the combat state. The first way would be if the NPC is isFightable and gets attacked by the main character while it shares the same location. The second way is when the NPC is isHostile and the NPC attacks the player the moment the player and the NPC share the same location.
+Now, we will focus on the NPC state machine diagram.
 
-The other main state is the in combat state. Just like the main character, it has the same combat moves attack, block or dodge and the combdat works in a similar turn-based fashion. The key difference is that combat moves randomly get selected during the NPC's turn and not by input. Combat ends when one of the participants health statistic reaches 0. If the NPC wins combat and its health statistic does not reach 0, it transitions back into the not in combat state just like in the character state machine diagram. However, if the NPC loses and its health statistic does reach 0, the defeated NPC's instance gets deleted from the game.
+![NPC State Machine](https://github.com/Areenor/SD/blob/Assignment-2/docs/NPC_state_machine.png)
 
-Words: Around 1500 including diagrams
+The **NPC** class is a subclass of the **Character** class. The *NPC* does not only get interacted with by the *MainCharacter* instance, but also has roles of its own it needs to fullfill. Seen it is a subclass of the **Character** class, the state machine looks fairly similar so we will mainly focus on the differences it has compared to the character state machine diagram. Just like the character state machine diagram, the *NPC's* actions are dependent on its *Location* and its current state.  
+
+The not in combat state is its default state. The not in combat state does not have actions of its own, but it does have two ways to transition into the combat state. The first way would be if the *NPC* is *IsFightable* and gets attacked by the *MainCharacter*. The second way is when the *NPC* is *isHostile* and the NPC attacks the *MainCharacter* whenever he has access to the *MainCharacter*.
+
+The other main state is the in combat state. Just like the *MainCharacter*, it has the same combat moves attack, block or dodge and the combat works in a similar turn-based fashion. The key difference is that combat moves randomly get selected during the *NPC's* turn and not by input. Combat ends when one of the participants *HitPoints* statistic reaches 0. If the *NPC* wins combat and its *HitPoints* statistic does not reach 0, it transitions back into the not in combat state just like in the character state machine diagram. However, if the *NPC* loses and its *HitPoints& statistic does reach 0, the defeated *NPC's* instance gets deleted from the game.
+
 ## Sequence diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Richard Eric van Leeuwen, Leyla Celik
 
-This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
+We have two sequence diagrams we would like to discuss. The two sequence diagrams shows two typical scenarios: the player engaging in combat with a *NPC* and the player moving around between locations.
 
-For each sequence diagram you have to provide:
-- a title representing the specific situation you want to describe;
-- a figure representing the sequence diagram;
-- a textual description of all its elements in a narrative manner (you do not need to structure your description into tables in this case). We expect a detailed description of all the interaction partners, their exchanged messages, and the fragments of interaction where they are involved. For each sequence diagram we expect a description of about 300-500 words.
+First, we would like to discuss the combat scenario. 
 
-The goal of your sequence diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
+![Sequence Diagram Combat](https://github.com/Areenor/SD/blob/Assignment-2/docs/Sequencediagramcombat.png)
 
-Maximum number of words for this section: 2500
+In the combat sequence diagram we show a typical scenario where the player engages in combat with a **NPC**using the **MainCharacter**. The interaction partners in this particular diagram are the following: Player, **MainCharacter** and **NPC**.  We will discuss each of the interaction partners' involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interaction partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
 
-In the combat sequence diagram we show a typical scenario where the player engages in combat with a NPC using the Main Character. The interaction partners in this particular diagram are the following: Player, Main Character and NPC.  We will discuss each of the interactions partners involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interactions partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
+First, we will discuss the Player. The Player refers to the stakeholder of this diagram and thus depicts an external influence. The player is the one who inputs commands and controls the **MainCharacter**. In this scenario, as depicted in the diagram, the player wishes to engage in combat with a particular **NPC**.  To do so, he inputs the command “attack NPC” which starts the sequence of events. The player receives information as output about the result of his attack and from there is able to direct the **MainCharacter** to either attack the **NPC**or block or dodge the next attack from the **NPC**.  The player is able to input these combat moves till either the **MainCharacter** or the engaged **NPC**is defeated by lowering their *HitPoints* to 0. In this scenario the player put in two attack input commands which ends the battle with the *NPC’s HitPoints* reaching 0 and being defeated.
 
-First, we will discuss the Player. The Player refers to the stakeholder of this diagram and thus depicts an external influence. The player is the one who inputs commands and controls the main character. In this scenario, as depicted in the diagram, the player wishes to engage in combat with a particular NPC.  To do so, he inputs the command “attack NPC” which starts the sequence of events. The player receives information as output about the result of his attack and from there is able to direct the Main Character to either attack the NPC or block or dodge the next attack from the NPC.  The player is able to input these combat moves till either the main character or the engaged NPC is defeated by lowering their health to 0. In this scenario the player put in two attack input commands which ends the battle with the NPC’s health reaching 0 and being defeated.
+The **MainCharacter** is the one who processes the commands he receives from the player and is the one who is directly engaged in combat with the **NPC**. As it receives from the player the "attack NPC" command, it will invoke the *attack(NPC)* method to attack the **NPC**and start combat. Now the **MainCharacter** will have to wait for the **NPC**to do his move. Once the **MainCharacter** has received the move from the *NPC*, it will output the results of the battle to the player which includes the damage dealt and the current health from both the **MainCharacter** and the **NPC**. In this scenario, the **MainCharacter** attacks twice. The first time the *NPC’s HitPoints* reach 5 and the second time the **NPC**is defeated as *NPC’s HitPoints* reach 0.
 
-The main character is the one who processes the commands he receives from the player and is the one who is engaged in combat with the NPC. As he receives from the player the attack NPC command, he will invoke the attack(NPC) method to attack the NPC and start combat. As a reply from the NPC he will receive the new health statistic the NPC has after enduring the attack. Now the main character will wait for the NPC to do his move. Once the main character has received the move from the NPC, he will also return in reply his new current health statistic. The main character will output the results of the battle to the player which includes the damage dealt and the current health from both the main character and the NPC. The main character attacks twice, the first time the NPC’s health reaches 5 and the second time the NPC is defeated as NPC’s health reaches 0.
+Finally, we will discuss the **NPC**. The **NPC**converses in a similar way as the **MainCharacter**. Upon being attacked by the **MainCharacter** through the *attack(NPC)* method, combat starts and the **NPC**will randomly select his next combat move. Once the combat move is select, it is the *NPC's* to perform a combat method from which he has the same options as the main character: *attack()*, *block()* and *dodge()*. In this diagram, after the first attack from the **MainCharacter**, they perform an attack back using the *attack(MainCharacter)* method. Sadly for the *NPC*, it gets attacked again, its *HitPoints* reach 0, and it gets removed from the game.
+ 
 
-Finally, we will discuss the NPC. The NPC converses in a similar way as the main character. Upon being attacked by the main character through the attack(NPC) function, he will send back to the main character his current health. Now, it is his turn to perform a combat method from which he has the same options as the main character: attack(), block() and dodge(). In this diagram, after the first attack and returning their currentHealth of 5, they perform an attack back. As a response they receive that the main character’s health is 20. Sadly for the NPC, they get attacked again, the currentHealth reaches 0, which they send as a reply to the main character to indicate combat is over, and they get removed from the game.
+Now, we would like to discuss the movement scenario.
+
+![Sequence Diagram Movement](https://github.com/Areenor/SD/blob/Assignment-2/docs/Sequence_Diagram_Movement.png)
+
+This movement sequence diagram shows the way the program handles a movement command when the direction the player wants to go to does not exist and when it does exist. The interaction partners in this diagram are the Player, **MainCharacter** and **Location**. We will discuss each of the interactions partners’ involvement and what their tasks are during this scenario. Player depicts an external influence and is the stakeholder of this diagram. The player is the person playing the game who inputs commands and controls the **MainCharacter**. The situation in this sequence diagram is as follows: the player wants to move the **MainCharacter** to a new **Location**. The player inputs a command to move the **MainCharacter** north of its current **Location**: “move north”. 
+The **MainCharacter** processes the commands they receive from the player and will teleport if the direction the player wants to go in has a **Location**. The **MainCharacter** receives the “move north” command and will invoke the *move(“north”)* method to **Location**. 
+**Location** is mostly a container for data, but also sends back the ‘ok’ for teleportation if the direction chosen by the player has a **Location** with a description of the **Location**, or a message saying there was nothing in that direction if there is no **Location** in that direction. The player chose north as their direction to move in, but there are no *AdjacentLocations* north of the **MainCharacter**’s current **Location**, so Location sends the player the response “You found nothing traveling in this direction and returned to your original **Location**.” as output. The player tries to change locations again, this time wanting to move the **MainCharacter** east of its current **Location** with the command: “move east”. The **MainCharacter** receives the “move east” command and will invoke the *move(“east”)* method to **Location**. There is an adjacent **Location** east of the **MainCharacter**’s current **Location** and the player gets the response: "You are in a room, there are objects and items. There is a beach west." as output.
+
+
+
 
 ## Implementation									
 Author(s): `name of the team member(s) responsible for this section`
