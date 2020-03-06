@@ -31,13 +31,20 @@ The **Character** class represents a person or other being which acts as living 
 
 | Attributes  | Operations  | Association  |
 |---|---|---|
-| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. |   |
-| *HitPoints*: number of hit points a character has, used for combat. | |   |
+| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. | Is present in a location. Cannot exist outside a location or in multiple ones at the same time.  |
+| *HitPoints*: number of hit points a character has, used for combat. | | *Examine* : Calls on the *examine* operation for an instance of **Location**, **Item** or **NPC**.  |
 | *Inventory*: Hashmap containing the names of the items in the possession of the *Character*
-paired to instances of those *Items*. |  |   |
-| *Strength*: Statistic used for damage calculation during combat. |  |   |
-| *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  |   |
-| *Constitution* : Statistic used to calculate the damage mitigation during combat when using block(). |  |   |
+paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
+| *Strength*: Statistic used for damage calculation during combat. |  | *Talk to *: Calls on the *talk to ()* operation of an instance of **NPC**.  |
+| *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  | *Attack()*: Calls on the *attack()* operation on an instance of **NPC**, fails if the npc's attribute *IsFightabel* is false.  |
+| *Constitution* : Statistic used to calculate the damage mitigation during combat when using block(). |  | *Block()*: Calls on the *block()* operation while in combat with an instance of **NPC**|
+| |  | *Dodge*: Calls on the *Dodge()* operation while in combat with an instance of **NPC** |
+| |  | *Use* : Calls on the *use()* operation of an instance of **Item**.|
+| |  | *Take* : Calls on the *take()* operation of an instance of **Item**.|
+| |  | *Use on  *: Calls on the *use(on )* operation of an instance of **Item**, passing the name of an instance of **Item** or **Character** as a parameter to use the item on. If no target is selected, the *MainCharacter* is the target. |
+| |  | *Give to*: Calls on the *Give to()* operation of an instance of **Item**, passing the name of an instance of **Character** as a parameter to give the item to.|
+| |  | *Equip* : Calls on the *equip()* operation of an instance of **Equipment**. |
+
 
 ## Object diagrams								
 Author(s): Leyla Celik
