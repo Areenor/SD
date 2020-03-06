@@ -69,6 +69,12 @@ An object which is present in a *location* or the *Inventory* of a *character*. 
  
 Equipment is a subclass which inherits the **Item** class. A special type of item which can be equipped by a character, adding a bonus to either their *Strength* or *Constitution* statistics. The bonus is lost when another piece of equipment is equipped. There are two types of *equipment*, armor and weapons. Only one piece of *equipment* per type can be equipped at the same time. Equipping *equipment* of a type which is already being worn by the character replaces the original piece of equipment. Armor tends to give a greater bonus to the *Constitution* statistic, while weapons tend to give a higher bonus to the *Strength* statistic.
 
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Type* : Specifies what kind of *equipment* the instance is, a weapon or an armor piece. | *Equip()* : Equips the equipment to the *MainCharacter*, adding the *BlockBonus* and *AttackBonus* to the *MainCharacter's Constitution* and *Strength* statistics respectively. Replaces the currently equipped piece of *equipment* of the same *type*. |   |
+| *BlockBonus* : The bonus added to the *Constitution* statistics when the *equipment* is equipped. |  |   |
+| *AttackBonus* : The bonus added to the *Strength* statistics when the *equipment* is equipped. |  |   |
+
 ## Object diagrams								
 Author(s): Leyla Celik
 
