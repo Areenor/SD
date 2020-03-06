@@ -21,7 +21,7 @@
 <tr>
 <td>F2</td>
 <td>Commands</td>
-<td>The player can control the main character by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:<br />- examine (optionally [item/NPC]):<br />&emsp;Retrieve the description of the current location by default or if specified an item or NPC.<br />- move (Up/Down/North/East/South/West):<br />&emsp;Move to the location up, down, north, east, south, or west of the current location.<br />- take [item] :<br />&emsp;Put a retrievable item into the main character&rsquo;s inventory.<br />- use [item] (on [item/NPC]) :<br />&emsp;Use an item on yourself by default unless specified, this may consume it.<br />- talk to [NPC] :<br />&emsp;Get dialogue line of a specified NPC.</td>
+<td>The player can control the main character by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:<br />- examine (optionally [item/NPC]):<br />&emsp;Retrieve the description of the current location by default or if specified an item or NPC.<br />- move (Up/Down/North/East/South/West):<br />&emsp;Move to the location up, down, north, east, south, or west of the current location.<br />- take [item] :<br />&emsp;Put a retrievable item into the main character&rsquo;s inventory.<br />-  talk to [NPC] :<br />&emsp;Get dialogue line of a specified NPC.</td>
 </tr>
 <tr>
 <td>F3</td>
