@@ -12,7 +12,7 @@
 For our project we used the modeling tool available on lucidchart.com
 
 ## Class diagram									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Peter Wassenaar, Zakhar Zhornovyi, Richard Eric van Leeuwen
 
 ### Location
 
