@@ -65,6 +65,10 @@ An object which is present in a *location* or the *Inventory* of a *character*. 
 | *IsRetrievable* : Boolean describing if the *item* can be picked up from a *location* and placed in a *character's Inventory*.| *Give to()*: Give an *item* to a target *character*, resulting in a story specified event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |   |
 |  | *Take()* : Removes the *item* from the *CurrentLocation* and places into the *MainCharacter's Inventory*. The command can only be used on *items* present in a *location*. |   |
 
+ ### Equipment
+ 
+Equipment is a subclass which inherits the **Item** class. A special type of item which can be equipped by a character, adding a bonus to either their *Strength* or *Constitution* statistics. The bonus is lost when another piece of equipment is equipped. There are two types of *equipment*, armor and weapons. Only one piece of *equipment* per type can be equipped at the same time. Equipping *equipment* of a type which is already being worn by the character replaces the original piece of equipment. Armor tends to give a greater bonus to the *Constitution* statistic, while weapons tend to give a higher bonus to the *Strength* statistic.
+
 ## Object diagrams								
 Author(s): Leyla Celik
 
