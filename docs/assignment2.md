@@ -53,6 +53,11 @@ A subclass which inherits from the **Character** class. A character which is not
 | *Dialogue* : String of conversation lines of the *NPC* used during a conversation with the player. | *Attack()* : Initiates combat with the NPC if the property *IsFightable* is true.  |   |
 | *IsHostile* : Boolean describing if the *NPC* would attack the player on sight (when the player enters the location the *NPC* is in). Is true when the NPC would attack the player on sight. |  |   |
  | *IsFightable* : Boolean describing if combat can be initiated with the NPC. Is true when combat can be initiated. | | |
+ 
+ ### Item
+ 
+An object which is present in a *location* or the *Inventory* of a *character*. Some *items* can be picked up and removed from a location and placed into the *Inventory* of a *character*. *Items* inside of the inventory of the *MainCharacter* can be used by the player, either on a *character* or another *item*.
+ 
 
 ## Object diagrams								
 Author(s): Leyla Celik
