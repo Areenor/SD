@@ -14,6 +14,8 @@ For our project we used the modeling tool available on lucidchart.com
 ## Class diagram									
 Author(s): Peter Wassenaar, Zakhar Zhornovyi, Richard Eric van Leeuwen
 
+![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-2/docs/classDiagram_.png)
+
 ### Location
 
 The **Location** class represents a room or area which contains objects and characters. *Locations* are linked together and can be accessed through different directions using the *AdjacentLocations* hashmap.
