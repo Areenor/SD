@@ -7,8 +7,6 @@ G
 src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
 [
 +src/main/java/Default_classes/Location.java,6\f\6f5da5a3667edd2e7adeb08a0221937ebc566376
-Y
-)src/main/java/Default_classes/Object.java,2\0\20723336810824b6889fd2624b37c956aa56b64b
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 7
@@ -33,9 +31,21 @@ R
 "src/main/java/META-INF/MANIFEST.MF,6\3\63ef5783cbf71fdf39c1fd6ae6873fd812259930
 f
 6src/main/java/Configuration_models/LocationConfig.java,b\7\b72fb936d4940e7c13506592fb79d864748ef258
-d
-4src/main/java/Configuration_models/ObjectConfig.java,c\c\cc546aaf929ee4c9cedf3f65d43057d18c02816f
 M
 story/characters/Areenor.json,4\f\4fdc29795a6cbeb7a492cefe3687651c4c91b11f
 I
 story/locations/room.json,6\f\6f147e0bb51231b3f70a9c6bdb3350b515742cef
+V
+&src/main/java/Default_classes/NPC.java,2\2\2240935584f706fa527b4defbfbb5c5e364632db
+a
+1src/main/java/Configuration_models/NPCConfig.java,6\f\6fb29bc726b56287f846bac25326e6cd8a223b87
+b
+2src/main/java/Configuration_models/ItemConfig.java,c\3\c3afdb654da5e6582163ce303f102322ea0dd457
+W
+'src/main/java/Default_classes/Item.java,5\3\53fe7ad9f64b6741324a951bb1da205d59a38a9a
+M
+story/locations/mountain.json,3\1\3186e0da126fecc30305082575e52c6309f60558
+F
+story/items/Flask.json,3\5\351eacf7b9d60cb8b7818f0274006ad8df34cfab
+L
+story/items/testObject2.json,c\3\c31f692f759344a7433c81d32b5f74d4a5fca6a1

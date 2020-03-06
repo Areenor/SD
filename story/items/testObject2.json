@@ -1,5 +1,5 @@
 {
   "Name" : "testObject2",
   "Description" : "this is testObject2",
-  "IsClimbable" : "true"
+  "IsRetriavable" : "true"
 }

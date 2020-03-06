@@ -3,12 +3,14 @@
 //
 package Configuration_models;
 
+import java.util.List;
+
 public class NPCConfig {
     public String Name;
     public String Description;
     public String Type;
     public String Dialogue;
-    public String[] Inventory;
+    public List<String> Inventory;
 
     public boolean IsHostile;
     public boolean IsFightable;

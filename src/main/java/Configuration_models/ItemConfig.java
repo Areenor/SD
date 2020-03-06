@@ -3,11 +3,10 @@
 //
 package Configuration_models;
 
-public class ObjectConfig {
+public class ItemConfig {
     public String Name;
     public String Description;
-    public boolean IsItem;
-    public boolean IsClimbable;
+    public boolean IsRetriavable;
 
-    public String ObjectClassName;
+
 }

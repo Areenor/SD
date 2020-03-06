@@ -15,6 +15,7 @@ public class GameState {
     public static final int baseAttack = 1 ;
     public static final int baseStamina = 1;
 
+
     public static Location GetLocation(String locationName) {
         if (Locations.containsKey(locationName))
             return Locations.get(locationName);

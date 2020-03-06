@@ -2,6 +2,6 @@
   "Name" : "a beach",
   "Description" : "You are on a beach, there are objects and items. There is a room east.",
   "Characters" : ["testNPC2"],
-  "Objects" : ["testObject1", "testObject2"],
+  "Items" : ["testObject2"],
   "AdjacentLocations" : {"east":"room"}
 }

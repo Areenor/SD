@@ -2,10 +2,10 @@ package Services;
 
 import Configuration_models.NPCConfig;
 import Configuration_models.LocationConfig;
-import Configuration_models.ObjectConfig;
+import Configuration_models.ItemConfig;
 import Default_classes.NPC;
 import Default_classes.Location;
-import Default_classes.Object;
+import Default_classes.Item;
 import Game_data.GameState;
 import com.alibaba.fastjson.JSON;
 
@@ -24,7 +24,7 @@ public class InitiationService {
     private static Path storyDirPath = Paths.get(System.getProperty("user.dir"), "story");
     private static Path locationJsonDirPath = Paths.get(storyDirPath.toString(), "locations");
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
-    private static Path objectJsonDirPath = Paths.get(storyDirPath.toString(), "objects");
+    private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
 
     public static void InitiateLocations() {
         List<Location> locations = new ArrayList<Location>();
@@ -55,11 +55,11 @@ public class InitiationService {
         return new NPC(characterConfig);
     }
 
-    public static Object InitiateObject(String objectName) {
-        Path objectConfigFilePath = Paths.get(objectJsonDirPath.toString(), objectName + ".json");
+    public static Item InitiateItem(String objectName) {
+        Path objectConfigFilePath = Paths.get(itemJsonDirPath.toString(), objectName + ".json");
         String objectConfigFileContent = readLineByLine(objectConfigFilePath.toString());
-        ObjectConfig objectConfig = JSON.parseObject(objectConfigFileContent, ObjectConfig.class);
-        return new Object(objectConfig);
+        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
+        return new Item(itemConfig);
     }
 
     private static String readLineByLine(String filePath)

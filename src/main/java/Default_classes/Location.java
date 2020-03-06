@@ -13,7 +13,7 @@ import java.util.Map;
 public class Location {
     public final String _name;
     public String _description;
-    public Map<String, Object> _objects = new HashMap<String, Object>();
+    public Map<String, Item> _items = new HashMap<String, Item>();
     public Map<String, NPC> _characters = new HashMap<String, NPC>();
     public Map<String, String> _adjacentLocations = new HashMap<String, String>();
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
@@ -31,8 +31,8 @@ public class Location {
         for (String character : config.Characters) {
             _characters.put(character, InitiationService.InitiateCharacter(character));
         }
-        for (String object : config.Objects) {
-            _objects.put(object, InitiationService.InitiateObject(object));
+        for (String items : config.Items) {
+            _items.put(items, InitiationService.InitiateItem(items));
         }
     }
 
@@ -52,15 +52,12 @@ public class Location {
     public void North() {
         move("north");
     }
-
     public void East() {
         move("east");
     }
-
     public void South() {
         move("south");
     }
-
     public void West() { move("west"); }
     public void Up() {  move("up"); }
     public void Down() {
