@@ -60,8 +60,8 @@ An object which is present in a *location* or the *Inventory* of a *character*. 
  
 | Attributes  | Operations  | Association  |
 |---|---|---|
-|  *Name*: String containing the name of the *item*. | *Examine()*: Prints the description of the *Item* to the terminal. |   |
-|  *Description* : String describing the *item*. | *Use()*: Perform an action with an *item* specified by the story. If no argument for the target is given, the item is used on its own, else it is used on the target, resulting in a different outcome/event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |   |
+|  *Name*: String containing the name of the *item*. | *Examine()*: Prints the description of the *Item* to the terminal. | *Items* are present in a location or a character’s inventory. Cannot exist outside a location or inventory or in multiple ones at the same time.  |
+|  *Description* : String describing the *item*. | *Use()*: Perform an action with an *item* specified by the story. If no argument for the target is given, the item is used on its own, else it is used on the target, resulting in a different outcome/event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |  *Items* can be selected as the target of the Use on operation of an item, resulting in an item being used on the target item. |
 | *IsRetrievable* : Boolean describing if the *item* can be picked up from a *location* and placed in a *character's Inventory*.| *Give to()*: Give an *item* to a target *character*, resulting in a story specified event. Can only be used on *items* inside of the *MainCharacter's Inventory*. |   |
 |  | *Take()* : Removes the *item* from the *CurrentLocation* and places into the *MainCharacter's Inventory*. The command can only be used on *items* present in a *location*. |   |
 
