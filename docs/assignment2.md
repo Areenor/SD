@@ -40,6 +40,7 @@ The **Character** class represents a person or other being which acts as living 
 | |  | *Use* : Calls on the *use()* operation of an instance of **Item**.|
 | |  | *Take* : Calls on the *take()* operation of an instance of **Item**.|
 | |  | *Use on*: Calls on the *use(on )* operation of an instance of **Item**, passing the name of an instance of **Item** or **Character** as a parameter to use the item on. If no target is selected, the *MainCharacter* is the target. |
+| | | *Give to*: Calls on the *Give to()* operation of an instance of **Item**, passing the name of an instance of **Character** as a parameter to give the item to. |
 
 
 
