@@ -52,8 +52,7 @@ A subclass which inherits from the **Character** class. A character which is not
 | *Description* : String describing the *NPC*  | *Talk to()* : Starts a conversation with the *NPC*. The dialogue lines of the *NPC* to will be printed inthe terminal during the conversation. |   |
 | *Dialogue* : String of conversation lines of the *NPC* used during a conversation with the player. | *Attack()* : Initiates combat with the NPC if the property *IsFightable* is true.  |   |
 | *IsHostile* : Boolean describing if the *NPC* would attack the player on sight (when the player
- enters the location the *NPC* is in). Is true when the NPC would attack the player on
- sight. |  |   |
+ enters the location the *NPC* is in). Is true when the NPC would attack the player on sight. |  |   |
  | *IsFightable* : Boolean describing if combat can be initiated with the NPC. Is true when combat\
  can be initiated. | | |
 
