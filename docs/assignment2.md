@@ -20,8 +20,8 @@ The **Location** class represents a room or area which contains objects and char
 
 | Attributes  | Operations  | Association  |
 |---|---|---|
-| *Name*: String containing the name of the location.  | *Examine*: Prints the description of the *CurrentLocation* to the terminal. |   |
-| *Description*: String describing the location.  | *Move*: Sets the *CurrentLocation* to the *location's* adjacent *location* corresponding to a given direction. |   |
+| *Name*: String containing the name of the location.  | *Examine()*: Prints the description of the *CurrentLocation* to the terminal. |   |
+| *Description*: String describing the location.  | *Move()*: Sets the *CurrentLocation* to the *location's* adjacent *location* corresponding to a given direction. |   |
 | *Items*: Hashmap containing the names of the items in the location paired to instances of those items. |  |   |
 | *AdjacentLocations*: Hashmap containing the names of the *locations* adjacent to the *location*, paired to the corresponding direction. |  |   |
 
@@ -31,7 +31,7 @@ The **Character** class represents a person or other being which acts as living 
 
 | Attributes  | Operations  | Association  |
 |---|---|---|
-| *Name*: String containing the name of the character. |  |   |
+| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. |   |
 | *HitPoints*: number of hit points a character has, used for combat. | |   |
 | *Inventory*: Hashmap containing the names of the items in the possession of the *Character*
 paired to instances of those *Items*. |  |   |
