@@ -14,7 +14,7 @@ For our project we used the modeling tool available on lucidchart.com
 ## Class diagram									
 Author(s): Peter Wassenaar, Zakhar Zhornovyi, Richard Eric van Leeuwen
 
-![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-2/docs/classDiagram_.png)
+![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-2/docs/classDiagram.png)
 
 ### Location
 
