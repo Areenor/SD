@@ -31,7 +31,7 @@ The **Character** class represents a person or other being which acts as living 
 
 | Attributes  | Operations  | Association  |
 |---|---|---|
-| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. | Is present in a location. Cannot exist outside a location or in multiple ones at the same time.  |
+| *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. | **Character** is present in a location. Cannot exist outside a location or in multiple ones at the same time.  |
 | *HitPoints*: number of hit points a character has, used for combat. | | *Examine* : Calls on the *examine* operation for an instance of **Location**, **Item** or **NPC**.  |
 | *Inventory*: Hashmap containing the names of the items in the possession of the *Character* paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
 | *Strength*: Statistic used for damage calculation during combat. |  | *Talk to* : Calls on the *talk to ()* operation of an instance of **NPC**.  |
@@ -48,7 +48,7 @@ A subclass which inherits from the **Character** class. A character which is not
 
 | Attributes  | Operations  | Association  |
 |---|---|---|
-| *Type* : a string containing the type name to which an NPC belongs. The type attribute may be used in a story to simplify describing the effect of items on a multitude of characters.  | *Examine()*: Prints the description of the NPC to the terminal. | Can be selected as the target of the *Use on ()* operation of an item, resulting in an item being used on the NPC.  |
+| *Type* : a string containing the type name to which an NPC belongs. The type attribute may be used in a story to simplify describing the effect of items on a multitude of characters.  | *Examine()*: Prints the description of the NPC to the terminal. | **NPC** can be selected as the target of the *Use on ()* operation of an item, resulting in an item being used on the NPC.  |
 | *Description* : String describing the *NPC*  | *Talk to()* : Starts a conversation with the *NPC*. The dialogue lines of the *NPC* to will be printed inthe terminal during the conversation. |   |
 | *Dialogue* : String of conversation lines of the *NPC* used during a conversation with the player. | *Attack()* : Initiates combat with the NPC if the property *IsFightable* is true.  |   |
 | *IsHostile* : Boolean describing if the *NPC* would attack the player on sight (when the player enters the location the *NPC* is in). Is true when the NPC would attack the player on sight. |  |   |
