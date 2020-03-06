@@ -77,7 +77,7 @@ We have two sequence diagrams we would like to discuss. The two sequence diagram
 
 First, we would like to discuss the combat scenario. 
 
-![Sequence Diagram Combat](https://github.com/Areenor/SD/blob/Assignment-2/docs/Sequence_diagram_Combat.png)
+![Sequence Diagram Combat](https://github.com/Areenor/SD/blob/Assignment-2/docs/Sequencediagramcombat.png)
 
 In the combat sequence diagram we show a typical scenario where the player engages in combat with a *NPC* using the *MainCharacter*. The interaction partners in this particular diagram are the following: Player, *MainCharacter* and *NPC*.  We will discuss each of the interaction partners' involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interaction partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
 
