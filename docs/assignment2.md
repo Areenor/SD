@@ -9,7 +9,7 @@
 | F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
 
 ### Used modeling tool
-Add here the name of the modeling tool you are using for your project.
+For our project we used the modeling tool available on lucidchart.com
 
 ## Class diagram									
 Author(s): `name of the team member(s) responsible for this section`
