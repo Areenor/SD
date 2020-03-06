@@ -18,6 +18,14 @@ Author(s): `name of the team member(s) responsible for this section`
 
 The **Location** class represents a room or area which contains objects and characters. *Locations* are linked together and can be accessed through different directions using the *AdjacentLocations* hashmap.
 
+| Attributes  | Operations  | Association  |
+|---|---|---|
+| *Name*: String containing the name of the location.  | *Examine*: Prints the description of the *CurrentLocation* to the terminal. |   |
+| *Description* : String describing the location.  | *Move*: Sets the *CurrentLocation* to the *location's* adjacent *location* corresponding to a given direction. |   |
+| *Items* : Hashmap containing the names of the items in the location paired to instances of those items. |  |   |
+| *AdjacentLocations* : Hashmap containing the names of the *locations* adjacent to the *location*, paired to the corresponding direction. |  |   |
+
+
 ## Object diagrams								
 Author(s): Leyla Celik
 
