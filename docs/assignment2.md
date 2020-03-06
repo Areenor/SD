@@ -14,23 +14,9 @@ For our project we used the modeling tool available on lucidchart.com
 ## Class diagram									
 Author(s): `name of the team member(s) responsible for this section`
 
-This chapter contains the specification of the UML class diagram of your system, together with a textual description of all its elements.
+### Location
 
-`Figure representing the UML class diagram`
-
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
-
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
-
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
-
-Maximum number of words for this section: 2500
+The **Location** class represents a room or area which contains objects and characters. *Locations* are linked together and can be accessed through different directions using the *AdjacentLocations* hashmap.
 
 ## Object diagrams								
 Author(s): Leyla Celik
