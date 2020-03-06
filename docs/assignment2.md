@@ -193,7 +193,7 @@ Author(s): Peter Wassenaar
 
 
 
-<p>Location of the main class :&nbsp;src/main/java/Main.java<br />Location of Jar file :&nbsp;gradle/wrapper/gradle-wrapper.jar</p>
+<p>Location of the main class :&nbsp;src/main/java/Main.java<br />Location of Jar file :&nbsp;build/libs/software-design-vu-2020-1.0-SNAPSHOT.jar</p>
 
 [Click here for the link to our video](https://www.youtube.com/watch?v=111Dv_9Ngnc)
 
