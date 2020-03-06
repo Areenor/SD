@@ -195,7 +195,7 @@ Author(s): Peter Wassenaar
 
 <p>Location of the main class :&nbsp;src/main/java/Main.java<br />Location of Jar file :&nbsp;gradle/wrapper/gradle-wrapper.jar</p>
 
-Maximum number of words for this section: 1000
+[Click here for the link to our video](https://www.youtube.com/watch?v=111Dv_9Ngnc)
 
 ## References
 
