@@ -25,8 +25,9 @@ The **Location** class represents a room or area which contains objects and char
 | *Items* : Hashmap containing the names of the items in the location paired to instances of those items. |  |   |
 | *AdjacentLocations* : Hashmap containing the names of the *locations* adjacent to the *location*, paired to the corresponding direction. |  |   |
 
-
 ### Character
+
+The **Character** class represents a person or other being which acts as living entity in the game. Such living entities or beings would be, for example, a merchant, a bandit or a wolf. Note, the role a being plays in a story determines if it should be an instance of the **Character** or **Item** class; in one story a salamander may be regarded as a *character* where it can be battled with or spoken to, while another story sees it as (functionally speaking) an *item* that, for example, can be put in an *Inventory*.
 
 ## Object diagrams								
 Author(s): Leyla Celik
