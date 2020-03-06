@@ -75,18 +75,7 @@ The not in combat state is its default state. The not in combat state does not h
 The other main state is the in combat state. Just like the *MainCharacter*, it has the same combat moves attack, block or dodge and the combat works in a similar turn-based fashion. The key difference is that combat moves randomly get selected during the *NPC's* turn and not by input. Combat ends when one of the participants *HitPoints* statistic reaches 0. If the *NPC* wins combat and its *HitPoints* statistic does not reach 0, it transitions back into the not in combat state just like in the character state machine diagram. However, if the *NPC* loses and its *HitPoints& statistic does reach 0, the defeated *NPC's* instance gets deleted from the game.
 
 ## Sequence diagrams									
-Author(s): Richard van Leeuwen, Leyla Celik
-
-This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
-
-For each sequence diagram you have to provide:
-- a title representing the specific situation you want to describe;
-- a figure representing the sequence diagram;
-- a textual description of all its elements in a narrative manner (you do not need to structure your description into tables in this case). We expect a detailed description of all the interaction partners, their exchanged messages, and the fragments of interaction where they are involved. For each sequence diagram we expect a description of about 300-500 words.
-
-The goal of your sequence diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 2500
+Author(s): Richard Eric van Leeuwen, Leyla Celik
 
 In the combat sequence diagram we show a typical scenario where the player engages in combat with a NPC using the Main Character. The interaction partners in this particular diagram are the following: Player, Main Character and NPC.  We will discuss each of the interaction partners' involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interaction partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
 
