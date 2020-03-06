@@ -92,7 +92,7 @@ We ended up creating two state machine diagrams for our text adventure game: The
 
 First, the character diagram. This diagram will be the one discussed in most detail seen this diagram is responsible for most interactions in our system.
 
-![Character State Machine](https://github.com/Areenor/SD/blob/Assignment-2/docs/character_state_machine.png)
+![Character State Machine](https://github.com/Areenor/SD/blob/Assignment-2/docs/characterstatemachine.png)
 
 The character diagram is responsible for creating an instance which we call our *MainCharacter* which will be stored in our **GameState** class file. This *MainCharacter* is responsible for the most interactions in our system and its position will be tracked separately under a variable called *CurrentLocation* which is also kept in our **GameState** class file. As the player of the game inputs commands, the main character will be responsible for processing them using its methods and making sure these methods get processed correctly. The commands that can be used at any given moment are dependent on the *maincharacter's* location, which is kept in the *CurrentLocation* variable in **GameState** class file, and its current state. In this diagram we will focus particularly on the *MainCharacter's* states. Regarding the states the *MainCharacter* has which influence the commands it can perform, at this point in time we envision the *MainCharacter* to have three main states: Not in combat, in combat and defeated. We will briefly describe each of these states. 
 
