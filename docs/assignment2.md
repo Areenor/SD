@@ -4,9 +4,42 @@
 
 ### Implemented feature
 
-| ID  | Short name  | Description  |
-|---|---|---|
-| F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Short name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Choosing character`s main starting statistics</td>
+<td>There are three character statistics, parameters of which are chosen by the player at the very beginning of the game: Strength, Dexterity and Constitution. The player can choose to be proficient (+2) in one of these statistics, or to be decent (+1) in two of them. The Strength statistic increases the standard damage the player can deal, the Dexterity statistic increases the chance to dodge an attack and the number of actions a player can make in one turn while Constitution increases the standard possible blocked damage and maximum number of Hit Points of a main character. Main character may later increase any of this statistics with, for example, a special item.</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Commands</td>
+<td>The player can control the main character by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:<br />- examine (optionally [item/NPC]):<br />&emsp;Retrieve the description of the current location by default or if specified an item or NPC.<br />- move (Up/Down/North/East/South/West):<br />&emsp;Move to the location up, down, north, east, south, or west of the current location.<br />- take [item] :<br />&emsp;Put a retrievable item into the main character&rsquo;s inventory.<br />-  talk to [NPC] :<br />&emsp;Get dialogue line of a specified NPC.</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Locations</td>
+<td>A location consists of a name, description, set of objects and characters, and a list of connecting locations. Additionally, certain commands may have different results depending on the location.<br /><br />Story-defined instances:<br />&emsp; Locations are story specific and are initiated with custom values for their variables. The configurations of such story specific locations are saved in a JSON file.</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Items</td>
+<td>Items are stored in inventory of characters or are located at locations and can be used by main character on himself, NPCs or other items, which may cause an event or create a new item. Items have name, description and can either be retrievable or not.<br /><br />Equipment:<br />&emsp; Equipment is a subclass of items. Such items can be equipped and thus have an influence on character statistics. If the type of equipment is weapon, it raises a damage the player can deal when equipped. If the type of equipment is armor, it raises a character&rsquo;s maximum number of Hit Points when equipped.<br /><br />Story-defined items:<br />&emsp; Story-defined items work the same way for items as they do for locations&nbsp;</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Characters</td>
+<td>Characters are either an NPC located on locations or the main character. All characters have a name and three main statistics: Strength, Dexterity and Constitution. All characters also have special HP and Attack statistics which determine maximum health and standard damage dealt by the character. Stamina statistic determines the number of actions a character can make in one turn during combat. All characters have an internal inventory, which is a list of items they posses.<br /><br />Main character:<br />&emsp; The main character is just an instance of Character class with all inherited variables which is controlled by the player. The main character may pick up items which will be placed in his inventory, allowing the main character to perform actions using these items.<br /><br />Non Player Characters (NPCs):<br />&emsp; NPCs are the of the subclass of Character class. Each NPC has a Type variable which determines a nature of NPC (such as vampire or human), isFightable variable which determines if it the NPC can enter combat and a isHostile variable to determine if a NPC is friendly to the player. Once defeated, NPCs may drop items in their inventory which can be picked up by the main character. NPCs also can have description and dialogue data for when they converse with the main character.<br /><br />Story-defined NPCs: &emsp;<br />&emsp; Story-defined NPCs work the same way for NPC as they do for locations.</td>
+</tr>
+</tbody>
+</table>
 
 ### Used modeling tool
 For our project we used the modeling tool available on lucidchart.com
