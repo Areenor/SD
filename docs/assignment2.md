@@ -33,8 +33,7 @@ The **Character** class represents a person or other being which acts as living 
 |---|---|---|
 | *Name*: String containing the name of the character. | *ExecuteCommand()* : Makes the character perform an action corresponding to a command given by the player. | Is present in a location. Cannot exist outside a location or in multiple ones at the same time.  |
 | *HitPoints*: number of hit points a character has, used for combat. | | *Examine* : Calls on the *examine* operation for an instance of **Location**, **Item** or **NPC**.  |
-| *Inventory*: Hashmap containing the names of the items in the possession of the *Character*
-paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
+| *Inventory*: Hashmap containing the names of the items in the possession of the *Character* paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
 | *Strength*: Statistic used for damage calculation during combat. |  | *Talk to* : Calls on the *talk to ()* operation of an instance of **NPC**.  |
 | *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  | *Attack*: Calls on the *attack()* operation on an instance of **NPC**, fails if the npc's attribute *IsFightabel* is false.  |
 | *Constitution* : Statistic used to calculate the damage mitigation during combat when using block(). |  | *Equip* : Calls on the *equip()* operation of an instance of **Equipment**. |
