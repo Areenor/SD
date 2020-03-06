@@ -158,8 +158,9 @@ Author(s): Peter Wassenaar
 <p><br /><br /></p>
 <p><span style="font-weight: 400;">We followed a dynamic process to move from our UML diagram to our implementation code, in other words we created part of the diagram, than translated that to code, observed if there were things in the implementation which we were not satisfied with, if so we adjusted our diagram accordingly, and then move on to creating the next part of our diagram. Especially when selecting the types of the attributes of the classes used in our diagram we went back and forth between our code and our diagram, in order to find what would work best. Creating the associations was mostly done in the diagram only, and later copied to the code. Designing the initiation process was mainly done while writing the implementation code, as we did not create a diagram taking it was quite the straightforward tasks which depended mostly on the classes which were already created in our class diagram and the general idea of how we wanted our initiation process to work.</span></p>
 
-<p>Location of the main class :&nbsp;src/main/java/Main.java</p>
-<p>Location of Jar file :&nbsp;gradle/wrapper/gradle-wrapper.jar</p>
+
+
+<p>Location of the main class :&nbsp;src/main/java/Main.java<br />Location of Jar file :&nbsp;gradle/wrapper/gradle-wrapper.jar</p>
 
 Maximum number of words for this section: 1000
 
