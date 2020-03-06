@@ -58,6 +58,12 @@ A subclass which inherits from the **Character** class. A character which is not
  
 An object which is present in a *location* or the *Inventory* of a *character*. Some *items* can be picked up and removed from a location and placed into the *Inventory* of a *character*. *Items* inside of the inventory of the *MainCharacter* can be used by the player, either on a *character* or another *item*.
  
+| Attributes  | Operations  | Association  |
+|---|---|---|
+|  *Name *: String containing the name of the *item*. |  |   |
+|  *Description* : String describing the *item*. |  |   |
+| *IsRetrievable* : Boolean describing if the *item* can be picked up from a *location* and placed in a *character's Inventory*.|  |   |
+|  |  |   |
 
 ## Object diagrams								
 Author(s): Leyla Celik
