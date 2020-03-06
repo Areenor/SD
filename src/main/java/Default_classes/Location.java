@@ -48,6 +48,9 @@ public class Location {
         }
         terminal.print("You found nothing traveling in this direction and returned to your original location.\n");
     }
+    public void examine(){
+        terminal.print(GameState.CurrentLocation._description + "\n");
+    }
 
     public void North() {
         move("north");

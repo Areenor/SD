@@ -26,12 +26,12 @@ public class Character {
         switch (command) {
             case "examine":
                 if (args.length == 1) {
-                    terminal.print(GameState.CurrentLocation._description + "\n");
+                   GameState.CurrentLocation.examine();
                 } else {
                     if (GameState.CurrentLocation._characters.containsKey(args[1])) {
-                        terminal.print(GameState.CurrentLocation._characters.get(args[1])._description + "\n");
+                        GameState.CurrentLocation._characters.get(args[1]).examine(args[1]);
                     } else if (GameState.CurrentLocation._items.containsKey(args[1])) {
-                        terminal.print(GameState.CurrentLocation._items.get(args[1])._description + "\n");
+                        GameState.CurrentLocation._items.get(args[1]).examine(args[1]);
                     } else {
                         terminal.print("There is no such thing to examine on this location, please try again.\n");
                     }
@@ -42,7 +42,7 @@ public class Character {
                     terminal.print("Not the correct way of talking, please try again: \n");
                 } else {
                     if (GameState.CurrentLocation._characters.containsKey(args[2])) {
-                        terminal.print(GameState.CurrentLocation._characters.get(args[2])._name + ": " + GameState.CurrentLocation._characters.get(args[2])._dialogue + "\n");
+                        GameState.CurrentLocation._characters.get(args[2]).talk(args[2]);
                     } else {
                         terminal.print("There is no such character on this location, please try again.\n");
                     }
@@ -53,8 +53,7 @@ public class Character {
                     terminal.print("Please specify item.\n");
                 } else {
                     if (GameState.CurrentLocation._items.containsKey(args[1])) {
-                        GameState.MainCharacter._inventory.add(args[1]);
-                        GameState.CurrentLocation._items.remove(args[1]);
+                        GameState.CurrentLocation._items.get(args[1]).take(args[1]);
                     } else {
                         terminal.print("There is no such item, please try again.\n");
                     }

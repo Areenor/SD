@@ -2,6 +2,9 @@ package Default_classes;
 
 import Configuration_models.NPCConfig;
 import Game_data.GameState;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.TextTerminal;
 
 public class NPC extends Character{
     public String _description;
@@ -9,6 +12,9 @@ public class NPC extends Character{
     public String _dialogue;
     public boolean _isHostile;
     public boolean _isFightable;
+
+    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
+    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     public NPC(NPCConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
@@ -30,6 +36,11 @@ public class NPC extends Character{
         _stamina = _dexterity + GameState.baseStamina;
     }
 
-    public void Talk(String NpcName) {
+    public void examine(String character_name){
+        terminal.print(GameState.CurrentLocation._characters.get(character_name)._description + "\n");
+    }
+
+    public void talk(String npc_name) {
+        terminal.print(GameState.CurrentLocation._characters.get(npc_name)._name + ": " + GameState.CurrentLocation._characters.get(npc_name)._dialogue + "\n");
     }
 }
