@@ -36,11 +36,11 @@ The **Character** class represents a person or other being which acts as living 
 | *Inventory*: Hashmap containing the names of the items in the possession of the *Character*
 paired to instances of those *Items*. |  | *Move*: Calls on the *move()* operation of an instance of **Location**.  |
 | *Strength*: Statistic used for damage calculation during combat. |  | *Talk to *: Calls on the *talk to ()* operation of an instance of **NPC**.  |
-| *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  | *Attack()*: Calls on the *attack()* operation on an instance of **NPC**, fails if the npc's attribute *IsFightabel* is false.  |
+| *Dexterity* : Statistic used for calculating the chance to successfully evade the next attack during combat when using *dodge()*. |  | *Attack*: Calls on the *attack()* operation on an instance of **NPC**, fails if the npc's attribute *IsFightabel* is false.  |
 | *Constitution* : Statistic used to calculate the damage mitigation during combat when using block(). |  | *Equip* : Calls on the *equip()* operation of an instance of **Equipment**. |
 | |  | *Use* : Calls on the *use()* operation of an instance of **Item**.|
 | |  | *Take* : Calls on the *take()* operation of an instance of **Item**.|
-| |  | *Use on  *: Calls on the *use(on )* operation of an instance of **Item**, passing the name of an instance of **Item** or **Character** as a parameter to use the item on. If no target is selected, the *MainCharacter* is the target. |
+| |  | *Use on*: Calls on the *use(on )* operation of an instance of **Item**, passing the name of an instance of **Item** or **Character** as a parameter to use the item on. If no target is selected, the *MainCharacter* is the target. |
 | |  | *Give to*: Calls on the *Give to()* operation of an instance of **Item**, passing the name of an instance of **Character** as a parameter to give the item to.|
 
 
