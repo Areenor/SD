@@ -158,15 +158,8 @@ Author(s): Peter Wassenaar
 <p><br /><br /></p>
 <p><span style="font-weight: 400;">We followed a dynamic process to move from our UML diagram to our implementation code, in other words we created part of the diagram, than translated that to code, observed if there were things in the implementation which we were not satisfied with, if so we adjusted our diagram accordingly, and then move on to creating the next part of our diagram. Especially when selecting the types of the attributes of the classes used in our diagram we went back and forth between our code and our diagram, in order to find what would work best. Creating the associations was mostly done in the diagram only, and later copied to the code. Designing the initiation process was mainly done while writing the implementation code, as we did not create a diagram taking it was quite the straightforward tasks which depended mostly on the classes which were already created in our class diagram and the general idea of how we wanted our initiation process to work.</span></p>
 
-
-In this chapter you will describe the following aspects of your project:
-- the strategy that you followed when moving from the UML models to the implementation code;
-- the key solutions that you applied when implementing your system (for example, how you implemented the syntax highlighting feature of your code snippet manager, how you manage fantasy soccer matches, etc.);
-- the location of the main Java class needed for executing your system in your source code;
-- the location of the Jar file for directly executing your system;
-- the 30-seconds video showing the execution of your system (you can embed the video directly in your md file on GitHub).
-
-IMPORTANT: remember that your implementation must be consistent with your UML models. Also, your implementation must run without the need from any other external software or tool. Failing to meet this requirement means 0 points for the implementation part of your project.
+<p>Location of the main class :&nbsp;src/main/java/Main.java</p>
+<p>Location of Jar file :&nbsp;gradle/wrapper/gradle-wrapper.jar</p>
 
 Maximum number of words for this section: 1000
 
