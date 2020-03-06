@@ -77,6 +77,12 @@ The other main state is the in combat state. Just like the *MainCharacter*, it h
 ## Sequence diagrams									
 Author(s): Richard Eric van Leeuwen, Leyla Celik
 
+We have two sequence diagrams we would like to discuss. The two sequence diagrams shows two typical scenarios: the player engaging in combat with a *NPC* and the player moving around between locations.
+
+First, we would like to discuss the combat scenario. 
+
+![Sequence Diagram Combat](https://github.com/Areenor/SD/blob/Assignment-2/docs/Sequence_diagram_Combat.png)
+
 In the combat sequence diagram we show a typical scenario where the player engages in combat with a NPC using the Main Character. The interaction partners in this particular diagram are the following: Player, Main Character and NPC.  We will discuss each of the interaction partners' involvement and what their tasks are during this combat scenario. We will also, while discussing each individual interaction partner, elaborate on the messages they send and in what fragments of the interaction they are involved in.
 
 First, we will discuss the Player. The Player refers to the stakeholder of this diagram and thus depicts an external influence. The player is the one who inputs commands and controls the main character. In this scenario, as depicted in the diagram, the player wishes to engage in combat with a particular NPC.  To do so, he inputs the command “attack NPC” which starts the sequence of events. The player receives information as output about the result of his attack and from there is able to direct the Main Character to either attack the NPC or block or dodge the next attack from the NPC.  The player is able to input these combat moves till either the main character or the engaged NPC is defeated by lowering their health to 0. In this scenario the player put in two attack input commands which ends the battle with the NPC’s health reaching 0 and being defeated.
