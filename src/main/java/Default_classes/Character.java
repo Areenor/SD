@@ -1,11 +1,14 @@
 package Default_classes;
 
 import Game_data.GameState;
+import Services.CharacterUpdateService;
+import Services.ItemUpdateService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Character {
     public String _name;
@@ -15,7 +18,7 @@ public class Character {
     public int _hitPoints;
     public int _attack;
     public int _stamina;
-    public List<String> _inventory;
+    public Map<String, Item> _inventory = new HashMap<String, Item>();
 
 
     public static void ExecuteCommand(String command, String[] args) {
@@ -28,8 +31,8 @@ public class Character {
                 if (args.length == 1) {
                    GameState.CurrentLocation.examine();
                 } else {
-                    if (GameState.CurrentLocation._characters.containsKey(args[1])) {
-                        GameState.CurrentLocation._characters.get(args[1]).examine(args[1]);
+                    if (GameState.CurrentLocation._NPCs.containsKey(args[1])) {
+                        GameState.CurrentLocation._NPCs.get(args[1]).examine(args[1]);
                     } else if (GameState.CurrentLocation._items.containsKey(args[1])) {
                         GameState.CurrentLocation._items.get(args[1]).examine(args[1]);
                     } else {
@@ -41,8 +44,8 @@ public class Character {
                 if (args.length < 3) {
                     terminal.print("Not the correct way of talking, please try again: \n");
                 } else {
-                    if (GameState.CurrentLocation._characters.containsKey(args[2])) {
-                        GameState.CurrentLocation._characters.get(args[2]).talk(args[2]);
+                    if (GameState.CurrentLocation._NPCs.containsKey(args[2])) {
+                        GameState.CurrentLocation._NPCs.get(args[2]).talk(args[2]);
                     } else {
                         terminal.print("There is no such character on this location, please try again.\n");
                     }

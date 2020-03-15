@@ -20,5 +20,6 @@ public class GameState {
         if (Locations.containsKey(locationName))
             return Locations.get(locationName);
         return null;
+        //throw new Exception("Location could not be found.");
     }
 }

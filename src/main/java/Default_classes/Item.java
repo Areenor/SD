@@ -14,7 +14,7 @@ import org.beryx.textio.TextTerminal;
 public class Item {
     public final String _name;
     public String _description;
-    public boolean _isRetriavable;
+    public boolean _isRetrievable;
 
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
@@ -26,7 +26,7 @@ public class Item {
 
         _name = config.Name;
         _description = config.Description;
-        _isRetriavable = config.IsRetriavable;
+        _isRetrievable = config.IsRetriavable;
 
     }
 
@@ -35,7 +35,7 @@ public class Item {
     }
 
     public void take(String item_key){
-        GameState.MainCharacter._inventory.add(item_key);
+        //GameState.MainCharacter._inventory.put(item_key);
         GameState.CurrentLocation._items.remove(item_key);
     }
 }
