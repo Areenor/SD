@@ -2,6 +2,7 @@ package Default_classes;
 
 import Configuration_models.NPCConfig;
 import Game_data.GameState;
+import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -25,22 +26,22 @@ public class NPC extends Character{
         _description = config.Description;
         _type = config.Type;
         _dialogue = config.Dialogue;
-        _inventory = config.Inventory;
         _strength = config.Strength;
         _dexterity = config.Dexterity;
         _constitution = config.Constitution;
-        _isFightable = false; //config.IsFightable;
-        _isHostile = false; //config.IsHostile;
+        _isFightable = config.IsFightable;
+        _isHostile = config.IsHostile;
         _hitPoints = _constitution + GameState.baseHealth;
         _attack = _strength + GameState.baseAttack;
         _stamina = _dexterity + GameState.baseStamina;
+        _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
     }
 
     public void examine(String character_name){
-        terminal.print(GameState.CurrentLocation._characters.get(character_name)._description + "\n");
+        terminal.print(GameState.CurrentLocation._NPCs.get(character_name)._description + "\n");
     }
 
     public void talk(String npc_name) {
-        terminal.print(GameState.CurrentLocation._characters.get(npc_name)._name + ": " + GameState.CurrentLocation._characters.get(npc_name)._dialogue + "\n");
+        terminal.print(GameState.CurrentLocation._NPCs.get(npc_name)._name + ": " + GameState.CurrentLocation._NPCs.get(npc_name)._dialogue + "\n");
     }
 }
