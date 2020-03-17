@@ -6,15 +6,15 @@ import Enumerators.StatEnum;
 import Game_data.GameState;
 
 public class CharacterUpdateService {
-    public static void SetCharacterStatistics(StatEnum statistic, int statValue) {
+    public static void SetStatistic(StatEnum statistic, int statValue) {
         Character mainCharacter = GameState.MainCharacter;
-        SetCharacterStatistics(mainCharacter, statistic, statValue);
+        SetStatistic(mainCharacter, statistic, statValue);
         GameState.MainCharacter = mainCharacter;
     }
 
-    public static void SetCharacterHp(int hpValue) {
+    public static void SetHp(int hpValue) {
         Character mainCharacter = GameState.MainCharacter;
-        SetCharacterHp(mainCharacter, hpValue);
+        SetHp(mainCharacter, hpValue);
         GameState.MainCharacter = mainCharacter;
     }
 
@@ -32,7 +32,7 @@ public class CharacterUpdateService {
         return removedItem;
     }
 
-    public static void SetCharacterStatistics(Character character, StatEnum statistic, int statValue) {
+    public static void SetStatistic(Character character, StatEnum statistic, int statValue) {
         if (statValue < 0) { throw new IllegalArgumentException("The value of a statistic cannot be less than zero."); }
 
         switch (statistic) {
@@ -44,7 +44,7 @@ public class CharacterUpdateService {
         }
     }
 
-    public static void SetCharacterHp(Character character, int hpValue) {
+    public static void SetHp(Character character, int hpValue) {
         if (hpValue < 0) { throw new IllegalArgumentException("The value of hit points cannot be less than zero."); }
         character._hitPoints = hpValue;
     }

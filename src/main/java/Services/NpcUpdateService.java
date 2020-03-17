@@ -7,21 +7,21 @@ import Enumerators.StatEnum;
 import Game_data.GameState;
 
 public class NpcUpdateService extends CharacterUpdateService {
-    public static void SetCharacterStatistics(String locationName, String npcName, StatEnum statistic, int statValue) {
+    public static void SetStatistic(String locationName, String npcName, StatEnum statistic, int statValue) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
         if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
-        SetCharacterStatistics(npc, statistic, statValue);
+        SetStatistic(npc, statistic, statValue);
         SetNpc(locationName, npcName, npc);
     }
 
-    public static void SetCharacterHp(String locationName, String npcName, int hpValue) {
+    public static void SetHp(String locationName, String npcName, int hpValue) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
         if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
-        SetCharacterHp(npc, hpValue);
+        SetHp(npc, hpValue);
         SetNpc(locationName, npcName, npc);
     }
 
