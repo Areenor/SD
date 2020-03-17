@@ -6,6 +6,7 @@ import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
+import Enumerators.DirectionEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class Location {
     public String _description;
     public Map<String, Item> _items = new HashMap<String, Item>();
     public Map<String, NPC> _NPCs = new HashMap<String, NPC>();
-    public Map<String, String> _adjacentLocations = new HashMap<String, String>();
+    public Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
@@ -36,30 +37,38 @@ public class Location {
         }
     }
 
-    public void move(String direction) {
-        String nextLocationName = _adjacentLocations.get(direction);
-        if (nextLocationName != null && !nextLocationName.isEmpty()) {
-            GameState.CurrentLocation = GameState.GetLocation(nextLocationName);
+    public String ReturnLocationName() {
+        return _name;
+    }
 
-            terminal.printf("You entered %s.\n", GameState.CurrentLocation._name);
-            terminal.print(GameState.CurrentLocation._description);
-            terminal.print("\n");
-            return;
+    public Map<DirectionEnum, String> ReturnAdjacentLocations() {
+        return _adjacentLocations;
+    }
+
+    public String ReturnLocationDescription(){
+        return _description;
+    }
+
+    public String ReturnResidingItemsDescriptions() {
+        String itemDescriptions = "";
+        for(Item item : _items.values()) {
+            itemDescriptions = itemDescriptions + item.ReturnItemDescription();
         }
-        terminal.print("You found nothing traveling in this direction and returned to your original location.\n");
+        return itemDescriptions;
     }
-    public void examine(){
-        terminal.print(GameState.CurrentLocation._description + "\n");
+    public String ReturnResidingNPCDescriptions() {
+        String NPCDescriptions = "";
+        for(NPC NPC: _NPCs.values()) {
+            NPCDescriptions = NPCDescriptions + NPC.ReturnNPCDescription();
+        }
+        return NPCDescriptions;
     }
 
-    public void North() { move("north"); }
-    public void East() { move("east"); }
-    public void South() {
-        move("south");
+    public NPC ReturnResidingNPC(String NPCName){
+        return _NPCs.get(NPCName);
     }
-    public void West() { move("west"); }
-    public void Up() {  move("up"); }
-    public void Down() {
-        move("down");
+
+    public Item ReturnResidingItem(String ItemName){
+        return _items.get(ItemName);
     }
 }

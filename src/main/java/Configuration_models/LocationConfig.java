@@ -4,18 +4,19 @@
 
 package Configuration_models;
 import java.util.*;
+import Enumerators.DirectionEnum;
 
 public class LocationConfig {
     public String Name;
     public String Description;
     public List<String> Items;
     public String[] Characters;
-    public Map<String, String> AdjacentLocations = new HashMap<String, String>() {{
-        put("north","");
-        put("east","");
-        put("south","");
-        put("west","");
-        put("up", "");
-        put("down", "");
+    public Map<DirectionEnum, String> AdjacentLocations = new HashMap<DirectionEnum, String>() {{
+        put(DirectionEnum.north,"");
+        put(DirectionEnum.east,"");
+        put(DirectionEnum.south,"");
+        put(DirectionEnum.west,"");
+        put(DirectionEnum.up, "");
+        put(DirectionEnum.down, "");
     }};
 }

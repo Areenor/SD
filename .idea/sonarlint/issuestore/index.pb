@@ -27,8 +27,6 @@ C
 docs/assignment1.md,2\5\25833e82f041dbbd8b85299051359f168faaa730
 ]
 -src/main/java/Services/InitiationService.java,d\c\dc61dcd54c7b1e75fec5219668394808222a446d
-R
-"src/main/java/META-INF/MANIFEST.MF,6\3\63ef5783cbf71fdf39c1fd6ae6873fd812259930
 f
 6src/main/java/Configuration_models/LocationConfig.java,b\7\b72fb936d4940e7c13506592fb79d864748ef258
 M
@@ -49,3 +47,13 @@ F
 story/items/Flask.json,3\5\351eacf7b9d60cb8b7818f0274006ad8df34cfab
 L
 story/items/testObject2.json,c\3\c31f692f759344a7433c81d32b5f74d4a5fca6a1
+W
+'src/main/java/Enumerators/StatEnum.java,7\2\7216c40cf55a448f40827a5894b2c97e10d6fef0
+]
+-src/main/java/Services/ItemUpdateService.java,4\8\48628b097619102f9ff228b2c579df0c9309ea9a
+a
+1src/main/java/Services/LocationUpdateService.java,f\1\f1b7d8023341f38811bd2a2e25fc58cae28d1252
+\
+,src/main/java/Services/NpcUpdateService.java,e\9\e9d6c6f46838fc9af74334870f605968d97760c9
+V
+&src/main/java/Services/Controller.java,0\c\0c11a1ed4a26a7c4a676fca014d48ca2a16e784b

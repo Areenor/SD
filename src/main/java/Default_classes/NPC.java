@@ -37,11 +37,15 @@ public class NPC extends Character{
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
     }
 
-    public void examine(String character_name){
-        terminal.print(GameState.CurrentLocation._NPCs.get(character_name)._description + "\n");
+    public String ReturnNPCDescription(){
+        return _description;
     }
 
-    public void talk(String npc_name) {
-        terminal.print(GameState.CurrentLocation._NPCs.get(npc_name)._name + ": " + GameState.CurrentLocation._NPCs.get(npc_name)._dialogue + "\n");
+    public String ReturnNPCName() {
+        return _name;
+    }
+
+    public String ReturnNPCDialogue() {
+        return _dialogue;
     }
 }

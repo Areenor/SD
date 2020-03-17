@@ -47,7 +47,14 @@ public class InitiationService {
             dexInput = textIO.newStringInputReader().read("Dexterity:");
             conInput = textIO.newStringInputReader().read("Constitution:");
             pointCount = pointCount - Integer.parseInt(conInput) - Integer.parseInt(dexInput) - Integer.parseInt(strInput);
-            if(pointCount != 0) { terminal.printf("Too many points assigned, please assign only two points\n"); }
+            if(pointCount < 0) {
+                pointCount = 2;
+                terminal.printf("Too many points assigned, please assign only two points\n");
+            }
+            else if(pointCount > 0) {
+                pointCount = 2;
+                terminal.printf("Not enough points assigned, please assign only two points\n");
+            }
         }
 
         GameState.MainCharacter._strength = Integer.parseInt(strInput);

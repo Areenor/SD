@@ -30,12 +30,15 @@ public class Item {
 
     }
 
-    public void examine(String item_key){
-        terminal.print(GameState.CurrentLocation._items.get(item_key)._description + "\n");
+    public String ReturnItemDescription() {
+       return _description;
     }
 
-    public void take(String item_key){
-        //GameState.MainCharacter._inventory.put(item_key);
-        GameState.CurrentLocation._items.remove(item_key);
+    public String ReturnItemName() {
+        return _name;
+    }
+
+    public boolean isItemRetrievable() {
+        return _isRetrievable;
     }
 }
