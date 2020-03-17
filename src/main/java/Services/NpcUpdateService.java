@@ -7,27 +7,27 @@ import Enumerators.StatEnum;
 import Game_data.GameState;
 
 public class NpcUpdateService extends CharacterUpdateService {
-    public static void SetCharacterStatistics(String locationName, String npcName, StatEnum statistic, int statValue) {
+    public static void SetStatistic(String locationName, String npcName, StatEnum statistic, int statValue) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
-        SetCharacterStatistics(npc, statistic, statValue);
+        SetStatistic(npc, statistic, statValue);
         SetNpc(locationName, npcName, npc);
     }
 
-    public static void SetCharacterHp(String locationName, String npcName, int hpValue) {
+    public static void SetHp(String locationName, String npcName, int hpValue) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
-        SetCharacterHp(npc, hpValue);
+        SetHp(npc, hpValue);
         SetNpc(locationName, npcName, npc);
     }
 
     public static void AddItemToInventory(String locationName, String npcName, Item newItem) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         AddItemToInventory(npc, newItem);
@@ -36,7 +36,7 @@ public class NpcUpdateService extends CharacterUpdateService {
 
     public static Item RemoveItemFromInventory(String locationName, String npcName, String itemName) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         Item removedItem = RemoveItemFromInventory(npc, itemName);
@@ -47,7 +47,7 @@ public class NpcUpdateService extends CharacterUpdateService {
 
     private static void SetDescription(String locationName, String npcName, String newDescription) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         npc._description = newDescription;
@@ -56,7 +56,7 @@ public class NpcUpdateService extends CharacterUpdateService {
 
     private static void SetType(String locationName, String npcName, String newType) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         npc._type = newType;
@@ -65,7 +65,7 @@ public class NpcUpdateService extends CharacterUpdateService {
 
     public static void SetIsHostile(String locationName, String npcName, boolean hostile) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         npc._isHostile = hostile;
@@ -74,7 +74,7 @@ public class NpcUpdateService extends CharacterUpdateService {
 
     public static void SetIsFightable(String locationName, String npcName, boolean fightable) {
         if (locationName.isEmpty()) throw new IllegalArgumentException("Location name cannot be empty.");
-        if (npcName.isEmpty()) throw new IllegalArgumentException("npc name cannot be empty.");
+        if (npcName.isEmpty()) throw new IllegalArgumentException("Npc name cannot be empty.");
 
         NPC npc = GetNpc(locationName, npcName);
         npc._isFightable = fightable;
