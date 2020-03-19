@@ -1,7 +1,6 @@
 package Default_classes;
 
 import Configuration_models.LocationConfig;
-import Game_data.GameState;
 import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -59,7 +58,7 @@ public class Location {
     public String ReturnResidingNPCDescriptions() {
         String NPCDescriptions = "";
         for(NPC NPC: _NPCs.values()) {
-            NPCDescriptions = NPCDescriptions + NPC.ReturnNPCDescription();
+            NPCDescriptions = NPCDescriptions + NPC.GetDescription();
         }
         return NPCDescriptions;
     }

@@ -7,7 +7,7 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
-public class NPC extends Character{
+public class NPC extends Character {
     public String _description;
     public String _type;
     public String _dialogue;
@@ -37,15 +37,10 @@ public class NPC extends Character{
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
     }
 
-    public String ReturnNPCDescription(){
+    public String GetDescription(){
         return _description;
     }
-
-    public String ReturnNPCName() {
-        return _name;
-    }
-
-    public String ReturnNPCDialogue() {
+    public String GetDialogue() {
         return _dialogue;
     }
 }

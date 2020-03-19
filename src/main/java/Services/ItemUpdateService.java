@@ -3,6 +3,7 @@ package Services;
 import Default_classes.Item;
 import Default_classes.Location;
 import Default_classes.NPC;
+import Default_classes.Player;
 import Game_data.GameState;
 
 //If location name is not specified, the current location is used.
@@ -23,9 +24,10 @@ public class ItemUpdateService {
         if (itemName.isEmpty()) throw new IllegalArgumentException("item name cannot be empty.");
         if (newDescription.isEmpty()) throw new IllegalArgumentException("New description cannot be empty.");
 
-        Item item = GameState.CurrentLocation._items.get(itemName);
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        Item item = currentLocation._items.get(itemName);
         item._description = newDescription;
-        GameState.CurrentLocation._items.replace(itemName, item);
+        currentLocation._items.replace(itemName, item);
     }
 
     public static void SetIsRetrievableInLocation(String locationName, String itemName, boolean retrievable) {
@@ -41,9 +43,10 @@ public class ItemUpdateService {
     public static void SetIsRetrievableInLocation(String itemName, boolean retrievable) {
         if (itemName.isEmpty()) throw new IllegalArgumentException("item name cannot be empty.");
 
-        Item item = GameState.CurrentLocation._items.get(itemName);
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        Item item = currentLocation._items.get(itemName);
         item._isRetrievable = retrievable;
-        GameState.CurrentLocation._items.replace(itemName, item);
+        currentLocation._items.replace(itemName, item);
     }
 
     public static void SetItemDescriptionInInventory(String locationName, String characterName, String itemName, String newDescription) {
@@ -60,9 +63,10 @@ public class ItemUpdateService {
     }
 
     public static void SetItemDescriptionInInventory(String characterName, String itemName, String newDescription) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Player mainCharacter = GameState.MainCharacter;
+        String currLocationName = mainCharacter.GetCurrentLocation().ReturnLocationName();
         SetItemDescriptionInInventory(currLocationName, characterName, itemName, newDescription);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        mainCharacter.SetCurrentLocation(currLocationName);
     }
 
     public static void SetItemDescriptionInInventory(String itemName, String newDescription) {
@@ -86,9 +90,10 @@ public class ItemUpdateService {
     }
 
     public static void SetIsRetrievableInInventory(String characterName, String itemName, boolean retrievable) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Player mainCharacter = GameState.MainCharacter;
+        String currLocationName = mainCharacter.GetCurrentLocation().ReturnLocationName();
         SetIsRetrievableInInventory(currLocationName, characterName, itemName, retrievable);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        mainCharacter.SetCurrentLocation(currLocationName);
     }
 
     public static void SetIsRetrievableInInventory(String itemName, boolean retrievable) {
@@ -100,22 +105,22 @@ public class ItemUpdateService {
 
     private static Item GetCharacterItem(Location location, String characterName, String itemName) {
         NPC npc = location._NPCs.get(characterName);
-        Item item = npc._inventory.get(itemName);
+        Item item = npc.GetInventory().get(itemName);
         return item;
     }
 
     private static void SetCharacterItem(Location location, String characterName, String itemName, Item item) {
         NPC character = location._NPCs.get(characterName);
-        character._inventory.replace(itemName, item);
+        character.GetInventory().replace(itemName, item);
         location._NPCs.replace(characterName, character);
         GameState.Locations.replace(characterName, location);
     }
 
     private static Item GetMainCharacterItem(String itemName) {
-        return GameState.MainCharacter._inventory.get(itemName);
+        return GameState.MainCharacter.GetInventory().get(itemName);
     }
 
     private static void SetMainCharacterItem(String itemName, Item item) {
-        GameState.MainCharacter._inventory.replace(itemName, item);
+        GameState.MainCharacter.GetInventory().replace(itemName, item);
     }
 }
