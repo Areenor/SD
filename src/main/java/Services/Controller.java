@@ -62,15 +62,15 @@ public class Controller {
         Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
 
         if (args.length == 1) { //examine without arguments causes the current location to be examined with all its residing items and NPCs
-            description = currentLocation.ReturnLocationDescription();
+            description = currentLocation.GetDescription();
         }
         else if (IsNpcInCurrentLocation(args[1])) {
-            NPC examinedNPC = currentLocation.ReturnResidingNPC(args[1]);
+            NPC examinedNPC = currentLocation.GetNpc(args[1]);
             description = examinedNPC.GetDescription();
         }
         else if (IsIteminCurrentLocation(args[1])) {
-            Item examinedItem = currentLocation.ReturnResidingItem(args[1]);
-            description = examinedItem.ReturnItemDescription();
+            Item examinedItem = currentLocation.GetItem(args[1]);
+            description = examinedItem.GetDescription();
         }
 
         if (description.equals("")) {
@@ -87,7 +87,7 @@ public class Controller {
         }
 
         if (IsNpcInCurrentLocation(args[2])) {
-            NPC spokenToNPC = GameState.MainCharacter.GetCurrentLocation().ReturnResidingNPC(args[2]);
+            NPC spokenToNPC = GameState.MainCharacter.GetCurrentLocation().GetNpc(args[2]);
             String conversation;
             conversation = spokenToNPC.GetName() + ": " + spokenToNPC.GetDialogue() + "\n";
             terminal.print(conversation);
@@ -104,9 +104,9 @@ public class Controller {
         }
 
         if (IsIteminCurrentLocation(args[1])) {
-            Item grabbedItem = GameState.MainCharacter.GetCurrentLocation().ReturnResidingItem(args[1]);
+            Item grabbedItem = GameState.MainCharacter.GetCurrentLocation().GetItem(args[1]);
 
-            if(grabbedItem.isItemRetrievable()) {
+            if(grabbedItem.IsRetrievable()) {
                 LocationUpdateService.RemoveItem(args[1]);
                 terminal.print("You took " + args[1] + " and put it in your inventory.\n");
             }
@@ -127,14 +127,14 @@ public class Controller {
 
         Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
         DirectionEnum direction = DirectionEnum.valueOf(args[1]);
-        Map<DirectionEnum, String> adjacentLocations = currentLocation.ReturnAdjacentLocations();
+        Map<DirectionEnum, String> adjacentLocations = currentLocation.GetAdjacentLocations();
 
         String nextLocationName = adjacentLocations.get(direction);
         if (nextLocationName != null && !nextLocationName.isEmpty()) {
             currentLocation = GameState.GetLocation(nextLocationName);
 
-            terminal.printf("You entered %s.\n", currentLocation.ReturnLocationName());
-            String description = currentLocation.ReturnLocationDescription();
+            terminal.printf("You entered %s.\n", currentLocation.GetName());
+            String description = currentLocation.GetDescription();
             terminal.print(description + "\n");
             return;
         }

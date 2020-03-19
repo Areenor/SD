@@ -7,8 +7,6 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
-import java.util.Map;
-
 public class Main {
 
     public static void main (String[] args) {
@@ -25,7 +23,7 @@ public class Main {
         InitiationService.InitiateMainCharacter(SPAWN_ROOM);
 
         Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
-        String description = currentLocation.ReturnLocationDescription();
+        String description = currentLocation.GetDescription();
         terminal.print(description + "\n");
 
         while (!GameState.IsFinished) {

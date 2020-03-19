@@ -64,7 +64,7 @@ public class ItemUpdateService {
 
     public static void SetItemDescriptionInInventory(String characterName, String itemName, String newDescription) {
         Player mainCharacter = GameState.MainCharacter;
-        String currLocationName = mainCharacter.GetCurrentLocation().ReturnLocationName();
+        String currLocationName = mainCharacter.GetCurrentLocation().GetName();
         SetItemDescriptionInInventory(currLocationName, characterName, itemName, newDescription);
         mainCharacter.SetCurrentLocation(currLocationName);
     }
@@ -91,7 +91,7 @@ public class ItemUpdateService {
 
     public static void SetIsRetrievableInInventory(String characterName, String itemName, boolean retrievable) {
         Player mainCharacter = GameState.MainCharacter;
-        String currLocationName = mainCharacter.GetCurrentLocation().ReturnLocationName();
+        String currLocationName = mainCharacter.GetCurrentLocation().GetName();
         SetIsRetrievableInInventory(currLocationName, characterName, itemName, retrievable);
         mainCharacter.SetCurrentLocation(currLocationName);
     }

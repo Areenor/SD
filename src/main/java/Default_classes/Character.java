@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Character {
+    protected final int BASE_HEALTH = 5;
+    protected final int BASE_ATTACK = 1 ;
+    protected final int BASE_STAMINA = 1;
+
     protected String _name;
     protected int _strength;
     protected int _dexterity;
@@ -11,12 +15,12 @@ public abstract class Character {
     protected int _hitPoints;
     protected int _attack;
     protected int _stamina;
-    protected Map<String, Item> _inventory = new HashMap<String, Item>();
+    protected Map<String, Item> _inventory = new HashMap<>();
 
     public String GetName() {
         return _name;
     }
-    public int GetStrenght(){
+    public int GetStrength(){
         return _strength;
     }
     public int GetDexterity(){
@@ -28,7 +32,7 @@ public abstract class Character {
     public int GetStamina() { return _strength; }
     public Map<String, Item> GetInventory() { return _inventory; }
 
-    public void SetStrenght(int strength){
+    public void SetStrength(int strength){
         _strength = strength;
     }
     public void SetDexterity(int dexterity){ _dexterity = dexterity; }
@@ -36,7 +40,6 @@ public abstract class Character {
     public void SetHitPoints(int hitPoints) { _hitPoints = hitPoints; }
     public void SetAttack(int attack)  { _attack = attack; }
     public void SetStamina(int strength) { _strength = strength; }
-    public void SetInventory(HashMap<String, Item> inventory) { _inventory = inventory; }
 
     public void AddToInventory(String itemName, Item item) { _inventory.put(itemName, item); }
     public void RemoveFromInventory(String itemName) { _inventory.remove(itemName); }

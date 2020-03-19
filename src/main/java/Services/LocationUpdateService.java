@@ -12,7 +12,7 @@ public class LocationUpdateService {
         if (newDescription.isEmpty()) throw new IllegalArgumentException("New description cannot be empty.");
 
         Location location = GameState.GetLocation(locationName);
-        location._description = newDescription;
+        location._baseDescription = newDescription;
         GameState.Locations.replace(locationName, location);
     }
 
