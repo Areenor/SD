@@ -1,22 +1,23 @@
 package Default_classes;
 
 import Configuration_models.LocationConfig;
+import Game_data.GameState;
 import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Enumerators.DirectionEnum;
+import org.graalvm.compiler.loop.InductionVariable;
 
-import java.lang.invoke.SwitchPoint;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Location {
-    public final String _name;
-    public String _baseDescription;
-    public Map<String, Item> _items = new HashMap<String, Item>();
-    public Map<String, NPC> _NPCs = new HashMap<String, NPC>();
-    public Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
+    private final String _name;
+    private String _baseDescription;
+    private Map<String, Item> _items = new HashMap<String, Item>();
+    private Map<String, NPC> _NPCs = new HashMap<String, NPC>();
+    private Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
 
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
@@ -39,40 +40,37 @@ public class Location {
     }
 
     public String GetName() { return _name; }
-    public String GetDescription(){ return (_baseDescription + GetItemDescriptions() + GetNpcDescriptions()); }
-    public Map<DirectionEnum, String> GetAdjacentLocations() {
-        return _adjacentLocations;
-    }
-    public NPC GetNpc(String NpcName){ return _NPCs.get(NpcName); }
-    public Item GetItem(String ItemName){
-        return _items.get(ItemName);
-    }
+    public String GetDescription() { return (_baseDescription + GetItemDescriptions() + GetNpcDescriptions()); }
+    public String GetAdjacentLocation(DirectionEnum direction) { return _adjacentLocations.get(direction); }
+    public NPC GetNpc(String NpcName) { return _NPCs.get(NpcName); }
+    public Item GetItem(String ItemName) { return _items.get(ItemName); }
 
     public void SetBaseDescription(String description) { _baseDescription = description; }
     public void SetAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.replace(direction, locationName); }
     public void SetNpc(String NpcName, NPC npc) { _NPCs.replace(NpcName, npc); }
-    public void SetItem(String ItemName, Item item){
-        _items.replace(ItemName, item);
-    }
+    public void SetItem(String ItemName, Item item) { _items.replace(ItemName, item); }
 
-    public void AddNpc(String NpcName, NPC npc) { _NPCs.put(NpcName, npc); }
-    public void AddItem(String ItemName, Item item){
-        _items.put(ItemName, item);
-    }
+    public boolean ContainsNpc(String NpcName) { return _NPCs.containsKey(NpcName); }
+    public void AddNpc(NPC npc) { _NPCs.put(npc.GetName(), npc); }
+    public void RemoveNpc(String npcName) { _NPCs.remove(npcName); }
+
+    public boolean ContainsItem(String ItemName) { return _items.containsKey(ItemName); }
+    public void AddItem(Item item){ _items.put(item.GetName(), item);  }
+    public void RemoveItem(String itemName) { _items.remove(itemName); }
 
     private String GetItemDescriptions() {
-        String itemDescriptions = "";
+        StringBuilder itemDescriptions = new StringBuilder();
         for(Item item : _items.values()) {
-            itemDescriptions = itemDescriptions + item.GetDescription();
+            itemDescriptions.append(item.GetDescription());
         }
-        return itemDescriptions;
+        return itemDescriptions.toString();
     }
 
     private String GetNpcDescriptions() {
-        String NpcDescriptions = "";
+        StringBuilder NpcDescriptions = new StringBuilder();
         for(NPC NPC: _NPCs.values()) {
-            NpcDescriptions = NpcDescriptions + NPC.GetDescription();
+            NpcDescriptions.append(NPC.GetDescription());
         }
-        return NpcDescriptions;
+        return NpcDescriptions.toString();
     }
 }

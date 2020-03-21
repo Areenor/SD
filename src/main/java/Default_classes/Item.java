@@ -12,9 +12,9 @@ import org.beryx.textio.TextTerminal;
 
 
 public class Item {
-    public final String _name;
-    public String _description;
-    public boolean _isRetrievable;
+    private final String _name;
+    private String _description;
+    private boolean _isRetrievable;
 
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
@@ -44,4 +44,16 @@ public class Item {
         _description = description;
     }
     public void SetIsRetrievable(boolean retrievable) { _isRetrievable = retrievable; }
+
+    public void Use() {
+        //To be implemented
+    }
+
+    public void Use(Item targetItem) {
+        //To be implemented
+    }
+
+    public void Use(NPC targetNpc) {
+        //To be implemented
+    }
 }

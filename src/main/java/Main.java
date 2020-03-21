@@ -17,22 +17,16 @@ public class Main {
 
         TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
         TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-        Controller controller = new Controller();
 
         terminal.printf("Welcome Player! ");
         InitiationService.InitiateMainCharacter(SPAWN_ROOM);
 
         Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
         String description = currentLocation.GetDescription();
-        terminal.print(description + "\n");
+        terminal.println(description + "\n");
 
         while (!GameState.IsFinished) {
-            String userInput = textIO.newStringInputReader().read("Please input a command:\n");
-
-            String[] arguments = userInput.split(" ");
-            String command = arguments[0];
-
-            controller.ExecuteCommand(command, arguments);
+            Controller.ExecuteCommand(GameState.MainCharacter);
         }
     }
 }
