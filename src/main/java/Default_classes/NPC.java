@@ -8,11 +8,11 @@ import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
 public class NPC extends Character {
-    public String _description;
-    public String _type;
-    public String _dialogue;
-    public boolean _isHostile;
-    public boolean _isFightable;
+    private String _description;
+    private String _type;
+    private String _dialogue;
+    private boolean _isHostile;
+    private boolean _isFightable;
 
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
@@ -52,4 +52,22 @@ public class NPC extends Character {
     }
     public void SetType(String type) { _type = type; }
     public void SetDialogue(String dialogue) { _dialogue = dialogue; }
+
+    public void Talk() {
+        if (_dialogue == null || _dialogue.isEmpty())
+            terminal.println(_name + " has nothing to say to you.\n");
+        terminal.println(_dialogue + "\n");
+    }
+
+    public void Attack(String targetCharacterName) {
+        //To be implemented
+    }
+
+    public void DropInventory(Location dropLocation) {
+        for (String itemName : _inventory.keySet()) {
+            Item item = GetItem(itemName);
+            RemoveFromInventory(itemName);
+            dropLocation.AddItem(item);
+        }
+    }
 }

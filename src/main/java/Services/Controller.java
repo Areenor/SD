@@ -3,6 +3,7 @@ package Services;
 import Default_classes.Item;
 import Default_classes.Location;
 import Default_classes.NPC;
+import Default_classes.Player;
 import Game_data.GameState;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -11,33 +12,40 @@ import Enumerators.DirectionEnum;
 
 import java.util.Map;
 
-public class Controller {
+public abstract class Controller {
+    private static TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
+    private static TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
+    public static void ExecuteCommand(Player player) {
+        String userInput = textIO.newStringInputReader().read();
+        if (userInput == null || userInput.isEmpty())
+            return;
 
-    public void ExecuteCommand(String command, String[] args) {
+        String[] args = userInput.split(" ");
+        String command = args[0];
+
         switch (command) {
             case "examine":
-                Examine(args);
+                Location playerLocation = player.GetCurrentLocation();
+                Examine(args, playerLocation);
                 break;
             case "talk":
-                Talk(args);
+                Talk(args, player);
                 break;
             case "take":
-                Take(args);
+                Take(args, player);
                 break;
             case "move":
-                Move(args);
-                break;
-            case "give":
-                Give(args);
-                break;
-            case "attack":
+                Move(args, player);
                 break;
             case "use":
+                Use(args, player);
                 break;
-            case "hint":
+            case "attack":
+                Attack(args, player);
+                break;
+            case "inventory":
+                player.PrintInventory();
                 break;
             case "exit":
             case "quit":
@@ -45,108 +53,113 @@ public class Controller {
                 textIO.dispose();
                 break;
             default:
-                terminal.print("Unknown command, please try again.\n");
+                terminal.print("Unknown command.\n");
         }
     }
 
-    private boolean IsNpcInCurrentLocation(String NpcName) {
-        return GameState.MainCharacter.GetCurrentLocation()._NPCs.containsKey(NpcName);
-    }
-
-    private boolean IsIteminCurrentLocation(String ItemName) {
-        return GameState.MainCharacter.GetCurrentLocation()._items.containsKey(ItemName);
-    }
-
-    private void Examine(String[] args) {
+    private static void Examine(String[] args, Location playerLocation) {
         String description = "";
         Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
 
-        if (args.length == 1) { //examine without arguments causes the current location to be examined with all its residing items and NPCs
+        if (args.length == 1) {
             description = currentLocation.GetDescription();
         }
-        else if (IsNpcInCurrentLocation(args[1])) {
+        else if (playerLocation.ContainsNpc(args[1])) {
             NPC examinedNPC = currentLocation.GetNpc(args[1]);
             description = examinedNPC.GetDescription();
         }
-        else if (IsIteminCurrentLocation(args[1])) {
+        else if (playerLocation.ContainsItem(args[1])) {
             Item examinedItem = currentLocation.GetItem(args[1]);
             description = examinedItem.GetDescription();
         }
 
         if (description.equals("")) {
-            terminal.print("No such thing is available to be examined.\n");
+            terminal.println("No such thing is available to be examined.\n");
             return;
         }
-        terminal.print(description + "\n");
+        terminal.println(description);
     }
 
-    private void Talk(String[] args) {
+    private static void Talk(String[] args, Player player) {
         if (args.length < 3 || !args[1].equals("to")) {
-            terminal.print("Not the correct way of talking, please try again.\n");
+            terminal.println("Unknown command.");
             return;
         }
-
-        if (IsNpcInCurrentLocation(args[2])) {
-            NPC spokenToNPC = GameState.MainCharacter.GetCurrentLocation().GetNpc(args[2]);
-            String conversation;
-            conversation = spokenToNPC.GetName() + ": " + spokenToNPC.GetDialogue() + "\n";
-            terminal.print(conversation);
+        if (args.length > 3) {
+            terminal.println("Too many arguments.\n");
+            return;
         }
-        else {
-            terminal.print("There is no such character on this location to talk to, please try again.\n");
-        }
+        player.TalkTo(args[2]);
     }
 
-    private void Take(String[] args) {
-        if (args.length == 1) {
-            terminal.print("Please specify item.\n");
+    private static void Take(String[] args, Player player) {
+        if (args.length < 2) {
+            terminal.println("Please specify an item.\n");
             return;
         }
-
-        if (IsIteminCurrentLocation(args[1])) {
-            Item grabbedItem = GameState.MainCharacter.GetCurrentLocation().GetItem(args[1]);
-
-            if(grabbedItem.IsRetrievable()) {
-                LocationUpdateService.RemoveItem(args[1]);
-                terminal.print("You took " + args[1] + " and put it in your inventory.\n");
-            }
-            else {
-                terminal.print("You cannot pick this item up, please try again.\n");
-            }
+        if (args.length > 2) {
+            terminal.println("Too many arguments.\n");
+            return;
         }
-        else {
-            terminal.print("There is no such item, please try again.\n");
-        }
+        player.Take(args[1]);
     }
 
-    private void Move(String[] args) {
-        if (args.length == 1) {
-            terminal.print("Please specify direction.\n");
+    private static void Move(String[] args, Player player) {
+        if (args.length < 2) {
+            terminal.println("Please specify a direction.\n");
+            return;
+        }
+        if (args.length > 2) {
+            terminal.println("Too many arguments.\n");
             return;
         }
 
-        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
-        DirectionEnum direction = DirectionEnum.valueOf(args[1]);
-        Map<DirectionEnum, String> adjacentLocations = currentLocation.GetAdjacentLocations();
-
-        String nextLocationName = adjacentLocations.get(direction);
-        if (nextLocationName != null && !nextLocationName.isEmpty()) {
-            currentLocation = GameState.GetLocation(nextLocationName);
-
-            terminal.printf("You entered %s.\n", currentLocation.GetName());
-            String description = currentLocation.GetDescription();
-            terminal.print(description + "\n");
+        DirectionEnum direction;
+        try {
+            direction = DirectionEnum.valueOf(args[1]);
+        } catch (IllegalArgumentException ex) {
+            terminal.println("Unknown direction.\n");
             return;
         }
-        terminal.print("You found nothing traveling in this direction and returned to your original location.\n");
+
+        player.Move(direction);
     }
 
-    private void Give(String[] args) {
-        if (args.length < 4) {
-            terminal.print("Incorrect input amount of arguments give command, try again.\n");
+    private static void Use(String[] args, Player player) {
+        if (args.length < 2) {
+            terminal.println("Please specify an item to use.\n");
             return;
         }
-        terminal.print("Item not in inventory, try again.\n");
-        return;
+        if (args.length > 3) {
+            terminal.println("Too many arguments.\n");
+            return;
+        }
+
+        String ItemToUseName = args[1];
+        if (args.length == 2) {
+            player.Use(ItemToUseName);
+            return;
+        }
+        if (player.GetCurrentLocation().ContainsNpc(ItemToUseName)) {
+            player.UseOnNpc(ItemToUseName, args[2]);
+            return;
+        }
+        if (player.GetCurrentLocation().ContainsItem(ItemToUseName)) {
+            player.UseOnItem(ItemToUseName, args[2]);
+            return;
+        }
+        terminal.println("No such item or character in the current location.\n");
+    }
+
+    private static void Attack(String[] args, Player player) {
+        if (args.length < 2) {
+            terminal.println("Please specify a character.\n");
+            return;
+        }
+        if (args.length > 2) {
+            terminal.println("Too many arguments.\n");
+            return;
+        }
+        player.Attack(args[1]);
     }
 }

@@ -30,7 +30,7 @@ public abstract class Character {
     public int GetHitPoints() { return _hitPoints; }
     public int GetAttack()  { return _attack; }
     public int GetStamina() { return _strength; }
-    public Map<String, Item> GetInventory() { return _inventory; }
+    public Item GetItem(String itemName) { return _inventory.get(itemName); }
 
     public void SetStrength(int strength){
         _strength = strength;
@@ -41,6 +41,6 @@ public abstract class Character {
     public void SetAttack(int attack)  { _attack = attack; }
     public void SetStamina(int strength) { _strength = strength; }
 
-    public void AddToInventory(String itemName, Item item) { _inventory.put(itemName, item); }
+    public void AddToInventory(Item item) { _inventory.put(item.GetName(), item); }
     public void RemoveFromInventory(String itemName) { _inventory.remove(itemName); }
 }
