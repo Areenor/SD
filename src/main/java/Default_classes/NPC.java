@@ -7,7 +7,7 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
-public class NPC extends Character{
+public class NPC extends Character {
     public String _description;
     public String _type;
     public String _dialogue;
@@ -31,21 +31,25 @@ public class NPC extends Character{
         _constitution = config.Constitution;
         _isFightable = config.IsFightable;
         _isHostile = config.IsHostile;
-        _hitPoints = _constitution + GameState.baseHealth;
-        _attack = _strength + GameState.baseAttack;
-        _stamina = _dexterity + GameState.baseStamina;
+        _hitPoints = _constitution + BASE_HEALTH;
+        _attack = _strength + BASE_ATTACK;
+        _stamina = _dexterity + BASE_STAMINA;
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
     }
 
-    public String ReturnNPCDescription(){
+    public String GetDescription(){
         return _description;
     }
-
-    public String ReturnNPCName() {
-        return _name;
-    }
-
-    public String ReturnNPCDialogue() {
+    public String GetType() { return _type; }
+    public String GetDialogue() {
         return _dialogue;
     }
+    public boolean IsHostile() { return _isHostile; }
+    public boolean IsFightable() { return _isFightable; }
+
+    public void SetDescription(String description){
+        _description = description;
+    }
+    public void SetType(String type) { _type = type; }
+    public void SetDialogue(String dialogue) { _dialogue = dialogue; }
 }

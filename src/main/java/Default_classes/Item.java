@@ -30,15 +30,18 @@ public class Item {
 
     }
 
-    public String ReturnItemDescription() {
-       return _description;
-    }
-
-    public String ReturnItemName() {
+    public String GetName() {
         return _name;
     }
-
-    public boolean isItemRetrievable() {
+    public String GetDescription() {
+       return _description;
+    }
+    public boolean IsRetrievable() {
         return _isRetrievable;
     }
+
+    public void SetDescription(String description) {
+        _description = description;
+    }
+    public void SetIsRetrievable(boolean retrievable) { _isRetrievable = retrievable; }
 }

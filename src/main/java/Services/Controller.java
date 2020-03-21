@@ -1,12 +1,12 @@
 package Services;
 
 import Default_classes.Item;
+import Default_classes.Location;
 import Default_classes.NPC;
 import Game_data.GameState;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
-import Services.LocationUpdateService;
 import Enumerators.DirectionEnum;
 
 import java.util.Map;
@@ -49,29 +49,28 @@ public class Controller {
         }
     }
 
-    private boolean IsNPCinCurrentLocation(String NPCName) {
-        return GameState.CurrentLocation._NPCs.containsKey(NPCName);
+    private boolean IsNpcInCurrentLocation(String NpcName) {
+        return GameState.MainCharacter.GetCurrentLocation()._NPCs.containsKey(NpcName);
     }
 
     private boolean IsIteminCurrentLocation(String ItemName) {
-        return GameState.CurrentLocation._items.containsKey(ItemName);
+        return GameState.MainCharacter.GetCurrentLocation()._items.containsKey(ItemName);
     }
 
     private void Examine(String[] args) {
         String description = "";
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
 
         if (args.length == 1) { //examine without arguments causes the current location to be examined with all its residing items and NPCs
-            description = GameState.CurrentLocation.ReturnLocationDescription();
-            description = description + GameState.CurrentLocation.ReturnResidingItemsDescriptions();
-            description = description + GameState.CurrentLocation.ReturnResidingNPCDescriptions();
+            description = currentLocation.GetDescription();
         }
-        else if (IsNPCinCurrentLocation(args[1])) {
-            NPC examinedNPC = GameState.CurrentLocation.ReturnResidingNPC(args[1]);
-            description = examinedNPC.ReturnNPCDescription();
+        else if (IsNpcInCurrentLocation(args[1])) {
+            NPC examinedNPC = currentLocation.GetNpc(args[1]);
+            description = examinedNPC.GetDescription();
         }
         else if (IsIteminCurrentLocation(args[1])) {
-            Item examinedItem = GameState.CurrentLocation.ReturnResidingItem(args[1]);
-            description = examinedItem.ReturnItemDescription();
+            Item examinedItem = currentLocation.GetItem(args[1]);
+            description = examinedItem.GetDescription();
         }
 
         if (description.equals("")) {
@@ -87,10 +86,10 @@ public class Controller {
             return;
         }
 
-        if (IsNPCinCurrentLocation(args[2])) {
-            NPC spokenToNPC = GameState.CurrentLocation.ReturnResidingNPC(args[2]);
+        if (IsNpcInCurrentLocation(args[2])) {
+            NPC spokenToNPC = GameState.MainCharacter.GetCurrentLocation().GetNpc(args[2]);
             String conversation;
-            conversation = spokenToNPC.ReturnNPCName() + ": " + spokenToNPC.ReturnNPCDialogue() + "\n";
+            conversation = spokenToNPC.GetName() + ": " + spokenToNPC.GetDialogue() + "\n";
             terminal.print(conversation);
         }
         else {
@@ -105,9 +104,9 @@ public class Controller {
         }
 
         if (IsIteminCurrentLocation(args[1])) {
-            Item grabbedItem = GameState.CurrentLocation.ReturnResidingItem(args[1]);
+            Item grabbedItem = GameState.MainCharacter.GetCurrentLocation().GetItem(args[1]);
 
-            if(grabbedItem.isItemRetrievable()) {
+            if(grabbedItem.IsRetrievable()) {
                 LocationUpdateService.RemoveItem(args[1]);
                 terminal.print("You took " + args[1] + " and put it in your inventory.\n");
             }
@@ -126,19 +125,16 @@ public class Controller {
             return;
         }
 
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
         DirectionEnum direction = DirectionEnum.valueOf(args[1]);
-        Map<DirectionEnum, String> adjacentLocations = GameState.CurrentLocation.ReturnAdjacentLocations();
+        Map<DirectionEnum, String> adjacentLocations = currentLocation.GetAdjacentLocations();
 
         String nextLocationName = adjacentLocations.get(direction);
         if (nextLocationName != null && !nextLocationName.isEmpty()) {
-            GameState.CurrentLocation = GameState.GetLocation(nextLocationName);
+            currentLocation = GameState.GetLocation(nextLocationName);
 
-            terminal.printf("You entered %s.\n", GameState.CurrentLocation.ReturnLocationName());
-
-            String description = GameState.CurrentLocation.ReturnLocationDescription();
-            description = description + GameState.CurrentLocation.ReturnResidingItemsDescriptions();
-            description = description + GameState.CurrentLocation.ReturnResidingNPCDescriptions();
-
+            terminal.printf("You entered %s.\n", currentLocation.GetName());
+            String description = currentLocation.GetDescription();
             terminal.print(description + "\n");
             return;
         }
@@ -150,10 +146,7 @@ public class Controller {
             terminal.print("Incorrect input amount of arguments give command, try again.\n");
             return;
         }
-        if() {
-            terminal.print("Item not in inventory, try again.\n");
-            return;
-        }
-
+        terminal.print("Item not in inventory, try again.\n");
+        return;
     }
 }

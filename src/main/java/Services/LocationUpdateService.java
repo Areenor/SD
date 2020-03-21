@@ -12,14 +12,15 @@ public class LocationUpdateService {
         if (newDescription.isEmpty()) throw new IllegalArgumentException("New description cannot be empty.");
 
         Location location = GameState.GetLocation(locationName);
-        location._description = newDescription;
+        location._baseDescription = newDescription;
         GameState.Locations.replace(locationName, location);
     }
 
     public static void SetDescription(String newDescription) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        String currLocationName = currentLocation._name;
         SetDescription(currLocationName, newDescription);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        currentLocation = GameState.GetLocation(currLocationName);
     }
 
     public static void AddItem(String locationName, Item newItem) {
@@ -33,9 +34,10 @@ public class LocationUpdateService {
     }
 
     public static void AddItem(Item newItem) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        String currLocationName = currentLocation._name;
         AddItem(currLocationName, newItem);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        currentLocation = GameState.GetLocation(currLocationName);
     }
 
     public static Item RemoveItem(String locationName, String itemName) {
@@ -51,9 +53,10 @@ public class LocationUpdateService {
     }
 
     public static Item RemoveItem(String itemName) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        String currLocationName = currentLocation._name;
         Item deletedItem = RemoveItem(currLocationName, itemName);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        currentLocation = GameState.GetLocation(currLocationName);
         return deletedItem;
     }
 
@@ -62,15 +65,16 @@ public class LocationUpdateService {
         if (newNpc == null) throw new IllegalArgumentException("NPC to be added cannot be empty.");
 
         Location location = GameState.GetLocation(locationName);
-        String npcName = newNpc._name;
+        String npcName = newNpc.GetName();
         location._NPCs.put(npcName, newNpc);
         GameState.Locations.replace(locationName, location);
     }
 
     public static void AddNpc( NPC newNpc) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        String currLocationName = currentLocation._name;
         AddNpc(currLocationName, newNpc);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        currentLocation = GameState.GetLocation(currLocationName);
     }
 
     public static NPC RemoveNpc(String locationName, String npcName) {
@@ -86,9 +90,10 @@ public class LocationUpdateService {
     }
 
     public static NPC RemoveNpc(String npcName) {
-        String currLocationName = GameState.CurrentLocation._name;
+        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        String currLocationName = currentLocation._name;
         NPC deletedNpc = RemoveNpc(currLocationName, npcName);
-        GameState.CurrentLocation = GameState.GetLocation(currLocationName);
+        currentLocation = GameState.GetLocation(currLocationName);
         return deletedNpc;
     }
 
