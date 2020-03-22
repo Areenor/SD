@@ -33,7 +33,7 @@ public class Player extends Character {
 
     public void Use(String itemToUseName) {
         if(!_inventory.containsKey(itemToUseName)) {
-            terminal.println("You do not posses a " + itemToUseName + "\n");
+            terminal.println("You do not posses a " + itemToUseName);
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -42,11 +42,11 @@ public class Player extends Character {
 
     public void UseOnItem(String itemToUseName, String targetItemName) {
         if(!_inventory.containsKey(itemToUseName)) {
-            terminal.println("You do not posses a " + itemToUseName + "\n");
+            terminal.println("You do not posses a " + itemToUseName);
             return;
         }
         if(!_currentLocation.ContainsItem(targetItemName)) {
-            terminal.println("There is no " + targetItemName + " present in this location.\n");
+            terminal.println("There is no " + targetItemName + " present in this location.");
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -60,7 +60,7 @@ public class Player extends Character {
             return;
         }
         if(!_currentLocation.ContainsNpc(targetNpcName)) {
-            terminal.println("The character " + targetNpcName + " is not present in this location.\n");
+            terminal.println("The character " + targetNpcName + " is not present in this location.");
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -70,7 +70,7 @@ public class Player extends Character {
 
     public void TalkTo(String targetNpcName) {
         if (!_currentLocation.ContainsNpc(targetNpcName)) {
-            terminal.println("The character " + targetNpcName + " is not present in this location.\n");
+            terminal.println("The character " + targetNpcName + " is not present in this location.");
             return;
         }
 
@@ -81,13 +81,13 @@ public class Player extends Character {
 
     public void Take(String targetItemName) {
         if (!_currentLocation.ContainsItem(targetItemName)) {
-            terminal.println("There is no " + targetItemName + " present in this location.\n");
+            terminal.println("There is no " + targetItemName + " present in this location.");
             return;
         }
 
         Item targetItem = _currentLocation.GetItem(targetItemName);
         if(!targetItem.IsRetrievable()) {
-            terminal.println("The " + targetItemName + " can't be picked up.\n");
+            terminal.println("The " + targetItemName + " can't be picked up.");
             return;
         }
         _currentLocation.RemoveItem(targetItemName);
@@ -96,17 +96,20 @@ public class Player extends Character {
     }
 
     public void Move(DirectionEnum direction) {
-        String adjacentLocationName = _currentLocation.GetAdjacentLocation(direction);
-        if (adjacentLocationName == null || adjacentLocationName.isEmpty()) {
-            terminal.println("There is nothing in this direction.\n");
+        AdjacentLocation adjacentLocation = _currentLocation.GetAdjacentLocation(direction);
+        if (adjacentLocation == null) {
+            terminal.println("There is nothing in this direction.");
             return;
         }
 
-        //Check if next location is locked
-        Location nextLocation = GameState.GetLocation(adjacentLocationName);
+        if (adjacentLocation.IsLocked() && !TryToUnlockLocation(adjacentLocation)) {
+            return;
+        }
+
+        Location nextLocation = GameState.GetLocation(adjacentLocation.GetName());
         _currentLocation = nextLocation;
 
-        terminal.println("\n" + _currentLocation.GetDescription() + " .\n");
+        terminal.println("\n" + _currentLocation.GetDescription() + ".\n");
     }
 
     public void Attack(String targetCharacterName) {
@@ -114,7 +117,37 @@ public class Player extends Character {
     }
 
     public void PrintInventory() {
+        if (_inventory == null || _inventory.size() == 0) {
+            terminal.println("You do not posses any items.");
+            return;
+        }
         String inventoryItems = String.join(", ", _inventory.keySet());
         terminal.println("You posses the following items:\n" + inventoryItems);
+    }
+
+    private boolean TryToUnlockLocation(AdjacentLocation adjacentLocation) {
+        TextIO textIO = TextIoFactory.getTextIO();
+        String keyItemName = adjacentLocation.GetKeyItemName();
+
+        terminal.println(adjacentLocation.GetLockedMessage());
+        if (HasItem(keyItemName)) {
+            terminal.println("Would you like to use your " + keyItemName + "?\tyes/no");
+
+            String userInput = "";
+            while (userInput == null || userInput.isEmpty())
+                userInput = textIO.newStringInputReader().read();
+
+            if (userInput.toLowerCase().equals("yes")) {
+                adjacentLocation.Unlock();
+                terminal.println(adjacentLocation.GetUnlockMessage());
+
+                if (adjacentLocation.ConsumesItem())
+                    RemoveFromInventory(keyItemName);
+                return true;
+            }
+            terminal.println("You gave up on entering the " + adjacentLocation.GetName() + ".");
+        }
+
+        return false;
     }
 }

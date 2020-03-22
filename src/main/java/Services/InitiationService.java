@@ -26,7 +26,7 @@ import java.util.stream.Stream;
 public class InitiationService {
     private static Path storyDirPath = Paths.get(System.getProperty("user.dir"), "story");
     private static Path locationJsonDirPath = Paths.get(storyDirPath.toString(), "locations");
-    private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
+    private static Path npcJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
     private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
 
     public static void InitiateMainCharacter(String startingLocationName) {
@@ -85,7 +85,7 @@ public class InitiationService {
 
         assert locationConfigFiles != null;
         for (File locationConfigFile : locationConfigFiles) {
-            String locationName = locationConfigFile.getName().replace(".json", "");
+            String locationName = GetNameFromJson(locationConfigFile);
             GameState.Locations.put(locationName, InitiateLocation(locationConfigFile.getPath()));
         }
     }
@@ -97,14 +97,14 @@ public class InitiationService {
     }
 
     public static NPC InitiateCharacter(String characterName) {
-        Path characterConfigFilePath = Paths.get(characterJsonDirPath.toString(), characterName + ".json");
+        Path characterConfigFilePath = GetJsonPathFromName(Class.npc, characterName);
         String characterConfigFileContent = readLineByLine(characterConfigFilePath.toString());
         NPCConfig characterConfig = JSON.parseObject(characterConfigFileContent, NPCConfig.class);
         return new NPC(characterConfig);
     }
 
     public static Item InitiateItem(String itemName) {
-        Path itemConfigFilePath = Paths.get(itemJsonDirPath.toString(), itemName + ".json");
+        Path itemConfigFilePath = GetJsonPathFromName(Class.item, itemName);
         String objectConfigFileContent = readLineByLine(itemConfigFilePath.toString());
         ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
         return new Item(itemConfig);
@@ -122,5 +122,25 @@ public class InitiationService {
             e.printStackTrace();
         }
         return contentBuilder.toString();
+    }
+
+    private static String GetNameFromJson(File configFile) {
+        return configFile.getName().replace(".json", "");
+    }
+
+    private static Path GetJsonPathFromName(Class classType, String name) {
+        Path jsonDirPath = null;
+        switch (classType) {
+            case location: jsonDirPath = locationJsonDirPath; break;
+            case item: jsonDirPath = itemJsonDirPath; break;
+            case npc: jsonDirPath = npcJsonDirPath; break;
+        }
+        return Paths.get(jsonDirPath.toString(), name + ".json");
+    }
+
+    private enum Class {
+        location,
+        item,
+        npc
     }
 }

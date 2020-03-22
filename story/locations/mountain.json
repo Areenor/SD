@@ -3,5 +3,5 @@
   "Description" : "You are on a mountain, there are objects and items. There is a room south.",
   "Characters" : ["testNPC2"],
   "Items" : ["testObject2"],
-  "AdjacentLocations" : {"south":"room"}
+  "AdjacentLocations" : {"south": {"Name" : "room"}}
 }

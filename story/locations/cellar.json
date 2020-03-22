@@ -1,0 +1,9 @@
+{
+  "Name" : "cellar",
+  "Description" : "You are in an old dusty cellar, there doesn't seem to be much in here",
+  "AdjacentLocations" : {
+    "west" : {
+      "Name" : "room"
+    }
+  }
+}

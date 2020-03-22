@@ -43,4 +43,5 @@ public abstract class Character {
 
     public void AddToInventory(Item item) { _inventory.put(item.GetName(), item); }
     public void RemoveFromInventory(String itemName) { _inventory.remove(itemName); }
+    public boolean HasItem(String itemName) { return _inventory.containsKey(itemName); }
 }

@@ -26,8 +26,7 @@ public abstract class Controller {
 
         switch (command) {
             case "examine":
-                Location playerLocation = player.GetCurrentLocation();
-                Examine(args, playerLocation);
+                Examine(args, player);
                 break;
             case "talk":
                 Talk(args, player);
@@ -57,19 +56,23 @@ public abstract class Controller {
         }
     }
 
-    private static void Examine(String[] args, Location playerLocation) {
+    private static void Examine(String[] args, Player player) {
         String description = "";
-        Location currentLocation = GameState.MainCharacter.GetCurrentLocation();
+        Location playerLocation = player.GetCurrentLocation();
 
         if (args.length == 1) {
-            description = currentLocation.GetDescription();
+            description = playerLocation.GetDescription();
         }
         else if (playerLocation.ContainsNpc(args[1])) {
-            NPC examinedNPC = currentLocation.GetNpc(args[1]);
+            NPC examinedNPC = playerLocation.GetNpc(args[1]);
             description = examinedNPC.GetDescription();
         }
         else if (playerLocation.ContainsItem(args[1])) {
-            Item examinedItem = currentLocation.GetItem(args[1]);
+            Item examinedItem = playerLocation.GetItem(args[1]);
+            description = examinedItem.GetDescription();
+        }
+        else if (player.HasItem(args[1])) {
+            Item examinedItem = player.GetItem(args[1]);
             description = examinedItem.GetDescription();
         }
 

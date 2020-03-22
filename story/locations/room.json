@@ -2,6 +2,21 @@
   "Name" : "room",
   "Description" : "You are in a small room. You see mountains north and a beach west.",
   "Characters" : ["Areenor"],
-  "Items" : ["Flask"],
-  "AdjacentLocations" : {"north":"mountain", "west": "beach"}
+  "Items" : ["Flask", "old_key"],
+  "AdjacentLocations" : {
+    "north": {
+      "Name": "mountain"
+    },
+    "west": {
+      "Name": "beach"
+    },
+    "east": {
+      "Name" : "cellar",
+      "Locked" : "true",
+      "ConsumesItem" : "true",
+      "KeyItemName" : "old_key",
+      "LockedMessage" : "The door to the cellar is locked.",
+      "UnlockMessage" : "The old key fits perfectly, but as you turn it the key snaps, luckily it did manage to unlock the door."
+    }
+  }
 }
