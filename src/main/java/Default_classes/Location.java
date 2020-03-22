@@ -46,6 +46,7 @@ public class Location {
 
     public void SetBaseDescription(String description) { _baseDescription = description; }
     public void SetAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.replace(direction, locationName); }
+    public void AddAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.put(direction, locationName); }
     public void SetNpc(String NpcName, NPC npc) { _NPCs.replace(NpcName, npc); }
     public void SetItem(String ItemName, Item item) { _items.replace(ItemName, item); }
 

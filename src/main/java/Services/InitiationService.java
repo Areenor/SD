@@ -1,15 +1,7 @@
 package Services;
 
-import Configuration_models.ConsumConfig;
-import Configuration_models.NPCConfig;
-import Configuration_models.LocationConfig;
-import Configuration_models.ItemConfig;
-import Default_classes.Consumable;
-import Default_classes.Junk;
-import Default_classes.NPC;
-import Default_classes.Location;
-import Default_classes.Item;
-import Default_classes.Player;
+import Configuration_models.*;
+import Default_classes.*;
 import Game_data.GameState;
 import com.alibaba.fastjson.JSON;
 import org.beryx.textio.TextIO;
@@ -32,6 +24,7 @@ public class InitiationService {
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
     private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
     private static Path consumJsonDirPath = Paths.get(storyDirPath.toString(), "consumables");
+    private static Path keyitemsJsonDirPath = Paths.get(storyDirPath.toString(), "keyitems");
 
     public static void InitiateMainCharacter(String startingLocationName) {
         TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
@@ -114,11 +107,17 @@ public class InitiationService {
 
 
         Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
+        Path keyitemsConfigFilePath = Paths.get(keyitemsJsonDirPath.toString(), itemName + ".json");
 
         if(Files.exists(consumConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
             ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
             return new Consumable(itemConfig, consumConfig);
+        }
+        else if(Files.exists(keyitemsConfigFilePath)) {
+            String addobjectConfigFileContent = readLineByLine(keyitemsConfigFilePath.toString());
+            KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
+            return new KeyItem(itemConfig, keyItemConfig);
         }
         return new Junk(itemConfig);
     }

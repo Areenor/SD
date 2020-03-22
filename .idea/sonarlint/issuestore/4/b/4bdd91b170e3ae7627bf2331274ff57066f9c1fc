@@ -1,0 +1,7 @@
+
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
+isquid:UselessImportCheck">Remove this unused import 'Configuration_models.ConsumConfig'.(Ç¡Á–8€™”—.
+asquid:UselessImportCheck	"1Remove this unused import 'Enumerators.StatEnum'.(¬©³‰úÿÿÿÿ8€™”—.
+`squid:UselessImportCheck
+"0Remove this unused import 'Game_data.GameState'.(ıÕ˜Æùÿÿÿÿ8€™”—.
+‚squid:S1192"dDefine a constant instead of duplicating this literal "This item has no use, it is junk.\n" 3 times.(“˜ª‘8€™”—.
