@@ -2,16 +2,11 @@ package Default_classes;
 
 import Enumerators.DirectionEnum;
 import Game_data.GameState;
-//import Services.LocationUpdateService;
-import jdk.internal.jline.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class Player extends Character {
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional

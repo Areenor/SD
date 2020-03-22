@@ -126,6 +126,8 @@ public abstract class Controller {
     }
 
     private static void Use(String[] args, Player player) {
+
+
         if (args.length < 2) {
             terminal.println("Please specify an item to use.\n");
             return;
@@ -135,17 +137,21 @@ public abstract class Controller {
             return;
         }
 
-        String ItemToUseName = args[1];
+        String itemToUseName = args[1];
+
         if (args.length == 2) {
-            player.Use(ItemToUseName);
+            player.Use(itemToUseName);
             return;
         }
-        if (player.GetCurrentLocation().ContainsNpc(ItemToUseName)) {
-            player.UseOnNpc(ItemToUseName, args[2]);
+
+        String target = args[2];
+
+        if (player.GetCurrentLocation().ContainsNpc(target)) {
+            player.UseOnNpc(itemToUseName, args[2]);
             return;
         }
-        if (player.GetCurrentLocation().ContainsItem(ItemToUseName)) {
-            player.UseOnItem(ItemToUseName, args[2]);
+        else if (player.GetCurrentLocation().ContainsItem(target)) {
+            player.UseOnItem(itemToUseName, args[2]);
             return;
         }
         terminal.println("No such item or character in the current location.\n");

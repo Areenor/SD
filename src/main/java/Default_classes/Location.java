@@ -7,7 +7,6 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Enumerators.DirectionEnum;
-import org.graalvm.compiler.loop.InductionVariable;
 
 import java.util.HashMap;
 import java.util.Map;

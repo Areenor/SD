@@ -39,7 +39,7 @@ public abstract class Character {
     public void SetConstitution(int constitution) { _constitution = constitution; }
     public void SetHitPoints(int hitPoints) { _hitPoints = hitPoints; }
     public void SetAttack(int attack)  { _attack = attack; }
-    public void SetStamina(int strength) { _strength = strength; }
+    public void SetStamina(int stamina) { _stamina = stamina; }
 
     public void AddToInventory(Item item) { _inventory.put(item.GetName(), item); }
     public void RemoveFromInventory(String itemName) { _inventory.remove(itemName); }

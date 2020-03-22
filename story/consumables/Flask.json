@@ -1,0 +1,6 @@
+{
+  "StatChange" : 5,
+  "IsDangerous" : false,
+  "AffectedStat": "Strength"
+
+}

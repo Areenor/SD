@@ -11,8 +11,8 @@ import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
 
-public class Item {
-    private final String _name;
+public abstract class Item {
+    protected final String _name;
     private String _description;
     private boolean _isRetrievable;
 

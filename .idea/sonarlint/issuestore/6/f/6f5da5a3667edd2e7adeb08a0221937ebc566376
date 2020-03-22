@@ -1,25 +1,29 @@
 
-|squid:S00116"]Rename this field "_adjacentLocations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÀÔ8€Şşœ.
-msquid:S001004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ÀÃî8ÿ¾ÑŸ.
-psquid:S00116"QRename this field "_items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å•Á”8¸»êïŒ.
-‡"squid:ClassVariableVisibilityCheck"RMake _items a static final constant or non-public and provide accessors if needed.(å•Á”8¸»êïŒ.
-†"squid:ClassVariableVisibilityCheck"QMake _NPCs a static final constant or non-public and provide accessors if needed.(£ì”8€Şşœ.
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•Á”8¸»êïŒ.
-:squid:S1643;"Use a StringBuilder instead.(Ô‰»8¯ÂæŸ.
-usquid:S00117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¬ïõÿÿÿÿÿ8¢ôöŸ.
-osquid:S00116"PRename this field "_NPCs" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ì”8€Şşœ.
-Ysquid:S2696*"6Make the enclosing method "static" or remove this set.(üÚ¤ùıÿÿÿÿ8€Şşœ.
-rsquid:S001008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤È™ıÿÿÿÿÿ8°ÌÕŸ.
-?squid:S1643B"Use a StringBuilder instead.(ºÂîŞıÿÿÿÿ8ĞØ÷Ÿ.
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÌÀÔ8€Şşœ.
-psquid:S00117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§†È¼8«ùŸ.
-"squid:ClassVariableVisibilityCheck"XMake _description a static final constant or non-public and provide accessors if needed.(É´±8²Ó³±ˆ.
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(£ì”8€Şşœ.
-msquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§†È¼8ÿ¾ÑŸ.
-usquid:S00117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¢™¼ùÿÿÿÿ8¶Ë­.
-vsquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É´±8²Ó³±ˆ.
-tsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôìßùÿÿÿÿ8²Ó³±ˆ.
-rsquid:S00100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¢™¼ùÿÿÿÿ8ÿ¾ÑŸ.
-“"squid:ClassVariableVisibilityCheck"^Make _adjacentLocations a static final constant or non-public and provide accessors if needed.(ÌÀÔ8€Şşœ.
+rsquid:S00100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ’¹Íúÿÿÿÿ8ò®õŸ.
+tsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôìßùÿÿÿÿ8²Ó³±ˆ.
+‡"squid:ClassVariableVisibilityCheck"RMake _items a static final constant or non-public and provide accessors if needed.(å•Á”8¸»êïŒ.
+rsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…à‚Çøÿÿÿÿ8ÓÌ×Æ.
+usquid:S00117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¬ïõÿÿÿÿÿ8¢ôöŸ.
+wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(£ì”8€Şşœ.
+msquid:S00100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§†È¼8ÓÌ×Æ.
+vsquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É´±8²Ó³±ˆ.
+|squid:S00116"]Rename this field "_adjacentLocations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏÑçö8ÓÌ×Æ.
+?squid:S1643>"Use a StringBuilder instead.(ºÂîŞıÿÿÿÿ8ĞØ÷Ÿ.
+†"squid:ClassVariableVisibilityCheck"QMake _NPCs a static final constant or non-public and provide accessors if needed.(£ì”8€Şşœ.
+msquid:S001000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ÀÃî8ÓÌ×Æ.
+rsquid:S001004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤È™ıÿÿÿÿÿ8ÿ¾ÑŸ.
+=squid:S1640"Convert this Map to an EnumMap.(ÏÑçö8ÓÌ×Æ.
+“"squid:ClassVariableVisibilityCheck"^Make _adjacentLocations a static final constant or non-public and provide accessors if needed.(ÏÑçö8ÓÌ×Æ.
+usquid:S00117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¢™¼ùÿÿÿÿ8«ùŸ.
+`squid:UselessImportCheck"0Remove this unused import 'Game_data.GameState'.(ıÕ˜Æùÿÿÿÿ8ÓÌ×Æ.
+:squid:S16437"Use a StringBuilder instead.(Ô‰»8¯ÂæŸ.
+osquid:S00116"PRename this field "_NPCs" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ì”8€Şşœ.
+psquid:S00116"QRename this field "_items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å•Á”8¸»êïŒ.
+msquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë¯œ©8ÓÌ×Æ.
+"squid:ClassVariableVisibilityCheck"XMake _description a static final constant or non-public and provide accessors if needed.(É´±8²Ó³±ˆ.
+psquid:S00117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§†È¼8ÓÌ×Æ.
+Osquid:S1068",Remove this unused "terminal" private field.(Á¿ƒâúÿÿÿÿ8ÓÌ×Æ.
+wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(å•Á”8€Şşœ.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-rsquid:S00100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ’¹Íúÿÿÿÿ8ò®õŸ.
+rsquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¢™¼ùÿÿÿÿ8ÿ¾ÑŸ.
+wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÏÑçö8ÓÌ×Æ.

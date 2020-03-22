@@ -1,8 +1,11 @@
 package Services;
 
+import Configuration_models.ConsumConfig;
 import Configuration_models.NPCConfig;
 import Configuration_models.LocationConfig;
 import Configuration_models.ItemConfig;
+import Default_classes.Consumable;
+import Default_classes.Junk;
 import Default_classes.NPC;
 import Default_classes.Location;
 import Default_classes.Item;
@@ -28,6 +31,7 @@ public class InitiationService {
     private static Path locationJsonDirPath = Paths.get(storyDirPath.toString(), "locations");
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
     private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
+    private static Path consumJsonDirPath = Paths.get(storyDirPath.toString(), "consumables");
 
     public static void InitiateMainCharacter(String startingLocationName) {
         TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
@@ -107,7 +111,16 @@ public class InitiationService {
         Path itemConfigFilePath = Paths.get(itemJsonDirPath.toString(), itemName + ".json");
         String objectConfigFileContent = readLineByLine(itemConfigFilePath.toString());
         ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
-        return new Item(itemConfig);
+
+
+        Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
+
+        if(Files.exists(consumConfigFilePath)) {
+            String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
+            ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
+            return new Consumable(itemConfig, consumConfig);
+        }
+        return new Junk(itemConfig);
     }
 
     private static String readLineByLine(String filePath)
