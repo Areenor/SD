@@ -12,6 +12,8 @@ public class Player extends Character {
     private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
     private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
     private Location _currentLocation;
+    private Equipment _weapon = null;
+    private Equipment _armor = null;
 
     public Player(String name, int strength, int dexterity, int constitution, Location startLocation) {
         _name = name;
@@ -20,6 +22,27 @@ public class Player extends Character {
         _constitution = constitution;
         _inventory = new HashMap<String, Item>();
         _currentLocation = startLocation;
+    }
+
+    public Equipment GetWeapon() { return _weapon;}
+    public Equipment GetArmor() { return _armor;}
+    public void SetWeapon(Equipment newWeapon) {
+        if(_weapon != null) {
+            SetStrength(GetStrength() - _weapon.GetAttackBonus());
+            AddToInventory(_weapon);
+        }
+        SetStrength(GetStrength() + newWeapon.GetAttackBonus());
+        RemoveFromInventory(newWeapon.GetName());
+        _weapon = newWeapon;
+    }
+    public void SetArmor(Equipment newArmor) {
+        if(_armor != null) {
+            SetConstitution(GetConstitution() - _armor.GetBlockBonus());
+            AddToInventory(_armor);
+        }
+        SetConstitution(GetConstitution() + newArmor.GetBlockBonus());
+        RemoveFromInventory(newArmor.GetName());
+        _armor = newArmor;
     }
 
     public Location GetCurrentLocation() { return _currentLocation; }
@@ -101,7 +124,7 @@ public class Player extends Character {
         Location nextLocation = GameState.GetLocation(adjacentLocationName);
         _currentLocation = nextLocation;
 
-        terminal.println("\n" + _currentLocation.GetDescription() + " .\n");
+        terminal.println("\n" + _currentLocation.GetDescription() + "\n");
     }
 
     public void Attack(String targetCharacterName) {

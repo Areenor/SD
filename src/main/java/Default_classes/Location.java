@@ -39,7 +39,7 @@ public class Location {
     }
 
     public String GetName() { return _name; }
-    public String GetDescription() { return (_baseDescription + GetItemDescriptions() + GetNpcDescriptions()); }
+    public String GetDescription() { return (_baseDescription + "\n" + GetItemDescriptions() + "\n" + GetNpcDescriptions()); }
     public String GetAdjacentLocation(DirectionEnum direction) { return _adjacentLocations.get(direction); }
     public NPC GetNpc(String NpcName) { return _NPCs.get(NpcName); }
     public Item GetItem(String ItemName) { return _items.get(ItemName); }

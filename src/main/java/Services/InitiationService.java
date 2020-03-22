@@ -25,6 +25,7 @@ public class InitiationService {
     private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
     private static Path consumJsonDirPath = Paths.get(storyDirPath.toString(), "consumables");
     private static Path keyitemsJsonDirPath = Paths.get(storyDirPath.toString(), "keyitems");
+    private static Path equipmentJsonDirPath = Paths.get(storyDirPath.toString(), "equipment");
 
     public static void InitiateMainCharacter(String startingLocationName) {
         TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
@@ -108,6 +109,7 @@ public class InitiationService {
 
         Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
         Path keyitemsConfigFilePath = Paths.get(keyitemsJsonDirPath.toString(), itemName + ".json");
+        Path equipmentConfigFilePath = Paths.get(equipmentJsonDirPath.toString(), itemName + ".json");
 
         if(Files.exists(consumConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
@@ -118,6 +120,11 @@ public class InitiationService {
             String addobjectConfigFileContent = readLineByLine(keyitemsConfigFilePath.toString());
             KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
             return new KeyItem(itemConfig, keyItemConfig);
+        }
+        else if(Files.exists(equipmentConfigFilePath)) {
+            String addobjectConfigFileContent = readLineByLine(equipmentConfigFilePath.toString());
+            EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
+            return new Equipment(itemConfig, equipConfig);
         }
         return new Junk(itemConfig);
     }
