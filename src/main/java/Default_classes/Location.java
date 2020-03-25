@@ -18,9 +18,6 @@ public class Location {
     private Map<String, NPC> _NPCs = new HashMap<String, NPC>();
     private Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
 
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
     public Location(LocationConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
         if (config.Name.isEmpty()) throw new IllegalArgumentException("The location name is empty");

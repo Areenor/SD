@@ -4,9 +4,6 @@ import Configuration_models.*;
 import Default_classes.*;
 import Game_data.GameState;
 import com.alibaba.fastjson.JSON;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -28,37 +25,34 @@ public class InitiationService {
     private static Path equipmentJsonDirPath = Paths.get(storyDirPath.toString(), "equipment");
 
     public static void InitiateMainCharacter(String startingLocationName) {
-        TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-        TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
         int pointCount = 2;
         String strengthInput = "";
         String dexterityInput = "";
         String constitutionInput = "";
 
-        String nameInput = textIO.newStringInputReader().read("Please enter the name of your character \n");
+        String nameInput = Terminal.Read("Please enter the name of your character \n");
         String mainCharacterName = nameInput;
-        terminal.printf("There are thee game statistics of you character: Strength, Dexterity and Constitution." +
+        Terminal.Print("There are thee game statistics of you character: Strength, Dexterity and Constitution." +
                 "All of them will directly influence the performance of your character in combat. You have 2 points to split between them.\n");
 
         while(pointCount != 0){
-            strengthInput = textIO.newStringInputReader().read("Strength:");
-            dexterityInput = textIO.newStringInputReader().read("Dexterity:");
-            constitutionInput = textIO.newStringInputReader().read("Constitution:");
+            strengthInput = Terminal.Read("Strength:");
+            dexterityInput = Terminal.Read("Dexterity:");
+            constitutionInput = Terminal.Read("Constitution:");
             pointCount = pointCount - Integer.parseInt(constitutionInput) - Integer.parseInt(dexterityInput) - Integer.parseInt(strengthInput);
             if(pointCount < 0) {
                 pointCount = 2;
-                terminal.printf("Too many points assigned, please assign only two points\n");
+                Terminal.Print("Too many points assigned, please assign only two points\n");
             }
             else if(pointCount > 0) {
                 pointCount = 2;
-                terminal.printf("Not enough points assigned, please assign only two points\n");
+                Terminal.Print("Not enough points assigned, please assign only two points\n");
             }
         }
 
         Location startingLocation = GameState.GetLocation(startingLocationName);
         GameState.MainCharacter = new Player(mainCharacterName, Integer.parseInt(strengthInput), Integer.parseInt(dexterityInput), Integer.parseInt(constitutionInput), startingLocation);
-        terminal.printf("Greetings, " + GameState.MainCharacter.GetName() + "\n");
+        Terminal.Print("Greetings, " + GameState.MainCharacter.GetName() + "\n");
     }
 
     public static HashMap<String, Item> InitiateCharacterInventory(List<String> inventoryItems) {

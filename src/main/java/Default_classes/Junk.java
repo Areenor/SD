@@ -8,31 +8,24 @@ import Configuration_models.ConsumConfig;
 import Configuration_models.ItemConfig;
 import Enumerators.StatEnum;
 import Game_data.GameState;
+import Services.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
 public class Junk extends Item{
-
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
     public Junk(ItemConfig config) {
         super(config);
     }
 
     @Override
-    public void Use() {
-        terminal.print("This item has no use, it is junk.\n");
-    }
+    public void Use() { Terminal.PrintLine("This item has no use, it is junk.");}
 
     @Override
-    public void Use(Item targetItem) {
-        terminal.print("This item has no use, it is junk.\n");
-    }
+    public void Use(Item targetItem) { Terminal.PrintLine("This item has no use, it is junk."); }
 
     @Override
     public void Use(NPC targetNpc) {
-        terminal.print("This item has no use, it is junk.\n");
+        Terminal.PrintLine("This item has no use, it is junk.");
     }
 }

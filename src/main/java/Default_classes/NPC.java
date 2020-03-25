@@ -3,6 +3,7 @@ package Default_classes;
 import Configuration_models.NPCConfig;
 import Game_data.GameState;
 import Services.InitiationService;
+import Services.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -13,9 +14,6 @@ public class NPC extends Character {
     private String _dialogue;
     private boolean _isHostile;
     private boolean _isFightable;
-
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     public NPC(NPCConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
@@ -55,8 +53,8 @@ public class NPC extends Character {
 
     public void Talk() {
         if (_dialogue == null || _dialogue.isEmpty())
-            terminal.println(_name + " has nothing to say to you.\n");
-        terminal.println(_dialogue + "\n");
+            Terminal.PrintLine(_name + " has nothing to say to you.");
+        Terminal.PrintLine(_dialogue + "\n");
     }
 
     public void Attack(String targetCharacterName) {

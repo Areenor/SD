@@ -9,6 +9,7 @@ import Configuration_models.EquipConfig;
 import Configuration_models.ItemConfig;
 import Enumerators.EquipmentTypeEnum;
 import Game_data.GameState;
+import Services.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -17,9 +18,6 @@ public class Equipment extends Item{
     private int _blockBonus;
     private int _attackBonus;
     private EquipmentTypeEnum _type;
-
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     public Equipment(ItemConfig config, EquipConfig addon) {
         super(config);
@@ -47,16 +45,16 @@ public class Equipment extends Item{
             default:
                 throw new IllegalArgumentException("The configuration is empty, misses EquipmentType");
         }
-        terminal.printf("You equiped the %s of type %s.\n", _name, _type);
+        Terminal.PrintLine("You equipped the " + _name + " of type " + _type);
     }
 
     @Override
     public void Use(Item targetItem) {
-        terminal.print("This is a piece of equipment. Equipment can only be used on yourself.\n");
+        Terminal.PrintLine("This is a piece of equipment. Equipment can only be used on yourself.");
     }
 
     @Override
     public void Use(NPC targetNpc) {
-        terminal.print("This is a piece of equipment. Equipment can only be used on yourself.\n");
+        Terminal.PrintLine("This is a piece of equipment. Equipment can only be used on yourself.");
     }
 }

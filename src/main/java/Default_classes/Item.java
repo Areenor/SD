@@ -16,9 +16,6 @@ public abstract class Item {
     private String _description;
     private boolean _isRetrievable;
 
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
     public Item(ItemConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
         if (config.Name.isEmpty()) throw  new IllegalArgumentException("The object name is empty");
