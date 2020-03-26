@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameState {
+    public static boolean Combat = false;
     public static boolean IsFinished = false;
     public static Player MainCharacter;
     public static Map<String, Location> Locations = new HashMap<>();

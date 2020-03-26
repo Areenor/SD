@@ -25,6 +25,9 @@ public abstract class Controller {
         String command = args[0];
 
         switch (command) {
+            case "test":
+                Combat.init();
+                break;
             case "examine":
                 Location playerLocation = player.GetCurrentLocation();
                 Examine(args, playerLocation);
@@ -38,6 +41,33 @@ public abstract class Controller {
             case "move":
                 Move(args, player);
                 break;
+            case "use":
+                Use(args, player);
+                break;
+            case "attack":
+                Attack(args, player);
+                break;
+            case "inventory":
+                player.PrintInventory();
+                break;
+            case "exit":
+            case "quit":
+                GameState.IsFinished = true;
+                textIO.dispose();
+                break;
+            default:
+                terminal.print("Unknown command.\n");
+        }
+    }
+    public static void ExecuteCombatCommand(Player player) {
+        String userInput = textIO.newStringInputReader().read();
+        if (userInput == null || userInput.isEmpty())
+            return;
+
+        String[] args = userInput.split(" ");
+        String command = args[0];
+
+        switch (command) {
             case "use":
                 Use(args, player);
                 break;
@@ -139,6 +169,10 @@ public abstract class Controller {
 
         String itemToUseName = args[1];
 
+        if(GameState.Combat){
+            player.SetCurrentStamina(player.GetCurrentStamina() - 1);
+        }
+
         if (args.length == 2) {
             player.Use(itemToUseName);
             return;
@@ -165,6 +199,13 @@ public abstract class Controller {
         if (args.length > 2) {
             terminal.println("Too many arguments.\n");
             return;
+        }
+        if(!GameState.MainCharacter.GetCurrentLocation().ContainsNpc(args[1])){
+            terminal.println("There is no such NPC on the location\n");
+            return;
+        }
+        if(GameState.Combat){
+            player.SetCurrentStamina(player.GetCurrentStamina() - 1);
         }
         player.Attack(args[1]);
     }

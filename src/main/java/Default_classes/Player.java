@@ -2,6 +2,7 @@ package Default_classes;
 
 import Enumerators.DirectionEnum;
 import Game_data.GameState;
+import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -20,6 +21,11 @@ public class Player extends Character {
         _constitution = constitution;
         _inventory = new HashMap<String, Item>();
         _currentLocation = startLocation;
+        _hitPoints = _constitution * 2 + 10;
+        _attack = _strength * 2 + 5;
+        _stamina = _dexterity + 1;
+        _currentHitPoints = _hitPoints;
+        _currentStamina = _stamina;
     }
 
     public Location GetCurrentLocation() { return _currentLocation; }
@@ -102,10 +108,6 @@ public class Player extends Character {
         _currentLocation = nextLocation;
 
         terminal.println("\n" + _currentLocation.GetDescription() + " .\n");
-    }
-
-    public void Attack(String targetCharacterName) {
-        //To be implemented
     }
 
     public void PrintInventory() {

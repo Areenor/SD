@@ -1,17 +1,18 @@
 package Default_classes;
 
 import Configuration_models.LocationConfig;
-import Game_data.GameState;
 import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 import Enumerators.DirectionEnum;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Location {
+public class  Location {
     private final String _name;
     private String _baseDescription;
     private Map<String, Item> _items = new HashMap<String, Item>();
@@ -42,6 +43,15 @@ public class Location {
     public String GetDescription() { return (_baseDescription + GetItemDescriptions() + GetNpcDescriptions()); }
     public String GetAdjacentLocation(DirectionEnum direction) { return _adjacentLocations.get(direction); }
     public NPC GetNpc(String NpcName) { return _NPCs.get(NpcName); }
+    public Map<String, NPC> GetAllNpc() {return _NPCs;}
+    public List<NPC> getEnemies(){
+        List<NPC> allEnemies = new ArrayList<NPC>();
+        List<NPC> allNPC = new ArrayList<NPC>(GetAllNpc().values());
+        for(NPC current: allNPC){
+            if(current.IsHostile()){ allEnemies.add(current); }
+        }
+        return allEnemies;
+    }
     public Item GetItem(String ItemName) { return _items.get(ItemName); }
 
     public void SetBaseDescription(String description) { _baseDescription = description; }

@@ -1,7 +1,6 @@
 package Default_classes;
 
 import Configuration_models.NPCConfig;
-import Game_data.GameState;
 import Services.InitiationService;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -31,10 +30,12 @@ public class NPC extends Character {
         _constitution = config.Constitution;
         _isFightable = config.IsFightable;
         _isHostile = config.IsHostile;
-        _hitPoints = _constitution + BASE_HEALTH;
-        _attack = _strength + BASE_ATTACK;
+        _hitPoints = _constitution * 2 + BASE_HEALTH;
+        _attack = _strength * 2 + BASE_ATTACK;
         _stamina = _dexterity + BASE_STAMINA;
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
+        _currentHitPoints = _hitPoints;
+        _currentStamina = _stamina;
     }
 
     public String GetDescription(){
@@ -57,10 +58,6 @@ public class NPC extends Character {
         if (_dialogue == null || _dialogue.isEmpty())
             terminal.println(_name + " has nothing to say to you.\n");
         terminal.println(_dialogue + "\n");
-    }
-
-    public void Attack(String targetCharacterName) {
-        //To be implemented
     }
 
     public void DropInventory(Location dropLocation) {

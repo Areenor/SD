@@ -1,5 +1,7 @@
+import Default_classes.Character;
 import Default_classes.Location;
 import Game_data.GameState;
+import Services.Combat;
 import Services.Controller;
 import Services.InitiationService;
 import org.apache.log4j.BasicConfigurator;
@@ -8,7 +10,6 @@ import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
 public class Main {
-
     public static void main (String[] args) {
         final String SPAWN_ROOM = "room";
 
@@ -26,7 +27,8 @@ public class Main {
         terminal.println(description + "\n");
 
         while (!GameState.IsFinished) {
-            Controller.ExecuteCommand(GameState.MainCharacter);
+            if(!GameState.Combat){ Controller.ExecuteCommand(GameState.MainCharacter); }
+            else { Combat.run(Combat.combat_order, 0); }
         }
     }
 }

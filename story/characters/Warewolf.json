@@ -1,0 +1,10 @@
+{
+  "Name" : "Warewolf",
+  "IsHostile" : "true",
+  "Description" : "You see a beast which looks like a wolf, but much bigger",
+  "Type" : "Warewold",
+  "Dialogue" : "ARRRRRRRR",
+  "Strength": 2,
+  "Dexterity": 1,
+  "Constitution": 2
+}

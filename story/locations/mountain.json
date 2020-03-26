@@ -1,6 +1,6 @@
 {
   "Name" : " the mountains",
-  "Description" : "You are on a mountain, there are objects and items. There is a room south.",
+  "Description" : "You are on a mountain. There is a room south.",
   "Characters" : [],
   "Items" : [],
   "AdjacentLocations" : {"south":"room"}
