@@ -42,6 +42,9 @@ public abstract class Controller {
             case "inventory":
                 player.PrintInventory();
                 break;
+            case "commands":
+                PrintUsableCommands();
+                break;
             case "exit":
             case "quit":
                 GameState.IsFinished = true;
@@ -50,6 +53,10 @@ public abstract class Controller {
             default:
                 Terminal.PrintLine("Unknown command.\n");
         }
+    }
+
+    public static void PrintUsableCommands() {
+        Terminal.PrintLine("Examine, talk to, take, move, use, attack, block, dodge, inventory, exit, quit.\n");
     }
     public static void ExecuteCombatCommand(Player player) {
         String userInput = Terminal.Read();

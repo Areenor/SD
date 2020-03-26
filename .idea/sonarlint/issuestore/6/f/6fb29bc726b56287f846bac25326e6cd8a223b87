@@ -1,24 +1,24 @@
 
-‹"squid:ClassVariableVisibilityCheck"XMake Constitution a static final constant or non-public and provide accessors if needed.(³´²¢ÿÿÿÿÿ
-~"squid:ClassVariableVisibilityCheck	"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà
-~"squid:ClassVariableVisibilityCheck"PMake Type a static final constant or non-public and provide accessors if needed.(­î¢™
 ˆ"squid:ClassVariableVisibilityCheck"UMake Inventory a static final constant or non-public and provide accessors if needed.(Æ«ÕØùÿÿÿÿ
-gsquid:S00116	"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà
+msquid:S00116"VRename this field "IsFightable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â°„D
 qsquid:S00116"TRename this field "IsHostile" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Àæûÿÿÿÿ
-„"squid:ClassVariableVisibilityCheck"WMake IsFightable a static final constant or non-public and provide accessors if needed.(Â°„D
-‚"squid:ClassVariableVisibilityCheck"TMake Strength a static final constant or non-public and provide accessors if needed.(¶ÒÁ×
-ƒ"squid:ClassVariableVisibilityCheck"UMake Dexterity a static final constant or non-public and provide accessors if needed.(İš‹¾
-msquid:S00116
-"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+
-lsquid:S00116"TRename this field "Dexterity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İš‹¾
-tsquid:S00116"WRename this field "Constitution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³´²¢ÿÿÿÿÿ
-gsquid:S00116"ORename this field "Type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­î¢™
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
 „"squid:ClassVariableVisibilityCheck
 "WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+
-ˆ"squid:ClassVariableVisibilityCheck"UMake IsHostile a static final constant or non-public and provide accessors if needed.(£Àæûÿÿÿÿ
-ksquid:S00116"SRename this field "Strength" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ÒÁ×
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
-qsquid:S00116"TRename this field "Inventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ«ÕØùÿÿÿÿ
-‡"squid:ClassVariableVisibilityCheck"TMake Dialogue a static final constant or non-public and provide accessors if needed.(Ú©­Ìÿÿÿÿÿ
-msquid:S00116"VRename this field "IsFightable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â°„D
+~"squid:ClassVariableVisibilityCheck	"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà
+gsquid:S00116"ORename this field "Type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­î¢™
 psquid:S00116"SRename this field "Dialogue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú©­Ìÿÿÿÿÿ
+ˆ"squid:ClassVariableVisibilityCheck"UMake IsHostile a static final constant or non-public and provide accessors if needed.(£Àæûÿÿÿÿ
+~"squid:ClassVariableVisibilityCheck"PMake Type a static final constant or non-public and provide accessors if needed.(­î¢™
+msquid:S00116
+"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+
+‹"squid:ClassVariableVisibilityCheck"XMake Constitution a static final constant or non-public and provide accessors if needed.(³´²¢ÿÿÿÿÿ
+lsquid:S00116"TRename this field "Dexterity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İš‹¾
+‡"squid:ClassVariableVisibilityCheck"TMake Dialogue a static final constant or non-public and provide accessors if needed.(Ú©­Ìÿÿÿÿÿ
+ƒ"squid:ClassVariableVisibilityCheck"UMake Dexterity a static final constant or non-public and provide accessors if needed.(İš‹¾
+gsquid:S00116	"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà
+qsquid:S00116"TRename this field "Inventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ«ÕØùÿÿÿÿ
+„"squid:ClassVariableVisibilityCheck"WMake IsFightable a static final constant or non-public and provide accessors if needed.(Â°„D
+ksquid:S00116"SRename this field "Strength" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ÒÁ×
+tsquid:S00116"WRename this field "Constitution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³´²¢ÿÿÿÿÿ
+‚"squid:ClassVariableVisibilityCheck"TMake Strength a static final constant or non-public and provide accessors if needed.(¶ÒÁ×

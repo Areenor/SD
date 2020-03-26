@@ -1,5 +1,10 @@
 
+ksquid:UselessImportCheck";Remove this unused import 'org.beryx.textio.TextIoFactory'.(Ñ‹ÔÞùÿÿÿÿ8®²×º‘.
+lsquid:UselessImportCheck"<Remove this unused import 'Configuration_models.ItemConfig'.(ªð˜ïýÿÿÿÿ8þ–Á»‘.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-zsquid:S00116"VRename this field "_statChange" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô™¼¾ÿÿÿÿÿ8ï˜ï”.
-wsquid:S00116"XRename this field "_affectedStat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾©áû8áªè”.
-{squid:S00116"WRename this field "_isDangerous" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à•òÓýÿÿÿÿ8áªè”.
+_squid:UselessImportCheck
+"4Remove this unused import 'org.beryx.textio.TextIO'.(§Ð„8®²×º‘.
+wsquid:S00116"XRename this field "_affectedStat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾©áû8áªè”.
+{squid:S00116"WRename this field "_isDangerous" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à•òÓýÿÿÿÿ8áªè”.
+zsquid:S00116"VRename this field "_statChange" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô™¼¾ÿÿÿÿÿ8ï˜ï”.
+esquid:UselessImportCheck":Remove this unused import 'org.beryx.textio.TextTerminal'.(¦—º•8®²×º‘.

@@ -41,8 +41,6 @@ W
 'src/main/java/Default_classes/Item.java,5\3\53fe7ad9f64b6741324a951bb1da205d59a38a9a
 M
 story/locations/mountain.json,3\1\3186e0da126fecc30305082575e52c6309f60558
-F
-story/items/Flask.json,3\5\351eacf7b9d60cb8b7818f0274006ad8df34cfab
 W
 'src/main/java/Enumerators/StatEnum.java,7\2\7216c40cf55a448f40827a5894b2c97e10d6fef0
 V
@@ -53,8 +51,6 @@ d
 -src/main/java/Default_classes/Consumable.java,5\5\556e8e6e9d8c28b0e7797d79fed18f42fed1ab12
 L
 story/consumables/Flask.json,f\f\ff82747b1af271a0f549e3347a6e8dbcff603c63
-G
-story/items/Poison.json,7\3\7345c6490c337a5ecd2dd6fa7a6da4eb37d78bea
 Y
 )src/main/java/Default_classes/Player.java,f\9\f944497f6d191cb2b1768410d5d55d284bd5a00a
 W
@@ -67,16 +63,12 @@ H
 story/locations/bar.json,c\0\c0cb92c044ebc48721b57dd250d6a3d20106029a
 K
 story/items/SilverGate.json,a\7\a7c26f29f2b95e39bacdf1fc00268d45cbb96613
-J
-story/items/SilverKey.json,3\9\39271d67ed51670b33acc85469fd0370e713f108
 M
 story/keyitems/SilverKey.json,6\8\688d2b13c5fefba533ce399e42be957f2eee6c9e
 Z
 *src/main/java/Default_classes/KeyItem.java,3\5\35dc622a1b1a64b0878bc4a588046d47849bbb97
 O
 story/equipment/Zweihander.json,b\e\bee0d71376261dd1a00938bce23831ff7230f536
-K
-story/items/Zweihander.json,c\a\ca53b3f4dae022fae2055f71791f06295b574d13
 c
 3src/main/java/Configuration_models/EquipConfig.java,1\9\195d1efec463557dee7a09673c3dab01e5f3dd30
 \
@@ -85,3 +77,5 @@ c
 0src/main/java/Enumerators/EquipmentTypeEnum.java,8\9\892f54684505b10828e0bde82cea2be13a5585ba
 T
 $src/main/java/Services/Terminal.java,0\d\0d265c021f9153221b528ad826837831bc6071cc
+_
+/.idea/artifacts/software_design_vu_2020_jar.xml,b\4\b414b3d9add283f44ab456fe5bb870a853ebfadc

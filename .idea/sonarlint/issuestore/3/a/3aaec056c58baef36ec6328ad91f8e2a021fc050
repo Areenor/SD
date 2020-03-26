@@ -1,8 +1,7 @@
 
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š¼—áÿÿÿÿÿ8ÌĞ€¢.
-zsquid:S00116"VRename this field "_blockBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÛÛßşÿÿÿÿ8®Õˆ¡.
+msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( õ‰ô8ú€¢.
+tsquid:S00116"PRename this field "_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ²¨ûüÿÿÿÿ8—˜‡¡.
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š¼—áÿÿÿÿÿ8ÌĞ€¢.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-isquid:UselessImportCheck">Remove this unused import 'Configuration_models.ConsumConfig'.(Ç¡Á–8éÑ¡.
-{squid:S00116"WRename this field "_attackBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëóéùÿÿÿÿ8ã‘‰¡.
-msquid:S00100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( õ‰ô8ú€¢.
-tsquid:S00116"PRename this field "_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ²¨ûüÿÿÿÿ8—˜‡¡.
+{squid:S00116"WRename this field "_attackBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëóéùÿÿÿÿ8ã‘‰¡.
+zsquid:S00116"VRename this field "_blockBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÛÛßşÿÿÿÿ8®Õˆ¡.
