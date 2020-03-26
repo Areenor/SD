@@ -6,6 +6,7 @@ import Game_data.GameState;
 import com.alibaba.fastjson.JSON;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -19,10 +20,7 @@ public class InitiationService {
     private static Path storyDirPath = Paths.get(System.getProperty("user.dir"), "story");
     private static Path locationJsonDirPath = Paths.get(storyDirPath.toString(), "locations");
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
-    private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
-    private static Path consumJsonDirPath = Paths.get(storyDirPath.toString(), "consumables");
-    private static Path keyitemsJsonDirPath = Paths.get(storyDirPath.toString(), "keyitems");
-    private static Path equipmentJsonDirPath = Paths.get(storyDirPath.toString(), "equipment");
+    private static ItemFactory itemFactory = new ItemFactory();
 
     public static void InitiateMainCharacter(String startingLocationName) {
         int pointCount = 2;
@@ -32,7 +30,7 @@ public class InitiationService {
 
         String nameInput = Terminal.Read("Please enter the name of your character \n");
         String mainCharacterName = nameInput;
-        Terminal.Print("There are thee game statistics of you character: Strength, Dexterity and Constitution." +
+        Terminal.Print("There are three game statistics of you character: Strength, Dexterity and Constitution." +
                 "All of them will directly influence the performance of your character in combat. You have 2 points to split between them.\n");
 
         while(pointCount != 0){
@@ -55,18 +53,18 @@ public class InitiationService {
         Terminal.Print("Greetings, " + GameState.MainCharacter.GetName() + "\n");
     }
 
-    public static HashMap<String, Item> InitiateCharacterInventory(List<String> inventoryItems) {
+    public static HashMap<String, Item> InitiateCharacterInventory(List<String> inventoryItems) throws FileNotFoundException {
         HashMap<String, Item> inventory = new HashMap<String, Item>();
         if (inventoryItems != null)
             for (String itemName : inventoryItems )
             {
-                Item item = InitiateItem(itemName);
+                Item item = itemFactory.GetItem(itemName);
                 inventory.put(itemName, item);
             }
         return inventory;
     }
 
-    public static void InitiateLocations() {
+    public static void InitiateLocations() throws FileNotFoundException {
         List<Location> locations = new ArrayList<Location>();
         File[] locationConfigFiles = locationJsonDirPath.toFile().listFiles(new FilenameFilter() {
             @Override
@@ -82,47 +80,44 @@ public class InitiationService {
         }
     }
 
-    public static Location InitiateLocation(String locationConfigFilePath) {
+    public static Location InitiateLocation(String locationConfigFilePath) throws FileNotFoundException {
         String locationConfigFileContent = readLineByLine(locationConfigFilePath);
         LocationConfig locationConfig = JSON.parseObject(locationConfigFileContent, LocationConfig.class);
         return new Location(locationConfig);
     }
 
-    public static NPC InitiateCharacter(String characterName) {
+    public static NPC InitiateCharacter(String characterName) throws FileNotFoundException {
         Path characterConfigFilePath = Paths.get(characterJsonDirPath.toString(), characterName + ".json");
         String characterConfigFileContent = readLineByLine(characterConfigFilePath.toString());
         NPCConfig characterConfig = JSON.parseObject(characterConfigFileContent, NPCConfig.class);
         return new NPC(characterConfig);
     }
 
-    public static Item InitiateItem(String itemName) {
-        Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
-        Path keyitemsConfigFilePath = Paths.get(keyitemsJsonDirPath.toString(), itemName + ".json");
-        Path equipmentConfigFilePath = Paths.get(equipmentJsonDirPath.toString(), itemName + ".json");
-
-        if(Files.exists(consumConfigFilePath)) {
-            String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
-            ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
-            return new Consumable(consumConfig);
-        }
-        else if(Files.exists(keyitemsConfigFilePath)) {
-            String addobjectConfigFileContent = readLineByLine(keyitemsConfigFilePath.toString());
-            KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
-            return new KeyItem(keyItemConfig);
-        }
-        else if(Files.exists(equipmentConfigFilePath)) {
-            String addobjectConfigFileContent = readLineByLine(equipmentConfigFilePath.toString());
-            EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
-            return new Equipment(equipConfig);
-        }
-        Path itemConfigFilePath = Paths.get(itemJsonDirPath.toString(), itemName + ".json");
-        String objectConfigFileContent = readLineByLine(itemConfigFilePath.toString());
-        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
-        return new Junk(itemConfig);
+    public static ConsumConfig ReturnNewConsumConfig(Path configFilePath) throws FileNotFoundException {
+        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
+        return consumConfig;
     }
 
-    private static String readLineByLine(String filePath)
-    {
+    public static KeyItemConfig ReturnNewKeyItemConfig(Path configFilePath) throws FileNotFoundException {
+        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
+        return keyItemConfig;
+    }
+
+    public static EquipConfig ReturnNewEquipConfig(Path configFilePath) throws FileNotFoundException {
+        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
+        return equipConfig;
+    }
+
+    public static ItemConfig ReturnNewJunkItemConfig(Path configFilePath) throws FileNotFoundException {
+        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
+        return itemConfig;
+    }
+
+    private static String readLineByLine(String filePath) {
         StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
         {

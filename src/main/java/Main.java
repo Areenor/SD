@@ -10,8 +10,10 @@ import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
+import java.io.FileNotFoundException;
+
 public class Main {
-    public static void main (String[] args) {
+    public static void main (String[] args) throws FileNotFoundException {
         final String SPAWN_ROOM = "room";
 
         BasicConfigurator.configure();

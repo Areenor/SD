@@ -3,7 +3,9 @@ package Default_classes;
 import Configuration_models.LocationConfig;
 import Services.InitiationService;
 import Enumerators.DirectionEnum;
+import Services.ItemFactory;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ public class  Location {
     private Map<String, NPC> _NPCs = new HashMap<String, NPC>();
     private Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
 
-    public Location(LocationConfig config) {
+    public Location(LocationConfig config) throws FileNotFoundException {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
         if (config.Name.isEmpty()) throw new IllegalArgumentException("The location name is empty");
         if (config.Description.isEmpty()) throw new IllegalArgumentException("The location description is empty");
@@ -28,8 +30,11 @@ public class  Location {
         for (String character : config.Characters) {
             _NPCs.put(character, InitiationService.InitiateCharacter(character));
         }
+
+        ItemFactory itemFactory = new ItemFactory();
+
         for (String items : config.Items) {
-            _items.put(items, InitiationService.InitiateItem(items));
+            _items.put(items, itemFactory.GetItem(items));
         }
     }
 

@@ -4,6 +4,8 @@ import Configuration_models.NPCConfig;
 import Services.InitiationService;
 import Services.Terminal;
 
+import java.io.FileNotFoundException;
+
 
 public class NPC extends Character {
     private String _description;
@@ -12,7 +14,7 @@ public class NPC extends Character {
     private boolean _isHostile;
     private boolean _isFightable;
 
-    public NPC(NPCConfig config) {
+    public NPC(NPCConfig config) throws FileNotFoundException {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
         if (config.Name.isEmpty()) throw  new IllegalArgumentException("The character name is empty");
         if (config.Description.isEmpty()) throw  new IllegalArgumentException("The character description is empty");
