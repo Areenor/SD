@@ -131,7 +131,7 @@ public class Player extends Character {
         Location nextLocation = GameState.GetLocation(adjacentLocationName);
         _currentLocation = nextLocation;
 
-        Terminal.PrintLine("\n" + _currentLocation.GetDescription() + " .\n");
+        Terminal.PrintLine("\n" + _currentLocation.GetDescription() + "\n");
     }
 
     public void PrintInventory() {

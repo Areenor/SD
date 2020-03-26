@@ -18,16 +18,16 @@ public class Consumable extends Item{
     private boolean _isDangerous;
     private StatEnum _affectedStat;
 
-    public Consumable(ItemConfig config, ConsumConfig addon) {
+    public Consumable(ConsumConfig config) {
         super(config);
-        _statChange = addon.StatChange;
-        _isDangerous = addon.IsDangerous;
-        _affectedStat = addon.AffectedStat;
+        _statChange = config.StatChange;
+        _isDangerous = config.IsDangerous;
+        _affectedStat = config.AffectedStat;
     }
 
     @Override
     public void Use() {
-        if (!_isDangerous) {
+        if (!_isDangerous) { //you can use helpful consumable items on yourself to raise your stats.
             int oldStat;
             switch (_affectedStat){
                 case Strength:
@@ -71,7 +71,7 @@ public class Consumable extends Item{
     }
 
     @Override
-    public void Use(NPC targetNpc) {
+    public void Use(NPC targetNpc) { //you can use dangerous consumable items on NPC's to attack them.
         if (_isDangerous) {
             int oldStat;
             switch (_affectedStat){
@@ -106,7 +106,7 @@ public class Consumable extends Item{
             GameState.MainCharacter.RemoveFromInventory(_name);
         }
         else {
-            Terminal.PrintLine("This is a consumable item is helpful to you, use it on yourself.\n");
+            Terminal.PrintLine("This is a consumable item that is helpful to you, use it on yourself.\n");
         }
     }
 }

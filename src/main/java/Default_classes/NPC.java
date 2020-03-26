@@ -3,9 +3,7 @@ package Default_classes;
 import Configuration_models.NPCConfig;
 import Services.InitiationService;
 import Services.Terminal;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
+
 
 public class NPC extends Character {
     private String _description;

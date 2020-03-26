@@ -1,4 +1,7 @@
 {
+  "Name" : "Poison",
+  "Description" : "You see a Poison. It is dangerous.",
+  "IsRetriavable" : "true",
   "StatChange" : -1,
   "IsDangerous" : true,
   "AffectedStat": "Strength"

@@ -52,4 +52,8 @@ public class Terminal {
             instance._terminal.println(message);
         }
     }
+    public static void CloseTerminal() {
+        Terminal instance = GetInstance();
+        instance._textIO.dispose();
+    }
 }

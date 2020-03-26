@@ -1,7 +1,9 @@
 {
-  "IntendedTarget" : "SilverGate",
-  "NewTargetDescription" : "You see a SilverGate. It is unlocked, and you can now go east.",
-  "UnlockedDirection" : "east",
-  "UnlockedLocationName" : "bar"
-
+  "Name" : "SilverKey",
+  "Description" : "You see a SilverKey lying on a table. You wonder what it may unlock.",
+  "IsRetriavable" : "true",
+  "NewTargetDescriptions" : {"SilverGate": "You see a SilverGate. It is unlocked, and you can now go east."},
+  "UnlockedDirections" : {"SilverGate":"east"},
+  "UnlockedLocationNames" : {"SilverGate": "bar"},
+  "NPCItemExchange" : {"Areenor": "Flask"}
 }

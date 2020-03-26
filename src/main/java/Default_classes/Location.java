@@ -2,9 +2,6 @@ package Default_classes;
 
 import Configuration_models.LocationConfig;
 import Services.InitiationService;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 import Enumerators.DirectionEnum;
 
 import java.util.ArrayList;

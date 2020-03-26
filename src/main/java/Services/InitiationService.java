@@ -96,11 +96,6 @@ public class InitiationService {
     }
 
     public static Item InitiateItem(String itemName) {
-        Path itemConfigFilePath = Paths.get(itemJsonDirPath.toString(), itemName + ".json");
-        String objectConfigFileContent = readLineByLine(itemConfigFilePath.toString());
-        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
-
-
         Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
         Path keyitemsConfigFilePath = Paths.get(keyitemsJsonDirPath.toString(), itemName + ".json");
         Path equipmentConfigFilePath = Paths.get(equipmentJsonDirPath.toString(), itemName + ".json");
@@ -108,18 +103,21 @@ public class InitiationService {
         if(Files.exists(consumConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
             ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
-            return new Consumable(itemConfig, consumConfig);
+            return new Consumable(consumConfig);
         }
         else if(Files.exists(keyitemsConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(keyitemsConfigFilePath.toString());
             KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
-            return new KeyItem(itemConfig, keyItemConfig);
+            return new KeyItem(keyItemConfig);
         }
         else if(Files.exists(equipmentConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(equipmentConfigFilePath.toString());
             EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
-            return new Equipment(itemConfig, equipConfig);
+            return new Equipment(equipConfig);
         }
+        Path itemConfigFilePath = Paths.get(itemJsonDirPath.toString(), itemName + ".json");
+        String objectConfigFileContent = readLineByLine(itemConfigFilePath.toString());
+        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
         return new Junk(itemConfig);
     }
 

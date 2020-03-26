@@ -1,29 +1,25 @@
 //
-// Default consumable
+// Equipment class
 //
 
 package Default_classes;
 
-import Configuration_models.ConsumConfig;
 import Configuration_models.EquipConfig;
-import Configuration_models.ItemConfig;
 import Enumerators.EquipmentTypeEnum;
 import Game_data.GameState;
 import Services.Terminal;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
+
 
 public class Equipment extends Item{
     private int _blockBonus;
     private int _attackBonus;
     private EquipmentTypeEnum _type;
 
-    public Equipment(ItemConfig config, EquipConfig addon) {
+    public Equipment(EquipConfig config) {
         super(config);
-        _blockBonus = addon.BlockBonus;
-        _attackBonus = addon.AttackBonus;
-        _type = addon.Type;
+        _blockBonus = config.BlockBonus;
+        _attackBonus = config.AttackBonus;
+        _type = config.Type;
     }
 
     public int GetAttackBonus() {

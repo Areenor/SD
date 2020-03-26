@@ -1,32 +1,32 @@
 
-ssquid:S00116"TRename this field "_strength" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•´×¯8ä×“.
-msquid:S00100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤•Ğ8ä×“.
-msquid:S00100*"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¦ı“8ä×“.
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãë©•üÿÿÿÿ8ä×“.
-rsquid:S00100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™€‚ïÿÿÿÿÿ8ä×“.
-lsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğĞ÷8ä×“.
-tsquid:S00116"URename this field "_inventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óãİ8ä×“.
-wsquid:S00116"SRename this field "_stamina" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø÷€®øÿÿÿÿ8ä×“.
-tsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Íû¸ÿÿÿÿÿ8ä×“.
-lsquid:S00100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬µV8ä×“.
-msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùõŸ²8ä×“.
->squid:S1170"!Make this final field static too.(åª§R8ä×“.
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“üÜÍøÿÿÿÿ8ä×“.
-vsquid:S00116"RRename this field "_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙâÉûÿÿÿÿ8ä×“.
-msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘­ÓÜ8ä×“.
-{squid:S00116	"WRename this field "BASE_STAMINA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±‘æ›ùÿÿÿÿ8ä×“.
-rsquid:S00100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ŠÈøÿÿÿÿ8ä×“.
-|squid:S00116"XRename this field "_constitution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(……ù»ûÿÿÿÿ8ä×“.
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üËÛ¶úÿÿÿÿ8ä×“.
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-rsquid:S00100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÈ„óüÿÿÿÿ8ä×“.
-ysquid:S00116"URename this field "_dexterity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¦Ôˆûÿÿÿÿ8ä×“.
-msquid:S00100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀØ¨8ä×“.
-rsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùµú¤ûÿÿÿÿ8ä×“.
-zsquid:S00116"VRename this field "BASE_HEALTH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘êÆÁÿÿÿÿÿ8ä×“.
-tsquid:S00116"VRename this field "BASE_ATTACK" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åª§R8ä×“.
-msquid:S00100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ»ˆî8ä×“.
-ysquid:S00116"URename this field "_hitPoints" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºóÜÿÿÿÿÿ8ä×“.
 Dsquid:S1170"!Make this final field static too.(‘êÆÁÿÿÿÿÿ8ä×“.
-rsquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æõ´’úÿÿÿÿ8ä×“.
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãë©•üÿÿÿÿ8ä×“.
+rsquid:S00100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ŠÈøÿÿÿÿ8ä×“.
+ysquid:S00116"URename this field "_dexterity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¦Ôˆûÿÿÿÿ8ä×“.
+tsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Íû¸ÿÿÿÿÿ8ä×“.
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üËÛ¶úÿÿÿÿ8ä×“.
+rsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùµú¤ûÿÿÿÿ8ä×“.
+msquid:S00100*"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¦ı“8ä×“.
+lsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğĞ÷8ä×“.
+msquid:S00100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ»ˆî8ä×“.
+tsquid:S00116"URename this field "_inventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óãİ8ä×“.
+msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùõŸ²8ä×“.
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
+>squid:S1170"!Make this final field static too.(åª§R8ä×“.
+msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘­ÓÜ8ä×“.
+lsquid:S00100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬µV8ä×“.
+ssquid:S00116"TRename this field "_strength" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•´×¯8ä×“.
 Dsquid:S1170	"!Make this final field static too.(±‘æ›ùÿÿÿÿ8ä×“.
+ysquid:S00116"URename this field "_hitPoints" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºóÜÿÿÿÿÿ8ä×“.
+msquid:S00100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀØ¨8ä×“.
+wsquid:S00116"SRename this field "_stamina" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø÷€®øÿÿÿÿ8ä×“.
+rsquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æõ´’úÿÿÿÿ8ä×“.
+|squid:S00116"XRename this field "_constitution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(……ù»ûÿÿÿÿ8ä×“.
+vsquid:S00116"RRename this field "_attack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙâÉûÿÿÿÿ8ä×“.
+rsquid:S00100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÈ„óüÿÿÿÿ8ä×“.
+tsquid:S00116"VRename this field "BASE_ATTACK" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åª§R8ä×“.
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“üÜÍøÿÿÿÿ8ä×“.
+msquid:S00100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤•Ğ8ä×“.
+{squid:S00116	"WRename this field "BASE_STAMINA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±‘æ›ùÿÿÿÿ8ä×“.
+rsquid:S00100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™€‚ïÿÿÿÿÿ8ä×“.
+zsquid:S00116"VRename this field "BASE_HEALTH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘êÆÁÿÿÿÿÿ8ä×“.

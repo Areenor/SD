@@ -1,6 +1,7 @@
 {
   "Name" : "Areenor",
   "IsHostile" : "false",
+  "Inventory" : ["Flask"],
   "Description" : "You see a rather big man called Areenor standing in front of desk. From his armor you think that he is a Paladin.",
   "Type" : "Human",
   "Dialogue" : "I did not expect you to wake up that early, your squad is waiting for you in the mountains",

@@ -2,17 +2,14 @@ package Default_classes;
 
 import Game_data.GameState;
 import Services.Combat;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
+import Services.Terminal;
+
 
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Character {
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     protected final int BASE_HEALTH = 5;
     protected final int BASE_ATTACK = 1;
@@ -45,6 +42,7 @@ public abstract class Character {
     public int GetStamina() { return _strength; }
     public int GetCurrentStamina() { return _currentStamina; }
     public Item GetItem(String itemName) { return _inventory.get(itemName); }
+    public Boolean HasItem(String itemName) { return _inventory.containsKey(itemName); }
 
     public void SetStrength(int strength){
         _strength = strength;
@@ -85,8 +83,8 @@ public abstract class Character {
     private void DealDamage(Character target){
         target.SetCurrentHitPoints(target.GetCurrentHitPoints() + target.GetConstitution() - _attack);
         if(target.IsDead()){
-            terminal.println(target.GetName() + " is dead!");
+            Terminal.PrintLine(target.GetName() + " is dead!");
         }
-        terminal.println(_name + " strikes " + target.GetName() + " with " + _attack + " points of damage!");
+        Terminal.PrintLine(_name + " strikes " + target.GetName() + " with " + _attack + " points of damage!");
     }
 }

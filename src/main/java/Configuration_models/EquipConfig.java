@@ -5,7 +5,7 @@ package Configuration_models;
 
 import Enumerators.EquipmentTypeEnum;
 
-public class EquipConfig {
+public class EquipConfig extends ItemConfig{
     public int BlockBonus;
     public int AttackBonus;
     public EquipmentTypeEnum Type;

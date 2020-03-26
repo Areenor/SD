@@ -5,12 +5,7 @@ import Default_classes.Location;
 import Default_classes.NPC;
 import Default_classes.Player;
 import Game_data.GameState;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 import Enumerators.DirectionEnum;
-
-import java.util.Map;
 
 public abstract class Controller {
     public static void ExecuteCommand(Player player) {
@@ -50,6 +45,7 @@ public abstract class Controller {
             case "exit":
             case "quit":
                 GameState.IsFinished = true;
+                Terminal.CloseTerminal();
                 break;
             default:
                 Terminal.PrintLine("Unknown command.\n");

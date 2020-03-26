@@ -73,3 +73,15 @@ M
 story/keyitems/SilverKey.json,6\8\688d2b13c5fefba533ce399e42be957f2eee6c9e
 Z
 *src/main/java/Default_classes/KeyItem.java,3\5\35dc622a1b1a64b0878bc4a588046d47849bbb97
+O
+story/equipment/Zweihander.json,b\e\bee0d71376261dd1a00938bce23831ff7230f536
+K
+story/items/Zweihander.json,c\a\ca53b3f4dae022fae2055f71791f06295b574d13
+c
+3src/main/java/Configuration_models/EquipConfig.java,1\9\195d1efec463557dee7a09673c3dab01e5f3dd30
+\
+,src/main/java/Default_classes/Equipment.java,3\a\3aaec056c58baef36ec6328ad91f8e2a021fc050
+`
+0src/main/java/Enumerators/EquipmentTypeEnum.java,8\9\892f54684505b10828e0bde82cea2be13a5585ba
+T
+$src/main/java/Services/Terminal.java,0\d\0d265c021f9153221b528ad826837831bc6071cc

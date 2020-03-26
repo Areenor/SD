@@ -1,15 +1,18 @@
 
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-msquid:S001004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(» Á£8¤İŸ“.
-msquid:S00100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘­ÓÜ8Ûœ›Ÿ.
-msquid:S00100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÒÉü8¤İŸ“.
-rsquid:S001000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôş²Šûÿÿÿÿ8¤İŸ“.
-Osquid:S1068",Remove this unused "terminal" private field.(Á¿ƒâúÿÿÿÿ8¤İŸ“.
-rsquid:S00100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ñØˆüÿÿÿÿ8¤İŸ“.
-lsquid:S00100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÖìW8¤İŸ“.
-rsquid:S001008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö©ˆåüÿÿÿÿ8¤İŸ“.
-`squid:UselessImportCheck"0Remove this unused import 'Game_data.GameState'.(ıÕ˜Æùÿÿÿÿ8¦àÅ.
-hsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©˜˜ 
-tsquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç°ëüıÿÿÿÿ
+msquid:S00100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÒÉü8¤İŸ“.
+lsquid:S00100!"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÖìW8Ûœ›Ÿ.
+msquid:S001001"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(» Á£8¤İŸ“.
 qsquid:S00116"YRename this field "_isRetrievable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë–öÃ
-msquid:S00100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Ÿ›ª8¤İŸ“.
+tsquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç°ëüıÿÿÿÿ
+rsquid:S00100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôş²Šûÿÿÿÿ8¤İŸ“.
+`squid:UselessImportCheck"0Remove this unused import 'Game_data.GameState'.(ıÕ˜Æùÿÿÿÿ8¦àÅ.
+rsquid:S001005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö©ˆåüÿÿÿÿ8¤İŸ“.
+msquid:S00100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Ÿ›ª8¤İŸ“.
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
+hsquid:S00116"PRename this field "_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©˜˜ 
+_squid:UselessImportCheck	"4Remove this unused import 'org.beryx.textio.TextIO'.(§Ğ„8Ê³î‘‘.
+ksquid:UselessImportCheck
+";Remove this unused import 'org.beryx.textio.TextIoFactory'.(Ñ‹ÔŞùÿÿÿÿ8Ê³î‘‘.
+esquid:UselessImportCheck":Remove this unused import 'org.beryx.textio.TextTerminal'.(¦—º•8Ê³î‘‘.
+msquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘­ÓÜ8Ê³î‘‘.
+rsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ñØˆüÿÿÿÿ8Ê³î‘‘.

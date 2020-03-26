@@ -5,16 +5,13 @@
 package Default_classes;
 
 import Configuration_models.ItemConfig;
-import Game_data.GameState;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
+
 
 
 public abstract class Item {
     protected final String _name;
-    private String _description;
-    private boolean _isRetrievable;
+    protected String _description;
+    protected boolean _isRetrievable;
 
     public Item(ItemConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
