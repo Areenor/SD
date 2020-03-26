@@ -6,6 +6,7 @@ package Default_classes;
 
 import Configuration_models.ConsumConfig;
 import Configuration_models.ItemConfig;
+import Services.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -16,9 +17,6 @@ public class Consumable extends Item{
     private int _statChange;
     private boolean _isDangerous;
     private StatEnum _affectedStat;
-
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
 
     public Consumable(ItemConfig config, ConsumConfig addon) {
         super(config);
@@ -59,17 +57,17 @@ public class Consumable extends Item{
                 default:
                     throw new IllegalArgumentException("The configuration is empty, misses AffectedStat");
             }
-            terminal.printf("You consumed the item and raised your %s with %d.\n", _affectedStat, _statChange);
+            Terminal.PrintLine("You consumed the item and raised your " + _affectedStat + " with " + _statChange + ".");
             GameState.MainCharacter.RemoveFromInventory(_name);
         }
         else {
-            terminal.print("This is a consumable item is dangerous to use on yourself. Use it on someone else.\n");
+            Terminal.PrintLine("This is a consumable item is dangerous to use on yourself. Use it on someone else.\n");
         }
     }
 
     @Override
     public void Use(Item targetItem) {
-        terminal.print("This is a consumable item. Consumable items can only be used on yourself or someone else.\n");
+        Terminal.PrintLine("This is a consumable item. Consumable items can only be used on yourself or someone else.\n");
     }
 
     @Override
@@ -104,11 +102,11 @@ public class Consumable extends Item{
                 default:
                     throw new IllegalArgumentException("The configuration is empty, misses AffectedStat");
             }
-            terminal.printf("You used the consumable item on %s and changed their %s with %d.\n", targetNpc.GetName(), _affectedStat, _statChange);
+            Terminal.PrintLine("You used the consumable item on " + targetNpc.GetName() + " and changed their " + _affectedStat + " with " + _statChange + ".");
             GameState.MainCharacter.RemoveFromInventory(_name);
         }
         else {
-            terminal.print("This is a consumable item is helpful to you, use it on yourself.\n");
+            Terminal.PrintLine("This is a consumable item is helpful to you, use it on yourself.\n");
         }
     }
 }

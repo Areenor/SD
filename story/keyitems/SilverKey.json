@@ -1,0 +1,7 @@
+{
+  "IntendedTarget" : "SilverGate",
+  "NewTargetDescription" : "You see a SilverGate. It is unlocked, and you can now go east.",
+  "UnlockedDirection" : "east",
+  "UnlockedLocationName" : "bar"
+
+}

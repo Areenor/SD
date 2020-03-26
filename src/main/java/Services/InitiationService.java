@@ -1,20 +1,9 @@
 package Services;
 
-import Configuration_models.ConsumConfig;
-import Configuration_models.NPCConfig;
-import Configuration_models.LocationConfig;
-import Configuration_models.ItemConfig;
-import Default_classes.Consumable;
-import Default_classes.Junk;
-import Default_classes.NPC;
-import Default_classes.Location;
-import Default_classes.Item;
-import Default_classes.Player;
+import Configuration_models.*;
+import Default_classes.*;
 import Game_data.GameState;
 import com.alibaba.fastjson.JSON;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -32,39 +21,38 @@ public class InitiationService {
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
     private static Path itemJsonDirPath = Paths.get(storyDirPath.toString(), "items");
     private static Path consumJsonDirPath = Paths.get(storyDirPath.toString(), "consumables");
+    private static Path keyitemsJsonDirPath = Paths.get(storyDirPath.toString(), "keyitems");
+    private static Path equipmentJsonDirPath = Paths.get(storyDirPath.toString(), "equipment");
 
     public static void InitiateMainCharacter(String startingLocationName) {
-        TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-        TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
         int pointCount = 2;
         String strengthInput = "";
         String dexterityInput = "";
         String constitutionInput = "";
 
-        String nameInput = textIO.newStringInputReader().read("Please enter the name of your character \n");
+        String nameInput = Terminal.Read("Please enter the name of your character \n");
         String mainCharacterName = nameInput;
-        terminal.printf("There are thee game statistics of you character: Strength, Dexterity and Constitution." +
+        Terminal.Print("There are thee game statistics of you character: Strength, Dexterity and Constitution." +
                 "All of them will directly influence the performance of your character in combat. You have 2 points to split between them.\n");
 
         while(pointCount != 0){
-            strengthInput = textIO.newStringInputReader().read("Strength:");
-            dexterityInput = textIO.newStringInputReader().read("Dexterity:");
-            constitutionInput = textIO.newStringInputReader().read("Constitution:");
+            strengthInput = Terminal.Read("Strength:");
+            dexterityInput = Terminal.Read("Dexterity:");
+            constitutionInput = Terminal.Read("Constitution:");
             pointCount = pointCount - Integer.parseInt(constitutionInput) - Integer.parseInt(dexterityInput) - Integer.parseInt(strengthInput);
             if(pointCount < 0) {
                 pointCount = 2;
-                terminal.printf("Too many points assigned, please assign only two points\n");
+                Terminal.Print("Too many points assigned, please assign only two points\n");
             }
             else if(pointCount > 0) {
                 pointCount = 2;
-                terminal.printf("Not enough points assigned, please assign only two points\n");
+                Terminal.Print("Not enough points assigned, please assign only two points\n");
             }
         }
 
         Location startingLocation = GameState.GetLocation(startingLocationName);
         GameState.MainCharacter = new Player(mainCharacterName, Integer.parseInt(strengthInput), Integer.parseInt(dexterityInput), Integer.parseInt(constitutionInput), startingLocation);
-        terminal.printf("Greetings, " + GameState.MainCharacter.GetName() + "\n");
+        Terminal.Print("Greetings, " + GameState.MainCharacter.GetName() + "\n");
     }
 
     public static HashMap<String, Item> InitiateCharacterInventory(List<String> inventoryItems) {
@@ -114,11 +102,23 @@ public class InitiationService {
 
 
         Path consumConfigFilePath = Paths.get(consumJsonDirPath.toString(), itemName + ".json");
+        Path keyitemsConfigFilePath = Paths.get(keyitemsJsonDirPath.toString(), itemName + ".json");
+        Path equipmentConfigFilePath = Paths.get(equipmentJsonDirPath.toString(), itemName + ".json");
 
         if(Files.exists(consumConfigFilePath)) {
             String addobjectConfigFileContent = readLineByLine(consumConfigFilePath.toString());
             ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
             return new Consumable(itemConfig, consumConfig);
+        }
+        else if(Files.exists(keyitemsConfigFilePath)) {
+            String addobjectConfigFileContent = readLineByLine(keyitemsConfigFilePath.toString());
+            KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
+            return new KeyItem(itemConfig, keyItemConfig);
+        }
+        else if(Files.exists(equipmentConfigFilePath)) {
+            String addobjectConfigFileContent = readLineByLine(equipmentConfigFilePath.toString());
+            EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
+            return new Equipment(itemConfig, equipConfig);
         }
         return new Junk(itemConfig);
     }

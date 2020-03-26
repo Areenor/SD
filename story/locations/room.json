@@ -2,6 +2,6 @@
   "Name" : "room",
   "Description" : "You are in a small room. You see mountains north and a beach west.",
   "Characters" : ["Areenor", "Vampire", "Warewolf"],
-  "Items" : ["Flask", "Poison", "Bottle"],
+  "Items" : ["Flask", "Poison"],
   "AdjacentLocations" : {"north":"mountain", "west": "beach"}
 }

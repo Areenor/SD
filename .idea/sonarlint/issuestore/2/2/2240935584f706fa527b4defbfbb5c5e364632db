@@ -1,13 +1,19 @@
 
-„"squid:ClassVariableVisibilityCheck"VMake _isHostile a static final constant or non-public and provide accessors if needed.(µ…Ì÷
-„"squid:ClassVariableVisibilityCheck"QMake _type a static final constant or non-public and provide accessors if needed.(İŠúÿÿÿÿ
-‹"squid:ClassVariableVisibilityCheck"XMake _isFightable a static final constant or non-public and provide accessors if needed.(¾ê‡‹üÿÿÿÿ
-tsquid:S00116"WRename this field "_isFightable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ê‡‹üÿÿÿÿ
-‚"squid:ClassVariableVisibilityCheck"UMake _dialogue a static final constant or non-public and provide accessors if needed.(ä›“7
+msquid:S001008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å¬öº8«Ğ«•.
+msquid:S00116"PRename this field "_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ñÚºøÿÿÿÿ
+tsquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç°ëüıÿÿÿÿ
+msquid:S00100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç³±Â8«Ğ«•.
+rsquid:S00100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ£—úüÿÿÿÿ8«Ğ«•.
+rsquid:S00116"URename this field "_isHostile" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÕ€ºøÿÿÿÿ
+qsquid:S00116"TRename this field "_dialogue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¥¦£ùÿÿÿÿ
+msquid:S001005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×î·…8«Ğ«•.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷Ÿ½¨úÿÿÿÿ
-osquid:S00116"WRename this field "_description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É´±
-msquid:S00116"PRename this field "_type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İŠúÿÿÿÿ
-ksquid:S00116"TRename this field "_dialogue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä›“7
-msquid:S00116"URename this field "_isHostile" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ…Ì÷
-†"squid:ClassVariableVisibilityCheck"XMake _description a static final constant or non-public and provide accessors if needed.(É´±
-nsquid:S00117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öìö±ıÿÿÿÿ
+rsquid:S00100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Şñïšùÿÿÿÿ8«Ğ«•.
+lsquid:S00100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÖìW8«Ğ«•.
+rsquid:S001006"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áâ–şşÿÿÿÿ8«Ğ«•.
+tsquid:S00116"WRename this field "_isFightable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞŞÔşÿÿÿÿ
+lsquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾©8«Ğ«•.
+`squid:UselessImportCheck"0Remove this unused import 'Game_data.GameState'.(ıÕ˜Æùÿÿÿÿ8«Ğ«•.
+rsquid:S001000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ˜‹§şÿÿÿÿ8«Ğ«•.
+msquid:S00100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·å”8«Ğ«•.
+rsquid:S001002"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ñØˆüÿÿÿÿ8«Ğ«•.

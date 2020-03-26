@@ -1,4 +1,10 @@
 
+tsquid:S00116	"URename this field "StatChange" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹”¨è8òıî”.
+‘"squid:ClassVariableVisibilityCheck
+"WMake IsDangerous a static final constant or non-public and provide accessors if needed.(ÚŞí«ûÿÿÿÿ8õÍó”.
+‹"squid:ClassVariableVisibilityCheck	"VMake StatChange a static final constant or non-public and provide accessors if needed.(‹”¨è8©ó”.
+usquid:S00116"WRename this field "AffectedStat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Æ©g8›ëï”.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
-‡"squid:ClassVariableVisibilityCheck"RMake Tester a static final constant or non-public and provide accessors if needed.(áÎÃş8¼˜ÂÆ.
-psquid:S00116"QRename this field "Tester" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÎÃş8¼˜ÂÆ.
+zsquid:S00116
+"VRename this field "IsDangerous" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚŞí«ûÿÿÿÿ8ÕÄï”.
+Msquid:S1068"0Remove this unused "AffectedStat" private field.(×Æ©g8µü—.

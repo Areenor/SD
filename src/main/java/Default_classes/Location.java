@@ -19,9 +19,6 @@ public class  Location {
     private Map<String, NPC> _NPCs = new HashMap<String, NPC>();
     private Map<DirectionEnum, String> _adjacentLocations = new HashMap<DirectionEnum, String>();
 
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
     public Location(LocationConfig config) {
         if (config == null) throw new IllegalArgumentException("The configuration is empty");
         if (config.Name.isEmpty()) throw new IllegalArgumentException("The location name is empty");
@@ -40,7 +37,7 @@ public class  Location {
     }
 
     public String GetName() { return _name; }
-    public String GetDescription() { return (_baseDescription + GetItemDescriptions() + GetNpcDescriptions()); }
+    public String GetDescription() { return (_baseDescription + "\n" + GetItemDescriptions() + "\n" + GetNpcDescriptions()); }
     public String GetAdjacentLocation(DirectionEnum direction) { return _adjacentLocations.get(direction); }
     public NPC GetNpc(String NpcName) { return _NPCs.get(NpcName); }
     public Map<String, NPC> GetAllNpc() {return _NPCs;}
@@ -56,6 +53,7 @@ public class  Location {
 
     public void SetBaseDescription(String description) { _baseDescription = description; }
     public void SetAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.replace(direction, locationName); }
+    public void AddAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.put(direction, locationName); }
     public void SetNpc(String NpcName, NPC npc) { _NPCs.replace(NpcName, npc); }
     public void SetItem(String ItemName, Item item) { _items.replace(ItemName, item); }
 

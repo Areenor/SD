@@ -1,0 +1,12 @@
+
+"squid:ClassVariableVisibilityCheck	"ZMake IntendedTarget a static final constant or non-public and provide accessors if needed.(óãÊÉ8ı–‡˜.
+ƒsquid:S00116
+"_Rename this field "NewTargetDescription" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šîÂ¤úÿÿÿÿ8Ò˜.
+zsquid:S00116"\Rename this field "UnlockedDirection" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†“õ.8ÕÃ¡˜.
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
+š"squid:ClassVariableVisibilityCheck
+"`Make NewTargetDescription a static final constant or non-public and provide accessors if needed.(šîÂ¤úÿÿÿÿ8Ò˜.
+xsquid:S00116	"YRename this field "IntendedTarget" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óãÊÉ8ı–‡˜.
+‘"squid:ClassVariableVisibilityCheck"]Make UnlockedDirection a static final constant or non-public and provide accessors if needed.(†“õ.8ÕÃ¡˜.
+š"squid:ClassVariableVisibilityCheck"`Make UnlockedLocationName a static final constant or non-public and provide accessors if needed.(úóŒıÿÿÿÿ8½İ¤˜.
+ƒsquid:S00116"_Rename this field "UnlockedLocationName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úóŒıÿÿÿÿ8½İ¤˜.

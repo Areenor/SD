@@ -13,11 +13,8 @@ import Enumerators.DirectionEnum;
 import java.util.Map;
 
 public abstract class Controller {
-    private static TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private static TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
-
     public static void ExecuteCommand(Player player) {
-        String userInput = textIO.newStringInputReader().read();
+        String userInput = Terminal.Read();
         if (userInput == null || userInput.isEmpty())
             return;
 
@@ -53,14 +50,13 @@ public abstract class Controller {
             case "exit":
             case "quit":
                 GameState.IsFinished = true;
-                textIO.dispose();
                 break;
             default:
-                terminal.print("Unknown command.\n");
+                Terminal.PrintLine("Unknown command.\n");
         }
     }
     public static void ExecuteCombatCommand(Player player) {
-        String userInput = textIO.newStringInputReader().read();
+        String userInput = Terminal.Read();
         if (userInput == null || userInput.isEmpty())
             return;
 
@@ -80,10 +76,9 @@ public abstract class Controller {
             case "exit":
             case "quit":
                 GameState.IsFinished = true;
-                textIO.dispose();
                 break;
             default:
-                terminal.print("Unknown command.\n");
+                Terminal.PrintLine("Unknown command.\n");
         }
     }
 
@@ -104,19 +99,19 @@ public abstract class Controller {
         }
 
         if (description.equals("")) {
-            terminal.println("No such thing is available to be examined.\n");
+            Terminal.PrintLine("No such thing is available to be examined.\n");
             return;
         }
-        terminal.println(description);
+        Terminal.PrintLine(description);
     }
 
     private static void Talk(String[] args, Player player) {
         if (args.length < 3 || !args[1].equals("to")) {
-            terminal.println("Unknown command.");
+            Terminal.PrintLine("Unknown command.");
             return;
         }
         if (args.length > 3) {
-            terminal.println("Too many arguments.\n");
+            Terminal.PrintLine("Too many arguments.\n");
             return;
         }
         player.TalkTo(args[2]);
@@ -124,11 +119,11 @@ public abstract class Controller {
 
     private static void Take(String[] args, Player player) {
         if (args.length < 2) {
-            terminal.println("Please specify an item.\n");
+            Terminal.PrintLine("Please specify an item.\n");
             return;
         }
         if (args.length > 2) {
-            terminal.println("Too many arguments.\n");
+            Terminal.PrintLine("Too many arguments.\n");
             return;
         }
         player.Take(args[1]);
@@ -136,11 +131,11 @@ public abstract class Controller {
 
     private static void Move(String[] args, Player player) {
         if (args.length < 2) {
-            terminal.println("Please specify a direction.\n");
+            Terminal.PrintLine("Please specify a direction.\n");
             return;
         }
         if (args.length > 2) {
-            terminal.println("Too many arguments.\n");
+            Terminal.PrintLine("Too many arguments.\n");
             return;
         }
 
@@ -148,7 +143,7 @@ public abstract class Controller {
         try {
             direction = DirectionEnum.valueOf(args[1]);
         } catch (IllegalArgumentException ex) {
-            terminal.println("Unknown direction.\n");
+            Terminal.PrintLine("Unknown direction.\n");
             return;
         }
 
@@ -159,11 +154,11 @@ public abstract class Controller {
 
 
         if (args.length < 2) {
-            terminal.println("Please specify an item to use.\n");
+            Terminal.PrintLine("Please specify an item to use.\n");
             return;
         }
         if (args.length > 3) {
-            terminal.println("Too many arguments.\n");
+            Terminal.PrintLine("Too many arguments.\n");
             return;
         }
 
@@ -188,20 +183,20 @@ public abstract class Controller {
             player.UseOnItem(itemToUseName, args[2]);
             return;
         }
-        terminal.println("No such item or character in the current location.\n");
+        Terminal.PrintLine("No such item or character in the current location.\n");
     }
 
     private static void Attack(String[] args, Player player) {
         if (args.length < 2) {
-            terminal.println("Please specify a character.\n");
+            Terminal.PrintLine("Please specify a character.\n");
             return;
         }
         if (args.length > 2) {
-            terminal.println("Too many arguments.\n");
+            Terminal.PrintLine("Too many arguments.\n");
             return;
         }
         if(!GameState.MainCharacter.GetCurrentLocation().ContainsNpc(args[1])){
-            terminal.println("There is no such NPC on the location\n");
+            Terminal.PrintLine("There is no such NPC on the location\n");
             return;
         }
         if(GameState.Combat){

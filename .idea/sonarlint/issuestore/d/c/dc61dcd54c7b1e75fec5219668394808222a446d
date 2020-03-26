@@ -1,19 +1,19 @@
 
-bsquid:S1192W"FDefine a constant instead of duplicating this literal ".json" 5 times.(¦³êşøÿÿÿÿ
-fsquid:S00100b"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×‚¥
-Esquid:S1481S".Remove this unused "locations" local variable.(ƒê§È
-fsquid:S00100h"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó³Æõ
-fsquid:S00100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¼ÎĞ
-msquid:S00100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ïĞÓ8Ãõ©Æ.
-@squid:S1148ˆ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-fsquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇŠÅ«
-?squid:S1604T"(Make this anonymous inner class a lambda(ÀÕ˜ç
+psquid:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(¶ï†Å
+msquid:S00100g"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ïĞÓ8Ãõ©Æ.
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–
-„squid:S1319G"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ÇŠÅ«
-Tsquid:S1854S"=Remove this useless assignment to local variable "locations".(ƒê§È
-psquid:S2293S"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒê§È
-fsquid:S00100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â¨¬ò
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(µüÛ¦
-psquid:S2293H"YReplace the type specification in this constructor call with the diamond operator ("<>").(¶ï†Å
-isquid:CommentedOutCodeLinew"<This block of commented-out lines of code should be removed.(µ€Ÿú8Ô´Äò.
-nsquid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8Ô´Äò.
+?squid:S1604L"(Make this anonymous inner class a lambda(ÀÕ˜ç
+bsquid:S1192O"FDefine a constant instead of duplicating this literal ".json" 6 times.(¦³êşøÿÿÿÿ
+Tsquid:S1854K"=Remove this useless assignment to local variable "locations".(ƒê§È
+„squid:S1319?"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ÇŠÅ«
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ååàûÿÿÿÿ8Š£¯“.
+fsquid:S00100Z"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×‚¥
+fsquid:S00100`"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó³Æõ
+psquid:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒê§È
+Xsquid:S3725u":Replace this with a call to the "toFile().exists()" method(¼Ûå÷8İ³‚™.
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(µüÛ¦8Š£¯“.
+Esquid:S1481K".Remove this unused "locations" local variable.(ƒê§È
+fsquid:S00100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¼ÎĞ
+fsquid:S00100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇŠÅ«
+@squid:S1148†"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+]squid:S3725p":Replace this with a call to the "toFile().exists()" method(ºŸÔ‡ûÿÿÿÿ8‹ ˜—.

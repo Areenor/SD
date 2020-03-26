@@ -1,0 +1,7 @@
+{
+  "Name" : "a bar with various patrons",
+  "Description" : "You are in a bar, west of you is a room.",
+  "Characters" : [],
+  "Items" : [],
+  "AdjacentLocations" : {"west":"room"}
+}

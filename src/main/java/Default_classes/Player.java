@@ -3,6 +3,7 @@ package Default_classes;
 import Enumerators.DirectionEnum;
 import Game_data.GameState;
 import Services.InitiationService;
+import Services.Terminal;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
@@ -10,9 +11,11 @@ import java.util.HashMap;
 
 
 public class Player extends Character {
-    private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
+    //private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
+    //private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
     private Location _currentLocation;
+    private Equipment _weapon = null;
+    private Equipment _armor = null;
 
     public Player(String name, int strength, int dexterity, int constitution, Location startLocation) {
         _name = name;
@@ -32,9 +35,30 @@ public class Player extends Character {
     public void SetCurrentLocation(String locationName) { _currentLocation = GameState.GetLocation(locationName); }
     public void SetCurrentLocation(Location location) { _currentLocation = location; }
 
+    public Equipment GetWeapon() { return _weapon;}
+    public Equipment GetArmor() { return _armor;}
+    public void SetWeapon(Equipment newWeapon) {
+        if(_weapon != null) {
+            SetStrength(GetStrength() - _weapon.GetAttackBonus());
+            AddToInventory(_weapon);
+        }
+        SetStrength(GetStrength() + newWeapon.GetAttackBonus());
+        RemoveFromInventory(newWeapon.GetName());
+        _weapon = newWeapon;
+    }
+    public void SetArmor(Equipment newArmor) {
+        if(_armor != null) {
+            SetConstitution(GetConstitution() - _armor.GetBlockBonus());
+            AddToInventory(_armor);
+        }
+        SetConstitution(GetConstitution() + newArmor.GetBlockBonus());
+        RemoveFromInventory(newArmor.GetName());
+        _armor = newArmor;
+    }
+
     public void Use(String itemToUseName) {
         if(!_inventory.containsKey(itemToUseName)) {
-            terminal.println("You do not posses a " + itemToUseName + "\n");
+            Terminal.PrintLine("You do not posses a " + itemToUseName + "\n");
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -43,11 +67,11 @@ public class Player extends Character {
 
     public void UseOnItem(String itemToUseName, String targetItemName) {
         if(!_inventory.containsKey(itemToUseName)) {
-            terminal.println("You do not posses a " + itemToUseName + "\n");
+            Terminal.PrintLine("You do not posses a " + itemToUseName + "\n");
             return;
         }
         if(!_currentLocation.ContainsItem(targetItemName)) {
-            terminal.println("There is no " + targetItemName + " present in this location.\n");
+            Terminal.PrintLine("There is no " + targetItemName + " present in this location.\n");
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -57,11 +81,11 @@ public class Player extends Character {
 
     public void UseOnNpc(String itemToUseName, String targetNpcName) {
         if(!_inventory.containsKey(itemToUseName)) {
-            terminal.println("You do not posses a " + itemToUseName + "\n");
+            Terminal.PrintLine("You do not posses a " + itemToUseName + "\n");
             return;
         }
         if(!_currentLocation.ContainsNpc(targetNpcName)) {
-            terminal.println("The character " + targetNpcName + " is not present in this location.\n");
+            Terminal.PrintLine("The character " + targetNpcName + " is not present in this location.\n");
             return;
         }
         Item itemToUse = _inventory.get(itemToUseName);
@@ -71,35 +95,35 @@ public class Player extends Character {
 
     public void TalkTo(String targetNpcName) {
         if (!_currentLocation.ContainsNpc(targetNpcName)) {
-            terminal.println("The character " + targetNpcName + " is not present in this location.\n");
+            Terminal.PrintLine("The character " + targetNpcName + " is not present in this location.\n");
             return;
         }
 
-        terminal.println("You approach " + targetNpcName + "\n");
+        Terminal.PrintLine("You approach " + targetNpcName + "\n");
         NPC targetNpc = _currentLocation.GetNpc(targetNpcName);
         targetNpc.Talk();
     }
 
     public void Take(String targetItemName) {
         if (!_currentLocation.ContainsItem(targetItemName)) {
-            terminal.println("There is no " + targetItemName + " present in this location.\n");
+            Terminal.PrintLine("There is no " + targetItemName + " present in this location.\n");
             return;
         }
 
         Item targetItem = _currentLocation.GetItem(targetItemName);
         if(!targetItem.IsRetrievable()) {
-            terminal.println("The " + targetItemName + " can't be picked up.\n");
+            Terminal.PrintLine("The " + targetItemName + " can't be picked up.\n");
             return;
         }
         _currentLocation.RemoveItem(targetItemName);
         AddToInventory(targetItem);
-        terminal.println("You took the " + targetItemName + "\n");
+        Terminal.PrintLine("You took the " + targetItemName + "\n");
     }
 
     public void Move(DirectionEnum direction) {
         String adjacentLocationName = _currentLocation.GetAdjacentLocation(direction);
         if (adjacentLocationName == null || adjacentLocationName.isEmpty()) {
-            terminal.println("There is nothing in this direction.\n");
+            Terminal.PrintLine("There is nothing in this direction.\n");
             return;
         }
 
@@ -107,11 +131,11 @@ public class Player extends Character {
         Location nextLocation = GameState.GetLocation(adjacentLocationName);
         _currentLocation = nextLocation;
 
-        terminal.println("\n" + _currentLocation.GetDescription() + " .\n");
+        Terminal.PrintLine("\n" + _currentLocation.GetDescription() + " .\n");
     }
 
     public void PrintInventory() {
         String inventoryItems = String.join(", ", _inventory.keySet());
-        terminal.println("You posses the following items:\n" + inventoryItems);
+        Terminal.PrintLine("You posses the following items:\n" + inventoryItems);
     }
 }
