@@ -1,17 +1,17 @@
 
-lsquid:S00116"URename this field "Characters" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëóñ5
 „"squid:ClassVariableVisibilityCheck"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+
+‹"squid:ClassVariableVisibilityCheck"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
+=squid:S1640"Convert this Map to an EnumMap.(ĞƒÛø8ŠûÜÅ.
 gsquid:S00116
 "ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà
-=squid:S1640"Convert this Map to an EnumMap.(ĞƒÛø8ŠûÜÅ.
-Csquid:S3599",Use another way to initialize this instance.(ĞƒÛø
-tsquid:S00116"\Rename this field "AdjacentLocations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞƒÛø
-‹"squid:ClassVariableVisibilityCheck"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø
-psquid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø
+ƒ"squid:ClassVariableVisibilityCheck"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ5
 msquid:S00116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+
+msquid:S00116"PRename this field "Items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï×Ş£ûÿÿÿÿ
+lsquid:S00116"URename this field "Characters" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëóñ5
+psquid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø
+tsquid:S00116"\Rename this field "AdjacentLocations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞƒÛø
+Csquid:S3599",Use another way to initialize this instance.(ĞƒÛø
 ~"squid:ClassVariableVisibilityCheck
 "PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà
-msquid:S00116"PRename this field "Items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï×Ş£ûÿÿÿÿ
 „"squid:ClassVariableVisibilityCheck"QMake Items a static final constant or non-public and provide accessors if needed.(Ï×Ş£ûÿÿÿÿ
-ƒ"squid:ClassVariableVisibilityCheck"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ5
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ

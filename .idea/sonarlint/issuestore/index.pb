@@ -61,8 +61,6 @@ M
 story/consumables/Poison.json,6\2\62a2b92dba1523b285cd874f3f9a11de74654fad
 H
 story/locations/bar.json,c\0\c0cb92c044ebc48721b57dd250d6a3d20106029a
-K
-story/items/SilverGate.json,a\7\a7c26f29f2b95e39bacdf1fc00268d45cbb96613
 M
 story/keyitems/SilverKey.json,6\8\688d2b13c5fefba533ce399e42be957f2eee6c9e
 Z
@@ -79,3 +77,7 @@ T
 $src/main/java/Services/Terminal.java,0\d\0d265c021f9153221b528ad826837831bc6071cc
 _
 /.idea/artifacts/software_design_vu_2020_jar.xml,b\4\b414b3d9add283f44ab456fe5bb870a853ebfadc
+J
+story/junk/SilverGate.json,a\b\ab2e61771c0e2a571cf0b2bec38f107d7c804318
+W
+'src/main/java/Services/ItemFactory.java,6\9\69aec7bd3cfe782fd937a5a654c91ec149982014

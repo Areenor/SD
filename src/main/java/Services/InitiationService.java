@@ -94,20 +94,20 @@ public class InitiationService {
     }
 
     public static ConsumConfig ReturnNewConsumConfig(Path configFilePath) throws FileNotFoundException {
-        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        ConsumConfig consumConfig = JSON.parseObject(addobjectConfigFileContent, ConsumConfig.class);
+        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        ConsumConfig consumConfig = JSON.parseObject(objectConfigFileContent, ConsumConfig.class);
         return consumConfig;
     }
 
     public static KeyItemConfig ReturnNewKeyItemConfig(Path configFilePath) throws FileNotFoundException {
-        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        KeyItemConfig keyItemConfig = JSON.parseObject(addobjectConfigFileContent, KeyItemConfig.class);
+        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        KeyItemConfig keyItemConfig = JSON.parseObject(objectConfigFileContent, KeyItemConfig.class);
         return keyItemConfig;
     }
 
     public static EquipConfig ReturnNewEquipConfig(Path configFilePath) throws FileNotFoundException {
-        String addobjectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        EquipConfig equipConfig = JSON.parseObject(addobjectConfigFileContent, EquipConfig.class);
+        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
+        EquipConfig equipConfig = JSON.parseObject(objectConfigFileContent, EquipConfig.class);
         return equipConfig;
     }
 
