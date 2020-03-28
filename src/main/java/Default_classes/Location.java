@@ -31,10 +31,9 @@ public class  Location {
             _NPCs.put(character, InitiationService.InitiateCharacter(character));
         }
 
-        ItemFactory itemFactory = new ItemFactory();
 
         for (String items : config.Items) {
-            _items.put(items, itemFactory.GetItem(items));
+            _items.put(items, ItemFactory.GetItem(items));
         }
     }
 
