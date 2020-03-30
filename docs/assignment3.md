@@ -14,7 +14,7 @@ Provide a bullet list summarizing all the changes you performed in Assignment 2 
 Maximum number of words for this section: 1000
 
 ### Application of design patterns
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Richard Eric van Leeuwen, Peter Wassenaar
 
 `Figure representing the UML class diagram in which all the applied design patterns are highlighted graphically (for example with a red rectangle/circle with a reference to the ID of the applied design pattern`
 
@@ -28,6 +28,15 @@ For each application of any design pattern you have to provide a table conformin
 | **Intended use**  | A paragraph describing how you intend to use at run-time the objects involved in the applied design patterns (you can refer to small sequence diagrams here if you want to detail how the involved parties interact at run-time |
 | **Constraints**  | Any additional constraints that the application of the design pattern is imposing, if any |
 | **Additional remarks**  | Optional, only if needed |
+
+| ID  | DP1  |
+|---|---|
+| **Design pattern**  | Factory method |
+| **Problem**  | In our code we use multiple subclasses of the abstract class **item**. Depending on the situation we need different new *objects* of these subclasses, but using the *new* keyword would make our code hard to manage, extend and read. Also, the use of the *new* keyword is troublesome seen the type of *object* is decided during runtime using the provided jsons and thus cannot be hardcoded in. |
+| **Solution**  | The application of the factory method allows us to separate the creation of new objects from the place where the objects are needed. The **ItemFactory class** this design pattern provides also makes it easier for use to add in any potential extra **item subclasses** and change how they are made. Most importantly, this method allows us to easily instantiate d*ifferent new objects* during runtime, which was an important issue to solve to make our system change depending on the jsons provided. |
+| **Intended use**  | At the start of runtime, the program needs to use the provided json files to build the text adventure game. Most of this initialization happens in the **InitiationService** class. It will ask for new item objects by using the I**temFactory** class *GetItem()* method. The *getItem*() method accepts as parameter the String of the name of the item wanted. This name gets looked for in the json directories to connect it with the associated json file. Once the right json file is found using the item name, the json file gets used to create a *new item object* of the required **item subclass**. This **item subclass** gets returned to the caller from where it can use the item object in however way it deems fit. |
+| **Constraints**  | The factory method requires that all **subclasses** have a common type to which it can be referred to. This common type is the **abstract class item**. This means that no matter the **subclass**, the object is treated as an *Item object*. This prevents the **subclasses** to have any additional functionality compared to the **item class**, they can only overwrite existing functionality. |
+| **Additional remarks**  | Currently in our code there are two places from where the **itemfactory** gets called, the **InitiationService** and the **location** **class** *constructor*.|
 
 Maximum number of words for this section: 2000
 
