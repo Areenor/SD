@@ -47,35 +47,332 @@ This chapter contains the specification of the UML class diagram of your system,
 
 ![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Class_Diagram.png)
 
-<p>To improve the readability of the class diagram, all getter and setter methods required and the associations connected to them are not included in the class diagram.</p>
-
-<p>Location The Location class represents a room or area which contains objects and characters. Locations are linked together and can be accessed through different directions using the AdjacentLocations hashmap. Attributes: _name: The location&rsquo;s name. _baseDescription: Location&rsquo;s description, excluding the descriptions of items and NPCs in the location. _items: Items present in the location _NPCs: NPCs present in the location _adjacentLocations: The locations which are adjacent to the location. Operations: AddAdjacentLocation : adds a location reference to the adjacent location map. ContainsNpc : checks if the location contains an NPC. AddNpc : adds an NPC to the location. RemoveNPC : removes an NPC from the location. ContainsItem : checks if the location contains an item. AddItem : adds an item to the location. RemoveItem : removes an item from the location. GetNpcDescriptions : gets the descriptions of all NPCs in the location. GetItemDescriptions : gets the descriptions of all items in the location.</p>
-
-<p>Character The Character class represents a person or other being which acts as a living entity in the game. Such living entities or beings would be, for example, a merchant, a bandit or a wolf. Note, the role a being plays in a story determines if it should be an instance of the Character or Item class; in one story a salamander may be regarded as a character which can be battled with or spoken to, while another story sees it as (functionally speaking) just an item that. Characters have a certain amount of hit points, representing their health, if these drop to zero the character will die. The amount of actions a character can perform in one turn during combat depends on their stamina, as long as this does not hit zero they can perform another action. Attributes: BASE_HEALTH : the base health of every character. BASE_ATTACK : the base attack of every character. BASE_STAMINA : the base stamina of every character. _name : name of the character. _strength : statistic influencing the character&rsquo;s _attack. _dexterity : statistic influencing the character&rsquo;s _maxStamina and chance to dodge chance during combat. _constitution : statistic influencing the character&rsquo;s _maxHitPoints, _block and standart damage mitigation during combat. _maxHitPoints : character&rsquo;s total health. _currentHitPoints : character&rsquo;s current health. _attack : damage a character can deal when attacking in combat. _block : amount of mitigated damage upon when blocking an attack in combat. _maxStamina : character&rsquo;s total stamina. _currentStamina : character&rsquo;s stamina. _inventory : the items in possession of the character.  Operations: ResetHealth : Restores _currentHitPoints to the value of _maxHitPoints. ResetStamina : Restores _currentStamina to the value of _maxStamina. AddToInventory : Adds an item to the character&rsquo;s inventory. RemoveFromInventory : Removes an item from the character&rsquo;s inventory Attack : Initiates combat with another character. Die : Triggers an event when the character is defeated in combat, this event is different for Player and NPC. DealDamage : character inflicts damage on another character.</p>
-
-<p>Player Player inherits Character, and is controlled by the user. A player can equip an armor piece or weapon, boosting their stats (_strength, _dexterity, _constitution), however only one piece of equipment of each type may be equipped at once.  Attributes: _currentLocation: the location in which the player resides. _weapon : the equipment piece of type Weapon currently equipped by the player. _armor : the equipment piece of type Armor currently equipped by the player. _isDodge : boolean stating if the player is currently dodging, used during combat. _isBlock : boolean stating if the player is currently blocking, used during combat. Operations: EquipWeapon : equips a piece of equipment of type Weapon. EquipArmor : equips a piece of equipment of type Armor. Use : use an item in the player&rsquo;s inventory by itself. UseOnItem : use an item in the player&rsquo;s inventory on another item. UseOnNpc : use an item in the player&rsquo;s inventory on an NPC. TalkTo : initiate a conversation with an NPC. Take : remove an item from the current location and put it in the player&rsquo;s inventory. Move : move to a location adjacent to the current location, requires a direction to move in. Attak : triggers combat against an NPC and inflicts damage to it. Die : causes the player to respawn in the designated spawn room with full health and stamina. ResponseAction : executes a response action during combat if _currentStamina is greater than zero. PrintInventory : prints the names of all the items in the player&rsquo;s inventory. Respawn : sets the player&rsquo;s current location to the spawn location. Associations: Talk to : is triggered by the TalkTo function of Player and calls the Talk function of NPC. Move : is triggered by the Move function of Player, gets the location adjacent to the current location in the direction specified, this adjacent location then used to set the _currentLocation attribute of the player. Take : is triggered by the Take function of Player, removes an item from the player&rsquo;s current location and adds it to their inventory. Use : is triggered by the Use, UseOnItem, or UseOnNpc functions of Player and calls the Use function of NPC, the effect of Use in NPC will vary based on which Player function calls it and of which subclass the NPC instance is. An instance of Item or NPC can be passed when the player calls the Use operation of the target item. Equipped : an instance of Equipment may be equipped by a player. A player may have at most two pieces of equipment equipped at once, and a piece of equipment may be equipped to at most one player. Attack : may attack or be attacked by an NPC. A player is present in one location at a time, and can move between them.</p>
-
-<p> NPC A subclass which inherits from the Character class. A character which is not controlled by the player. Attributes: _description : a description of the NPC. _type : the type of the NPC, such as wolf or vampire. _dialogue : the text spoken by the NPC when talking to them. _combatDialogue : the text spoken by the NPC when initiating combat with them. _isHostile : boolean stating if the NPC would attack a player on sight. _isFightable : boolean stating if the NPC can be attacked by the player. Operations: Talk : prints the content of the NPC&rsquo;s _dialogue attribute. Attack : triggers combat against a player and inflicts damage to them. PrintCondition : prints the condition the NPC is in based on _currentHitPoints. Die : removes the NPC from the location it&rsquo;s in and drops its inventory. DropInventroy : adds all the NPC&rsquo;s inventory items to the location it is present in. Associations: NPCs are present in one location at a time, and can move between them. Item An abstract class with multiple subclasses. The functionality of an item is mainly determined by the subclass type it&rsquo;s an instance of. The item subclasses are: Junk, KeyItem, Consumable, and Equipment. An Item is present in a location or a character&rsquo;s inventory, and can move between these. Attributes: _name : name of the item. _description : description of the item. _isRetrievable : boolean stating if an item can be picked up by a character (added to the character&rsquo;s inventory). _isWinningItem : boolean stating if picking up the item leads to victory / completing the game. _endText : text to be printed upon finishing the game; is null unless _isWinningItem is set to true. Operations: Use : triggers an event or action. An item may be used on its own, on an NPc or another item. The effect of Use depends on the Item instance&rsquo;s type. FinishGame : is called upon picking up an item which has _isWinningItem set to true; prints _endText , closes Terminal and ends the game. Associations: An item is either present in the inventory of a player or (exclusive) a location, and may be moved between these. Junk A subclass of Item with no additional effects. Inherits Item. Operations: Use : has no effect outside of printing some feedback for the player.</p>
-
-<p>KeyItem A subclass of Item used to unlock a direction in a location, or to be traded with an NPC for another item. A key item can never be used on its own, but must be used on a specific item or NPC. Inherits Item. Attributes: _newTargetDescriptions : the new descriptions of the specific items the key item unlocks. A new description is set upon using the key item upon the corresponding item. _unlockDirections : directions which are unlocked when using the key item on specific target items. _unlockLocationNames : the names of the locations in which the key item can unlock a direction.  _npcItemExchange : contains the NPC which can trade the key item for another item and which items they trade it for. Operations: Use : if used on a correct target item a direction in a location will be unlocked, allowing a player to move in that direction. If used on a correct target NPC the key item is traded for another item. IsCorrectTargetItem : checks if the target item passed in Use is a correct target for the key item. IsCorrectTargetNpc : checks if the target NPC passed in Use is a correct target for the key item. SetTargetItemDescription : replaces the description of a target item with the corresponding description in _newTargetDescription if a key item is used on that item. GiveAccessNewLocation : adds the location name corresponding to the unlocked direction, found in _unlockedLocationNames, to the _adjacentLocation attribute of the player&rsquo;s current location.</p>
-
-<p>Consumable A subclass of Item which can be used once to aid a player or harm an NPC. If the consumable is harmful it may only be used on an NPC and will lower one of their statistics, alternatively if a consumable is not harmful it may only be used on the player and will increase one of their statistics. Consumables can only be used once. Inherits Item. Attributes: _statChange : the amount by which the target statistic is changed upon use. _dangerous : boolean expressing if the consumable is harmful or not. _affectedStat : statistic to be effected upon use. Operations: Use : When used on its own and not harmful, a specified statistic of the player using it will be increased. When used on an NPC and harmful, a specified statistic of the NPC will be reduced. Both actions consume the consumable, removing it from the player&rsquo;s inventory.</p>
-
-<p>Equipment A subclass of Item which can be equipped by a character, raising their statistics. Equipment has two distinct types, Weapon and Armor. Weapons tend to increase a character&rsquo;s _Stength and armor tends to increase _Constitution.  Attributes: _blockBonus : bonus to _constitution when equipped. _attackBonus : bonus to _strength when equipped. _type : type of the equipment, either Weapon or Armor. Operations: Use : when equipment is used on its own, it will be equipped by the player, if the player already wears a piece of equipment of the same type that piece of equipment will be unequipped in favor of the piece of equipment being used. Use will have no effect when a target is specified.</p>
-
-<p>GameState Contains information about the state of the game, such as a reference to the user&rsquo;s character, whether the game is finished. Attributes: Combat : boolean stating if the game is in combat mode. IsFinished : boolean stating if the game is finished, becomes true once the player meets the victory condition. SpawnRoom : name of the location in which a new instance of Player is placed (the player&rsquo;s initial current location). MainCharacter : the user&rsquo;s character, an instance of Player. Locations : all locations used in the game. Operations: GetLocation : returns a specific location. Associations: GameState is a globally accessible class, and is referred to numerous times by different classes in the program, because of this most associations of GameState have been omitted from the class diagram, to improve clearness.</p>
-
-<p>InitiationService A service used to initiate the instances of all non-abstract classes, except for the item subclasses, and reading the story specific json files. Attributes: storyDirPath : path to the directory of the story files. locationJsonDirPath : path to the directory containing the json files of the story&rsquo;s locations. npcJsonDirPath : path to the directory containing the json files of the story&rsquo;s NPCs. Operations: InitiateMainCharacter : creates an instance of Player which will be the user&rsquo;s character, and sets MainCharacter in GameState. InitiateCharacterInventory : creates an instance of an empty character inventory. InitiateLocations : creates a map of Location instances for every json file in the story&rsquo;s locations directory, and sets Locations in GameState.  InitiateLocation : creates an instance of Location. An instance of LocationConfig is used as an argument when initiating the location. InitiateNpc : creates an instance of NPC. An instance of NpcConfig is used as an argument when initiating the location. ReadLineByLine : reads the content of a json file into a string line by line. Associations: Initiates instances of Location, Player, and NPC. Also initiates the MainCharacter and Locations attributes of GameState. Passes new instances of NPC to an instance of Location.</p>
-
-<p>ItemFactory A service which creates instances of the Item subclasses.  Attributes: storyDirPath : path to the directory of the story files. junkJsonDirPath : path to the directory containing the json files of the story&rsquo;s junk items. consumableJsonDirPath : path to the directory containing the json files of the story&rsquo;s consumable items. keyItemJsonDirPath : path to the directory containing the json files of the story&rsquo;s key items. equipmentJsonDirPath : path to the directory containing the json files of the story&rsquo;s equipment items. Operations: InitiateItem : creates an instance of an Item subclass. The instance of the subclass is created if a JSON file can be found matching the name passed when the function is called. An instance of ItemConfig, ConsumableConfig, KeyItemConfig, or EquipmentConfig is used for initiation depending on the item&rsquo;s type. IsExsitingFile : Checks if the passed path matches an existing JSON file. Associations: Initiates instances of Item subclasses. Passes new instances of Item to an instance of Location.</p>
-
-<p>Controller A service which reads user input and executes user commands.  Operations: ExecuteCommand : retrieves user input, computes which command the user wishes to execute and executes it. ExecuteCombatCommand : retrieves user input while their character is in combat, computes which command the user wishes to execute and executes it. ExecuteResponseCommand : retrieves user input while they respond to a combat action of an enemy, computes which command the user wishes to execute and executes it. PrintCommands : prints the usable commands at the current moment. Examine : prints the description of the target (an Item or NPC) or the description of the player&rsquo;s current location if no target is specified. Talk : calls the player&rsquo;s Talk() operation. Take : calls the player&rsquo;s Take() operation. Move : calls the player&rsquo;s Move() operation. Use : calls the player&rsquo;s Use(), UseOnItem(), or UseOnNpc() operations, depending on the target specified by the user, if any. Attack : calls the player&rsquo;s Attack() operation. Associations: Perform action : makes an instance of Player perform an action such as take, move or use. Examine : retrieves the description of a location, item or NPC.</p>
-
-<p>Combat Service which manages combat. Combat is performed between a player and one or multiple NPCs. NPCs are only able to attack the player, however the player can perform a multitude of actions. A player performs multiple actions each turn, depending on their stamina, they can attack, use a consumable, or dodge or block if their opponent attacks. To be able to dodge or block the player must have at least 1 stamina remaining once the NPC attacks them, meaning the user should properly manage the stamina of their character, this can be done by skipping a part of their turn. The stamina of a character gets regenerated completely at the start of their turn. If an NPC dies in combat, they will be removed from the location they&rsquo;re present in and will drop all the items in their inventory, a player on the other hand will simply respawn at the spawn location.  Attributes: combatOrder : keeps track of the turn order of all characters currently in combat. skipTurn : boolean stating if the player wants to skip their turn. Operations: Init : initiates combat; switches Combat in GameState to true, prints the combat dialogue of all enemies, adds all enemies and the player to _combatOrder, and sorts _combatOrder based on the characters&rsquo; dexterity and if the player attacks an NPC or the other way around. Run : runs combat and checks if all enemies are defeated. CombatEnd : ends combad; restores the player's health and stamina, clears combatOrder . and switches Combat in GameState to false. CombatFlow : loops over combatOrder and executes the combat action(s) for each character. RunNewOrder : called once an NPC dies, creates a new combat order without the killed NPC(s) and calls Run. PlayerAction : called on the player&rsquo;s turn. Executes the combat action the player makes by calling ExecuteCombatCommand in Controller as long as the player still has stamina. EnemyAction : makes an NPC attack the player. PrintCombatDialogues : gets and prints the _combatDialogue of each NPC in combat. Associations: InitiateCombat : when an NPC or player attacks the other they initiate combat. Perform combat action : Combat executes a player&rsquo;s combat action by calling ExecuteCombatCommand in Controller. Combat may make calls to Location, Player, NPC, or Character in order to update them, for example deleting an NPC from a location, or resetting a player&rsquo;s health and stamina.</p>
-
-<p> Terminal A wrapper class for usage of the org.beryx.textio library; used for classes to print to and read from the terminal.</p>
-
-<p>Attributes : INSTANCE : instance of the Terminal class. _textIO : instance of org.beryx.textio.TextIO, used to initiate _inputReader and _terminal. _inputReader : instance of org.beryx.textio.StringInputReader, used reading user input. _terminal : instance of org.beryx.textio.TextTerminal, used for printing to the terminal. Operations: Read : reads user input from the terminal. Print : prints a string to the terminal. PrintLine : prints a line to the terminal. CloseTerminal : desposes the _textIO instance. Associations Get user input : Terminal reads user input from the terminal and sends this in a string to the associated class. Print : Terminal prints the string passed by the associated class to the terminal, either as just a string or a line. This association is omitted from the class diagram to improve clearness, as the majority of the classes have this association. Configuration classes A total of six configuration classes are added to the project, and are used for the initiation of instances of Location, NPC, and all the Item subclasses. Using a JSON reader and deserializer, instances of these configuration classes are created from the story JSON files, such an instance can then be passed as an argument when calling the constructor of its corresponding class. Which configuration class is just to initiate which class is quite straight forward based on the name, except for the ItemConfig class which is used to initiate items of type Junk. Additionally the classes ConsumableCpnfig, KeyItemConfig and EquipmentConfig inherit the ItemConfig class. Taking the configuration classes contain the exact same attributes as the classes they correspond to, a detailed summary of their attributes will be left out.</p>
+<p><span style="font-weight: 400;">To improve the readability of the class diagram, all getter and setter methods required and the associations connected to them are not included in the class diagram.</span></p>
+<p>&nbsp;</p>
+<h3><strong>Location</strong></h3>
+<p><span style="font-weight: 400;">The Location class represents a room or area which contains objects and characters. </span><em><span style="font-weight: 400;">Locations</span></em><span style="font-weight: 400;"> are linked together and can be accessed through different directions using the </span><em><span style="font-weight: 400;">AdjacentLocations</span></em><span style="font-weight: 400;"> hashmap.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_name: The location&rsquo;s name.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_baseDescription: Location&rsquo;s description, excluding the descriptions of items and NPCs in the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_items: Items present in the location</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_NPCs: NPCs present in the location</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_adjacentLocations: The locations which are adjacent to the location.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">AddAdjacentLocation : adds a location reference to the adjacent location map.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ContainsNpc : checks if the location contains an NPC.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">AddNpc : adds an NPC to the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">RemoveNPC : removes an NPC from the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ContainsItem : checks if the location contains an item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">AddItem : adds an item to the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">RemoveItem : removes an item from the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">GetNpcDescriptions : gets the descriptions of all NPCs in the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">GetItemDescriptions : gets the descriptions of all items in the location.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Character</strong></h3>
+<p><span style="font-weight: 400;">The Character class represents a person or other being which acts as a living entity in the game. Such living entities or beings would be, for example, a merchant, a bandit or a wolf. Note, the role a being plays in a story determines if it should be an instance of the Character or Item class; in one story a salamander may be regarded as a character which can be battled with or spoken to, while another story sees it as (functionally speaking) just an item that. Characters have a certain amount of hit points, representing their health, if these drop to zero the character will die. The amount of actions a character can perform in one turn during combat depends on their stamina, as long as this does not hit zero they can perform another action.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">BASE_HEALTH : the base health of every character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">BASE_ATTACK : the base attack of every character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">BASE_STAMINA : the base stamina of every character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_name : name of the character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_strength : statistic influencing the character&rsquo;s </span><em><span style="font-weight: 400;">_attack</span></em><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_dexterity : statistic influencing the character&rsquo;s </span><em><span style="font-weight: 400;">_maxStamina</span></em><span style="font-weight: 400;"> and chance to dodge chance during combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_constitution : statistic influencing the character&rsquo;s </span><em><span style="font-weight: 400;">_maxHitPoints, _block</span></em><span style="font-weight: 400;"> and standart damage mitigation during combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_maxHitPoints : character&rsquo;s total health.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_currentHitPoints : character&rsquo;s current health.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_attack : damage a character can deal when attacking in combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_block : amount of mitigated damage upon when blocking an attack in combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_maxStamina : character&rsquo;s total stamina.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_currentStamina : character&rsquo;s stamina.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_inventory : the items in possession of the character.</span><span style="font-weight: 400;">&nbsp;</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ResetHealth : Restores </span><em><span style="font-weight: 400;">_currentHitPoints</span></em><span style="font-weight: 400;"> to the value of </span><em><span style="font-weight: 400;">_maxHitPoints</span></em><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ResetStamina : Restores </span><em><span style="font-weight: 400;">_currentStamina</span></em><span style="font-weight: 400;"> to the value of </span><em><span style="font-weight: 400;">_maxStamina.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">AddToInventory : Adds an item to the character&rsquo;s inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">RemoveFromInventory : Removes an item from the character&rsquo;s inventory</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Attack : Initiates combat with another character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Die : Triggers an event when the character is defeated in combat, this event is different for </span><strong>Player</strong><span style="font-weight: 400;"> and </span><strong>NPC</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">DealDamage : character inflicts damage on another character.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Player</strong></h3>
+<p><strong>Player </strong><span style="font-weight: 400;">inherits </span><strong>Character</strong><span style="font-weight: 400;">, and</span> <span style="font-weight: 400;">is controlled by the user. A player can equip an armor piece or weapon, boosting their stats (</span><em><span style="font-weight: 400;">_strength, _dexterity, _constitution</span></em><span style="font-weight: 400;">), however only one piece of equipment of each type may be equipped at once.&nbsp;</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_currentLocation: the location in which the player resides.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_weapon : the equipment piece of type </span><em><span style="font-weight: 400;">Weapon </span></em><span style="font-weight: 400;">currently equipped by the player.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_armor : the equipment piece of type </span><em><span style="font-weight: 400;">Armor </span></em><span style="font-weight: 400;">currently equipped by the player.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isDodge : boolean stating if the player is currently dodging, used during combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isBlock : boolean stating if the player is currently blocking, used during combat.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">EquipWeapon : equips a piece of equipment of type </span><em><span style="font-weight: 400;">Weapon.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">EquipArmor : equips a piece of equipment of type </span><em><span style="font-weight: 400;">Armor.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : use an item in the player&rsquo;s inventory by itself.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">UseOnItem : use an item in the player&rsquo;s inventory on another item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">UseOnNpc : use an item in the player&rsquo;s inventory on an NPC.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">TalkTo : initiate a conversation with an NPC.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Take : remove an item from the current location and put it in the player&rsquo;s inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Move : move to a location adjacent to the current location, requires a direction to move in.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Attak : triggers combat against an NPC and inflicts damage to it.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Die : causes the player to respawn in the designated spawn room with full health and stamina.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ResponseAction : executes a response action during combat if </span><em><span style="font-weight: 400;">_currentStamina</span></em><span style="font-weight: 400;"> is greater than zero.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PrintInventory : prints the names of all the items in the player&rsquo;s inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Respawn : sets the player&rsquo;s current location to the spawn location.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Talk to : is triggered by the </span><em><span style="font-weight: 400;">TalkTo</span></em><span style="font-weight: 400;"> function of </span><strong>Player</strong><span style="font-weight: 400;"> and calls the </span><em><span style="font-weight: 400;">Talk</span></em><span style="font-weight: 400;"> function of </span><strong>NPC</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Move : is triggered by the </span><em><span style="font-weight: 400;">Move</span></em><span style="font-weight: 400;"> function of </span><strong>Player</strong><span style="font-weight: 400;">, gets the location adjacent to the current location in the direction specified, this adjacent location then used to set the </span><em><span style="font-weight: 400;">_currentLocation</span></em><span style="font-weight: 400;"> attribute of the player.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Take : is triggered by the </span><em><span style="font-weight: 400;">Take</span></em><span style="font-weight: 400;"> function of </span><strong>Player</strong><span style="font-weight: 400;">, removes an item from the player&rsquo;s current location and adds it to their inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : is triggered by the </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;">, </span><em><span style="font-weight: 400;">UseOnItem</span></em><span style="font-weight: 400;">, or </span><em><span style="font-weight: 400;">UseOnNpc</span></em><span style="font-weight: 400;"> functions of </span><strong>Player</strong><span style="font-weight: 400;"> and calls the </span><em><span style="font-weight: 400;">Use </span></em><span style="font-weight: 400;">function of </span><strong>NPC</strong><span style="font-weight: 400;">, the effect of </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;"> in </span><strong>NPC</strong><span style="font-weight: 400;"> will vary based on which </span><strong>Player</strong><span style="font-weight: 400;"> function calls it and of which subclass the </span><strong>NPC</strong><span style="font-weight: 400;"> instance is. An instance of </span><strong>Item</strong><span style="font-weight: 400;"> or </span><strong>NPC</strong><span style="font-weight: 400;"> can be passed when the player calls the </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;"> operation of the target item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Equipped : an instance of </span><strong>Equipment</strong><span style="font-weight: 400;"> may be equipped by a player. A player may have at most two pieces of equipment equipped at once, and a piece of equipment may be equipped to at most one player.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Attack : may attack or be attacked by an NPC.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">A player is present in one location at a time, and can move between them.</span></li>
+</ul>
+<p><br /><br /></p>
+<h3><strong>NPC</strong></h3>
+<p><span style="font-weight: 400;">A subclass which inherits from the </span><strong>Character </strong><span style="font-weight: 400;">class. A character which is not controlled by the player.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_description : a description of the NPC.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_type : the type of the NPC, such as wolf or vampire.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_dialogue : the text spoken by the NPC when talking to them.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_combatDialogue : the text spoken by the NPC when initiating combat with them.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isHostile : boolean stating if the NPC would attack a player on sight.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isFightable : boolean stating if the NPC can be attacked by the player.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Talk : prints the content of the NPC&rsquo;s </span><em><span style="font-weight: 400;">_dialogue </span></em><span style="font-weight: 400;">attribute.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Attack :&nbsp; triggers combat against a player and inflicts damage to them.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PrintCondition : prints the condition the NPC is in based on </span><em><span style="font-weight: 400;">_currentHitPoints.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Die : removes the NPC from the location it&rsquo;s in and drops its inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">DropInventroy : adds all the NPC&rsquo;s inventory items to the location it is present in.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">NPCs are present in one location at a time, and can move between them.</span></li>
+</ul>
+<h3><strong>Item</strong></h3>
+<p><span style="font-weight: 400;">An abstract class with multiple subclasses. The functionality of an item is mainly determined by the subclass type it&rsquo;s an instance of. The item subclasses are: </span><strong>Junk, KeyItem, Consumable,</strong><span style="font-weight: 400;"> and </span><strong>Equipment</strong><span style="font-weight: 400;">. An Item is present in a location or a character&rsquo;s inventory, and can move between these.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_name : name of the item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_description : description of the item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isRetrievable : boolean stating if an item can be picked up by a character (added to the character&rsquo;s inventory).</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_isWinningItem : boolean stating if picking up the item leads to victory / completing the game.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_endText : text to be printed upon finishing the game; is null unless </span><em><span style="font-weight: 400;">_isWinningItem</span></em><span style="font-weight: 400;"> is set to true.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : triggers an event or action. An item may be used on its own, on an NPc or another item. The effect of </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;"> depends on the </span><strong>Item</strong><span style="font-weight: 400;"> instance&rsquo;s type.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">FinishGame : is called upon picking up an item which has </span><em><span style="font-weight: 400;">_isWinningItem</span></em><span style="font-weight: 400;"> set to true; prints </span><em><span style="font-weight: 400;">_endText</span></em><span style="font-weight: 400;"> , closes </span><strong>Terminal</strong><span style="font-weight: 400;"> and ends the game.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">An item is either present in the inventory of a player or (exclusive) a location, and may be moved between these.</span></li>
+</ul>
+<h3><strong>Junk</strong></h3>
+<p><span style="font-weight: 400;">A subclass of </span><strong>Item</strong><span style="font-weight: 400;"> with no additional effects. Inherits </span><strong>Item.</strong></p>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : has no effect outside of printing some feedback for the player.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>KeyItem</strong></h3>
+<p><span style="font-weight: 400;">A subclass of </span><strong>Item</strong><span style="font-weight: 400;"> used to unlock a direction in a location, or to be traded with an NPC for another item. A key item can never be used on its own, but must be used on a specific item or NPC. Inherits </span><strong>Item</strong><span style="font-weight: 400;">.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_newTargetDescriptions : the new descriptions of the specific items the key item unlocks. A new description is set upon using the key item upon the corresponding item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_unlockDirections : directions which are unlocked when using the key item on specific target items.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_unlockLocationNames : the names of the locations in which the key item can unlock a direction.&nbsp;</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_npcItemExchange : contains the NPC which can trade the key item for another item and which items they trade it for.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : if used on a correct target item a direction in a location will be unlocked, allowing a player to move in that direction. If used on&nbsp; a correct target NPC the key item is traded for another item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">IsCorrectTargetItem : checks if the target item passed in </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;"> is a correct target for the key item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">IsCorrectTargetNpc : checks if the target NPC passed in </span><em><span style="font-weight: 400;">Use</span></em><span style="font-weight: 400;"> is a correct target for the key item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">SetTargetItemDescription : replaces the description of a target item with the corresponding description in </span><em><span style="font-weight: 400;">_newTargetDescription</span></em><span style="font-weight: 400;"> if a key item is used on that item.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">GiveAccessNewLocation :&nbsp; adds the location name corresponding to the unlocked direction, found in _</span><em><span style="font-weight: 400;">unlockedLocationNames,</span></em><span style="font-weight: 400;"> to the </span><em><span style="font-weight: 400;">_adjacentLocation</span></em><span style="font-weight: 400;"> attribute of the player&rsquo;s current location.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Consumable</strong></h3>
+<p><span style="font-weight: 400;">A subclass of </span><strong>Item</strong><span style="font-weight: 400;"> which can be used once to aid a player or harm an NPC. If the consumable is harmful it may only be used on an NPC and will lower one of their statistics, alternatively if a consumable is not harmful it may only be used on the player and will increase one of their statistics. Consumables can only be used once. Inherits </span><strong>Item.</strong></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_statChange : the amount by which the target statistic is changed upon use.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_dangerous : boolean expressing if the consumable is harmful or not.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_affectedStat : statistic to be effected upon use.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : When used on its own and not harmful, a specified statistic of the player using it will be increased. When used on an NPC and harmful, a specified statistic of the NPC will be reduced. Both actions consume the consumable, removing it from the player&rsquo;s inventory.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Equipment</strong></h3>
+<p><span style="font-weight: 400;">A subclass of Item which can be equipped by a character, raising their statistics. Equipment has two distinct types, </span><em><span style="font-weight: 400;">Weapon </span></em><span style="font-weight: 400;">and </span><em><span style="font-weight: 400;">Armor</span></em><span style="font-weight: 400;">. Weapons tend to increase a character&rsquo;s </span><em><span style="font-weight: 400;">_Stength </span></em><span style="font-weight: 400;">and armor tends to increase </span><em><span style="font-weight: 400;">_Constitution</span></em><span style="font-weight: 400;">.&nbsp;&nbsp;</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_blockBonus : bonus to </span><em><span style="font-weight: 400;">_constitution</span></em><span style="font-weight: 400;"> when equipped.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_attackBonus : bonus to </span><em><span style="font-weight: 400;">_strength</span></em><span style="font-weight: 400;"> when equipped.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_type : type of the equipment, either </span><em><span style="font-weight: 400;">Weapon</span></em><span style="font-weight: 400;"> or </span><em><span style="font-weight: 400;">Armor</span></em><span style="font-weight: 400;">.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : when equipment is used on its own, it will be equipped by the player, if the player already wears a piece of equipment of the same type that piece of equipment will be unequipped in favor of the piece of equipment being used. Use will have no effect when a target is specified.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>GameState</strong></h3>
+<p><span style="font-weight: 400;">Contains information about the state of the game, such as a reference to the user&rsquo;s character, whether the game is finished.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Combat : boolean stating if the game is in combat mode.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">IsFinished : boolean stating if the game is finished, becomes true once the player meets the victory condition.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">SpawnRoom&nbsp; : name of the location in which a new instance of </span><strong>Player</strong><span style="font-weight: 400;"> is placed (the player&rsquo;s initial current location).</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">MainCharacter : the user&rsquo;s character, an instance of </span><strong>Player</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Locations : all locations used in the game.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">GetLocation : returns a specific location.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">GameState is a globally accessible class, and is referred to numerous times by different classes in the program, because of this most associations of </span><strong>GameState</strong><span style="font-weight: 400;"> have been omitted from the class diagram, to improve clearness.&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>InitiationService</strong></h3>
+<p><span style="font-weight: 400;">A service used to initiate the instances of all non-abstract classes, except for the item subclasses, and reading the story specific json files.</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">storyDirPath : path to the directory of the story files.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">locationJsonDirPath : path to the directory containing the json files of the story&rsquo;s locations.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">npcJsonDirPath : path to the directory containing the json files of the story&rsquo;s NPCs.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateMainCharacter : creates an instance of </span><strong>Player</strong><span style="font-weight: 400;"> which will be the user&rsquo;s character, and&nbsp; sets </span><em><span style="font-weight: 400;">MainCharacter</span></em><span style="font-weight: 400;"> in </span><strong>GameState</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateCharacterInventory : creates an instance of an empty character inventory.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateLocations : creates a map of </span><strong>Location </strong><span style="font-weight: 400;">instances for every json file in the story&rsquo;s locations directory, and sets </span><em><span style="font-weight: 400;">Locations</span></em><span style="font-weight: 400;"> in </span><strong>GameState</strong><span style="font-weight: 400;">.&nbsp;</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateLocation : creates an instance of </span><strong>Location</strong><span style="font-weight: 400;">. An instance of </span><strong>LocationConfig</strong><span style="font-weight: 400;"> is used as an argument when initiating the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateNpc : creates an instance of </span><strong>NPC</strong><span style="font-weight: 400;">. An instance of </span><strong>NpcConfig</strong><span style="font-weight: 400;"> is used as an argument when initiating the location.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ReadLineByLine : reads the content of a json file into a string line by line.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Initiates instances of </span><strong>Location</strong><span style="font-weight: 400;">, </span><strong>Player</strong><span style="font-weight: 400;">, and </span><strong>NPC</strong><span style="font-weight: 400;">. Also initiates the </span><em><span style="font-weight: 400;">MainCharacter</span></em><span style="font-weight: 400;"> and </span><em><span style="font-weight: 400;">Locations</span></em><span style="font-weight: 400;"> attributes of </span><strong>GameState</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Passes new instances of </span><strong>NPC</strong><span style="font-weight: 400;"> to an instance of </span><strong>Location</strong><span style="font-weight: 400;">.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>ItemFactory</strong></h3>
+<p><span style="font-weight: 400;">A service which creates instances of the </span><strong>Item</strong><span style="font-weight: 400;"> subclasses.&nbsp;</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">storyDirPath : path to the directory of the story files.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">junkJsonDirPath : path to the directory containing the json files of the story&rsquo;s junk items.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">consumableJsonDirPath : path to the directory containing the json files of the story&rsquo;s consumable items.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">keyItemJsonDirPath : path to the directory containing the json files of the story&rsquo;s key items.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">equipmentJsonDirPath : path to the directory containing the json files of the story&rsquo;s equipment items.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateItem : creates an instance of an </span><strong>Item</strong><span style="font-weight: 400;"> subclass. The instance of the subclass is created if a JSON file can be found matching the name passed when the function is called. An instance of </span><strong>ItemConfig</strong><span style="font-weight: 400;">, </span><strong>ConsumableConfig</strong><span style="font-weight: 400;">, </span><strong>KeyItemConfig</strong><span style="font-weight: 400;">, or </span><strong>EquipmentConfig </strong><span style="font-weight: 400;">&nbsp;is used for initiation depending on the item&rsquo;s type.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">IsExsitingFile : Checks if the passed path matches an existing JSON file.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Initiates instances of </span><strong>Item</strong><span style="font-weight: 400;"> subclasses.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Passes new instances of </span><strong>Item </strong><span style="font-weight: 400;">to an instance of </span><strong>Location</strong><span style="font-weight: 400;">.</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Controller</strong></h3>
+<p><span style="font-weight: 400;">A service which reads user input and executes user commands.&nbsp;</span></p>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ExecuteCommand : retrieves user input, computes which command the user wishes to execute and executes it.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ExecuteCombatCommand : retrieves user input while their character is&nbsp; in combat, computes which command the user wishes to execute and executes it.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">ExecuteResponseCommand : retrieves user input while they respond to a combat action of an enemy, computes which command the user wishes to execute and executes it.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PrintCommands : prints the usable commands at the current moment.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Examine : prints the description of the target (an </span><strong>Item</strong> <span style="font-weight: 400;">or </span><strong>NPC</strong><span style="font-weight: 400;">) or the description of the player&rsquo;s current location if no target is specified.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Talk : calls the player&rsquo;s </span><em><span style="font-weight: 400;">Talk()</span></em><span style="font-weight: 400;"> operation.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Take : calls the player&rsquo;s </span><em><span style="font-weight: 400;">Take()</span></em><span style="font-weight: 400;"> operation.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Move : calls the player&rsquo;s </span><em><span style="font-weight: 400;">Move()</span></em><span style="font-weight: 400;"> operation.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use : calls the player&rsquo;s </span><em><span style="font-weight: 400;">Use(), UseOnItem(), </span></em><span style="font-weight: 400;">or </span><em><span style="font-weight: 400;">UseOnNpc()</span></em><span style="font-weight: 400;"> operations, depending on the target specified by the user, if any.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Attack : calls the player&rsquo;s </span><em><span style="font-weight: 400;">Attack()</span></em><span style="font-weight: 400;"> operation.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Perform action : makes an instance of </span><strong>Player</strong><span style="font-weight: 400;"> perform an action such as take, move or use.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Examine : retrieves the description of a location, item or NPC.&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>Combat</strong></h3>
+<p><span style="font-weight: 400;">Service which manages combat. Combat is performed between a player and one or multiple NPCs. NPCs are only able to attack the player, however the player can perform a multitude of actions. A player performs multiple actions each turn, depending on their stamina, they can attack, use a consumable, or dodge or block if their opponent attacks. To be able to dodge or block the player must have at least 1 stamina remaining once the NPC attacks them, meaning the user should properly manage the stamina of their character, this can be done by skipping a part of their turn. The stamina of a character gets regenerated completely at the start of their turn. If an NPC dies in combat, they will be removed from the location they&rsquo;re present in and will drop all the items in their inventory, a player on the other hand will simply respawn at the spawn location.&nbsp;</span></p>
+<h4><span style="font-weight: 400;">Attributes:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">combatOrder : keeps track of the turn order of all characters currently in combat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">skipTurn : boolean stating if the player wants to skip their turn.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Init : initiates combat;&nbsp; switches </span><em><span style="font-weight: 400;">Combat</span></em><span style="font-weight: 400;"> in </span><strong>GameState</strong><span style="font-weight: 400;"> to true, prints the combat dialogue of all enemies, adds all enemies and the player to </span><em><span style="font-weight: 400;">_combatOrder</span></em><span style="font-weight: 400;">, and sorts </span><em><span style="font-weight: 400;">_combatOrder </span></em><span style="font-weight: 400;">based on the characters&rsquo; dexterity and if the player attacks an NPC or the other way around.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Run : runs combat and checks if all enemies are defeated.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">CombatEnd : ends combad; restores the player's health and stamina, clears </span><em><span style="font-weight: 400;">combatOrder</span></em><span style="font-weight: 400;"> . and switches </span><em><span style="font-weight: 400;">Combat</span></em><span style="font-weight: 400;"> in </span><strong>GameState</strong><span style="font-weight: 400;"> to false.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">CombatFlow : loops over </span><em><span style="font-weight: 400;">combatOrder</span></em><span style="font-weight: 400;"> and executes the combat action(s) for each character.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">RunNewOrder : called once an NPC dies, creates a new combat order without the killed NPC(s) and calls </span><em><span style="font-weight: 400;">Run.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PlayerAction : called on the player&rsquo;s turn. Executes the combat action the player makes by calling </span><em><span style="font-weight: 400;">ExecuteCombatCommand</span></em><span style="font-weight: 400;"> in </span><strong>Controller</strong><span style="font-weight: 400;"> as long as the player still has stamina.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">EnemyAction : makes an NPC attack the player.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PrintCombatDialogues : gets and prints the </span><em><span style="font-weight: 400;">_combatDialogue</span></em><span style="font-weight: 400;"> of each NPC in combat.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">InitiateCombat : when an NPC or player attacks the other they initiate combat.</span></li>
+</ul>
+<ul>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Perform combat action : </span><strong>Combat</strong><span style="font-weight: 400;"> executes a player&rsquo;s combat action by calling </span><em><span style="font-weight: 400;">ExecuteCombatCommand </span></em><span style="font-weight: 400;">in </span><strong>Controller</strong><span style="font-weight: 400;">.</span></li>
+</ul>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><strong>Combat <span style="font-weight: 400;">may make calls to </span>Location<span style="font-weight: 400;">, </span>Player, NPC, <span style="font-weight: 400;">or </span>Character<span style="font-weight: 400;"> in order to update them, for example deleting an NPC from a location, or resetting a player&rsquo;s health and stamina.</span></strong></li>
+</ul>
+<p>&nbsp;</p>
+<p><br /><br /></p>
+<h3><strong>Terminal</strong></h3>
+<p><span style="font-weight: 400;">A wrapper class for usage of the</span><em><span style="font-weight: 400;"> org.beryx.textio </span></em><span style="font-weight: 400;">library; used for classes to print to and read from the terminal.&nbsp;</span></p>
+<p>&nbsp;</p>
+<h4><span style="font-weight: 400;">Attributes :</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">INSTANCE : instance of the </span><strong>Terminal</strong><span style="font-weight: 400;"> class.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_textIO : instance of </span><em><span style="font-weight: 400;">org.beryx.textio.TextIO</span></em><span style="font-weight: 400;">, used to initiate </span><em><span style="font-weight: 400;">_inputReader</span></em><span style="font-weight: 400;"> and </span><em><span style="font-weight: 400;">_terminal.</span></em></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_inputReader : instance of </span><em><span style="font-weight: 400;">org.beryx.textio.StringInputReader</span></em><span style="font-weight: 400;">, used reading user input.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">_terminal : instance of </span><em><span style="font-weight: 400;">org.beryx.textio.TextTerminal</span></em><span style="font-weight: 400;">, used for printing to the terminal.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Operations:</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Read : reads user input from the terminal.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Print : prints a string to the terminal.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">PrintLine : prints a line to the terminal.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">CloseTerminal : desposes the </span><em><span style="font-weight: 400;">_textIO</span></em><span style="font-weight: 400;"> instance.</span></li>
+</ul>
+<h4><span style="font-weight: 400;">Associations</span></h4>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Get user input : </span><strong>Terminal</strong><span style="font-weight: 400;"> reads user input from the terminal and sends this in a string to the associated class.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Print : </span><strong>Terminal</strong><span style="font-weight: 400;"> prints the string passed by the associated class to the terminal, either as just a string or a line.&nbsp; This association is omitted from the class diagram to improve clearness, as the majority of the classes have this association.</span></li>
+</ul>
+<h3><strong>Configuration classes</strong></h3>
+<p><span style="font-weight: 400;">A total of six configuration classes are added to the project, and are used for the initiation of instances of </span><strong>Location</strong><span style="font-weight: 400;">, </span><strong>NPC, </strong><span style="font-weight: 400;">and all the </span><strong>Item</strong><span style="font-weight: 400;"> subclasses. Using a JSON reader and deserializer, instances of these configuration classes are created from the story JSON files, such an instance can then be passed as an argument when calling the constructor of its corresponding class. Which configuration class is just to initiate which class is quite straight forward based on the name, except for the </span><strong>ItemConfig</strong><span style="font-weight: 400;"> class which is used to initiate items of type </span><strong>Junk</strong><span style="font-weight: 400;">. Additionally the classes </span><strong>ConsumableCpnfig</strong><span style="font-weight: 400;">, </span><strong>KeyItemConfig </strong><span style="font-weight: 400;">and </span><strong>EquipmentConfig </strong><span style="font-weight: 400;">inherit the </span><strong>ItemConfig </strong><span style="font-weight: 400;">class. Taking the configuration classes contain the exact same attributes as the classes they correspond to, a detailed summary of their attributes will be left out.</span></p>
 
 ## Object diagrams								
 Author(s): Leyla Celik
