@@ -9,6 +9,7 @@ import Enumerators.DirectionEnum;
 public class LocationConfig {
     public String Name;
     public String Description;
+    public Boolean IsSpawn;
     public List<String> Items;
     public String[] Characters;
     public Map<DirectionEnum, String> AdjacentLocations = new HashMap<DirectionEnum, String>() {{

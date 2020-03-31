@@ -4,14 +4,8 @@
 
 package Default_classes;
 
-import Configuration_models.ConsumConfig;
 import Configuration_models.ItemConfig;
-import Enumerators.StatEnum;
-import Game_data.GameState;
 import Services.Terminal;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 
 public class Junk extends Item{
     public Junk(ItemConfig config) {

@@ -1,6 +1,7 @@
 package Default_classes;
 
 import Configuration_models.NPCConfig;
+import Game_data.GameState;
 import Services.InitiationService;
 import Services.Terminal;
 
@@ -11,7 +12,8 @@ public class NPC extends Character {
     private String _description;
     private String _type;
     private String _dialogue;
-    private boolean _isHostile;
+    private String _combatDialogue;
+    private boolean _isHostile = false;
     private boolean _isFightable;
 
     public NPC(NPCConfig config) throws FileNotFoundException {
@@ -27,13 +29,17 @@ public class NPC extends Character {
         _dexterity = config.Dexterity;
         _constitution = config.Constitution;
         _isFightable = config.IsFightable;
-        _isHostile = config.IsHostile;
-        _hitPoints = _constitution * 2 + BASE_HEALTH;
+        if(_isFightable){
+            _isHostile = config.IsHostile;
+            _combatDialogue = config.CombatDialogue;
+        }
+        _maxHitPoints = _constitution * 2 + BASE_HEALTH;
         _attack = _strength * 2 + BASE_ATTACK;
-        _stamina = _dexterity + BASE_STAMINA;
+        _block = _constitution * 2;
+        _maxStamina = _dexterity + BASE_STAMINA;
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
-        _currentHitPoints = _hitPoints;
-        _currentStamina = _stamina;
+        _currentHitPoints = _maxHitPoints;
+        _currentStamina = _maxStamina;
     }
 
     public String GetDescription(){
@@ -43,19 +49,50 @@ public class NPC extends Character {
     public String GetDialogue() {
         return _dialogue;
     }
+    public String GetCombatDialogue() {
+        return _combatDialogue;
+    }
+
     public boolean IsHostile() { return _isHostile; }
     public boolean IsFightable() { return _isFightable; }
 
+
+    public void SetFightability (boolean newFightability) { _isFightable = newFightability; }
+    public void SetHostility (boolean newHostility) { _isHostile = newHostility; }
     public void SetDescription(String description){
         _description = description;
     }
     public void SetType(String type) { _type = type; }
     public void SetDialogue(String dialogue) { _dialogue = dialogue; }
+    public void SetCombatDialogue(String dialogue) { _combatDialogue = dialogue; }
 
     public void Talk() {
-        if (_dialogue == null || _dialogue.isEmpty())
+        if (_dialogue == null || _dialogue.isEmpty()) {
             Terminal.PrintLine(_name + " has nothing to say to you.");
+        }
         Terminal.PrintLine(_dialogue + "\n");
+    }
+
+    public void CombatTalk() {
+        if (_combatDialogue == null || _combatDialogue.isEmpty()) {
+            return;
+        }
+        Terminal.PrintLine(_combatDialogue);
+    }
+
+    @Override
+    public void Attack(String targetCharacterName) {
+        _currentStamina = _currentStamina - 1;
+        Terminal.PrintLine(_name + " is attacking " + targetCharacterName +"!");
+        GameState.MainCharacter.ResponseAction();
+        DealDamage(GameState.MainCharacter, GameState.MainCharacter.GetIsDodge(), GameState.MainCharacter.GetIsBlock());
+
+    }
+
+    @Override
+    public void Die() {
+        DropInventory(GameState.MainCharacter.GetCurrentLocation());
+        GameState.MainCharacter.GetCurrentLocation().RemoveNpc(_name);
     }
 
     public void DropInventory(Location dropLocation) {

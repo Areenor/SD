@@ -5,7 +5,6 @@
 package Default_classes;
 
 import Configuration_models.KeyItemConfig;
-import Configuration_models.ItemConfig;
 import Enumerators.DirectionEnum;
 import Game_data.GameState;
 import Services.Terminal;

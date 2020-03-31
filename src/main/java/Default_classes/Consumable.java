@@ -5,11 +5,7 @@
 package Default_classes;
 
 import Configuration_models.ConsumConfig;
-import Configuration_models.ItemConfig;
 import Services.Terminal;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 import Enumerators.StatEnum;
 import Game_data.GameState;
 
@@ -43,16 +39,20 @@ public class Consumable extends Item{
                     GameState.MainCharacter.SetConstitution(oldStat + _statChange);
                     break;
                 case HitPoints:
-                    oldStat = GameState.MainCharacter.GetHitPoints();
-                    GameState.MainCharacter.SetHitPoints(oldStat + _statChange);
+                    oldStat = GameState.MainCharacter.GetCurrentHitPoints();
+                    GameState.MainCharacter.SetMaxHitPoints(oldStat + _statChange);
                     break;
                 case Attack:
                     oldStat = GameState.MainCharacter.GetAttack();
                     GameState.MainCharacter.SetAttack(oldStat + _statChange);
                     break;
+                case Block:
+                    oldStat = GameState.MainCharacter.GetBlock();
+                    GameState.MainCharacter.SetBlock(oldStat + _statChange);
+                    break;
                 case Stamina:
-                    oldStat = GameState.MainCharacter.GetStamina();
-                    GameState.MainCharacter.SetStamina(oldStat + _statChange);
+                    oldStat = GameState.MainCharacter.GetCurrentStamina();
+                    GameState.MainCharacter.SetMaxStamina(oldStat + _statChange);
                     break;
                 default:
                     throw new IllegalArgumentException("The configuration is empty, misses AffectedStat");
@@ -88,16 +88,20 @@ public class Consumable extends Item{
                     targetNpc.SetConstitution(oldStat + _statChange);
                     break;
                 case HitPoints:
-                    oldStat = targetNpc.GetHitPoints();
-                    targetNpc.SetHitPoints(oldStat + _statChange);
+                    oldStat = targetNpc.GetMaxHitPoints();
+                    targetNpc.SetMaxHitPoints(oldStat + _statChange);
                     break;
                 case Attack:
                     oldStat = targetNpc.GetAttack();
                     targetNpc.SetAttack(oldStat + _statChange);
                     break;
+                case Block:
+                    oldStat = targetNpc.GetBlock();
+                    targetNpc.SetBlock(oldStat + _statChange);
+                    break;
                 case Stamina:
-                    oldStat = targetNpc.GetStamina();
-                    targetNpc.SetStamina(oldStat + _statChange);
+                    oldStat = targetNpc.GetMaxStamina();
+                    targetNpc.SetMaxStamina(oldStat + _statChange);
                     break;
                 default:
                     throw new IllegalArgumentException("The configuration is empty, misses AffectedStat");

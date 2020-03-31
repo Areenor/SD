@@ -39,15 +39,9 @@ public abstract class Item {
     }
     public void SetIsRetrievable(boolean retrievable) { _isRetrievable = retrievable; }
 
-    public void Use() {
-        //To be implemented
-    }
+    public void Use() { }
 
-    public void Use(Item targetItem) {
-        //To be implemented
-    }
+    public void Use(Item targetItem) { }
 
-    public void Use(NPC targetNpc) {
-        //To be implemented
-    }
+    public void Use(NPC targetNpc) { }
 }

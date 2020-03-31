@@ -1,7 +1,7 @@
 {
   "Name" : " the mountains",
   "Description" : "You are on a mountain. There is a room south.",
-  "Characters" : [],
+  "Characters" : ["Vampire", "Warewolf"],
   "Items" : ["Zweihander"],
   "AdjacentLocations" : {"south":"room"}
 }

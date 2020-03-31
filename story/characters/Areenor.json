@@ -1,10 +1,12 @@
 {
   "Name" : "Areenor",
+  "IsFightable" : "true",
   "IsHostile" : "false",
   "Inventory" : ["Flask"],
   "Description" : "You see a rather big man called Areenor standing in front of desk. From his armor you think that he is a Paladin.",
   "Type" : "Human",
   "Dialogue" : "I did not expect you to wake up that early, your squad is waiting for you in the mountains",
+  "CombatDialogue" : "You failed our Order.",
   "Strength": 2,
   "Dexterity": 0,
   "Constitution": 2

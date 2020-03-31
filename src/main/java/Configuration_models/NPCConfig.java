@@ -10,6 +10,7 @@ public class NPCConfig {
     public String Description;
     public String Type;
     public String Dialogue;
+    public String CombatDialogue;
     public List<String> Inventory;
 
     public boolean IsHostile;

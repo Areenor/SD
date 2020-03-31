@@ -2,76 +2,105 @@ package Services;
 
 
 import Default_classes.Character;
+import Default_classes.NPC;
 import Game_data.GameState;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
 import java.util.ArrayList;
 
 
 public abstract class Combat {
+    private static ArrayList<Character> combatOrder = new ArrayList<>();
+    private static boolean skipTurn = false;
 
-    private static TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    private static TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
+    public static boolean GetSkipTurn(){ return skipTurn; }
+    public static ArrayList<Character> getCombatOrder(){return combatOrder;}
 
-    public static ArrayList<Character> combat_order = new ArrayList<Character>();
+    public static void SetSkipTurn(boolean turn){ skipTurn = turn; }
+    public static void setCombatOrder(ArrayList<Character> newOrder){combatOrder = newOrder;}
 
-    public static void init(){
-        terminal.println("Combat starts! Vampire and Warewolf won`t let you live!");
-        terminal.println("Your HP is: " + GameState.MainCharacter.GetCurrentHitPoints());
-        terminal.println("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
+    public static void Init(boolean PlayerInitiated){
+        Terminal.PrintLine("Combat starts!");
         GameState.Combat = true;
-        combat_order.add(GameState.MainCharacter);
-        combat_order.addAll(GameState.MainCharacter.GetCurrentLocation().getEnemies());
-        combat_order.sort(Character.DexterityComparator);
+        printCombatDialoges();
+
+        if(!PlayerInitiated){
+            combatOrder.add(GameState.MainCharacter);
+            combatOrder.addAll(GameState.MainCharacter.GetCurrentLocation().getEnemies());
+            combatOrder.sort(Character.DexterityComparator);
+        } else {
+            combatOrder.addAll(GameState.MainCharacter.GetCurrentLocation().getEnemies());
+            combatOrder.sort(Character.DexterityComparator);
+            combatOrder.add(0,GameState.MainCharacter);
+        }
+
+        Terminal.PrintLine("Your HP is: " + GameState.MainCharacter.GetCurrentHitPoints());
+        Terminal.PrintLine("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
     }
 
-    public static void run(ArrayList<Character> order, int start){
+    public static void Run(ArrayList<Character> order, int start){
         if(order.size() == 1){
-            combat_end();
+            CombatEnd();
         }
         else{
-            combat_flow(order, start);
+            combatFlow(order, start);
         }
     }
 
-    private static void combat_flow(ArrayList<Character> order, int start){
-        for(int current = 0;current < order.size(); current++) {
+    public static void CombatEnd(){
+        GameState.Combat = false;
+        GameState.MainCharacter.ResetHealth();
+        GameState.MainCharacter.ResetStamina();
+        combatOrder.clear();
+        Terminal.PrintLine("Combat ends!");
+    }
+
+    private static void combatFlow(ArrayList<Character> order, int start){
+        for(int current = 0; current < order.size(); current++) {
             if(current < start){
                 continue;
             }
-            if(order.get(current) == GameState.MainCharacter){
+            Character currentCharacter = order.get(current);
+            if(currentCharacter == GameState.MainCharacter){
                 playerAction();
             } else {
-                if(order.get(current).IsDead()){ //creates a new arrayList without killed npc. "start" variable is needed to keep the correct order after this event.
-                    order.remove(current);
-                    run(order, current);
+                if(currentCharacter.IsDead()){
+                    runNewOrder(order, current);
                     break;
                 }
-                else {
-                    enemyAction(order.get(current));
-                }
+                enemyAction(currentCharacter);
             }
         }
     }
 
+    private static void runNewOrder(ArrayList<Character> oldOrder, int indexOfDeadNpc){
+        oldOrder.remove(indexOfDeadNpc);
+        Run(oldOrder, indexOfDeadNpc);
+    }
+
     private static void playerAction(){
+        Terminal.PrintLine("Its your turn!");
         GameState.MainCharacter.ResetStamina();
-        while(GameState.MainCharacter.GetCurrentStamina() > 0){
+
+        while(GameState.MainCharacter.GetCurrentStamina() > 0 && GameState.Combat && !skipTurn){
+            if(GameState.MainCharacter.GetCurrentLocation().getEnemies().isEmpty()) {return;}
+            Terminal.PrintLine("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
             Controller.ExecuteCombatCommand(GameState.MainCharacter);
-            terminal.println("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
         }
+
+        skipTurn = false;
     }
 
     private static void enemyAction(Character attacker){
         attacker.Attack(GameState.MainCharacter.GetName());
-        terminal.println("Your HP is: " + GameState.MainCharacter.GetCurrentHitPoints());
+        if(GameState.Combat) {
+            Terminal.PrintLine("Your HP is: " + GameState.MainCharacter.GetCurrentHitPoints());
+        }
     }
 
-    private static void combat_end(){
-        combat_order.clear();
-        terminal.println("Combat ends!");
-        GameState.Combat = false;
+    private static void printCombatDialoges(){
+        for(int current = 0; current < GameState.MainCharacter.GetCurrentLocation().getEnemies().size(); current++) {
+            NPC currentNPC = GameState.MainCharacter.GetCurrentLocation().getEnemies().get(current);
+            Terminal.Print(currentNPC.GetName() + " : ");
+            currentNPC.CombatTalk();
+        }
     }
-
 }

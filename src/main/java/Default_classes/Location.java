@@ -1,6 +1,7 @@
 package Default_classes;
 
 import Configuration_models.LocationConfig;
+import Game_data.GameState;
 import Services.InitiationService;
 import Enumerators.DirectionEnum;
 import Services.ItemFactory;
@@ -26,7 +27,6 @@ public class  Location {
         _name = config.Name;
         _baseDescription = config.Description;
         _adjacentLocations = config.AdjacentLocations;
-
         for (String character : config.Characters) {
             _NPCs.put(character, InitiationService.InitiateCharacter(character));
         }
@@ -36,11 +36,21 @@ public class  Location {
         for (String items : config.Items) {
             _items.put(items, itemFactory.GetItem(items));
         }
+
+        boolean isSpawn = false;
+        if(config.IsSpawn != null){
+            isSpawn = config.IsSpawn;
+        }
+        if(isSpawn){
+            GameState.SpawnLocation = _name;
+        }
+
     }
 
     public String GetName() { return _name; }
     public String GetDescription() { return (_baseDescription + "\n" + GetItemDescriptions() + "\n" + GetNpcDescriptions()); }
     public String GetAdjacentLocation(DirectionEnum direction) { return _adjacentLocations.get(direction); }
+    public Item GetItem(String ItemName) { return _items.get(ItemName); }
     public NPC GetNpc(String NpcName) { return _NPCs.get(NpcName); }
     public Map<String, NPC> GetAllNpc() {return _NPCs;}
     public List<NPC> getEnemies(){
@@ -51,7 +61,6 @@ public class  Location {
         }
         return allEnemies;
     }
-    public Item GetItem(String ItemName) { return _items.get(ItemName); }
 
     public void SetBaseDescription(String description) { _baseDescription = description; }
     public void SetAdjacentLocation(DirectionEnum direction, String locationName) { _adjacentLocations.replace(direction, locationName); }
