@@ -33,7 +33,6 @@ public class NPC extends Character {
         }
         _maxHitPoints = _constitution * 2 + BASE_HEALTH;
         _attack = _strength * 2 + BASE_ATTACK;
-        _block = _constitution * 2;
         _maxStamina = _dexterity + BASE_STAMINA;
         _inventory = InitiationService.InitiateCharacterInventory(config.Inventory);
         _currentHitPoints = _maxHitPoints;
@@ -77,6 +76,9 @@ public class NPC extends Character {
         Terminal.PrintLine(_name + " is attacking " + targetCharacterName +"!");
         GameState.MainCharacter.ResponseAction();
         DealDamage(GameState.MainCharacter, GameState.MainCharacter.GetIsDodge(), GameState.MainCharacter.GetIsBlock());
+        if(GameState.MainCharacter.IsDead()){
+            GameState.MainCharacter.Die();
+        }
     }
 
     @Override
