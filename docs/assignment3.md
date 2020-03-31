@@ -339,9 +339,7 @@ This chapter contains the specification of the UML class diagram of your system,
 <li style="font-weight: 400;"><span style="font-weight: 400;">InitiateCombat : when an NPC or player attacks the other they initiate combat.</span></li>
 </ul>
 <ul>
-<ul>
 <li style="font-weight: 400;"><span style="font-weight: 400;">Perform combat action : </span><strong>Combat</strong><span style="font-weight: 400;"> executes a player&rsquo;s combat action by calling </span><em><span style="font-weight: 400;">ExecuteCombatCommand </span></em><span style="font-weight: 400;">in </span><strong>Controller</strong><span style="font-weight: 400;">.</span></li>
-</ul>
 </ul>
 <ul>
 <li><strong>Combat </strong><span style="font-weight: 400;">may make calls to </span>Location<span style="font-weight: 400;">, </span>Player, NPC, <span style="font-weight: 400;">or </span>Character<span style="font-weight: 400;"> in order to update them, for example deleting an NPC from a location, or resetting a player&rsquo;s health and stamina.</span></li>
