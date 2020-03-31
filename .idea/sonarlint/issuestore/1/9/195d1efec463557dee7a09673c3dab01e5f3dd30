@@ -1,10 +1,8 @@
 
-ysquid:S00116	"URename this field "BlockBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºµÀ®ÿÿÿÿÿ8ş£¡.
-msquid:S00116"ORename this field "Type" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áó’u8¦Å¡.
-usquid:S00116
-"VRename this field "AttackBonus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—çı8ş£¡.
-"squid:ClassVariableVisibilityCheck	"VMake BlockBonus a static final constant or non-public and provide accessors if needed.(ºµÀ®ÿÿÿÿÿ8ş£¡.
-„"squid:ClassVariableVisibilityCheck"PMake Type a static final constant or non-public and provide accessors if needed.(áó’u8¦Å¡.
-Œ"squid:ClassVariableVisibilityCheck
-"WMake AttackBonus a static final constant or non-public and provide accessors if needed.(—çı8ş£¡.
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
+l
+java:S1104"PMake Type a static final constant or non-public and provide accessors if needed.(áó’u8 ë˜´’.
+x
+java:S1104	"VMake BlockBonus a static final constant or non-public and provide accessors if needed.(ºµÀ®ÿÿÿÿÿ8 ë˜´’.
+t
+java:S1104
+"WMake AttackBonus a static final constant or non-public and provide accessors if needed.(—çı8 ë˜´’.
