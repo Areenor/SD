@@ -54,7 +54,7 @@ public abstract class Controller {
 
     public static void PrintUsableCommands() {
         if(!GameState.Combat) {
-            Terminal.PrintLine("Examine, talk to, take, move, use, attack, inventory, exit, quit.");
+            Terminal.PrintLine("Examine, talk to, take, move, use, attack, skip, inventory, exit, quit.");
         } else {
             Terminal.PrintLine("use, attack, inventory, skip, exit, quit.");
         }
