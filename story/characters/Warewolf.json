@@ -3,7 +3,6 @@
   "IsFightable" : "true",
   "IsHostile" : "true",
   "Description" : "You see a beast which looks like a wolf, but much bigger",
-  "Type" : "Warewold",
   "CombatDialogue" : "ARRRRRRRR",
   "Strength": 2,
   "Dexterity": 1,

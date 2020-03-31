@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 
 public class NPC extends Character {
     private String _description;
-    private String _type;
     private String _dialogue;
     private String _combatDialogue;
     private boolean _isHostile = false;
@@ -23,7 +22,6 @@ public class NPC extends Character {
 
         _name = config.Name;
         _description = config.Description;
-        _type = config.Type;
         _dialogue = config.Dialogue;
         _strength = config.Strength;
         _dexterity = config.Dexterity;
@@ -42,16 +40,9 @@ public class NPC extends Character {
         _currentStamina = _maxStamina;
     }
 
-    public String GetDescription(){
-        return _description;
-    }
-    public String GetType() { return _type; }
-    public String GetDialogue() {
-        return _dialogue;
-    }
-    public String GetCombatDialogue() {
-        return _combatDialogue;
-    }
+    public String GetDescription(){ return _description; }
+    public String GetDialogue() { return _dialogue; }
+    public String GetCombatDialogue() { return _combatDialogue; }
 
     public boolean IsHostile() { return _isHostile; }
     public boolean IsFightable() { return _isFightable; }
@@ -59,10 +50,7 @@ public class NPC extends Character {
 
     public void SetFightability (boolean newFightability) { _isFightable = newFightability; }
     public void SetHostility (boolean newHostility) { _isHostile = newHostility; }
-    public void SetDescription(String description){
-        _description = description;
-    }
-    public void SetType(String type) { _type = type; }
+    public void SetDescription(String description){ _description = description; }
     public void SetDialogue(String dialogue) { _dialogue = dialogue; }
     public void SetCombatDialogue(String dialogue) { _combatDialogue = dialogue; }
 
@@ -79,18 +67,21 @@ public class NPC extends Character {
         }
         Terminal.PrintLine(_combatDialogue);
     }
-
+    public void PrintCodition(){
+        if(_currentHitPoints <= 2){ Terminal.PrintLine(_name + " looks almost dead"); }
+        else if(_currentHitPoints <= 4){ Terminal.PrintLine(_name + " looks damaged, but is still standing"); }
+        else{ Terminal.PrintLine(_name + " looks fully alive"); }
+    }
     @Override
     public void Attack(String targetCharacterName) {
-        _currentStamina = _currentStamina - 1;
         Terminal.PrintLine(_name + " is attacking " + targetCharacterName +"!");
         GameState.MainCharacter.ResponseAction();
         DealDamage(GameState.MainCharacter, GameState.MainCharacter.GetIsDodge(), GameState.MainCharacter.GetIsBlock());
-
     }
 
     @Override
     public void Die() {
+        Terminal.PrintLine(_name + " is dead!");
         DropInventory(GameState.MainCharacter.GetCurrentLocation());
         GameState.MainCharacter.GetCurrentLocation().RemoveNpc(_name);
     }

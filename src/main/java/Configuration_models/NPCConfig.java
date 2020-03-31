@@ -8,7 +8,6 @@ import java.util.List;
 public class NPCConfig {
     public String Name;
     public String Description;
-    public String Type;
     public String Dialogue;
     public String CombatDialogue;
     public List<String> Inventory;

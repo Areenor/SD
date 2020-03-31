@@ -97,11 +97,13 @@ public abstract class Controller {
 
     public static void ExecuteResponseCommand(){
         Terminal.PrintLine("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
-        Terminal.PrintLine("You can either dodge, block or do nothing");
+        Terminal.PrintLine("You can either dodge, block or do nothing and skip");
         while(true) {
             String userInput = Terminal.Read();
-            if (userInput == null || userInput.isEmpty())
+            if (userInput == null || userInput.isEmpty()) {
+                Terminal.PrintLine("You decided to do nothing\n");
                 return;
+            }
 
             String[] args = userInput.split(" ");
             String command = args[0];
