@@ -2,20 +2,19 @@ package Default_classes;
 
 import Enumerators.DirectionEnum;
 import Game_data.GameState;
-import Services.InitiationService;
+import Services.Combat;
+import Services.Controller;
 import Services.Terminal;
-import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.TextTerminal;
+
 import java.util.HashMap;
 
 
 public class Player extends Character {
-    //private TextIO textIO = TextIoFactory.getTextIO(); //for reading input and selecting values, output optional
-    //private TextTerminal terminal = textIO.getTextTerminal(); //strictly for output
     private Location _currentLocation;
     private Equipment _weapon = null;
     private Equipment _armor = null;
+    private boolean _isDodge = false;
+    private boolean _isBlock = false;
 
     public Player(String name, int strength, int dexterity, int constitution, Location startLocation) {
         _name = name;
@@ -24,34 +23,40 @@ public class Player extends Character {
         _constitution = constitution;
         _inventory = new HashMap<String, Item>();
         _currentLocation = startLocation;
-        _hitPoints = _constitution * 2 + 10;
+        _maxHitPoints = _constitution * 2 + 10;
         _attack = _strength * 2 + 5;
-        _stamina = _dexterity + 1;
-        _currentHitPoints = _hitPoints;
-        _currentStamina = _stamina;
+        _block = _constitution * 2;
+        _maxStamina = _dexterity + 1;
+        _currentHitPoints = _maxHitPoints;
+        _currentStamina = _maxStamina;
     }
 
     public Location GetCurrentLocation() { return _currentLocation; }
+    public boolean GetIsDodge(){return _isDodge;}
+    public boolean GetIsBlock(){return _isBlock;}
+
     public void SetCurrentLocation(String locationName) { _currentLocation = GameState.GetLocation(locationName); }
     public void SetCurrentLocation(Location location) { _currentLocation = location; }
+    public void SetIsDodge(boolean dodge){ _isDodge = dodge;}
+    public void SetIsBlock(boolean block){ _isBlock = block;}
 
     public Equipment GetWeapon() { return _weapon;}
     public Equipment GetArmor() { return _armor;}
     public void SetWeapon(Equipment newWeapon) {
         if(_weapon != null) {
-            SetStrength(GetStrength() - _weapon.GetAttackBonus());
+            SetStrength(GetAttack() - _weapon.GetAttackBonus());
             AddToInventory(_weapon);
         }
-        SetStrength(GetStrength() + newWeapon.GetAttackBonus());
+        SetStrength(GetAttack() + newWeapon.GetAttackBonus());
         RemoveFromInventory(newWeapon.GetName());
         _weapon = newWeapon;
     }
     public void SetArmor(Equipment newArmor) {
         if(_armor != null) {
-            SetConstitution(GetConstitution() - _armor.GetBlockBonus());
+            SetBlock(GetBlock() - _armor.GetBlockBonus());
             AddToInventory(_armor);
         }
-        SetConstitution(GetConstitution() + newArmor.GetBlockBonus());
+        SetBlock(GetBlock() + newArmor.GetBlockBonus());
         RemoveFromInventory(newArmor.GetName());
         _armor = newArmor;
     }
@@ -60,6 +65,9 @@ public class Player extends Character {
         if(!_inventory.containsKey(itemToUseName)) {
             Terminal.PrintLine("You do not posses a " + itemToUseName + "\n");
             return;
+        }
+        if(GameState.Combat) {
+            _currentStamina = _currentStamina - 1;
         }
         Item itemToUse = _inventory.get(itemToUseName);
         itemToUse.Use();
@@ -73,6 +81,9 @@ public class Player extends Character {
         if(!_currentLocation.ContainsItem(targetItemName)) {
             Terminal.PrintLine("There is no " + targetItemName + " present in this location.\n");
             return;
+        }
+        if(GameState.Combat) {
+            _currentStamina = _currentStamina - 1;
         }
         Item itemToUse = _inventory.get(itemToUseName);
         Item targetItem = _currentLocation.GetItem(targetItemName);
@@ -88,8 +99,13 @@ public class Player extends Character {
             Terminal.PrintLine("The character " + targetNpcName + " is not present in this location.\n");
             return;
         }
+        _currentStamina = _currentStamina - 1;
         Item itemToUse = _inventory.get(itemToUseName);
         NPC targetNpc = _currentLocation.GetNpc(targetNpcName);
+        if(!GameState.Combat){
+            targetNpc.SetHostility(true);
+            Combat.Init(true);
+        }
         itemToUse.Use(targetNpc);
     }
 
@@ -130,12 +146,44 @@ public class Player extends Character {
         //Check if next location is locked
         Location nextLocation = GameState.GetLocation(adjacentLocationName);
         _currentLocation = nextLocation;
-
         Terminal.PrintLine("\n" + _currentLocation.GetDescription() + "\n");
+        if(!_currentLocation.getEnemies().isEmpty()) {Combat.Init(false);}
     }
 
+    @Override
+    public void Die() {
+        Combat.CombatEnd();
+        Terminal.PrintLine("Time for respawn!");
+        Respawn();
+    }
+
+    @Override
+    public void Attack(String targetCharacterName) {
+        NPC target = GameState.MainCharacter.GetCurrentLocation().GetNpc(targetCharacterName);
+        if(!target.IsFightable()){
+            Terminal.PrintLine("You can`t attack this character");
+            return;
+        }
+        if(!GameState.Combat){
+            target.SetHostility(true);
+            Combat.Init(true);
+        }
+        _currentStamina = _currentStamina - 1;
+        DealDamage(target, false, false);
+    }
+
+    public void ResponseAction(){
+        if(_currentStamina > 0){
+            Controller.ExecuteResponseCommand();
+        }
+    }
     public void PrintInventory() {
         String inventoryItems = String.join(", ", _inventory.keySet());
         Terminal.PrintLine("You posses the following items:\n" + inventoryItems);
+    }
+
+    private void Respawn(){
+        _currentLocation = GameState.GetLocation(GameState.SpawnLocation);
+        Terminal.PrintLine(GameState.MainCharacter.GetCurrentLocation().GetDescription() + "\n");
     }
 }

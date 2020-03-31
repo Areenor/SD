@@ -1,7 +1,8 @@
 {
   "Name" : "room",
   "Description" : "You are in a small room. You see mountains north and a beach west.",
-  "Characters" : ["Areenor", "Vampire", "Warewolf"],
+  "Characters" : ["Areenor"],
   "Items" : ["Poison", "SilverKey", "SilverGate"],
-  "AdjacentLocations" : {"north":"mountain", "west": "beach"}
+  "AdjacentLocations" : {"north":"mountain", "west": "beach"},
+  "IsSpawn" : "True"
 }

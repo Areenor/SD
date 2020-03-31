@@ -1,13 +1,13 @@
 package Default_classes;
 
 import Game_data.GameState;
-import Services.Combat;
 import Services.Terminal;
 
 
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public abstract class Character {
 
@@ -19,10 +19,11 @@ public abstract class Character {
     protected int _strength;
     protected int _dexterity;
     protected int _constitution;
-    protected int _hitPoints;
+    protected int _maxHitPoints;
     protected int _currentHitPoints;
     protected int _attack;
-    protected int _stamina;
+    protected int _block;
+    protected int _maxStamina;
     protected int _currentStamina;
     protected Map<String, Item> _inventory = new HashMap<>();
 
@@ -36,10 +37,11 @@ public abstract class Character {
         return _dexterity;
     }
     public int GetConstitution() { return _constitution; }
-    public int GetHitPoints() { return _hitPoints; }
+    public int GetMaxHitPoints() { return _maxHitPoints; }
     public int GetCurrentHitPoints() { return _currentHitPoints; }
     public int GetAttack()  { return _attack; }
-    public int GetStamina() { return _strength; }
+    public int GetBlock()  { return _block; }
+    public int GetMaxStamina() { return _currentStamina; }
     public int GetCurrentStamina() { return _currentStamina; }
     public Item GetItem(String itemName) { return _inventory.get(itemName); }
     public Boolean HasItem(String itemName) { return _inventory.containsKey(itemName); }
@@ -49,16 +51,17 @@ public abstract class Character {
     }
     public void SetDexterity(int dexterity){ _dexterity = dexterity; }
     public void SetConstitution(int constitution) { _constitution = constitution; }
-    public void SetHitPoints(int hitPoints) { _hitPoints = hitPoints; }
+    public void SetMaxHitPoints(int hitPoints) { _maxHitPoints = hitPoints; }
     public void SetCurrentHitPoints(int currentHitPoints) { _currentHitPoints = currentHitPoints; }
     public void SetAttack(int attack)  { _attack = attack; }
-    public void SetStamina(int stamina) { _stamina = stamina; }
+    public void SetBlock(int block)  { _block = block; }
+    public void SetMaxStamina(int stamina) { _maxStamina = stamina; }
     public void SetCurrentStamina(int currentStamina) { _currentStamina = currentStamina;};
 
     public boolean IsDead() { return _currentHitPoints <= 0; }
 
-    public void ResetHealth() { _currentHitPoints = _hitPoints; }
-    public void ResetStamina() { _currentStamina = _stamina; }
+    public void ResetHealth() { _currentHitPoints = _maxHitPoints; }
+    public void ResetStamina() { _currentStamina = _maxStamina; }
 
     public static Comparator<Character> DexterityComparator = (Character character1, Character character2) -> {
         int characterDexterity1 = character1.GetDexterity();
@@ -72,19 +75,33 @@ public abstract class Character {
     public void AddToInventory(Item item) { _inventory.put(item.GetName(), item); }
     public void RemoveFromInventory(String itemName) { _inventory.remove(itemName); }
 
-    public void Attack(String targetCharacterName) {
-        if(targetCharacterName.equals(GameState.MainCharacter.GetName())){
-            DealDamage(GameState.MainCharacter);
-        }
-        else{
-            DealDamage(GameState.MainCharacter.GetCurrentLocation().GetNpc(targetCharacterName));
-        }
-    }
-    private void DealDamage(Character target){
-        target.SetCurrentHitPoints(target.GetCurrentHitPoints() + target.GetConstitution() - _attack);
+    public void Die(){ }
+
+    public void Attack(String targetCharacterName){ }
+
+    public void DealDamage(Character target, boolean dodge, boolean block){
+       int dealtDamage = _attack - target.GetConstitution();
+
+       if(block){
+           dealtDamage = dealtDamage - target._block;
+       }
+       if(dodge){
+           int chance = new Random().nextInt(11) + _dexterity;
+           if(chance > 5){
+               Terminal.Print("Success! ");
+               dealtDamage = 0;
+           }
+       }
+
+        target.SetCurrentHitPoints(target.GetCurrentHitPoints() - dealtDamage);
+        Terminal.PrintLine(_name + " strikes " + target.GetName() + " with " + dealtDamage + " points of damage!");
+
         if(target.IsDead()){
             Terminal.PrintLine(target.GetName() + " is dead!");
+            target.Die();
         }
-        Terminal.PrintLine(_name + " strikes " + target.GetName() + " with " + _attack + " points of damage!");
+
+        GameState.MainCharacter.SetIsDodge(false);
+        GameState.MainCharacter.SetIsBlock(false);
     }
 }

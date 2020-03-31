@@ -17,9 +17,6 @@ public abstract class Controller {
         String command = args[0];
 
         switch (command) {
-            case "test":
-                Combat.init();
-                break;
             case "examine":
                 Location playerLocation = player.GetCurrentLocation();
                 Examine(args, playerLocation);
@@ -56,8 +53,13 @@ public abstract class Controller {
     }
 
     public static void PrintUsableCommands() {
-        Terminal.PrintLine("Examine, talk to, take, move, use, attack, block, dodge, inventory, exit, quit.\n");
+        if(!GameState.Combat) {
+            Terminal.PrintLine("Examine, talk to, take, move, use, attack, inventory, exit, quit.");
+        } else {
+            Terminal.PrintLine("use, attack, inventory, skip, exit, quit.");
+        }
     }
+
     public static void ExecuteCombatCommand(Player player) {
         String userInput = Terminal.Read();
         if (userInput == null || userInput.isEmpty())
@@ -73,15 +75,52 @@ public abstract class Controller {
             case "attack":
                 Attack(args, player);
                 break;
+            case "commands":
+                PrintUsableCommands();
+                break;
             case "inventory":
                 player.PrintInventory();
                 break;
+            case "skip":
+                Combat.SetSkipTurn(true);
+                return;
             case "exit":
             case "quit":
+                Combat.CombatEnd();
                 GameState.IsFinished = true;
+                Terminal.CloseTerminal();
                 break;
             default:
                 Terminal.PrintLine("Unknown command.\n");
+        }
+    }
+
+    public static void ExecuteResponseCommand(){
+        Terminal.PrintLine("Your Stamina is: " + GameState.MainCharacter.GetCurrentStamina());
+        Terminal.PrintLine("You can either dodge, block or do nothing");
+        while(true) {
+            String userInput = Terminal.Read();
+            if (userInput == null || userInput.isEmpty())
+                return;
+
+            String[] args = userInput.split(" ");
+            String command = args[0];
+
+            switch (command) {
+                case "block":
+                    GameState.MainCharacter.SetCurrentStamina(GameState.MainCharacter.GetCurrentStamina() - 1);
+                    GameState.MainCharacter.SetIsBlock(true);
+                    return;
+                case "dodge":
+                    GameState.MainCharacter.SetCurrentStamina(GameState.MainCharacter.GetCurrentStamina() - 1);
+                    GameState.MainCharacter.SetIsDodge(true);
+                    return;
+                case "skip":
+                    Terminal.PrintLine("You decided to do nothing\n");
+                    return;
+                default:
+                    Terminal.PrintLine("Wrong command, Please try again:");
+            }
         }
     }
 
@@ -154,8 +193,6 @@ public abstract class Controller {
     }
 
     private static void Use(String[] args, Player player) {
-
-
         if (args.length < 2) {
             Terminal.PrintLine("Please specify an item to use.\n");
             return;
@@ -166,10 +203,6 @@ public abstract class Controller {
         }
 
         String itemToUseName = args[1];
-
-        if(GameState.Combat){
-            player.SetCurrentStamina(player.GetCurrentStamina() - 1);
-        }
 
         if (args.length == 2) {
             player.Use(itemToUseName);
@@ -201,9 +234,6 @@ public abstract class Controller {
         if(!GameState.MainCharacter.GetCurrentLocation().ContainsNpc(args[1])){
             Terminal.PrintLine("There is no such NPC on the location\n");
             return;
-        }
-        if(GameState.Combat){
-            player.SetCurrentStamina(player.GetCurrentStamina() - 1);
         }
         player.Attack(args[1]);
     }

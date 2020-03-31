@@ -6,5 +6,6 @@ public enum StatEnum {
     Constitution,
     HitPoints,
     Attack,
+    Block,
     Stamina
 }

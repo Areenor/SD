@@ -1,14 +1,17 @@
 
-•"squid:ClassVariableVisibilityCheck"[Make NPCItemExchange a static final constant or non-public and provide accessors if needed.(İ‘òùúÿÿÿÿ8µ›ğ¹‘.
-squid:S00116"`Rename this field "NewTargetDescriptions" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ƒë8©†º“‘.
-›"squid:ClassVariableVisibilityCheck"aMake UnlockedLocationNames a static final constant or non-public and provide accessors if needed.(‚öÂÅûÿÿÿÿ8ˆü»“‘.
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›ƒë8¶»‹“‘.
-|squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ‘òùúÿÿÿÿ8µ›ğ¹‘.
-|squid:S00116"]Rename this field "UnlockedDirections" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷°æÃ8ÂÁ»“‘.
-~squid:S00116"ZRename this field "NPCItemExchange" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ‘òùúÿÿÿÿ8µ›ğ¹‘.
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
-„squid:S00116"`Rename this field "UnlockedLocationNames" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚öÂÅûÿÿÿÿ8ˆü»“‘.
-|squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚öÂÅûÿÿÿÿ8¶»‹“‘.
-–"squid:ClassVariableVisibilityCheck"aMake NewTargetDescriptions a static final constant or non-public and provide accessors if needed.(›ƒë8©†º“‘.
-“"squid:ClassVariableVisibilityCheck"^Make UnlockedDirections a static final constant or non-public and provide accessors if needed.(÷°æÃ8ÂÁ»“‘.
-wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷°æÃ8¶»‹“‘.
+~
+java:S1104"aMake NewTargetDescriptions a static final constant or non-public and provide accessors if needed.(›ƒë8ÉÏ‹´’.
+{
+java:S1104"^Make UnlockedDirections a static final constant or non-public and provide accessors if needed.(÷°æÃ8ÉÏ‹´’.
+ƒ
+java:S1104"aMake UnlockedLocationNames a static final constant or non-public and provide accessors if needed.(‚öÂÅûÿÿÿÿ8ÉÏ‹´’.
+}
+java:S1104"[Make NPCItemExchange a static final constant or non-public and provide accessors if needed.(İ‘òùúÿÿÿÿ8ÉÏ‹´’.
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›ƒë8ÉÏ‹´’.
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷°æÃ8ÉÏ‹´’.
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚öÂÅûÿÿÿÿ8ÉÏ‹´’.
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ‘òùúÿÿÿÿ8ÉÏ‹´’.

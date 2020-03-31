@@ -1,8 +1,7 @@
 
-~"squid:ClassVariableVisibilityCheck"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ
-gsquid:S00116"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà
-msquid:S00116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+
-psquid:S00116	"XRename this field "IsRetriavable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óç¸
-„"squid:ClassVariableVisibilityCheck"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+
-‡"squid:ClassVariableVisibilityCheck	"YMake IsRetriavable a static final constant or non-public and provide accessors if needed.(Óç¸
+s
+java:S1104"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8 Ï‹´’.
+v
+java:S1104	"YMake IsRetriavable a static final constant or non-public and provide accessors if needed.(Óç¸8 Ï‹´’.
+m
+java:S1104"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8ŸÏ‹´’.
