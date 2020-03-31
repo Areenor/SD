@@ -71,7 +71,7 @@ public class Consumable extends Item{
     }
 
     @Override
-    public void Use(NPC targetNpc) { //you can use dangerous consumable items on NPC's to attack them.
+    public void Use(NPC targetNpc) { //you can use dangerous consumable items on NPC's in and out of combat
         if (_isDangerous) {
             int oldStat;
             switch (_affectedStat){

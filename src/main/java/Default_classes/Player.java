@@ -152,9 +152,8 @@ public class Player extends Character {
             return;
         }
 
-        //Check if next location is locked
-        Location nextLocation = GameState.GetLocation(adjacentLocationName);
-        _currentLocation = nextLocation;
+
+        _currentLocation = GameState.GetLocation(adjacentLocationName);
         Terminal.PrintLine("\n" + _currentLocation.GetDescription() + "\n");
 
         if(!_currentLocation.getEnemies().isEmpty()) {Combat.Init(false);}
