@@ -1,14 +1,14 @@
 
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–
-msquid:S00100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä×Î¾8’Ï©Ä‘.
-msquid:S00100{"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠìÂü8şÉ.
-tsquid:S1192u"VDefine a constant instead of duplicating this literal "Too many arguments.\n" 5 times.(üõÿİ8ñó‘‘.
-msquid:S00100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş€Ë¼8şÉ.
-rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²ÿØıÿÿÿÿ8¿š“.
 ]squid:S1118
 ":Add a private constructor to hide the implicit public one.(½×Õ¸úÿÿÿÿ8¿š“.
-rsquid:S00100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éêŒôıÿÿÿÿ8‚ÓÃ¹‘.
-ssquid:S00100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú¶¢æùÿÿÿÿ8şÉ.
-ssquid:S00100œ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Ïİ¹ùÿÿÿÿ8şÉ.
+tsquid:S1192u"VDefine a constant instead of duplicating this literal "Too many arguments.\n" 5 times.(üõÿİ8ñó‘‘.
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ²ÿØıÿÿÿÿ8¿š“.
 ssquid:S00100À"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶€Êıûÿÿÿÿ8¿š“.
+msquid:S00100{"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠìÂü8şÉ.
+ssquid:S00100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú¶¢æùÿÿÿÿ8şÉ.
+rsquid:S00100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éêŒôıÿÿÿÿ8‚ÓÃ¹‘.
 msquid:S00100X"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†‘¬ç8şÉ.
+msquid:S00100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş€Ë¼8şÉ.
+msquid:S00100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä×Î¾8’Ï©Ä‘.
+ssquid:S00100œ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”Ïİ¹ùÿÿÿÿ8şÉ.

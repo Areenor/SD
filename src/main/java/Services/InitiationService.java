@@ -20,7 +20,6 @@ public class InitiationService {
     private static Path storyDirPath = Paths.get(System.getProperty("user.dir"), "story");
     private static Path locationJsonDirPath = Paths.get(storyDirPath.toString(), "locations");
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
-    private static ItemFactory itemFactory = new ItemFactory();
 
     public static void InitiateMainCharacter(String startingLocationName) {
         int pointCount = 2;
@@ -58,7 +57,7 @@ public class InitiationService {
         if (inventoryItems != null)
             for (String itemName : inventoryItems )
             {
-                Item item = itemFactory.GetItem(itemName);
+                Item item = ItemFactory.GetItem(itemName);
                 inventory.put(itemName, item);
             }
         return inventory;
@@ -93,31 +92,7 @@ public class InitiationService {
         return new NPC(characterConfig);
     }
 
-    public static ConsumConfig ReturnNewConsumConfig(Path configFilePath) throws FileNotFoundException {
-        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        ConsumConfig consumConfig = JSON.parseObject(objectConfigFileContent, ConsumConfig.class);
-        return consumConfig;
-    }
-
-    public static KeyItemConfig ReturnNewKeyItemConfig(Path configFilePath) throws FileNotFoundException {
-        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        KeyItemConfig keyItemConfig = JSON.parseObject(objectConfigFileContent, KeyItemConfig.class);
-        return keyItemConfig;
-    }
-
-    public static EquipConfig ReturnNewEquipConfig(Path configFilePath) throws FileNotFoundException {
-        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        EquipConfig equipConfig = JSON.parseObject(objectConfigFileContent, EquipConfig.class);
-        return equipConfig;
-    }
-
-    public static ItemConfig ReturnNewJunkItemConfig(Path configFilePath) throws FileNotFoundException {
-        String objectConfigFileContent = InitiationService.readLineByLine(configFilePath.toString());
-        ItemConfig itemConfig = JSON.parseObject(objectConfigFileContent, ItemConfig.class);
-        return itemConfig;
-    }
-
-    private static String readLineByLine(String filePath) {
+    public static String readLineByLine(String filePath) {
         StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
         {
