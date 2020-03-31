@@ -124,7 +124,3 @@ In this chapter you will describe the following aspects of your project:
 IMPORTANT: remember that your implementation must be consistent with your UML models. Also, your implementation must run without the need from any other external software or tool. Failing to meet this requirement means 0 points for the implementation part of your project.
 
 Maximum number of words for this section: 2000
-
-## References
-
-References, if needed.
