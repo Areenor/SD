@@ -2,7 +2,7 @@
   "Name" : "room",
   "Description" : "You are in a small room. You see mountains north and a beach west.",
   "Characters" : ["Areenor"],
-  "Items" : ["Poison", "SilverKey", "SilverGate"],
+  "Items" : ["Poison", "SilverKey", "SilverGate", "EndOfTimes"],
   "AdjacentLocations" : {"north":"mountain", "west": "beach"},
   "IsSpawn" : "True"
 }

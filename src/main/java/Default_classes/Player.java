@@ -7,6 +7,7 @@ import Services.Controller;
 import Services.Terminal;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 
 public class Player extends Character {
@@ -139,6 +140,9 @@ public class Player extends Character {
         _currentLocation.RemoveItem(targetItemName);
         AddToInventory(targetItem);
         Terminal.PrintLine("You took the " + targetItemName + "\n");
+        if(targetItem.IsWinningItem()){
+            targetItem.FinishGame();
+        }
     }
 
     public void Move(DirectionEnum direction) {
