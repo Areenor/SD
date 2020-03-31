@@ -3,7 +3,6 @@
   "IsFightable" : "true",
   "IsHostile" : "true",
   "Description" : "You see angry vampire which lean towards you.",
-  "Type" : "Vampire",
   "CombatDialogue" : "Finally, some decent food",
   "Strength": 1,
   "Dexterity": 2,

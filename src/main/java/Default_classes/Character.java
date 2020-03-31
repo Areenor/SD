@@ -27,15 +27,9 @@ public abstract class Character {
     protected int _currentStamina;
     protected Map<String, Item> _inventory = new HashMap<>();
 
-    public String GetName() {
-        return _name;
-    }
-    public int GetStrength(){
-        return _strength;
-    }
-    public int GetDexterity(){
-        return _dexterity;
-    }
+    public String GetName() { return _name; }
+    public int GetStrength(){ return _strength; }
+    public int GetDexterity(){ return _dexterity; }
     public int GetConstitution() { return _constitution; }
     public int GetMaxHitPoints() { return _maxHitPoints; }
     public int GetCurrentHitPoints() { return _currentHitPoints; }
@@ -46,9 +40,7 @@ public abstract class Character {
     public Item GetItem(String itemName) { return _inventory.get(itemName); }
     public Boolean HasItem(String itemName) { return _inventory.containsKey(itemName); }
 
-    public void SetStrength(int strength){
-        _strength = strength;
-    }
+    public void SetStrength(int strength){ _strength = strength; }
     public void SetDexterity(int dexterity){ _dexterity = dexterity; }
     public void SetConstitution(int constitution) { _constitution = constitution; }
     public void SetMaxHitPoints(int hitPoints) { _maxHitPoints = hitPoints; }
@@ -80,28 +72,20 @@ public abstract class Character {
     public void Attack(String targetCharacterName){ }
 
     public void DealDamage(Character target, boolean dodge, boolean block){
-       int dealtDamage = _attack - target.GetConstitution();
-
+       int dealtDamage = _attack;
        if(block){
-           dealtDamage = dealtDamage - target._block;
-       }
-       if(dodge){
-           int chance = new Random().nextInt(11) + _dexterity;
+           dealtDamage = dealtDamage - target.GetBlock();
+       } else if(dodge){
+           int chance = new Random().nextInt(11) + target.GetDexterity(); //50% chance to dodge + dexterity bonus
            if(chance > 5){
                Terminal.Print("Success! ");
                dealtDamage = 0;
            }
        }
 
+        GameState.MainCharacter.ResetResponseActions();
+
         target.SetCurrentHitPoints(target.GetCurrentHitPoints() - dealtDamage);
         Terminal.PrintLine(_name + " strikes " + target.GetName() + " with " + dealtDamage + " points of damage!");
-
-        if(target.IsDead()){
-            Terminal.PrintLine(target.GetName() + " is dead!");
-            target.Die();
-        }
-
-        GameState.MainCharacter.SetIsDodge(false);
-        GameState.MainCharacter.SetIsBlock(false);
     }
 }

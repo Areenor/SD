@@ -25,7 +25,7 @@ public class Player extends Character {
         _currentLocation = startLocation;
         _maxHitPoints = _constitution * 2 + 10;
         _attack = _strength * 2 + 5;
-        _block = _constitution * 2;
+        _block = _constitution * 2 + 1;
         _maxStamina = _dexterity + 1;
         _currentHitPoints = _maxHitPoints;
         _currentStamina = _maxStamina;
@@ -39,6 +39,11 @@ public class Player extends Character {
     public void SetCurrentLocation(Location location) { _currentLocation = location; }
     public void SetIsDodge(boolean dodge){ _isDodge = dodge;}
     public void SetIsBlock(boolean block){ _isBlock = block;}
+
+    public void ResetResponseActions() {
+        _isDodge = false;
+        _isBlock = false;
+    }
 
     public Equipment GetWeapon() { return _weapon;}
     public Equipment GetArmor() { return _armor;}
@@ -147,6 +152,7 @@ public class Player extends Character {
         Location nextLocation = GameState.GetLocation(adjacentLocationName);
         _currentLocation = nextLocation;
         Terminal.PrintLine("\n" + _currentLocation.GetDescription() + "\n");
+
         if(!_currentLocation.getEnemies().isEmpty()) {Combat.Init(false);}
     }
 
@@ -170,6 +176,11 @@ public class Player extends Character {
         }
         _currentStamina = _currentStamina - 1;
         DealDamage(target, false, false);
+        if(target.IsDead()){
+            target.Die();
+        } else {
+            target.PrintCodition();
+        }
     }
 
     public void ResponseAction(){
@@ -177,6 +188,7 @@ public class Player extends Character {
             Controller.ExecuteResponseCommand();
         }
     }
+
     public void PrintInventory() {
         String inventoryItems = String.join(", ", _inventory.keySet());
         Terminal.PrintLine("You posses the following items:\n" + inventoryItems);

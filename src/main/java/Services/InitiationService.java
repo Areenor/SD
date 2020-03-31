@@ -22,7 +22,7 @@ public class InitiationService {
     private static Path characterJsonDirPath = Paths.get(storyDirPath.toString(), "characters");
 
     public static void InitiateMainCharacter(String startingLocationName) {
-        int pointCount = 2;
+        int pointCount = 3;
         String strengthInput = "";
         String dexterityInput = "";
         String constitutionInput = "";
@@ -38,12 +38,12 @@ public class InitiationService {
             constitutionInput = Terminal.Read("Constitution:");
             pointCount = pointCount - Integer.parseInt(constitutionInput) - Integer.parseInt(dexterityInput) - Integer.parseInt(strengthInput);
             if(pointCount < 0) {
-                pointCount = 2;
-                Terminal.Print("Too many points assigned, please assign only two points\n");
+                pointCount = 3;
+                Terminal.Print("Too many points assigned, please assign only " + pointCount + " points\n");
             }
             else if(pointCount > 0) {
-                pointCount = 2;
-                Terminal.Print("Not enough points assigned, please assign only two points\n");
+                pointCount = 3;
+                Terminal.Print("Not enough points assigned, please assign only " + pointCount + " points\n");
             }
         }
 
