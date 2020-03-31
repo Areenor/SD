@@ -23,10 +23,10 @@ public class Player extends Character {
         _constitution = constitution;
         _inventory = new HashMap<String, Item>();
         _currentLocation = startLocation;
-        _maxHitPoints = _constitution * 2 + 10;
-        _attack = _strength * 2 + 5;
+        _maxHitPoints = _constitution * 2 + (int)(BASE_HEALTH * 1.5);
+        _attack = _strength * 2 + (int)(BASE_ATTACK * 1.5);
         _block = _constitution * 2 + 1;
-        _maxStamina = _dexterity + 1;
+        _maxStamina = _dexterity + BASE_STAMINA;
         _currentHitPoints = _maxHitPoints;
         _currentStamina = _maxStamina;
     }
