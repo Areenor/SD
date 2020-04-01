@@ -408,7 +408,7 @@ The main differences between the different sub  states is the Use and Take comma
 
 Once the *player object* is in the in combat state, it shares the same sub states as the out of combat state with a couple of key differences. First, even though the transitions from an Item in Inventory  to an item not being in inventory still exists through the *Use()* function, it does not have access to the take function and cannot transition from an item not in inventory to an item in inventory. The second key difference is that the player object has lost access to functions such as M*ove()* and T*alkTo()* and has access to new functions and events that trigger them. Even though previously *the attack function* and its event caused the state to transition, that is not the case in the in combat state. Also, the *player object* needs to respond to the *NPC* attacking them with its own *ResponseAction()* function. From here the combat class can transition back to the out of combat state if the combat class signals combat is over and the *currentHitPoints of the player* is above 0, or it can transition into the Defeated state if the *currentHitPoints* reaches 0 or lower. In the defeated state, *the player object* gets its *currentHitPoints, currentStamina and currentLocation* reset so that *the player object* can safely move back into the out of combat state.
 
-![Player State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Player_state_machineDiag.png)
+![Player State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Player_state_machineDiagr.png)
 
 ## Sequence diagrams									
 Author(s): Leyla Celik, Richard Eric van Leeuwen
