@@ -5,9 +5,9 @@ Authors: Richard Eric van Leeuwen
 
 Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
 
-..* test
-..* test
-..* test
+  * test
+  * test
+  * test
 
 ### Application of design patterns
 Author(s): Richard Eric van Leeuwen, Peter Wassenaar
