@@ -418,7 +418,7 @@ Once the *player object* is in the in combat state, it shares the same sub state
 ![Player State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Player_state_machineDiagram.png)
 
 
-**The Player State Machine**
+**The NPC State Machine**
 
 Our next state machine is the NPC state machine. This state machine has also undergone big changes compared to the old one. Taking the feedback we got into account, we made sure to properly display the responsibilities of the *NPC object* both in and outside of combat while also showing more states the *NPC object* can be in. Once again, apart from a few exceptions such as the examine command, we did not include the Setter/Getter functions as they are available in everyone state and would overwhelm the state machine diagram with a more prescriptive nature. The Setter/Getter functions can be assumed to be available in every state the NPC object can be in. We will once again go through the state machine step by step to display all the different states of the *NPC object*.
 
