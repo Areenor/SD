@@ -6,6 +6,7 @@ Authors: Richard Eric van Leeuwen
 Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
 
   * We split made the character class abstract and gave it two subclasses, the player class which represents the player in the game and the NPC class, which represents NPC in the game.
+  * We made the item class abstract and gave it the subclasses Junk, Equipment, Consumable and KeyItem.
   * We made sure to hide variables from public to either private or protected and gave them dedicated Setter/Getter methods. This helps us with information hiding.
   * We made sure to make use of enumerations for cases such as Direction to reduce potential errors and aditional clarity.
   * We added in constructor methods for our classes.
