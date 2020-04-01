@@ -435,6 +435,11 @@ From the out of combat state, the *NPC object* can move to the in combat state e
 
 ![NPC State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/NPC_state_machine_updated2.png)
 
+**The Combat State Machine**
+
+
+![Combat State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Combat_state_machine.png)
+
 ## Sequence diagrams									
 Author(s): Leyla Celik, Richard Eric van Leeuwen
 
