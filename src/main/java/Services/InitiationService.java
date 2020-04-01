@@ -30,7 +30,7 @@ public class InitiationService {
         String nameInput = Terminal.Read("Please enter the name of your character \n");
         String mainCharacterName = nameInput;
         Terminal.Print("There are three game statistics of you character: Strength, Dexterity and Constitution." +
-                "All of them will directly influence the performance of your character in combat. You have 2 points to split between them.\n");
+                "All of them will directly influence the performance of your character in combat. You have 3 points to split between them.\n");
 
         while(pointCount != 0){
             strengthInput = Terminal.Read("Strength:");

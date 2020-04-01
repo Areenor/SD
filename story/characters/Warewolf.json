@@ -2,6 +2,7 @@
   "Name" : "Warewolf",
   "IsFightable" : "true",
   "IsHostile" : "true",
+  "Inventory" : ["Flask"],
   "Description" : "You see a beast which looks like a wolf, but much bigger",
   "CombatDialogue" : "ARRRRRRRR",
   "Strength": 2,
