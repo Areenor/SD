@@ -108,7 +108,7 @@ public class Player extends Character {
         _currentStamina = _currentStamina - 1;
         Item itemToUse = _inventory.get(itemToUseName);
         NPC targetNpc = _currentLocation.GetNpc(targetNpcName);
-        if(!GameState.Combat){
+        if(!GameState.Combat && targetNpc.IsFightable()){
             targetNpc.SetHostility(true);
             Combat.Init(true);
         }
