@@ -1,11 +1,13 @@
 # Assignment 3 Group 6
 
 ### Summary of changes of Assignment 2
-Author(s): `name of the team member(s) responsible for this section`
+Authors: Richard Eric van Leeuwen
 
 Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
 
-Maximum number of words for this section: 1000
+..* test
+..* test
+..* test
 
 ### Application of design patterns
 Author(s): Richard Eric van Leeuwen, Peter Wassenaar
