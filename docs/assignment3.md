@@ -50,7 +50,7 @@ Author(s): Richard Eric van Leeuwen, Peter Wassenaar
 Maximum number of words for this section: 2000
 
 ## Class diagram									
-Author(s): `name of the team member(s) responsible for this section`
+Author: Peter Wassenaar
 
 ![Class Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Class_Diagram.png)
 
