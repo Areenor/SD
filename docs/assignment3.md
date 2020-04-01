@@ -386,7 +386,7 @@ This diagram shows a snapshot of a player who had their **MainCharacter** enter 
 The adjacent location *‘room’* contains one item of subclass **Consumable** and an **NPC** of class **NPC**. The **Consumable** is a ‘Strength potion’ that the **MainCharacter** can pick up (bool *IsRetrievable* = true;) that is not dangerous (bool *IsDangerous* = false;), which means that the **MainCharacter** can use it on themselves. The affected stat is the *Strength* stat (*AffectedStat* = *Strength*;) and the added bonus is 1 (int *StatChange* = 1;). The potion has the description: “This potion will make you stronger on consumption.”. The **NPC** is named ‘Guard’, is of type *‘guard’*, has the description "This is a Guard that attacks on sight.", is hostile (bool *IsHostile* = true;) and is fightable (bool *IsFightable* = true;). Possible types of interactions with the **NPC** are: *‘Talk’*, which gives the player dialogue between the **MainCharacter** and the **NPC** and *’DropInventory’*, which adds all of the **NPC**’s items to the **Location** it is in. An **NPC** that *IsHostile* will attack the **MainCharacter** on sight, meaning the player will not have time to interact with the **NPC**.
 
 ## State machine diagrams									
-Author: Richard van Leeuwen
+Author: Richard Eric van Leeuwen
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
