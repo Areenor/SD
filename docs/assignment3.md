@@ -410,6 +410,11 @@ Once the *player object* is in the in combat state, it shares the same sub state
 
 ![Player State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/Player_state_machineDiagr.png)
 
+
+**The Player State Machine**
+
+![NPC State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/NPC_state_machine_updated.png)
+
 ## Sequence diagrams									
 Author(s): Leyla Celik, Richard Eric van Leeuwen
 
