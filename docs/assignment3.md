@@ -420,6 +420,19 @@ Once the *player object* is in the in combat state, it shares the same sub state
 
 **The Player State Machine**
 
+Our next state machine is the NPC state machine. This state machine has also undergone big changes compared to the old one. Taking the feedback we got into account, we made sure to properly display the responsibilities of the *NPC object* both in and outside of combat while also showing more states the *NPC object* can be in. Once again, apart from a few exceptions such as the examine command, we did not include the Setter/Getter functions as they are available in everyone state and would overwhelm the state machine diagram with a more prescriptive nature. The Setter/Getter functions can be assumed to be available in every state the NPC object can be in. We will once again go through the state machine step by step to display all the different states of the *NPC object*.
+
+After the *NPC object* goes from its initial state, it moves to, just like the *Player object*, into an initiation state. In this step the *NPC object* gets constructed using information found in json files. The *NPC object*, apart from providing some setter/getter functions, does not have any direct responsibilities as they are handled by other classes, so the state is kept simple in the diagram. After the Initiation state it moves into the out of combat state. The out of combat state contains two sub states, item in inventory and No item in inventory. These two sub state suffice because for the *NPC object* it does not matter what kind of item is in its *inventory*, only that it has an *Item* so that it can provide some additional functionalities to the *player object*. The events and functions the two sub states share are the following:
+
+*Player invokes TalkTo("NPC")/Talk()Controller invokes examine NPC command/GetDescription()\
+Player invokesUseOnNPC("Consumable","targetNPC")[Consumable.IsDangerous]/Lower NPC stat decided through Consumable.affectedStat*
+
+The key difference happens when the *player object* interacts with the *NPC object* in the following way.
+
+*Player invokes UseOnNPC("Key Item","targetNPC")[IsCorrectTargetNPC(NPC)]/exchanges item in inventory with Player*
+
+From the out of combat state, the *NPC object* can move to the in combat state either through having *IsHostile* set to true and the *player object* moving into the same location as the *NPC object*, or the **Controller** invoking a *attack("NPC")* command when the *NPC object has IsFightable set to true.* Upon entering the in combat state, the *NPC object* executes the *CombatTalk()* function. The in combat state contains the same two sub states as the out of combat state, but it has lost access to functionalities such as being able to respond to the examine command or the *TalkTo* function. In return, it gains access to the *attack()* function, with as parameter the player object name, which gets called by the **combat class**. The *NPC object* can leave the combat class either if the *player object* it is in combat with signals *IsDead()* as true, which causes it to go back to the out of combat state, or if the *NPC object IsDead()* is true, which causes it to execute the function *DropInventory()* before the *NPC object* gets deleted and removed from the game, which is displayed as its terminal state.
+
 ![NPC State Machine Diagram](https://github.com/Areenor/SD/blob/Assignment-3/docs/NPC_state_machine_updated.png)
 
 ## Sequence diagrams									
