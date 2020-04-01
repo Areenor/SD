@@ -16,10 +16,6 @@ Maximum number of words for this section: 1000
 ### Application of design patterns
 Author(s): Richard Eric van Leeuwen, Peter Wassenaar
 
-`Figure representing the UML class diagram in which all the applied design patterns are highlighted graphically (for example with a red rectangle/circle with a reference to the ID of the applied design pattern`
-
-For each application of any design pattern you have to provide a table conforming to the template below.
-
 | ID  | DP1  |
 |---|---|
 | **Design pattern**  | Factory method |
