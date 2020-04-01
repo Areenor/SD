@@ -143,7 +143,7 @@ While the most basic game features such as commands, locations and objects were 
 <p><span style="font-weight: 400;">Combat</span></p>
 </td>
 <td>
-<p><span style="font-weight: 400;">Combad is turn based. Each turn a character can make a certain number of actions, they can choose to attack or skip their turn. Each action consumes stamina, if an enemy attacks and the player still has stamina, they can choose to block, dodge or do nothing. Stamina regenerates at the start of the turn.</span></p>
+<p><span style="font-weight: 400;">Combat is turn based. Each turn a character can make a certain number of actions, they can choose to attack or skip their turn. Each action consumes stamina, if an enemy attacks and the player still has stamina, they can choose to block, dodge or do nothing. Stamina regenerates at the start of the turn.</span></p>
 <br />
 <p><strong>Attack</strong><span style="font-weight: 400;">:&nbsp;</span></p>
 <p><span style="font-weight: 400;">&nbsp;&nbsp;Deal damage to an opponent.</span></p>
