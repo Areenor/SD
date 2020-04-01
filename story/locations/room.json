@@ -1,0 +1,7 @@
+{
+  "Name" : "a room",
+  "Description" : "You are in a room, there is a Flask with water on the table. You see Areenor standing there. You see mountains north and a beach west.",
+  "Characters" : ["Areenor"],
+  "Items" : ["Flask"],
+  "AdjacentLocations" : {"north":"mountain", "west": "beach"}
+}
