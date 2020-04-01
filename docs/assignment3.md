@@ -5,9 +5,18 @@ Authors: Richard Eric van Leeuwen
 
 Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
 
-  * test
-  * test
-  * test
+  * We split made the character class abstract and gave it two subclasses, the player class which represents the player in the game and the NPC class, which represents NPC in the game.
+  * We made sure to hide variables from public to either private or protected and gave them dedicated Setter/Getter methods. This helps us with information hiding.
+  * We made sure to make use of enumerations for cases such as Direction to reduce potential errors and aditional clarity.
+  * We added in constructor methods for our classes.
+  * We made sure to add in any missing classes such as the GameState class in our class diagram.
+  * In our state machine diagrams we made use of composite and orthogonal states to better showcase all the states a class can be in. For more information see our State machine descriptions and diagrams.
+  * In our state machine diagrams we made sure arrows were pointing in the right direction such as correctly pointing to the final state.
+  * In our state machine diagrams we made sure that for classes such as the NPC that their responsibilities and roles are properly displayed.
+  * In our sequence diagrams we made outside actors a stickman and gave them the name player actor.
+  * In our sequence diagrams we made sure synchronous messages always have a proper reply and that the description maps properly with our diagrams such as the removal of the 'ok' message.
+  * We moved the command parsing from the player class and made a dedicated controller class for it.
+  * We added aditional error handling and checks.
 
 ### Application of design patterns
 Author(s): Richard Eric van Leeuwen, Peter Wassenaar
