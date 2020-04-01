@@ -27,14 +27,140 @@ Authors: Peter Wassenaar, Zakhar  Zhornovyi
 
 While the most basic game features such as commands, locations and objects were included in regard to the computer game zork, which was taken as the base for our project, we also wanted to enrich our game with more advanced features. It is worth mentioning that some of these features, such as multiple difficulties and creator mode, did not make a cut for our final paper due to the word count limitation. We ended up adding two substantial features on top of the basic ones: statistics of a characters and combat. In the first place, we decided to add combat to increase the variety of gameplay. While we were creating the concept of the combat system, we came to the realization that adding player statistics which would influence the combat opportunities is an elegant way of making the combat feel more realistic and natural.
 
-| ID  | Short name  | Description  |
-|---|---|---|
-| F1  | Choosing player`s main starting statistics| There are three player statistics, parameters of which are chosen by the player at the very beginning of the game: Strength, Dexterity and Constitution. The player can choose to be proficient (+2) in one of these statistics, or to be decent (+1) in two of them. The Strength statistic increases the standard damage the player can deal, the Dexterity statistic increases the chance to dodge an attack and the number of actions a player can make in one turn while Constitution increases the standard possible blocked damage and maximum number of Hit Points of a main player. Main player may later increase any of this statistics with, for example, a special item.|
-| F2 | Commands | The player can control the main player by issuing command-line commands following the syntaxes: command-name ([target-objects]* on [target-objects]*). Some of available command-names are the following:<br/>- examine (optionally [item/NPC]): <br/> &emsp;Retrieve the description of the current location by default or if specified an item or NPC. <br/>- move (Up/Down/North/East/South/West):<br/> &emsp;Move to the location up, down, north, east, south, or west of the current location.<br/>- take [item] : <br/> &emsp;Put a retrievable item into the main player’s inventory.<br/>- use [item] (on [item/NPC]) : <br/> &emsp;Use an item on yourself by default unless specified, this may consume it.<br/>- talk to [NPC] :<br/>&emsp;Get dialogue line of a specified NPC.<br/>- equip [equipment]:<br/> &emsp;Equips a weapon or armor piece.<br/>- attack [player/NPC]:<br/>&emsp;attack a player or NPC, if not yet in combat combat mode begins.<br/>- hint :<br/> &emsp;Request a hint depending on your progress. <br/>- give [Item] to [NPC]:<br/>&emsp; give item to NPC<br/>- equip [Equipment]:<br/>&emsp; Equip equipment(e.g. weapon or armor) |
-| F3 | Locations | A location consists of a name, description, set of objects and characters, and a list of connecting locations. Additionally, certain commands may have different results depending on the location. <br/><br/>Story-defined instances: <br/> &emsp; Locations are story specific and are initiated with custom values for their variables. The configurations of such story specific locations are saved in a JSON file. |
-| F4 | Items | Items are stored in inventory of characters or are located at locations and can be used by main player on himself, NPCs or other items, which may cause an event or create a new item. Items have name, description and can either be retrievable or not. <br/> <br/> Equipment: <br/>&emsp; Equipment is a subclass of items. Such items can be equipped and thus have an influence on player statistics. If the type of equipment is weapon, it raises a damage the player can deal when equipped. If the type of equipment is armor, it raises a player’s maximum number of Hit Points when equipped. <br/><br/>Story-defined items: <br/> &emsp; Story-defined items work the same way for items as they do for locations and can be of either Item superclass or Equipment subclass.<br/>|
-| F5 | Characters | Characters are either an NPC located on locations or the main player. All characters have a name and three main statistics: Strength, Dexterity and Constitution. All characters also have special HP and Attack statistics which determine maximum health and standard damage dealt by the player. Stamina statistic determines the number of actions a player can make in one turn during combat. All characters have an internal inventory, which is a list of items they posses. <br/><br/> Main player: <br/> &emsp; The main player is just an instance of Character class with all inherited variables which is controlled by the player. The main player may pick up items which will be placed in his inventory, allowing the main player to perform actions using these items.<br/><br/> Non Player Characters (NPCs):<br/> &emsp; NPCs are the of the subclass of Character class. Each NPC has a Type variable which determines a nature of NPC (such as vampire or human), isFightable variable which determines if it the NPC can enter combat and a isHostile variable to determine if a NPC is friendly to the player. Once defeated, NPCs may drop items in their inventory which can be picked up by the main player. NPCs also can have description and dialogue data for when they converse with the main player.<br/><br/> Story-defined NPCs: &emsp; <br/> &emsp; Story-defined NPCs work the same way for NPC as they do for locations. <br/> |
-| F6 | Combat | Combat is turn based. Each turn a player can make a certain number of actions, they can choose to attack, block, or dodge. <br/> <br/> Dodge: &emsp; <br/> &emsp; Chance to avoid an opponent's attack next turn. <br/> <br/> Block: &emsp; <br/> &emsp; Decrease the amount of damage done by an opponent's attack next turn. |
+<p><br /><br /></p>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>ID</strong></p>
+</td>
+<td>
+<p><strong>Short name</strong></p>
+</td>
+<td>
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F1</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Character Statistics</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">There are character statistics: </span><em><span style="font-weight: 400;">S</span></em><em><span style="font-weight: 400;">trength</span></em><span style="font-weight: 400;">, </span><em><span style="font-weight: 400;">Dexterity </span></em><span style="font-weight: 400;">and </span><em><span style="font-weight: 400;">Constitution</span></em><em><span style="font-weight: 400;">.</span></em></p>
+<p><span style="font-weight: 400;">At the very beginning of the game, the player can choose to be proficient in one of these statistics (+2), or to be decent in two of them (+1).</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F2</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Commands</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">The player can control the main character by issuing command-line commands following the syntaxes: </span><span style="font-weight: 400;">command-name ([target-objects]* on [target-objects]*)</span><span style="font-weight: 400;">. Some of available </span><span style="font-weight: 400;">command-names</span><span style="font-weight: 400;"> are the following:</span></p>
+<br />
+<p><span style="font-weight: 400;">- </span><strong>Examine </strong><span style="font-weight: 400;">(</span><em><span style="font-weight: 400;">[object/NPC])</span></em><span style="font-weight: 400;"> :&nbsp;</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;Retrieve the description of the current location or&nbsp; a specified item or </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; &nbsp; NPC.&nbsp;</span></p>
+<p><span style="font-weight: 400;">-</span><strong> Move </strong><em><span style="font-weight: 400;">[direction]</span></em><span style="font-weight: 400;">:</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;Move to the adjacent location in the given direction .</span></p>
+<p><span style="font-weight: 400;">- </span><strong>Take </strong><em><span style="font-weight: 400;">[object] </span></em><span style="font-weight: 400;">: </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; &nbsp; Put a retrievable item into the player&rsquo;s inventory.</span></p>
+<p><span style="font-weight: 400;">- </span><strong>Use </strong><em><span style="font-weight: 400;">[object] (</span></em><strong>on </strong><em><span style="font-weight: 400;">[object/character]) </span></em><span style="font-weight: 400;">:</span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; &nbsp; Use an item (on something), this may consume it.</span></p>
+<p><span style="font-weight: 400;">- </span><strong>Talk to</strong> <em><span style="font-weight: 400;">[NPC] </span></em><span style="font-weight: 400;">:</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;Interact with a specific NPC.</span></p>
+<p><span style="font-weight: 400;">- </span><strong>Attack </strong><em><span style="font-weight: 400;">[NPC]:</span></em></p>
+<p><em><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;</span></em><span style="font-weight: 400;">Enter combat against an NPC.</span></p>
+<p><span style="font-weight: 400;">- </span><strong>Commands</strong><span style="font-weight: 400;"> :</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;Prints all commands usable in the current situation.</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F3</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Locations</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">A location consists of a name, description, set of items and NPCs, and a list of connecting locations. Some adjacent locations can not be entered right away, but must first be unlocked.</span></p>
+<br />
+<p><strong>Locations instances</strong><span style="font-weight: 400;">: </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; locations are story specific and are initiated using a JSON file.&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F4</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Item</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Items can be used, either on their own or on an NPC or other object, the effect of using an item depends on which type of item it is.</span></p>
+<br />
+<p><strong>Item instances:</strong></p>
+<p><strong>&nbsp;&nbsp;</strong><span style="font-weight: 400;">Just like </span><strong>Location</strong><span style="font-weight: 400;">, items are initiated using JSON files, however not all items </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; use the same JSON file, that depends on the item&rsquo;s type.&nbsp;</span></p>
+<br />
+<p><strong>Item subclasses:</strong></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;There are multiple so called subclasses of </span><strong>Item</strong><span style="font-weight: 400;">, each with their own use. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; </span><strong>Junk</strong><span style="font-weight: 400;"> items have no use at all. </span><strong>Consumable</strong><span style="font-weight: 400;"> are one time use items </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; increasing the player&rsquo;s statistics or decreasing those of an enemy NPC. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; </span><strong>KeyItem</strong><span style="font-weight: 400;"> are items used to unlock locations or for trading with NPCs. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; </span><strong>Equipment </strong><span style="font-weight: 400;">are items which can give the player a lasting bonus to their </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; statistics.&nbsp;</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F5</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">NPCs</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">NPCs can be interacted with, resulting in a conversation, an event, or combad. NPCs have an HP, attack, block and stamina statistic. Additionally they have an </span><em><span style="font-weight: 400;">isHostile</span></em><span style="font-weight: 400;"> variable, stating if the character will attack the player, and a </span><em><span style="font-weight: 400;">isFightable</span></em><span style="font-weight: 400;"> variable, stating if the player can attack the character.</span></p>
+<br />
+<p><strong>NPC instances:</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;</strong><span style="font-weight: 400;">Instances of </span><strong>NPC</strong><span style="font-weight: 400;"> are created exactly the same way as with </span><strong>Location</strong><span style="font-weight: 400;">, using </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; JSON files.</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F6</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Player</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">The user controls a player character, which is similar to an NPC as it also has HP, attack, block and stamina statistics. The player character will move between locations and performs the actions corresponding to the commands given by the user. A player has its own inventory in which it can store items; items stored here can be used.&nbsp;</span></p>
+<br />
+<p><strong>Player instance</strong><span style="font-weight: 400;"> :&nbsp;</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;A </span><strong>Player </strong><span style="font-weight: 400;">instance is created using the character statistics choices and </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; username submitted by the user. This instance will be referred to as the main </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">&nbsp; character.</span></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><span style="font-weight: 400;">F7</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Combat</span></p>
+</td>
+<td>
+<p><span style="font-weight: 400;">Combad is turn based. Each turn a character can make a certain number of actions, they can choose to attack or skip their turn. Each action consumes stamina, if an enemy attacks and the player still has stamina, they can choose to block, dodge or do nothing. Stamina regenerates at the start of the turn.</span></p>
+<br />
+<p><strong>Attack</strong><span style="font-weight: 400;">:&nbsp;</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;Deal damage to an opponent.</span></p>
+<br />
+<p><strong>Skip:</strong></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;End your turn, saving excess stamina in order to respond to enemy attacks.</span></p>
+<br />
+<p><strong>Dodge</strong><span style="font-weight: 400;">:</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;Chance to avoid an opponent's attack.</span></p>
+<br />
+<p><strong>Block</strong><span style="font-weight: 400;">:</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;Decrease the amount of damage done by an opponent's attack.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><br /><br /><br /><br /></p>
   
 
 ### Quality requirements
