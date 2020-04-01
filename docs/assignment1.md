@@ -50,7 +50,7 @@ While the most basic game features such as commands, locations and objects were 
 </td>
 <td>
 <p><span style="font-weight: 400;">There are character statistics: </span><em><span style="font-weight: 400;">S</span></em><em><span style="font-weight: 400;">trength</span></em><span style="font-weight: 400;">, </span><em><span style="font-weight: 400;">Dexterity </span></em><span style="font-weight: 400;">and </span><em><span style="font-weight: 400;">Constitution</span></em><em><span style="font-weight: 400;">.</span></em></p>
-<p><span style="font-weight: 400;">At the very beginning of the game, the player can divide three points over three different statistics.</span></p>
+<p><span style="font-weight: 400;">At the very beginning of the game, the player can divide three points over these three different statistics.</span></p>
 </td>
 </tr>
 <tr>
