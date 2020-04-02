@@ -22,6 +22,8 @@ Provide a bullet list summarizing all the changes you performed in Assignment 2 
 ### Application of design patterns
 Author(s): Richard Eric van Leeuwen, Peter Wassenaar
 
+See our Class Diagram for the locations of the design patterns.
+
 | ID  | DP1  |
 |---|---|
 | **Design pattern**  | Factory method |
@@ -46,8 +48,6 @@ Author(s): Richard Eric van Leeuwen, Peter Wassenaar
 | **Solution**  | Using overloading it is possible to  implement a single functionality in different ways, while still expressing the logical connection between these implementations. |
 | **Intended use**  | Functionalities with multiple implementations should be implemented using overloading, if possible. |
 | **Constraints**  | When an implementation of a functionality takes in a set of arguments with the same types as a set of arguments of a different implementation of the same functionality, overloading cannot be used. |
-
-Maximum number of words for this section: 2000
 
 ## Class diagram									
 Author: Peter Wassenaar
