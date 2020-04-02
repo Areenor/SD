@@ -1,6 +1,21 @@
 
-Xsquid:S3725-":Replace this with a call to the "toFile().exists()" method(Çñ›˜8È§§Ã‘.
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­€úúýÿÿÿÿ
-msquid:S00100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áäÛ³8ÄÒœÃ‘.
-dsquid:S1192"FDefine a constant instead of duplicating this literal ".json" 4 times.(Ãëâ—8½†Ã‘.
+c
+java:S1192"FDefine a constant instead of duplicating this literal ".json" 4 times.(Ãëâ—8ÍÃÊƒ“.
+€
+java:S14884"dImmediately return this expression instead of assigning it to the temporary variable "consumConfig".(ñ§Ø%8ÍÃÊƒ“.
+‡
+java:S1488:"eImmediately return this expression instead of assigning it to the temporary variable "keyItemConfig".(…¦¼õøÿÿÿÿ8ÍÃÊƒ“.
+…
+java:S1488@"cImmediately return this expression instead of assigning it to the temporary variable "equipConfig".(µÆæëøÿÿÿÿ8ÍÃÊƒ“.
+
+java:S1488F"bImmediately return this expression instead of assigning it to the temporary variable "itemConfig".(©½‡Á8ÍÃÊƒ“.
+W
+java:S1118":Add a private constructor to hide the implicit public one.(­õÅ–8ÍÃÊƒ“.
+“
+java:S11302"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(èìÙö8ÍÃÊƒ“.
+˜
+java:S11308"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(ðŸ¤Æÿÿÿÿÿ8ÍÃÊƒ“.
+˜
+java:S1130>"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(‡»×Ôýÿÿÿÿ8ÍÃÊƒ“.
+‘
+java:S1130D"vRemove the declaration of thrown exception 'java.io.FileNotFoundException', as it cannot be thrown from method's body.(ÈÊO8ÍÃÊƒ“.

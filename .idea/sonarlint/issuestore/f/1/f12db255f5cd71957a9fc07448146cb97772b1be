@@ -1,18 +1,38 @@
 
-„"squid:ClassVariableVisibilityCheck
-"VMake IsFinished a static final constant or non-public and provide accessors if needed.(ì¢ÿå
-fsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ´õ¥
-Ksquid:S1444"/Make this "public static Locations" field final(›ÊæÔúÿÿÿÿ
-Gsquid:S1444
-"0Make this "public static IsFinished" field final(ì¢ÿå
-{squid:S3008"XRename this field "MainCharacter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÖ‹„ıÿÿÿÿ8ûŸÁ“.
-“"squid:ClassVariableVisibilityCheck"YMake MainCharacter a static final constant or non-public and provide accessors if needed.(âÖ‹„ıÿÿÿÿ8ûŸÁ“.
-9squid:S2386"Make this member "protected".(›ÊæÔúÿÿÿÿ
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î’º¶
-ˆ"squid:ClassVariableVisibilityCheck"UMake Locations a static final constant or non-public and provide accessors if needed.(›ÊæÔúÿÿÿÿ
-psquid:S3008"TRename this field "Locations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ÊæÔúÿÿÿÿ
-asquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(½ÃÄ[
-Vsquid:S1444"3Make this "public static MainCharacter" field final(âÖ‹„ıÿÿÿÿ8ûŸÁ“.
-lsquid:S3008
-"URename this field "IsFinished" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¢ÿå
-Vsquid:S1118	":Add a private constructor to hide the implicit public one.(›êÖÙûÿÿÿÿ
+N
+java:S1444
+",Make this "public static Combat" field final(Ô“ø±ÿÿÿÿÿ8™¿ù…“.
+M
+java:S1444"0Make this "public static IsFinished" field final(ì¢ÿå8™¿ù…“.
+U
+java:S1444"3Make this "public static SpawnLocation" field final(çÏíúÿÿÿÿ8™¿ù…“.
+U
+java:S1444"3Make this "public static MainCharacter" field final(âÖ‹„ıÿÿÿÿ8™¿ù…“.
+Q
+java:S1444"/Make this "public static Locations" field final(›ÊæÔúÿÿÿÿ8™¿ù…“.
+t
+java:S1104
+"RMake Combat a static final constant or non-public and provide accessors if needed.(Ô“ø±ÿÿÿÿÿ8™¿ù…“.
+s
+java:S1104"VMake IsFinished a static final constant or non-public and provide accessors if needed.(ì¢ÿå8™¿ù…“.
+{
+java:S1104"YMake SpawnLocation a static final constant or non-public and provide accessors if needed.(çÏíúÿÿÿÿ8™¿ù…“.
+{
+java:S1104"YMake MainCharacter a static final constant or non-public and provide accessors if needed.(âÖ‹„ıÿÿÿÿ8™¿ù…“.
+w
+java:S1104"UMake Locations a static final constant or non-public and provide accessors if needed.(›ÊæÔúÿÿÿÿ8™¿ù…“.
+s
+java:S3008
+"QRename this field "Combat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô“ø±ÿÿÿÿÿ8™¿ù…“.
+r
+java:S3008"URename this field "IsFinished" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¢ÿå8™¿ù…“.
+z
+java:S3008"XRename this field "SpawnLocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çÏíúÿÿÿÿ8™¿ù…“.
+z
+java:S3008"XRename this field "MainCharacter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÖ‹„ıÿÿÿÿ8™¿ù…“.
+v
+java:S3008"TRename this field "Locations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ÊæÔúÿÿÿÿ8™¿ù…“.
+?
+java:S2386"Make this member "protected".(›ÊæÔúÿÿÿÿ8™¿ù…“.
+\
+java:S1118	":Add a private constructor to hide the implicit public one.(›êÖÙûÿÿÿÿ8™¿ù…“.

@@ -1,9 +1,0 @@
-{
-  "Name" : "Zweihander",
-  "Description" : "You see a massive sword called a Zweihander on the ground.",
-  "IsRetriavable" : "true",
-  "BlockBonus" : 0,
-  "AttackBonus" : 6,
-  "Type" : "Weapon"
-
-}

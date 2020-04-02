@@ -1,7 +1,0 @@
-{
-  "Name" : "a beach",
-  "Description" : "You are on a beach. There is a room east.",
-  "Characters" : [],
-  "Items" : ["Poison"],
-  "AdjacentLocations" : {"east":"room"}
-}

@@ -1,0 +1,8 @@
+{
+  "Name" : "longsword",
+  "Description" : "You see a massive two handed sword, which recently was in the arms of your dead friend.",
+  "IsRetriavable" : "true",
+  "BlockBonus" : 0,
+  "AttackBonus" : 4,
+  "Type" : "Weapon"
+}

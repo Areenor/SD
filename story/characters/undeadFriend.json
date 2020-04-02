@@ -1,0 +1,11 @@
+{
+  "Name" : "undeadFriend",
+  "IsFightable" : "true",
+  "IsHostile" : "true",
+  "Inventory" : ["longsword", "armor"],
+  "Description" : "You see an undead man in the armor of your Order which lean towards you.",
+  "CombatDialogue" : "Forgive me, brother...I can`t...resist..the hunger",
+  "Strength": 1,
+  "Dexterity": 1,
+  "Constitution": 0
+}

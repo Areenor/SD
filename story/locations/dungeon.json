@@ -1,0 +1,7 @@
+{
+  "Name" : "dungeon",
+  "Description" : "You are in the dungeon.",
+  "Characters" : [],
+  "Items" : [],
+  "AdjacentLocations" : {"up":"templeHall"}
+}

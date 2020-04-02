@@ -1,0 +1,7 @@
+{
+  "Name" : "sanctuary",
+  "Description" : "You are in the sanctuary. There is a door south which leeds to temple hall.",
+  "Characters" : [],
+  "Items" : ["EndOfTimes"],
+  "AdjacentLocations" : {"south":"templeHall"}
+}

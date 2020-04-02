@@ -83,3 +83,11 @@ W
 'src/main/java/Services/ItemFactory.java,6\9\69aec7bd3cfe782fd937a5a654c91ec149982014
 R
 "src/main/java/Services/Combat.java,9\1\91585c297bc693cf709c37a08128b742f631250a
+M
+story/characters/Vampire.json,d\a\da46967a442d4696864a531d53dd593964220b34
+N
+story/characters/Warewolf.json,e\c\ec7495315865f53a974630475a05ca25b2d10755
+\
+,src/main/java/Enumerators/DirectionEnum.java,7\4\74f2b89ae0e5ec77cdeb73d24dab6b5d4b437cbf
+J
+story/junk/EndOfTimes.json,b\d\bd7b478bf2e8aa541e4151885425d46f2900738e
