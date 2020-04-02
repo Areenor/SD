@@ -462,7 +462,7 @@ In this sequence diagram we show the execution of the take command. The take com
 First of all, the **Controller** requests the *Read()* function from the **Terminal**. The player actor inputs the command it wants, which in this case is "take potion", which gets forwarded as a reply back to the **Controller**. The **Controller** reads this command and calls his own *Take()* function where it checks for any command specific errors in the input it received from the *Terminal*. Upon not finding any, it calls the *Take()* function of the *player object* which has as parameter the name of the *Item* it wants taken. *The player object* receives this call and proceeds to process the execution of exchange of *Items*. First, it communicates with the *currentLocation object* it has stored inside himself and asks for the *item* wanted with as parameter the item name. In this case, the name is "potion" and it receives back the *potion Item object* which it stores in the variable targetItem. Now, it has the Item it wants stored in a variable, it proceeds to send another request to the *currentLocation object* telling it to remove the *potion item object* from the *currentLocation* with the function *RemoveItem()* which takes as parameter the name of the *item*. With the *item* removed from the *currentLocation*, the *player object* only needs to add it to his own *inventory* which it does with a call to himself called *AddToInventory()* with as parameter targetItem. The command is now completed, all that is left to do is tell the player actor it was successful. The *player object* sends to the **Terminal** using the **Terminal's** *PrintLine()* function the message containing the success of the action, in this case "You took the potion", which the **Terminal** then forwards to the player actor as output. The player actor now knows the command went successful and can now continue inputting a new command of his choosing.
 
 ## Implementation									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Richard Eric van Leeuwen(Video), 
 
 In this chapter you will describe the following aspects of your project:
 - the strategy that you followed when moving from the UML models to the implementation code;
@@ -471,6 +471,8 @@ In this chapter you will describe the following aspects of your project:
 - the location of the Jar file for directly executing your system;
 - the 30-seconds video showing the execution of your system (you can embed the video directly in your md file on GitHub).
 
-IMPORTANT: remember that your implementation must be consistent with your UML models. Also, your implementation must run without the need from any other external software or tool. Failing to meet this requirement means 0 points for the implementation part of your project.
 
-Maximum number of words for this section: 2000
+[Click here for the link to our video](https://www.youtube.com/watch?v=QVJGOtox7_g&feature=youtu.be)
+The location of the main Java class is: Areenor/SD/blob/master/src/main/java/Main.java
+The location of the Jar file for directly executing our system: Areenor/SD/blob/master/out/artifacts/software_design_vu_2020_jar/software-design-vu-2020.jar
+For the jar to properly work make sure the story directory containing the json files is on the same level as the jar.
