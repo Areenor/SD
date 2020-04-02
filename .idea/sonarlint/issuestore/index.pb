@@ -69,3 +69,9 @@ R
 ,src/main/java/Enumerators/DirectionEnum.java,7\4\74f2b89ae0e5ec77cdeb73d24dab6b5d4b437cbf
 J
 story/junk/EndOfTimes.json,b\d\bd7b478bf2e8aa541e4151885425d46f2900738e
+L
+story/locations/dungeon.json,8\f\8f4122945631f8d32de1a62a5f302a2f9e7ab75e
+S
+#story/locations/livingQuarters.json,0\c\0cefedcb0e779b996b66a7a2b380ccf3aac7dee9
+R
+"story/characters/undeadFriend.json,8\1\81cd91d5192cc053510c950e605a76585b176d2d

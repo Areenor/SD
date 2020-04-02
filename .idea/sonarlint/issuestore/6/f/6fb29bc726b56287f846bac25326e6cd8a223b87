@@ -1,22 +1,24 @@
 
-|
-java:S1104"ZMake CombatDialogue a static final constant or non-public and provide accessors if needed.(Ìà™Ãüÿÿÿÿ8ì¨ƒƒ“.
-z
-java:S1104"XMake Constitution a static final constant or non-public and provide accessors if needed.(³´²¢ÿÿÿÿÿ8´Ï‹´’.
-m
-java:S1104	"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8´Ï‹´’.
-v
-java:S1104"TMake Dialogue a static final constant or non-public and provide accessors if needed.(Ú©­Ìÿÿÿÿÿ8´Ï‹´’.
-s
-java:S1104
-"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8´Ï‹´’.
-r
-java:S1104"UMake Dexterity a static final constant or non-public and provide accessors if needed.(İš‹¾8´Ï‹´’.
-s
-java:S1104"WMake IsFightable a static final constant or non-public and provide accessors if needed.(Â°„D8´Ï‹´’.
-w
-java:S1104"UMake Inventory a static final constant or non-public and provide accessors if needed.(Æ«ÕØùÿÿÿÿ8´Ï‹´’.
-w
-java:S1104"UMake IsHostile a static final constant or non-public and provide accessors if needed.(£Àæûÿÿÿÿ8´Ï‹´’.
-q
-java:S1104"TMake Strength a static final constant or non-public and provide accessors if needed.(¶ÒÁ×8´Ï‹´’.
+…"squid:ClassVariableVisibilityCheck	"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8äÕÄ“.
+‹"squid:ClassVariableVisibilityCheck
+"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8äÕÄ“.
+"squid:ClassVariableVisibilityCheck"TMake Dialogue a static final constant or non-public and provide accessors if needed.(Ú©­Ìÿÿÿÿÿ8äÕÄ“.
+”"squid:ClassVariableVisibilityCheck"ZMake CombatDialogue a static final constant or non-public and provide accessors if needed.(Ìà™Ãüÿÿÿÿ8äÕÄ“.
+"squid:ClassVariableVisibilityCheck"UMake Inventory a static final constant or non-public and provide accessors if needed.(Æ«ÕØùÿÿÿÿ8äÕÄ“.
+"squid:ClassVariableVisibilityCheck"UMake IsHostile a static final constant or non-public and provide accessors if needed.(£Àæûÿÿÿÿ8äÕÄ“.
+‹"squid:ClassVariableVisibilityCheck"WMake IsFightable a static final constant or non-public and provide accessors if needed.(Â°„D8äÕÄ“.
+‰"squid:ClassVariableVisibilityCheck"TMake Strength a static final constant or non-public and provide accessors if needed.(¶ÒÁ×8äÕÄ“.
+Š"squid:ClassVariableVisibilityCheck"UMake Dexterity a static final constant or non-public and provide accessors if needed.(İš‹¾8äÕÄ“.
+’"squid:ClassVariableVisibilityCheck"XMake Constitution a static final constant or non-public and provide accessors if needed.(³´²¢ÿÿÿÿÿ8äÕÄ“.
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ8äÕÄ“.
+nsquid:S00116	"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà8äÕÄ“.
+tsquid:S00116
+"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+8äÕÄ“.
+wsquid:S00116"SRename this field "Dialogue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú©­Ìÿÿÿÿÿ8äÕÄ“.
+}squid:S00116"YRename this field "CombatDialogue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìà™Ãüÿÿÿÿ8äÕÄ“.
+xsquid:S00116"TRename this field "Inventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ«ÕØùÿÿÿÿ8äÕÄ“.
+xsquid:S00116"TRename this field "IsHostile" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Àæûÿÿÿÿ8äÕÄ“.
+tsquid:S00116"VRename this field "IsFightable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â°„D8äÕÄ“.
+rsquid:S00116"SRename this field "Strength" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ÒÁ×8äÕÄ“.
+ssquid:S00116"TRename this field "Dexterity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İš‹¾8äÕÄ“.
+{squid:S00116"WRename this field "Constitution" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³´²¢ÿÿÿÿÿ8äÕÄ“.

@@ -3,8 +3,8 @@
   "IsFightable" : "true",
   "IsHostile" : "true",
   "Inventory" : [],
-  "Description" : "You see an undead man in the armor of your Order which just came back to life. He seems to wait a command from the alive priest. ",
-  "CombatDialogue" : "I...must...obey to...my Master. ",
+  "Description" : "You see an undead man in the armor of your Order who just came back to life. He seems to wait for a command from the living priest. ",
+  "CombatDialogue" : "I...must...obey...my Master. ",
   "Strength": 1,
   "Dexterity": 1,
   "Constitution": 1

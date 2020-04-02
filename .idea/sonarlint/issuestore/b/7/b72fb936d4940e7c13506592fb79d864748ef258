@@ -1,20 +1,19 @@
 
-p
-java:S1104"SMake IsSpawn a static final constant or non-public and provide accessors if needed.(¸¶Ø8î¨ƒƒ“.
-<
-java:S1640"Convert this Map to an EnumMap.(ĞƒÛø8ÁÏ‹´’.
-s
-java:S1104"QMake Items a static final constant or non-public and provide accessors if needed.(Ï×Ş£ûÿÿÿÿ8ÁÏ‹´’.
-v
-java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø8ÁÏ‹´’.
-r
-java:S1104"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ58ÁÏ‹´’.
-s
-java:S1104"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8ÁÏ‹´’.
-m
-java:S1104
-"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8ÁÏ‹´’.
-z
-java:S1104"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø8ÁÏ‹´’.
-I
-java:S3599",Use another way to initialize this instance.(ĞƒÛø8ÁÏ‹´’.
+=squid:S1640"Convert this Map to an EnumMap.(ĞƒÛø8¸¨ÖÄ“.
+…"squid:ClassVariableVisibilityCheck
+"PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8¸¨ÖÄ“.
+‹"squid:ClassVariableVisibilityCheck"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8¸¨ÖÄ“.
+ˆ"squid:ClassVariableVisibilityCheck"SMake IsSpawn a static final constant or non-public and provide accessors if needed.(¸¶Ø8¸¨ÖÄ“.
+‹"squid:ClassVariableVisibilityCheck"QMake Items a static final constant or non-public and provide accessors if needed.(Ï×Ş£ûÿÿÿÿ8¸¨ÖÄ“.
+Š"squid:ClassVariableVisibilityCheck"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ58¸¨ÖÄ“.
+’"squid:ClassVariableVisibilityCheck"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø8¸¨ÖÄ“.
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•ëÂ–ÿÿÿÿÿ8¸¨ÖÄ“.
+nsquid:S00116
+"ORename this field "Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ¤üà8¸¨ÖÄ“.
+tsquid:S00116"VRename this field "Description" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹³³+8¸¨ÖÄ“.
+qsquid:S00116"RRename this field "IsSpawn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¶Ø8¸¨ÖÄ“.
+tsquid:S00116"PRename this field "Items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï×Ş£ûÿÿÿÿ8¸¨ÖÄ“.
+ssquid:S00116"URename this field "Characters" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëóñ58¸¨ÖÄ“.
+{squid:S00116"\Rename this field "AdjacentLocations" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞƒÛø8¸¨ÖÄ“.
+Jsquid:S3599",Use another way to initialize this instance.(ĞƒÛø8¸¨ÖÄ“.
+wsquid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø8¸¨ÖÄ“.

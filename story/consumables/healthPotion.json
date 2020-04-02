@@ -1,6 +1,6 @@
 {
   "Name" : "healthPotion",
-  "Description" : "You see a healthPotion on the table. You know this type of potions. It restores health. ",
+  "Description" : "You see a healthPotion on the table. You know this type of potion. It restores health. ",
   "IsRetriavable" : "true",
   "StatChange" : 5,
   "IsDangerous" : false,

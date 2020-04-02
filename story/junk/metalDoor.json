@@ -1,5 +1,5 @@
 {
   "Name" : "metalDoor",
-  "Description" : "You see a metal door which is leading to the sanctuary, but it is locked. ",
+  "Description" : "You see a metalDoor which is leading to the sanctuary, but it is locked. ",
   "IsRetriavable" : false
 }
