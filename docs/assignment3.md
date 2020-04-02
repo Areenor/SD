@@ -473,6 +473,9 @@ In this chapter you will describe the following aspects of your project:
 
 
 [Click here for the link to our video](https://www.youtube.com/watch?v=QVJGOtox7_g&feature=youtu.be)
+
 The location of the main Java class is: Areenor/SD/blob/master/src/main/java/Main.java
+
 The location of the Jar file for directly executing our system: Areenor/SD/blob/master/out/artifacts/software_design_vu_2020_jar/software-design-vu-2020.jar
+
 For the jar to properly work make sure the story directory containing the json files is on the same level as the jar.
