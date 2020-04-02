@@ -13,8 +13,6 @@ G
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 V
 &src/main/java/Game_data/GameState.java,f\1\f12db255f5cd71957a9fc07448146cb97772b1be
-J
-story/locations/beach.json,4\3\4350a7584e5cf00b8756ccc4ea8464243b3d79f2
 \
 ,src/main/java/Default_classes/Character.java,1\6\169fc6cb38b2c8b6e617a31cf998aa9f8981b900
 C
@@ -29,8 +27,6 @@ f
 6src/main/java/Configuration_models/LocationConfig.java,b\7\b72fb936d4940e7c13506592fb79d864748ef258
 M
 story/characters/Areenor.json,4\f\4fdc29795a6cbeb7a492cefe3687651c4c91b11f
-I
-story/locations/room.json,6\f\6f147e0bb51231b3f70a9c6bdb3350b515742cef
 V
 &src/main/java/Default_classes/NPC.java,2\2\2240935584f706fa527b4defbfbb5c5e364632db
 a
@@ -39,8 +35,6 @@ b
 2src/main/java/Configuration_models/ItemConfig.java,c\3\c3afdb654da5e6582163ce303f102322ea0dd457
 W
 'src/main/java/Default_classes/Item.java,5\3\53fe7ad9f64b6741324a951bb1da205d59a38a9a
-M
-story/locations/mountain.json,3\1\3186e0da126fecc30305082575e52c6309f60558
 W
 'src/main/java/Enumerators/StatEnum.java,7\2\7216c40cf55a448f40827a5894b2c97e10d6fef0
 V
@@ -49,24 +43,14 @@ d
 4src/main/java/Configuration_models/ConsumConfig.java,c\1\c1de0be3dd446742747087cd97319a81ff4cc9f7
 ]
 -src/main/java/Default_classes/Consumable.java,5\5\556e8e6e9d8c28b0e7797d79fed18f42fed1ab12
-L
-story/consumables/Flask.json,f\f\ff82747b1af271a0f549e3347a6e8dbcff603c63
 Y
 )src/main/java/Default_classes/Player.java,f\9\f944497f6d191cb2b1768410d5d55d284bd5a00a
 W
 'src/main/java/Default_classes/Junk.java,4\b\4bdd91b170e3ae7627bf2331274ff57066f9c1fc
 e
 5src/main/java/Configuration_models/KeyItemConfig.java,9\e\9e91b764fa2aeb343cb14f3c0719cce090715cb2
-M
-story/consumables/Poison.json,6\2\62a2b92dba1523b285cd874f3f9a11de74654fad
-H
-story/locations/bar.json,c\0\c0cb92c044ebc48721b57dd250d6a3d20106029a
-M
-story/keyitems/SilverKey.json,6\8\688d2b13c5fefba533ce399e42be957f2eee6c9e
 Z
 *src/main/java/Default_classes/KeyItem.java,3\5\35dc622a1b1a64b0878bc4a588046d47849bbb97
-O
-story/equipment/Zweihander.json,b\e\bee0d71376261dd1a00938bce23831ff7230f536
 c
 3src/main/java/Configuration_models/EquipConfig.java,1\9\195d1efec463557dee7a09673c3dab01e5f3dd30
 \
@@ -77,16 +61,10 @@ T
 $src/main/java/Services/Terminal.java,0\d\0d265c021f9153221b528ad826837831bc6071cc
 _
 /.idea/artifacts/software_design_vu_2020_jar.xml,b\4\b414b3d9add283f44ab456fe5bb870a853ebfadc
-J
-story/junk/SilverGate.json,a\b\ab2e61771c0e2a571cf0b2bec38f107d7c804318
 W
 'src/main/java/Services/ItemFactory.java,6\9\69aec7bd3cfe782fd937a5a654c91ec149982014
 R
 "src/main/java/Services/Combat.java,9\1\91585c297bc693cf709c37a08128b742f631250a
-M
-story/characters/Vampire.json,d\a\da46967a442d4696864a531d53dd593964220b34
-N
-story/characters/Warewolf.json,e\c\ec7495315865f53a974630475a05ca25b2d10755
 \
 ,src/main/java/Enumerators/DirectionEnum.java,7\4\74f2b89ae0e5ec77cdeb73d24dab6b5d4b437cbf
 J

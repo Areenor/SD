@@ -1,8 +1,8 @@
 {
   "Name" : "templeHall",
-  "Description" : "You entered temple hall. Something tells you that you won`t be able to leave this place until your mission is done. You remember temple since you were here as a kid: north metal door leads to the sanctuary, west one to the living quarters and there is stairs to the temple dungeon. All other ways seem to be permanently unreachable dew to collapsed roof.",
+  "Description" : "You entered temple hall. Something tells you that you won`t be able to leave temple until your mission is done. You remember temple since you were here as a kid: north metal door leads to the sanctuary, west path leads to the living quarters, east one - to library and there are stairs to the temple dungeon. Other ways seem to be permanently unreachable dew to collapsed roof. ",
   "Characters" : ["Areenor"],
   "Items" : ["metalDoor"],
-  "AdjacentLocations" : {"north": "sanctuary", "west": "livingQuarters", "down":  "dungeon"},
+  "AdjacentLocations" : {"west": "livingQuarters", "down":  "dungeon", "east" : "library"},
   "IsSpawn" : "True"
 }

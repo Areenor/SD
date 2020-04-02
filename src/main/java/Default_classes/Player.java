@@ -50,10 +50,10 @@ public class Player extends Character {
     public Equipment GetArmor() { return _armor;}
     public void SetWeapon(Equipment newWeapon) {
         if(_weapon != null) {
-            SetStrength(GetAttack() - _weapon.GetAttackBonus());
+            SetAttack(GetAttack() - _weapon.GetAttackBonus());
             AddToInventory(_weapon);
         }
-        SetStrength(GetAttack() + newWeapon.GetAttackBonus());
+        SetAttack(GetAttack() + newWeapon.GetAttackBonus());
         RemoveFromInventory(newWeapon.GetName());
         _weapon = newWeapon;
     }

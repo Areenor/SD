@@ -1,7 +1,0 @@
-{
-  "Name" : "EndOfTimes",
-  "Description" : "You see a EndOfTimes. This item will end the whole universe",
-  "IsRetriavable" : true,
-  "IsWinningItem" : true,
-  "EndText" : "And thus the story ends."
-}
