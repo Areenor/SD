@@ -1,11 +1,8 @@
 {
   "Name" : "Areenor",
-  "IsFightable" : "true",
-  "IsHostile" : "false",
-
-  "Description" : "You see a rather big man called Areenor standing in front of desk. From his armor you think that he is a Paladin.",
-  "Dialogue" : "I did not expect you to wake up that early, your squad is waiting for you in the mountains",
-  "CombatDialogue" : "You failed our Order.",
+  "IsFightable" : "false",
+  "Description" : "You see a rather big man in plates of your Order standing near the north door. You recognize him - the man is called Areenor, he is the captain of your squad. ",
+  "Dialogue" : "Finally you arrived, the situation is pretty bad here. We don`t know what happened to local priests, but the living dead is all over the place. The path to sanctuary is locked, but I can hear some ritual going over there. Rest of our group went down to dungeon to find another way. There is wounded friend of yours in living quarters, he might have some armor and weapon for you, check how he is feeling but firstly grab the healthPotion for him which I left in the library. Also, there is one survived priest, called Azael. He is shocked but might know something. ",
   "Strength": 2,
   "Dexterity": 0,
   "Constitution": 2

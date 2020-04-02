@@ -1,16 +1,3 @@
 
-Q
-java:S1128"4Remove this unused import 'org.beryx.textio.TextIO'.(§Ð„8÷É—´’.
-]
-java:S1128";Remove this unused import 'org.beryx.textio.TextIoFactory'.(Ñ‹ÔÞùÿÿÿÿ8÷É—´’.
-W
-java:S1128":Remove this unused import 'org.beryx.textio.TextTerminal'.(¦—º•8÷É—´’.
-S
-java:S1128	"1Remove this unused import 'Enumerators.StatEnum'.(¬©³‰úÿÿÿÿ8÷É—´’.
-[
-java:S1128">Remove this unused import 'Configuration_models.ConsumConfig'.(Ç¡Á–8÷É—´’.
 
-java:S1192"bDefine a constant instead of duplicating this literal "This item has no use, it is junk." 3 times.(‹¶•“8÷É—´’.
-R
-java:S1128
-"0Remove this unused import 'Game_data.GameState'.(ýÕ˜Æùÿÿÿÿ8÷É—´’.
+java:S1192"bDefine a constant instead of duplicating this literal "This item has no use, it is junk." 3 times.(‹¶•“8÷É—´’.

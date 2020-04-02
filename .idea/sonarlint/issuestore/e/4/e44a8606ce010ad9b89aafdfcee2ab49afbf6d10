@@ -1,7 +1,0 @@
-
-8squid:S1220""Move this file to a named package.8å³ò¥‹.
-asquid:UselessImportCheck"6Remove this unused import 'Default_classes.Character'.(ÂÓ×Ã8«‡—Ä‘.
-esquid:UselessImportCheck":Remove this unused import 'org.beryx.textio.TextTerminal'.(¦—º•8«‡—Ä‘.
-ksquid:UselessImportCheck
-";Remove this unused import 'org.beryx.textio.TextIoFactory'.(Ñ‹ÔŞùÿÿÿÿ8«‡—Ä‘.
-_squid:UselessImportCheck	"4Remove this unused import 'org.beryx.textio.TextIO'.(§Ğ„8«‡—Ä‘.

@@ -45,7 +45,7 @@ public abstract class Item {
     public void FinishGame(){
         Terminal.PrintLine(_endText);
         GameState.IsFinished = true;
-        try { TimeUnit.SECONDS.sleep(3); } //delay closing the window so end text is readable
+        try { TimeUnit.SECONDS.sleep(10); } //delay closing the window so end text is readable
         catch (InterruptedException e) { Thread.currentThread().interrupt(); }
         Terminal.CloseTerminal();
     }

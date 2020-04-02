@@ -1,17 +1,17 @@
 
-~
-java:S1104"aMake NewTargetDescriptions a static final constant or non-public and provide accessors if needed.(›ƒë8ÉÏ‹´’.
 {
 java:S1104"^Make UnlockedDirections a static final constant or non-public and provide accessors if needed.(÷°æÃ8ÉÏ‹´’.
-ƒ
-java:S1104"aMake UnlockedLocationNames a static final constant or non-public and provide accessors if needed.(‚öÂÅûÿÿÿÿ8ÉÏ‹´’.
 }
 java:S1104"[Make NPCItemExchange a static final constant or non-public and provide accessors if needed.(İ‘òùúÿÿÿÿ8ÉÏ‹´’.
 v
 java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›ƒë8ÉÏ‹´’.
-v
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷°æÃ8ÉÏ‹´’.
 {
 java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‚öÂÅûÿÿÿÿ8ÉÏ‹´’.
+~
+java:S1104"aMake NewTargetDescriptions a static final constant or non-public and provide accessors if needed.(›ƒë8ÉÏ‹´’.
+ƒ
+java:S1104"aMake UnlockedLocationNames a static final constant or non-public and provide accessors if needed.(‚öÂÅûÿÿÿÿ8ÉÏ‹´’.
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷°æÃ8ÉÏ‹´’.
 {
 java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ‘òùúÿÿÿÿ8ÉÏ‹´’.

@@ -1,18 +1,20 @@
 
-z
-java:S1104"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø8ÁÏ‹´’.
-I
-java:S3599",Use another way to initialize this instance.(ĞƒÛø8ÁÏ‹´’.
+p
+java:S1104"SMake IsSpawn a static final constant or non-public and provide accessors if needed.(¸¶Ø8î¨ƒƒ“.
 <
-java:S1640"Convert this Map to an EnumMap.(ĞƒÛø8ÁÏ‹´’.
+java:S1640"Convert this Map to an EnumMap.(ĞƒÛø8ÁÏ‹´’.
 s
-java:S1104"QMake Items a static final constant or non-public and provide accessors if needed.(Ï×Ş£ûÿÿÿÿ8ÁÏ‹´’.
+java:S1104"QMake Items a static final constant or non-public and provide accessors if needed.(Ï×Ş£ûÿÿÿÿ8ÁÏ‹´’.
 v
-java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø8ÁÏ‹´’.
+java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ĞƒÛø8ÁÏ‹´’.
+r
+java:S1104"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ58ÁÏ‹´’.
+s
+java:S1104"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8ÁÏ‹´’.
 m
 java:S1104
 "PMake Name a static final constant or non-public and provide accessors if needed.(õ¤üà8ÁÏ‹´’.
-s
-java:S1104"WMake Description a static final constant or non-public and provide accessors if needed.(¹³³+8ÁÏ‹´’.
-r
-java:S1104"VMake Characters a static final constant or non-public and provide accessors if needed.(ëóñ58ÁÏ‹´’.
+z
+java:S1104"]Make AdjacentLocations a static final constant or non-public and provide accessors if needed.(ĞƒÛø8ÁÏ‹´’.
+I
+java:S3599",Use another way to initialize this instance.(ĞƒÛø8ÁÏ‹´’.
