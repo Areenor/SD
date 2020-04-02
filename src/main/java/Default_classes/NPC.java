@@ -6,6 +6,7 @@ import Services.InitiationService;
 import Services.Terminal;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 
 public class NPC extends Character {
@@ -89,7 +90,12 @@ public class NPC extends Character {
     }
 
     public void DropInventory(Location dropLocation) {
-        for (String itemName : _inventory.keySet()) {
+
+        ArrayList<String> inventoryItemNames = new ArrayList<String>();
+        for(String itemName : _inventory.keySet()) {
+            inventoryItemNames.add(itemName);
+        }
+        for (String itemName : inventoryItemNames) {
             Item item = GetItem(itemName);
             RemoveFromInventory(itemName);
             dropLocation.AddItem(item);
